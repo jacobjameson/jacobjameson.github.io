@@ -62,7 +62,7 @@ plugins:
 
 author:
   name   : "Jacob Jameson"
-  avatar : "/assets/images/avatar.jpg"
+  avatar : "/assets/images/profile.png"
   bio    : "Ph.D. Student, Harvard University"
   location: "Cambridge, MA"
   links:
@@ -147,5 +147,3 @@ collections:
 
 analytics:
   provider: "custom"
-
-theme: jekyll-theme-minimal
