@@ -1,9 +1,9 @@
 ---
 title: "Teaching"
 permalink: /teaching/
-header:
-classes: wide
 ---
+
+
 
 ## The University of Chicago, Center for Translational Science
 
