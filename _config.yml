@@ -147,5 +147,3 @@ collections:
 
 analytics:
   provider: "custom"
-
-theme: jekyll-theme-minimal
