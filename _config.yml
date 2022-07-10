@@ -13,15 +13,15 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Dr. Alice Lépissier
-email:  alice_lepissier@brown.edu
+title: Jacob Jameson
+email:  jacobjameson@g.harvard.edu
 description: >- # this means to ignore newlines until "baseurl:"
-  The professional and academic website of Alice Lépissier.
+  The professional and academic website of Jacob Jameson.
 # Write an awesome description for your new site here. You can edit this
 # line in _config.yml. It will appear in your document head meta (for
 # Google search results) and in your feed.xml site description.
-twitter_username: alicelepissier
-github_username: walice
+twitter_username: JacobJameson
+github_username: jacobjameson
 minimal_mistakes_skin: "default"
 minimal_mistakes_skin2: "dark"
 search: false
@@ -61,32 +61,24 @@ plugins:
   - jekyll-remote-theme
 
 author:
-  name   : "Alice Lépissier"
+  name   : "Jacob Jameson"
   avatar : "/assets/images/avatar.jpg"
-  bio    : "Postdoctoral Fellow at the Watson Institute for International and Public Affairs, Brown University"
-  location: "Providence, RI"
+  bio    : "Ph.D. Student, Harvard University"
+  location: "Cambridge, MA"
   links:
     # - label: "Santa Barbara, USA"
     #   icon: "fas fa-map-marker-alt"
     #   url: "https://goo.gl/maps/GFaFoZc2RiSogiRA7"
     - label: "Email"
       icon: "fas fa-fw fa-envelope"
-      url: "mailto:alice_lepissier@brown.edu"
+      url: "mailto:jacobjameson@g.harvard.edu"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/walice"
-    - label: "LinkedIn"
-      icon: "fab fa-linkedin"
-      url: "https://www.linkedin.com/in/alicelepissier/"
+      url: "https://github.com/jacobjameson"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter"
-      url: "https://twitter.com/alicelepissier"
-    - label: "ResearchGate"
-      icon: "fab fa-researchgate"
-      url: "https://www.researchgate.net/profile/Alice_Lepissier"
-    - label: "Skype"
-      icon: "fab fa-skype"
-      url: "skype:alice.lepissier?call"
+      url: "https://twitter.com/JacobJameson"
+
 
 footer:
   # links:
