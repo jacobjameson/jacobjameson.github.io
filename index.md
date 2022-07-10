@@ -7,21 +7,17 @@ header:
   caption: Mangily, Madagascar, 2010. <i class="fas fa-camera"></i> A. Lépissier
 ---
 
-I am a Ph.D. student in Health Policy and Decision Sciences at Harvard University. Prior to this, I obtained a Masters of Science in Computational Analysis and Public Policy, a joint degree between the Harris School of Public Policy and Department of Computer Science at The University of Chicago. 
+I am a political economist and an applied statistician working on climate change and illicit finance. Currently, I am a Postdoctoral Fellow with the [Climate Solutions Lab](https://watson.brown.edu/climatesolutionslab/) and the [Rhodes Center for International Economics and Finance](https://watson.brown.edu/rhodes/) at the Watson Institute for International and Public Affairs at Brown University.
 
-## Research Interests
+My research focuses on climate change and illicit economies. I use quasi-experimental techniques from econometrics and methods from statistical data science such as machine learning to answer questions about pressing environmental and developmental problems. Another strand of my research agenda focuses on finding statistical evidence of illicit activity: behavior which, by definition, seeks to remain hidden.
 
-I am interested in studying the quantitative techniques to promote reasoned approach to decision making and resource allocation in public health and medicine. More generally, I would say my research interests lie within the area of empirical healthcare operations management.
+I obtained my PhD in [Environmental Science and Management](https://bren.ucsb.edu/) at the University of California Santa Barbara, where I developed a methodological toolkit to understand complex policy problems with applications to climate change and illicit finance. While I was at UCSB, I was affiliated with the [ENVENT](https://www.enventlab.com/) and the [Conservation Economics](http://conservation-econ.com/) labs.
 
-## Teaching Interests
+Prior to my PhD, I was a researcher at the [Center for Global Development](https://www.cgdev.org/) for several years. I have also worked for the African Secretariat of [ICLEI – Local Governments for Sustainability](https://africa.iclei.org/) in Cape Town.
 
-My teaching experiences are quite diverse. The summer after completing my undergraduate degree, I began teaching in a highschool Algebra II credit recovery program in The School District of Philadelphia. I then transitioned to a full-time middle school mathematics position in New Haven, CT, where I spent the next two years falling in love with the profession. During my second year, I held the Grade-level Chair position for the 8th grade and consulted for the Achievement First Charter Network on middle school mathematics curriculum. I am also passionate about computer science education, and have experience running Girls Who Code clubs and participating in the Code.org Middle and High School Computer Science Professional Learning Program for educators in computer science.
+I have consulted for organizations such as the [United Nations Economic Commission for Africa](https://www.uneca.org/), the [Tax Justice Network](https://www.taxjustice.net/), and the [Business & Sustainable Development Commission](http://businesscommission.org/).
 
-As a graduate student at The University of Chicago, I have worked as a teaching assistant at The Booth School of Business and The Committee on Clinical and Translational Science. You can read more about the exact courses and descriptions under Teaching.
-
-Most recently, I have taken a position as head instructor and curriculum developer for an “Introduction to Data Analysis in R” coding camp at The University of Chicago’s Harris School of Public Policy. This mini-course is designed to ensure that incoming Master’s students are proficient in the coding concepts needed to successfully navigate the Core Curriculum at Harris. I have decided to put the mini-course here so that anyone interested can have access to the videos, slides, and labs. If you have feedback on the material (as this course is brand new) please email me so that I can ensure the materials are as high-quality as possible!
-
-
+I have an MA in [Statistics](https://www.pstat.ucsb.edu/) from UCSB. I also hold an MSc in [Economic History](http://www.lse.ac.uk/Economic-History) from the London School of Economics, and an MSc in Economics and Public Policy from [Sciences Po Paris](https://www.sciencespo.fr/public/en.html) and [École Polytechnique](https://www.polytechnique.edu/en). My Bachelors was in [European Social and Political Studies](https://www.ucl.ac.uk/european-international-social-political-studies/) from University College London.
 
 <!-- <h3 class="archive__subtitle"><i class="fas fa-thumbtack"></i> Pinned posts</h3>
 {% for post in site.posts %}
