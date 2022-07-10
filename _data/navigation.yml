@@ -1,0 +1,9 @@
+main:
+  - title: "Research"
+    url: /research/
+  - title: "Coding"
+    url: /coding/
+  - title: "Teaching"
+    url: /teaching/
+  - title: "Introduction to R Programming"
+     url: /intro_r/
