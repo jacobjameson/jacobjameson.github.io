@@ -148,4 +148,4 @@ collections:
 analytics:
   provider: "custom"
 
-theme: jekyll-theme-hacker
+theme: jekyll-theme-minimal
