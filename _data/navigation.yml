@@ -1,8 +1,6 @@
 main:
   - title: "Research"
     url: /research/
-  - title: "Writing"
-    url: /writing/
   - title: "Coding"
     url: /coding/
   - title: "Teaching"
