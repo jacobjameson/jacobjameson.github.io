@@ -2,9 +2,6 @@
 title: "Welcome"
 layout: single
 author_profile: true
-header:
-  image: /assets/photography/Madagascar-Mangily_wide.jpg
-  caption: Mangily, Madagascar, 2010. <i class="fas fa-camera"></i> A. Lépissier
 ---
 
 I am a Ph.D. student at Harvard University studying decision sciences and health policy. Previously, I earned a Masters of Science in Computational Analysis and Public Policy, a joint degree between the Harris School of Public Policy and Department of Computer Science at The University of Chicago. 
