@@ -147,3 +147,5 @@ collections:
 
 analytics:
   provider: "custom"
+
+theme: jekyll-theme-hacker
