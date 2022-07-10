@@ -2,6 +2,7 @@
 title: "Welcome"
 layout: single
 author_profile: true
+classes: wide
 ---
 
 I am a Ph.D. student at Harvard University studying decision sciences and health policy. Previously, I earned a Masters of Science in Computational Analysis and Public Policy, a joint degree between the Harris School of Public Policy and Department of Computer Science at The University of Chicago. 
