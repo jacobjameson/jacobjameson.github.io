@@ -26,7 +26,8 @@ classes: wide
 - Coding Lab for Public Policy. Instructor and Curriculum Developer (2021) 
  
 ## Teach For America, Achievement First Amistad Academy Middle School
-• 7th/8th Grade Mathematics. Mathematics Teacher (2018-2020)
+
+- 7th/8th Grade Mathematics. Mathematics Teacher (2018-2020)
 
 
 <br/><img src='/assets/images/teaching1.png' width="350" height="350"> <img src='/assets/images/teaching2.png' width="350" height="350">
