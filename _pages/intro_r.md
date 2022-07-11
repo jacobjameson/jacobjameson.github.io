@@ -82,7 +82,7 @@ We will spend time motivating why R is such a commonly used and powerful languag
 
 
 <iframe width="560" height="315"
-src="https://youtu.be/V_JdkNuuhms" 
+src="https://www.youtube.com/watch?v=V_JdkNuuhms" 
 frameborder="0" 
 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
 allowfullscreen></iframe>
