@@ -3,8 +3,8 @@ title: "Research"
 layout: splash
 permalink: /research/
 header:
-  overlay_image: /assets/images/network.jpeg
-excerpt: "At the intersection of health policy, data science, and operations research."
+  overlay_image: /assets/images/network.png
+excerpt: "At the intersection of health policy, data science, and operations management."
 feature_row:
   - image_path: assets/photography/Vietnam-Ha-Long-Bay_1_filter.jpg
     image_caption: <i class="fas fa-camera"></i> AL
