@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R Programming"
-permalink: /intro_r/
+permalink: /intror/
 author_profile: false
 sidebar:
   - title: My technology stack
