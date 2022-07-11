@@ -45,7 +45,7 @@ I am committed to open science principles and research reproducibility. I am pas
 
 ## Gene Expression Autoencoder 
 
-[Check out the paper](https://github.com/jacobjameson/autoencoder_gene_expression/blob/main/Jameson%20%26%20Salas%20(2021)%20-%20CMSC%2035300.pdf){: .btn .btn--website} [<i class="fab fa-github"></i> GitHub repository](https://github.com/jacobjameson/autoencoder_gene_expression){: .btn .btn--code}
+[Check out the paper](http://jacobjameson.github.io/assets/autoencoder.pdf){: .btn .btn--website} [<i class="fab fa-github"></i> GitHub repository](https://github.com/jacobjameson/autoencoder_gene_expression){: .btn .btn--code}
 
 Developments in cancer research have led to massive amounts of complex, heterogeneous data. This data is often of very different scale, ranging from molecular to radiological. While advances in cancer and machine learning have led to improvements in diagnosis and treatment of cancer patients, these methods often are trained to analyze variation in individual data types and fail to exploit the inter-dependencies between different data types.
 
