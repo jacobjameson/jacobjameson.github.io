@@ -3,40 +3,12 @@ title: "Introduction to R Programming"
 permalink: /intror/
 author_profile: false
 sidebar:
-  - title: My technology stack
-  - image: /assets/images/hex-wall.png
-gallery:
-  - url: /assets/images/bezier-demo.png
-    image_path: /assets/images/bezier-demo.png
-    alt: "Demo"
-    title: "Demo"
-  - url: /assets/images/bezier-1overX.png
-    image_path: /assets/images/bezier-1overX.png
-    alt: "1 over X"
-    title: "1 over X"
-  - url: /assets/images/bezier-logX.png
-    image_path: /assets/images/bezier-logX.png
-    alt: "Log X"
-    title: "Log X"
-  - url: /assets/images/bezier-cosX.png
-    image_path: /assets/images/bezier-cosX.png
-    alt: "Cos X"
-    title: "Cos X"
-  - url: /assets/images/bezier-Xcube.png
-    image_path: /assets/images/bezier-Xcube.png
-    alt: "X cube"
-    title: "X cube"
-  - url: /assets/images/bezier-circle.png
-    image_path: /assets/images/bezier-circle.png
-    alt: "Cartesian circle"
-    title: "Cartesian circle"
-  - url: /assets/images/bezier-expX.png
-    image_path: /assets/images/bezier-expX.png
-    alt: "Exp X"
-    title: "Exp X"
+  - title: Introduction to R Programming
+  - image: /assets/images/rstudio5.png
 toc: true
 toc_icon: bars
 toc_sticky: true
+youtubeId: V_JdkNuuhms
 ---
 
 
@@ -57,8 +29,8 @@ The labs are an essential part of the learning process as they walkthrough the u
 
 ## Module 0
 
-Installation Guide
-======
+**Installation Guide**
+
 
 <p style="color:blue;">Mac Users</p>
 To Install R:
@@ -104,8 +76,8 @@ To Install RStudio:
 
 ## Module 1
 
-Description
-======
+**Description**
+
 We will spend time motivating why R is such a commonly used and powerful language ins statistical programming and how it will be useful for them in their future endeavors (public policy, economics, data science applications, etc.). We will go through the interface of R Studio to better understand the environment and learn how to do simple variable assignment, arithmetic, and logical comparison. 
 
 {% include youtubePlayer.html id=page.youtubeId %}
