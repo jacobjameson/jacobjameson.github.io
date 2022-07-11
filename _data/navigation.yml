@@ -5,3 +5,5 @@ main:
     url: /coding/
   - title: "Teaching"
     url: /teaching/
+ - title: "Introduction to R Programming"
+    url: /intro_r/
