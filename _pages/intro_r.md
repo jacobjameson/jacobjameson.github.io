@@ -79,13 +79,13 @@ To Install RStudio:
 
 We will spend time motivating why R is such a commonly used and powerful language ins statistical programming and how it will be useful for them in their future endeavors (public policy, economics, data science applications, etc.). We will go through the interface of R Studio to better understand the environment and learn how to do simple variable assignment, arithmetic, and logical comparison. 
 
-https://youtu.be/V_JdkNuuhms
-
-{% include youtubePlayer.html id=https://youtu.be/V_JdkNuuhms %}
-
-{% include youtubePlayer.html id = V_JdkNuuhms %}
 
 
+<iframe width="560" height="315"
+src="https://youtu.be/V_JdkNuuhms" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
 
 <br>
 
@@ -100,7 +100,11 @@ https://youtu.be/V_JdkNuuhms
 
 In this lesson, we will go over how to install packages and load them using the library() function. We will spend some time understanding what a package is (a collection of functions) by making use of some of the functions that exist in the tidyverse library. Students will learn how to check their working directory and set it to a file location to read in data. Once we have read in data, we will go through the process of accessing our data through indexing.
 
-{% include youtubePlayer.html id=NMfdOmic30U %}
+<iframe width="560" height="315"
+src="https://youtu.be/NMfdOmic30U" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
 
 <br>
 
@@ -116,7 +120,12 @@ In this lesson, we will go over how to install packages and load them using the 
 
 This lesson is about understanding different data types in R, namely vectors and lists. We will build up to the understanding of what a dataframe really is at a high level. The lab will explore how vector operations are particularly useful in the context of data manipulation and analysis.
 
-{% include youtubePlayer.html id=Ot51p3TAi-A %}
+
+<iframe width="560" height="315"
+src="https://youtu.be/Ot51p3TAi-A" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
 
 <br>
 
@@ -130,7 +139,12 @@ This lesson is about understanding different data types in R, namely vectors and
 
 This lesson is about making sure students can access and manipulate their data. We will introduce the pipe operator and how can they can use it to organize their code. We will discuss several important dplyr functions and their usefulness in data manipulation and analysis. 
 
-{% include youtubePlayer.html id=Ld1PSDW7KsE %}
+
+<iframe width="560" height="315"
+src="https://youtu.be/Ld1PSDW7KsE" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
 
 <br>
 
@@ -146,7 +160,12 @@ This lesson is about making sure students can access and manipulate their data. 
 
 We introduce more complicated functions for data analysis. This is a continuation of Module 4.
 
-{% include youtubePlayer.html id=dizukEPYkiE %}
+
+<iframe width="560" height="315"
+src="https://youtu.be/dizukEPYkiE" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
 
 <br>
 
