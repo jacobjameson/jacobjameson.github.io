@@ -3,7 +3,7 @@ title: "Research"
 layout: splash
 permalink: /research/
 header:
-  image: /assets/images/2009-08-25-Java-Mount-Bromo_wide.jpg
+  overlay_image: /assets/images/network.jpeg
 excerpt: "At the intersection of health policy, data science, and operations research."
 feature_row:
   - image_path: assets/photography/Vietnam-Ha-Long-Bay_1_filter.jpg
