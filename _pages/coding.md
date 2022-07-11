@@ -41,6 +41,17 @@ toc_sticky: true
 
 I am committed to open science principles and research reproducibility. I am passionate about science communication, and I believe that scientific knowledge should be publicly accessible. Here are some of the projects I have worked on over the years. You can find the code repositories for my academic papers and projects on my [GitHub](https://github.com/jacobjameson) page.
 
-**This page is the process of being updated**
+
+
+## Gene Expression Autoencoder 
+
+[Check out the paper](https://github.com/jacobjameson/autoencoder_gene_expression/blob/main/Jameson%20%26%20Salas%20(2021)%20-%20CMSC%2035300.pdf){: .btn .btn--website} [<i class="fab fa-github"></i> GitHub repository](https://github.com/jacobjameson/autoencoder_gene_expression){: .btn .btn--code}
+
+Developments in cancer research have led to massive amounts of complex, heterogeneous data. This data is often of very different scale, ranging from molecular to radiological. While advances in cancer and machine learning have led to improvements in diagnosis and treatment of cancer patients, these methods often are trained to analyze variation in individual data types and fail to exploit the inter-dependencies between different data types.
+
+Integrating multiple data types is essential in capturing the synergistic nature of biological processes for more accurate prediction and a better understanding of cancer biology. In this project we demonstrate how an Autoencoder Neural Network for gene expression data can be designed, built and, in particular, applied to gene expression data for heterogeneous data integration.
+
+
+
 
 
