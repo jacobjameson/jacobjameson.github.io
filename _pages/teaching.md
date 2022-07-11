@@ -1,6 +1,7 @@
 ---
 title: "Teaching"
 permalink: /teaching/
+classes: wide
 ---
 
 
@@ -28,4 +29,5 @@ permalink: /teaching/
 • 7th/8th Grade Mathematics. Mathematics Teacher (2018-2020)
 
 
+<br/><img src='/images/teaching1.png' width="350" height="350"> <img src='/images/teaching2.png' width="350" height="350">
 

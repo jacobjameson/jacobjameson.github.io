@@ -129,7 +129,16 @@ defaults:
       author_profile: true
       share: true
       show_date: true
-
+  # _introR
+  - scope:
+      path: ""
+      type: intror
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comment: true
+      
 category_archive:
   type: liquid
   path: /categories/
@@ -142,6 +151,9 @@ collections:
     output: true
     permalink: /:collection/:path/
   tutorials:
+    output: true
+    permalink: /:collection/:path/
+  intror:
     output: true
     permalink: /:collection/:path/
 
