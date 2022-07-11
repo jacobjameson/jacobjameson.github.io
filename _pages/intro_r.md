@@ -79,7 +79,13 @@ To Install RStudio:
 
 We will spend time motivating why R is such a commonly used and powerful language ins statistical programming and how it will be useful for them in their future endeavors (public policy, economics, data science applications, etc.). We will go through the interface of R Studio to better understand the environment and learn how to do simple variable assignment, arithmetic, and logical comparison. 
 
-{% include youtubePlayer.html id=V_JdkNuuhms %}
+https://youtu.be/V_JdkNuuhms
+
+{% include youtubePlayer.html id=https://youtu.be/V_JdkNuuhms %}
+
+{% include youtubePlayer.html id = V_JdkNuuhms %}
+
+
 
 <br>
 
