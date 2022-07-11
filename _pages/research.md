@@ -11,7 +11,7 @@ feature_row:
     alt: "Male Adolescent Gender Expression and Social Networks: Associations with Adult Substance Use and Abuse."
     title: "Male Adolescent Gender Expression and Social Networks: Associations with Adult Substance Use and Abuse."
     excerpt: "To explore social structures/network factors associated with changes in male gender expression and implications for adult substance use/abuse."
-    url: /research/01-illicitfinancialflows/
+    url: /research/01/
     btn_label: "Read More"
     btn_class: "btn--primary"
   - image_path: /assets/photography/2010-09-10-Canal-des-Pangalanes_3_filter.jpg
@@ -19,7 +19,7 @@ feature_row:
     alt: "Impact of Experiences of Discrimination on Self-Efficacy Among Parents and Other Primary Caregivers of Hospitalized Children"
     title: "Impact of Experiences of Discrimination on Self-Efficacy Among Parents and Other Primary Caregivers of Hospitalized Children"
     excerpt: ""
-    url: /research/02-climatechange/
+    url: /research/02/
     btn_label: "Read More"
     btn_class: "btn--primary"
   - image_path: /assets/photography/2010-09-18-Between-Mangily-and-Tulear_1.jpg
@@ -27,7 +27,7 @@ feature_row:
     alt: "Human Papillomavirus Vaccine School-Entry Requirements and Vaccine Initiation in Virginia and Rhode Island, 2007-2017"
     title: "Human Papillomavirus Vaccine School-Entry Requirements and Vaccine Initiation in Virginia and Rhode Island, 2007-2017"
     excerpt: "In this study we perform a claims-based analysis of HPV vaccine initiation in the two states most differentin their approach to HPV vaccine school-entry mandates."
-    url: /research/03-deforestation/
+    url: /research/03/
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
