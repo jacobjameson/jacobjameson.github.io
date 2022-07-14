@@ -37,7 +37,7 @@ feature_row:
 
 I have included some coding tutorials here that may be useful:
 
-## R Tutorialis
+## R Tutorials
 
 {% include feature_row %}
 
