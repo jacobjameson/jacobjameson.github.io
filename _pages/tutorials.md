@@ -30,7 +30,20 @@ feature_row:
     url: /research/03/
     btn_label: "Click Here"
     btn_class: "btn--primary"
-python_row:
+---
+
+
+(This page is currently being updated)
+
+I have included some coding tutorials here that may be useful:
+
+## R Tutorials
+
+{% include feature_row %}
+
+## Python Tutorials
+
+{% include 
   - image_path: assets/imageas/rstudio5.png
     image_caption: <i class="fas fa-camera"></i> JJ
     alt: "In Progress"
@@ -55,20 +68,7 @@ python_row:
     url: /research/03/
     btn_label: "Click Here"
     btn_class: "btn--primary"
----
-
-
-(This page is currently being updated)
-
-I have included some coding tutorials here that may be useful:
-
-## R Tutorials
-
-{% include feature_row %}
-
-## Python Tutorials
-
-{% include python_row %}
+    %}
 
 
 ## Stata Tutorials
