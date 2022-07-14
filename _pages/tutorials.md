@@ -27,7 +27,7 @@ I have included some coding tutorials here that may be useful:
 
 ## Python Tutorials
 
-{% include image_path: assets/imageas/rstudio5.png image_caption: <i class="fas fa-camera"></i> JJ alt: "In Progress" title: "In Progress" excerpt: "In Progress" url: /pages/intror/ btn_label: "Click Here" btn_class: "btn--primary" %}
+{% image_path: assets/imageas/rstudio5.png image_caption: <i class="fas fa-camera"></i> JJ alt: "In Progress" title: "In Progress" excerpt: "In Progress" url: /pages/intror/ btn_label: "Click Here" btn_class: "btn--primary" %}
 
 
 ## Stata Tutorials
