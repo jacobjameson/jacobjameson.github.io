@@ -14,22 +14,6 @@ feature_row:
     url: /pages/intror/
     btn_label: "Click Here"
     btn_class: "btn--primary"
-  - image_path: /assets/photography/2010-09-10-Canal-des-Pangalanes_3_filter.jpg
-    image_caption: <i class="fas fa-camera"></i> JJ
-    alt: "In Progress"
-    title: "In Progress"
-    excerpt: ""
-    url: /research/02/
-    btn_label: "Click Here"
-    btn_class: "btn--primary"
-  - image_path: /assets/photography/2010-09-18-Between-Mangily-and-Tulear_1.jpg
-    image_caption: <i class="fas fa-camera"></i> JJ
-    alt: "In Progress"
-    title: "In Progress"
-    excerpt: ""
-    url: /research/03/
-    btn_label: "Click Here"
-    btn_class: "btn--primary"
 ---
 
 
@@ -43,32 +27,7 @@ I have included some coding tutorials here that may be useful:
 
 ## Python Tutorials
 
-{% include 
-  - image_path: assets/imageas/rstudio5.png
-    image_caption: <i class="fas fa-camera"></i> JJ
-    alt: "In Progress"
-    title: "In Progress"
-    excerpt: "In Progress"
-    url: /pages/intror/
-    btn_label: "Click Here"
-    btn_class: "btn--primary"
-  - image_path: /assets/photography/2010-09-10-Canal-des-Pangalanes_3_filter.jpg
-    image_caption: <i class="fas fa-camera"></i> JJ
-    alt: "In Progress"
-    title: "In Progress"
-    excerpt: ""
-    url: /research/02/
-    btn_label: "Click Here"
-    btn_class: "btn--primary"
-  - image_path: /assets/photography/2010-09-18-Between-Mangily-and-Tulear_1.jpg
-    image_caption: <i class="fas fa-camera"></i> JJ
-    alt: "In Progress"
-    title: "In Progress"
-    excerpt: ""
-    url: /research/03/
-    btn_label: "Click Here"
-    btn_class: "btn--primary"
-    %}
+{% include image_path: assets/imageas/rstudio5.png image_caption: <i class="fas fa-camera"></i> JJ alt: "In Progress" title: "In Progress" excerpt: "In Progress" url: /pages/intror/ btn_label: "Click Here" btn_class: "btn--primary" %}
 
 
 ## Stata Tutorials
