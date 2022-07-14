@@ -43,6 +43,7 @@ I have included some coding tutorials here that may be useful:
 
 ## Python Tutorials
 
+---
   - image_path: assets/imageas/rstudio5.png
     image_caption: <i class="fas fa-camera"></i> JJ
     alt: "Introduction to R Programming (Beginner)"
@@ -67,6 +68,7 @@ I have included some coding tutorials here that may be useful:
     url: /research/03/
     btn_label: "Click Here"
     btn_class: "btn--primary"
+---
 
 ## Stata Tutorials
 
