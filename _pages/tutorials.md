@@ -11,7 +11,7 @@ feature_row:
     alt: "Introduction to R Programming (Beginner)"
     title: "Introduction to R Programming (Beginner)"
     excerpt: "A short course to teach the basics of data analysis in R for non-programmers."
-    url: /intror/
+    url: /pages/intror/
     btn_label: "Click Here"
     btn_class: "btn--primary"
   - image_path: /assets/photography/2010-09-10-Canal-des-Pangalanes_3_filter.jpg
