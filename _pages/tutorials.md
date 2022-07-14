@@ -6,7 +6,7 @@ header:
   overlay_image: /assets/images/network.jpeg
 excerpt: "At the intersection of health policy, data science, and operations management."
 feature_row:
-  - image_path: assets/imageas/Rstudio5.png
+  - image_path: assets/imageas/rstudio5.png
     image_caption: <i class="fas fa-camera"></i> JJ
     alt: "Introduction to R Programming (Beginner)"
     title: "Introduction to R Programming (Beginner)"
