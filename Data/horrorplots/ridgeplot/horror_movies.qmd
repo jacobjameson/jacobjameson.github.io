@@ -1,0 +1,83 @@
+---
+title: "#TidyTuesday Horror Movies"
+author: "jacob Jameson"
+date: "11/07/2022"
+format: html
+---
+
+```{r, message=F, warning=F}
+library(tidyverse)
+library(lubridate)
+library(ggstream)
+library(showtext)
+library(patchwork)
+library(grid)
+library(ggridges)
+library(viridis)
+library(hrbrthemes)
+library(png)
+
+font_add_google("Creepster", "creepster")
+font_add_google("Nosifer", "nosifer")
+font_add_google("Share Tech Mono", "techmono")
+
+showtext_opts(dpi = 320)
+showtext_auto(enable = TRUE)
+
+
+
+gf_background <- png::readPNG("ghostface.png")
+w <- matrix(rgb(gf_background[,,1],gf_background[,,2],
+                gf_background[,,3], gf_background[,,4] * 0.15),
+            nrow=dim(gf_background)[1]) 
+
+```
+
+
+```{r, message=F, warning=F}
+horror_movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv')
+
+```
+
+
+```{r, warning=F, message=F}
+horror_movies <- horror_movies %>%
+  mutate(year = year(release_date)) 
+
+horror_comedies <- filter(horror_movies, grepl("Comedy",genre_names)) 
+horror_comedies <- filter(horror_comedies, year > 2011)
+
+
+# Plot
+ggplot(horror_comedies, aes(x = `vote_average`, y = factor(year), fill = ..x..)) +
+  geom_density_ridges_gradient(scale = 6, rel_min_height = 0.01) +
+  scale_fill_gradient(low = "#eb0e34",high = "#910019") +
+  theme_void() + 
+    theme(
+      legend.position="none",
+      text = element_text(family = "creepster", color = "#eb0e34"),
+      axis.line = element_blank(),
+      axis.text.x = element_text(family = "creepster", color = "#eb0e34", size = 20),
+      axis.text.y = element_text(family = "creepster", color = "#eb0e34", size = 15),
+      panel.grid.major = element_blank(),
+      axis.title.x = element_text(family = "creepster", color = "#eb0e34", size = 10),
+      panel.grid.minor = element_blank(),
+      plot.background = element_rect(fill = "black", color = NA), 
+      panel.background = element_rect(fill = "black", color = NA), 
+      legend.background = element_blank()) +
+  xlab("\nAverage Voter Score") +
+  annotation_custom(xmin=-Inf, ymin=-Inf, xmax=Inf, ymax=Inf, rasterGrob(w)) +
+   theme(plot.title = element_text(size = 25, family = "creepster", 
+                                  face="bold", hjust=.5, color = 'orange'),
+         plot.subtitle = element_text(family = "creepster", size = 10,  color='orange',
+                                      hjust=.5, margin=margin(2, 0, 5, 0)),
+         plot.caption = element_text(size = 6, family = "creepster", 
+                                    color='orange', hjust=1, margin=margin(2, 0, 5, 0)))+
+  labs(title = "THE PUBLIC IS SPLIT ON THE HORROR COMEDY", 
+       subtitle = 'DISTRIBUTION OF AVERAGE VOTER SCORES FOR HORROR
+       COMEDIES RELEASED OVER THE LAST 10 YEARS',
+       caption = str_wrap("\nData source : Horror movies dataset extracted by\n
+                          Tanya Shapiro from The Movie Database (TMDB)", 70))
+```
+
+

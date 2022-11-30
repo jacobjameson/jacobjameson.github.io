@@ -1,0 +1,31 @@
+{
+    "id": "D3F78F25",
+    "path": "~/Documents/GitHub/personal-site/index.qmd",
+    "project_path": "index.qmd",
+    "type": "quarto_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1669822500695.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "4,18",
+        "scrollLine": "0",
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "467:431.25"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1669844610,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1669844610686,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,10 @@
+---
+title: "Horror Plots"
+format:
+  html:
+    toc: true
+    toc-location: left
+from: markdown+emoji
+---
+
+kkdd

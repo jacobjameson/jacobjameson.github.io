@@ -1,0 +1,40 @@
+---
+title: "Teaching"
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+---
+
+My teaching experiences are quite diverse. The summer after completing my undergraduate degree, I began teaching in a highschool Algebra II credit recovery program in The School District of Philadelphia. I then transitioned to a full-time middle school mathematics position in New Haven, CT, where I	spent the next two years falling in love with the profession. During my second year, I held the Grade-level Chair position for the 8th grade and consulted for the Achievement First Charter Network on [middle school mathematics curriculum](https://www.achievementfirst.org/opensource/). I am also passionate about computer science education, and have experience running Girls Who Code clubs and participating in the Code.org Middle and High School Computer Science Professional Learning Program for educators in computer science. Since teaching at the middle school level, I have been fortunate to hold a variety of teaching positions at The University of Chicago and Harvard University. I hope to pursue a teaching career after completing my PhD. 
+
+
+
+### Harvard Kennedy School
+- Resources, Incentives, and Choices I: Markets and Market Failures. Teaching Fellow (2022)
+- Game Theory. Teaching Fellow (2023)
+
+
+### The University of Chicago, Center for Translational Science
+- Data, Quantitative Methods, and Applications in HSR. Teaching Assistant and Instructor (2021,2022)
+- Introduction to Health Services Research. Teaching Assistant (2021)
+
+
+###  The University of Chicago, Department of Computer Science
+- Machine Learning for Public Policy. Teaching Assistant (2022) 
+- Mathematics for Data Analysis and Computer Science. Teaching Assistant (2022)
+
+###  The University of Chicago Booth School of Business
+- Introductory Finance. Teaching Assistant (2020-2022)
+- Data Analysis in R and Python. Teaching Assistant (2021)
+				
+###  The University of Chicago Harris School of Public Policy
+- Coding Lab for Public Policy. Instructor and Curriculum Developer (2021) 
+								
+###  Teach For America, Achievement First Amistad Academy Middle School
+- 7th/8th Grade Mathematics. Mathematics Teacher (2018-2020)
+
+
+
+

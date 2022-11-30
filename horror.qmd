@@ -1,0 +1,23 @@
+---
+title: "Horror Plots"
+listing:
+  contents: Data/horrorplots
+  sort:
+    - "date desc"
+    - "title desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+format:
+  html:
+    css: data/horrorplots/styles.css
+    toc: true
+    toc-location: left
+from: markdown+emoji
+page-layout: full
+---
+
+This page contains the code for my horrorplots!
+
+

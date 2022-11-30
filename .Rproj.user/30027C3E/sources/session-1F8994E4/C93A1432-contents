@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: docs
+website:
+  title: "Jacob Jameson"
+  site-url: https://www.jacobjameson.github.io/
+  description: "My academic website"
+  navbar:
+    left:
+      - code.qmd
+      - teaching.qmd
+      - horror.qmd
+    right:
+      - text: Blog
+        href: blog.qmd
+      - icon: github
+        href: https://github.com/jacobjameson/jacobjameson.github.io
+      - icon: twitter
+        href: https://twitter.com/JacobCJameson/
+  page-footer:
+    left: "Copyright 2022, Jacob Jameson"
+    right:
+      - icon: github
+        href: https://github.com/jacobjameson/jacobjameson.github.io
+      - icon: twitter
+        href: https://twitter.com/JacobCJameson
+format:
+  html:
+    twitter-card:
+      creator: "@JacobCJameson"
+      image: "images/profile.png"
+      card-style: summary_large_image
+    toc: true
+    toc-location: "left"
+    code-link: true
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true
+    fontsize: 1em
+    theme: spacelab
+    css: styles.css

@@ -1,0 +1,39 @@
+---
+title: "Links"
+image: images/profile.png
+about:
+  template: solana
+  links:
+    - icon: envelope
+      text: Email
+      href: jacobjameson@g.harvard.edu
+    - icon: github
+      text: Github
+      href: https://github.com/jacobjameson
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/JacobCJameson
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/jacob-jameson/
+    - icon: mortarboard
+      text: CV
+      href: jacobjameson.com/Data/vitae.pdf
+from: markdown+emoji
+page-layout: full
+---
+
+
+
+<div class="typewriter">
+  <h1>Welcome to my page!</h1>
+</div>
+
+<br>
+<br>
+
+
+I am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr. Soroush Saghafian and work in [The Public Impact Analytics Science Lab (PIAS-Lab)](https://scholar.harvard.edu/saghafian/public-impact-analytics-science-lab-pias-lab-harvard) at Harvard.
+
+I study the quantitative techniques that are used for informing decision-making at the individual and population levels, including decision analysis, risk analysis, cost-benefit and cost-effectiveness analysis, disease and policy simulation modeling, and behavioral decision theory. My research aims to quantify tradeoffs of harms versus benefits to directly inform a decision being made under conditions of uncertainty.
+
