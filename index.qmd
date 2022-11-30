@@ -18,7 +18,7 @@ about:
       href: https://www.linkedin.com/in/jacob-jameson/
     - icon: mortarboard
       text: CV
-      href: jacobjameson.com/Data/vitae.pdf
+      href: /Data/vitae.pdf
 from: markdown+emoji
 page-layout: full
 ---
