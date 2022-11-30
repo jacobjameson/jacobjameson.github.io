@@ -9,7 +9,6 @@ website:
     left:
       - code.qmd
       - teaching.qmd
-      - horror.qmd
     right:
       - text: Blog
         href: blog.qmd
