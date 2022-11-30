@@ -3,7 +3,7 @@ project:
   output-dir: docs
 website:
   title: "Jacob Jameson"
-  site-url: https://www.jacobjameson.github.io/
+  site-url: https://www.jacobjameson.github.io/docs/
   description: "My academic website"
   navbar:
     left:

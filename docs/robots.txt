@@ -1,1 +1,1 @@
-Sitemap: https://www.jacobjameson.github.io/sitemap.xml
+Sitemap: https://www.jacobjameson.github.io/docs/sitemap.xml
