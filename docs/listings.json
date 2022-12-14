@@ -2,6 +2,7 @@
   {
     "listing": "/horror.html",
     "items": [
+      "/Data/horrorplots/haunted/haunted.html",
       "/Data/horrorplots/kill count/kill count.html",
       "/Data/horrorplots/ridgeplot/horror_movies.html"
     ]
