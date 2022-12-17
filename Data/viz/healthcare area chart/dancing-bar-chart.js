@@ -23,18 +23,6 @@ d3.csv("healthcare-disposable-inc.csv").then(function (data) {
     "Other"
     ]
 
-    // let sel_colors = [
-    // "#F44336", // "Medicaid",
-    // "#FF9800", // "Medicare",
-    // "#FDD835", // "Medicaid+Medicare",
-    // "#FFF8E1", // "Employer",
-    // "#26A69A", // "Uninsured",
-    // "#4DD0E1", // "Direct Purchase",
-    // "#F06292", // "Subsidized Exchange",
-    // "#5C6BC0", // "CHIP",
-    // "#90A4AE", // "Military",
-    // "#E0E0E0" // "Other"
-    // ]
 
     let sel_colors = [
     "#43481c",

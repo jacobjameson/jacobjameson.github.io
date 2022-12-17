@@ -28,6 +28,11 @@ d-article h2 {
 	font-weight: 300;
 }
 
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
 
 /* --------------Navbar-------------------- */
 
@@ -394,10 +399,7 @@ code span.kw {
 }
 
 
-.container {
-	display: flex;
-	flex-direction: column;
-}
+
 
 .caption {
   font-size: 14px;
@@ -419,4 +421,82 @@ code span.kw {
   color: #d66982;
 }
 
+
+.x .tick line {
+  stroke: rgba(0, 0, 0, .2);
+}
+
+.y .tick line {
+  stroke: rgba(0, 0, 0, .2);
+}
+
+.x .domain {
+  display: none;
+}
+
+.y .domain {
+  display: none;
+}
+
+.y .tick text {
+  font-size: 14px;
+  fill: #333;
+  font-family: 'Lato';
+}
+
+.x .tick text {
+  font-size: 14px;
+  fill: #333;
+  font-family: 'Lato';
+}
+
+.highlightpink {
+  text-decoration: underline;
+  color: #d66982;
+}
+
+.source {
+  font-size: 12px;
+  color: #777;
+  font-weight: 400;
+  margin-right: 250px;
+}
+
+.pop-up {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 1px;
+  line-height: 1.2;
+  width: 200px;
+  /* height: 100px; */
+  pointer-events: none;
+  background-color: white;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+	body {
+		background-color: #f7f2df;
+		margin-left: 1.5rem;
+		margin-right: 1.5rem;
+		margin-bottom: 0.25rem
+	}
+
+	h1 {
+		font-size: 45px;
+		font-weight: 100;
+		margin-top: 5rem;
+		color: #1d4f16;
+		}
+
+  .container {
+    display: block;
+  }
+
+	.clip-container {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+		margin-right: 0.1rem;
+	}
+}
 
