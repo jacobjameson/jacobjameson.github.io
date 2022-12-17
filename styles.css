@@ -500,3 +500,6 @@ code span.kw {
 	}
 }
 
+svg {
+  overflow: visible;
+}
