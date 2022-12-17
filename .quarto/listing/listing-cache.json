@@ -8,6 +8,9 @@
     ],
     "horror.qmd": [
       "Data/horrorplots"
+    ],
+    "dataviz.qmd": [
+      "Data/viz"
     ]
   }
 }

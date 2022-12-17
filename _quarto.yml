@@ -9,6 +9,7 @@ website:
     left:
       - code.qmd
       - teaching.qmd
+      - dataviz.qmd
     right:
       - text: Blog
         href: blog.qmd

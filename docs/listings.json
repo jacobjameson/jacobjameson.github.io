@@ -12,5 +12,11 @@
     "items": [
       "/posts/2022-11-01-SNA/2022-11-01-SNA.html"
     ]
+  },
+  {
+    "listing": "/dataviz.html",
+    "items": [
+      "/Data/viz/healthcare area chart/healthcare_areachart.html"
+    ]
   }
 ]

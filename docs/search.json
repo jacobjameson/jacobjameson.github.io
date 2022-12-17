@@ -138,5 +138,19 @@
     "title": "Most Haunted Places in America",
     "section": "",
     "text": "usa <- st_as_sf(maps::map(\"state\", fill=TRUE, plot =FALSE))\nhaunted <- read_csv('haunted_places.csv')\n\nhaunted$ID = tolower(haunted$state)\n\nhaunted <- haunted %>%\n  group_by(ID) %>% summarize(`Number of Haunted Locations` = n()) \n\nhaunts <- merge(usa, haunted, by='ID')\n\ngg_nc = ggplot(haunts) +\n  geom_sf(aes(fill = `Number of Haunted Locations`)) +\n  scale_fill_viridis(option = \"F\") + theme_bw() +labs(\n     title = str_to_upper(\"Most Haunted U.S. States\\n\"),\n     caption = str_wrap(\"Data was extracted from Shadow Lands which has a great \n                        index of haunted places. Locations where “ghosts and hauntings” \n                        have been witnessed are included in the list and people can \n                        report new sightings through the website — which is surely \n                        an extremely accurate and scientific method.· @JacobCJameson\"), 50) +\n   theme(\n     plot.title = element_text(family = \"creepster\", size = 40),\n     plot.caption = element_text(color = \"#111111\", size = 7),\n     axis.line=element_blank(), \n        axis.text.x=element_blank(), \n     axis.title.x=element_blank(),\n        axis.text.y=element_blank(), \n     axis.title.y=element_blank(),\n        axis.ticks=element_blank(), panel.background = element_blank())\n\ngg_nc\n\n\n\n     plot_gg(gg_nc\n            , width=6\n            , height = 6\n            , multicore = TRUE\n            , windowsize = c(1400,866)\n            , sunangle=225\n            , zoom = 0.60\n            , phi = 30\n            , theta = 45\n            )\n     \nrender_depth(focallength=50)"
+  },
+  {
+    "objectID": "dataviz.html",
+    "href": "dataviz.html",
+    "title": "Data Visualization",
+    "section": "",
+    "text": "Healthcare Area Chart\n\n\n\n\n\n\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "Data/viz/healthcare area chart/healthcare_areachart.html",
+    "href": "Data/viz/healthcare area chart/healthcare_areachart.html",
+    "title": "Healthcare Area Chart",
+    "section": "",
+    "text": "In 2020, a greater percent of previously uninsured people in the U.S. with low incomes were enrolled in Medicare or Medicaid.\n\n\n\n\n\n\n\nNote: The income measure used here is disposable income, which is defined as market income plus cash transfers from the government and noncash benefits like food stamps and public housing. It excludes taxes, out-of-pocket medical spending, insurance premiums and other expenses. There have been small changes in the census questionnaire between the two survey dates. Source: Current Population Survey, analysis by Matt Bruenig"
   }
 ]

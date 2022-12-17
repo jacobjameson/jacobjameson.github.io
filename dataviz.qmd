@@ -1,0 +1,22 @@
+---
+title: "Data Visualization"
+listing:
+  contents: Data/viz
+  sort:
+    - "date desc"
+    - "title desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+format:
+  html:
+    toc: true
+    toc-location: left
+from: markdown+emoji
+page-layout: full
+---
+
+This is my data visualization portfolio!
+
+
