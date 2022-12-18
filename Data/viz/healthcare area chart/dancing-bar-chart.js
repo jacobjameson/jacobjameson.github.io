@@ -1,8 +1,15 @@
-let svgDancingBar = d3.select("body").select("dancing-bar-chart")
+let svgDancingBar = d3.select("body").select("#dancing-bar-chart")
+        console.log({ d3 })
 
-d3.csv("healthcare-disposable-inc.csv").then(function (data) {
-    console.log("loaded")
-    console.log(data)
+        let width = 800;
+        let height = 500;
+
+        let svg = d3.select("body")
+            .select("svg")
+
+    d3.csv("healthcare-disposable-inc.csv").then(function (data) {
+      console.log("loaded")
+      console.log(data)
 
     data.forEach(d => {
       d.Percentile = +d.Percentile
@@ -23,17 +30,16 @@ d3.csv("healthcare-disposable-inc.csv").then(function (data) {
     "Other"
     ]
 
-
     let sel_colors = [
-    "#43481c",
-    "#798233",
-    "#a0aa5d",
-    "#cbd39f",
-    "#Eff5cf",
-    "#eebec7",
-    "#dca4af",
-    "#df94a3",
-    "#d66982",
+    "#F44336",
+    "#FF9800",
+    "#FDD835",
+    "#FFF8E1",
+    "#26A69A",
+    "#4DD0E1",
+    "#F06292",
+    "#5C6BC0",
+    "#90A4AE",
     "#E0E0E0"
     ]
 
@@ -148,21 +154,21 @@ d3.csv("healthcare-disposable-inc.csv").then(function (data) {
       .attr("x", 75)
       .attr("y", 430)
       .text("Medicaid")
-      .style("fill", "white")
+      .style("fill", "black")
 
     svgDancingBar.append("text")
       .attr("class", "label")
       .attr("x", 75)
       .attr("y", 295)
       .text("Medicare")
-      .style("fill", "white")
+      .style("fill", "black")
 
     svgDancingBar.append("text")
       .attr("class", "label")
       .attr("x", 75)
       .attr("y", 75)
       .text("Uninsured")
-      .style("fill", "#43481c")
+      .style("fill", "black")
 
     svgDancingBar.append("text")
       .attr("class", "axis-label")
@@ -191,4 +197,26 @@ d3.csv("healthcare-disposable-inc.csv").then(function (data) {
       .style("font-size", "14px")
       .style("opacity", 0.5)
 
+    // Add one dot in the legend for each name.
+    svgDancingBar.selectAll("mydots")
+  .data(sel_colors)
+  .enter()
+  .append("circle")
+    .attr("cx", 820)
+    .attr("cy", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("r", 7)
+    .style("fill", function(d){ return color(d)})
+
+// Add one dot in the legend for each name.
+svgDancingBar.selectAll("mylabels")
+  .data(sel_cols)
+  .enter()
+  .append("text")
+    .attr("x", 840)
+    .attr("y", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    // .style("fill", function(d){ return color(d)})
+    .text(function(d){ return d})
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle")
 })
+
