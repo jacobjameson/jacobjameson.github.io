@@ -2,6 +2,7 @@
 title: "Healthcare Area Chart"
 author: "Jacob Jameson"
 format: html
+page-layout: full
 ---
 
 
@@ -36,7 +37,7 @@ In 2020, a greater percent of previously uninsured people in the U.S.
 with low incomes were enrolled in Medicare or Medicaid.
 </p>
 
-<svg width="850px" height="500px" id="dancing-bar-chart"></svg>
+<svg width="700px" height="500px" id="dancing-bar-chart"></svg>
 
 <div class='spacer'></div>
 
