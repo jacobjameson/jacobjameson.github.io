@@ -21,6 +21,11 @@ about:
       href: /Data/vitae.pdf
 from: markdown+emoji
 page-layout: full
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: spacelab  
 ---
 
 

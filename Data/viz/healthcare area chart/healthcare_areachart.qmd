@@ -5,7 +5,11 @@ description: |
   In 2020, a greater percent of previously uninsured people in the U.S. 
   with low incomes were enrolled in Medicare or Medicaid.
 categories: [area chart, D3]
-format: html
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: spacelab  
 page-layout: full
 comments:
   utterances:
