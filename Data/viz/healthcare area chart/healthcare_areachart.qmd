@@ -1,28 +1,22 @@
 ---
 title: "Healthcare Area Chart"
 author: "Jacob Jameson"
+description: |
+  In 2020, a greater percent of previously uninsured people in the U.S. 
+  with low incomes were enrolled in Medicare or Medicaid.
+categories: [area chart, D3]
 format: html
 page-layout: full
+comments:
+  utterances:
+    repo: jacobjameson/jacobjameson.github.io
 ---
-
-
-<html lang="en">
-
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100;1,400;1,700&family=Playfair+Display&family=Raleway:ital,wght@1,200&display=swap" rel="stylesheet">
 
 
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="https://unpkg.com/topojson@3"></script>
 <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 
-</head>
-
-<body>
 
 <p class="intro">
 
@@ -46,8 +40,6 @@ Note: The income measure used here is disposable income, which is defined as mar
 </p>
 </div>
 
-</body>
 
 <script src=dancing-bar-chart.js ></script>
 
-</html>
