@@ -8,11 +8,101 @@
 
 
 
-body {
-  font-family: "Lato";
-  /*color: #1f1f1f;*/
-  font-size: 16px;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+:root {
+  --bs-blue: #446e9b;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #e83e8c;
+  --bs-red: #cd0200;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #d47500;
+  --bs-green: #3cb521;
+  --bs-teal: #20c997;
+  --bs-cyan: #3399f3;
+  --bs-black: #000;
+  --bs-white: #fff;
+  --bs-gray: #777;
+  --bs-gray-dark: #333;
+  --bs-gray-100: #f8f9fa;
+  --bs-gray-200: #eee;
+  --bs-gray-300: #dee2e6;
+  --bs-gray-400: #ced4da;
+  --bs-gray-500: #999;
+  --bs-gray-600: #777;
+  --bs-gray-700: #495057;
+  --bs-gray-800: #333;
+  --bs-gray-900: #2d2d2d;
+  --bs-primary: #446e9b;
+  --bs-secondary: #999;
+  --bs-success: #3cb521;
+  --bs-info: #3399f3;
+  --bs-warning: #d47500;
+  --bs-danger: #cd0200;
+  --bs-light: #eee;
+  --bs-dark: #333;
+  --bs-primary-rgb: 68, 110, 155;
+  --bs-secondary-rgb: 153, 153, 153;
+  --bs-success-rgb: 60, 181, 33;
+  --bs-info-rgb: 51, 153, 243;
+  --bs-warning-rgb: 212, 117, 0;
+  --bs-danger-rgb: 205, 2, 0;
+  --bs-light-rgb: 238, 238, 238;
+  --bs-dark-rgb: 51, 51, 51;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-body-color-rgb: 119, 119, 119;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-font-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #777;
+  --bs-body-bg: #fff;
+  --bs-border-width: 1px;
+  --bs-border-style: solid;
+  --bs-border-color: #dee2e6;
+  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+  --bs-border-radius: 0.375rem;
+  --bs-border-radius-sm: 0.25rem;
+  --bs-border-radius-lg: 0.5rem;
+  --bs-border-radius-xl: 1rem;
+  --bs-border-radius-2xl: 2rem;
+  --bs-border-radius-pill: 50rem;
+  --bs-link-color: #3399f3;
+  --bs-link-hover-color: #297ac2;
+  --bs-code-color: #e83e8c;
+  --bs-highlight-bg: #f6e3cc;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Lato";
