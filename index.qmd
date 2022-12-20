@@ -26,7 +26,6 @@ format:
     toc: true
     toc-location: left
     theme: spacelab  
-    
 ---
 
 

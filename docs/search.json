@@ -144,14 +144,14 @@
     "href": "dataviz.html",
     "title": "Data Visualization",
     "section": "",
-    "text": "Multiple Line Chart\n\n\n\n\n\n\n\nmultiple line\n\n\nD3\n\n\ntime series\n\n\n\n\nThe chart below does just that, comparing Brady with more than 300 other N.F.L. quarterbacks in playoff victories. Players who were still active during the 2021 season are highlighted.\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n\n\nHealthcare Area Chart\n\n\n\n\n\n\n\narea chart\n\n\nD3\n\n\n\n\nIn 2020, a greater percent of previously uninsured people in the U.S. with low incomes were enrolled in Medicare or Medicaid.\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\nNo matching items"
+    "text": "Healthcare Area Chart\n\n\n\n\n\n\n\narea chart\n\n\nD3\n\n\n\n\nIn 2020, a greater percent of previously uninsured people in the U.S. with low incomes were enrolled in Medicare or Medicaid.\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Data/viz/healthcare area chart/healthcare_areachart.html",
     "href": "Data/viz/healthcare area chart/healthcare_areachart.html",
     "title": "Healthcare Area Chart",
     "section": "",
-    "text": "Other\n\n\n Military\n\n\n CHIP\n\n\n Subsidized Exchange\n\n\n Medicare and Medicaid\n\n\n\n\n\n  Zof-pocket medical spending, insurance premiums and other expenses. There have been small changes in the census questionnaire between the two survey dates. Source: Current Population Survey, analysis by Matt Bruenig"
+    "text": "American health insurance by income in 2020\n\n\nIn 2020, a greater percent of previously uninsured people in the U.S. with low incomes were enrolled in Medicare or Medicaid.\n\n\n\n\n\n\n\nNote: The income measure used here is disposable income, which is defined as market income plus cash transfers from the government and noncash benefits like food stamps and public housing. It excludes taxes, out-of-pocket medical spending, insurance premiums and other expenses. There have been small changes in the census questionnaire between the two survey dates. Source: Current Population Survey, analysis by Matt Bruenig"
   },
   {
     "objectID": "Data/viz/lollipop timeseries/multiple-line-chart.html",
