@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/index.html</loc>
-    <lastmod>2022-12-18T18:42:47.169Z</lastmod>
+    <lastmod>2022-12-20T03:01:20.042Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/teaching.html</loc>
@@ -46,7 +46,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/code.html</loc>
-    <lastmod>2022-12-18T18:33:28.505Z</lastmod>
+    <lastmod>2022-12-20T03:01:27.150Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/blog.html</loc>
@@ -70,10 +70,14 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/dataviz.html</loc>
-    <lastmod>2022-12-18T18:42:50.693Z</lastmod>
+    <lastmod>2022-12-20T03:00:29.378Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/Data/viz/healthcare area chart/healthcare_areachart.html</loc>
-    <lastmod>2022-12-18T18:33:21.563Z</lastmod>
+    <lastmod>2022-12-20T02:56:18.253Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.github.io/docs/Data/viz/lollipop timeseries/multiple-line-chart.html</loc>
+    <lastmod>2022-12-20T03:00:36.125Z</lastmod>
   </url>
 </urlset>

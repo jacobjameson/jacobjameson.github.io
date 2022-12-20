@@ -16,6 +16,7 @@
   {
     "listing": "/dataviz.html",
     "items": [
+      "/Data/viz/lollipop timeseries/multiple-line-chart.html",
       "/Data/viz/healthcare area chart/healthcare_areachart.html"
     ]
   }

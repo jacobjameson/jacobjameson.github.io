@@ -1,54 +1,47 @@
 let svgDancingBar = d3.select("body").select("#dancing-bar-chart")
-        console.log({ d3 })
 
-        let width = 800;
-        let height = 500;
+let width = 962;
+let height = 498;
 
-        let svg = d3.select("body")
-            .select("svg")
+let svg = d3.select("body")
+    .select("svg")
 
-    d3.csv("healthcare-disposable-inc.csv").then(function (data) {
-      console.log("loaded")
-      console.log(data)
+d3.csv("healthcare-disposable-inc.csv").then(function (data) {
 
-    data.forEach(d => {
-      d.Percentile = +d.Percentile
-    })
-
-    let margin = { top: 0, right: 0, bottom: 30, left: 0 };
+    let margin = { top: 10, right: 10, bottom: 0, left: 0 };
 
     let sel_cols = [
-    "Medicaid",
-    "Medicare",
-    "Medicare+Medicaid",
-    "Employer",
-    "Uninsured",
-    "Direct Purchase",
-    "Subsidized Exchange",
-    "CHIP",
-    "Military",
-    "Other"
-    ]
+        "Medicaid",
+        "Medicare",
+        "Medicare+Medicaid",
+        "Employer",
+        "Uninsured",
+        "Direct Purchase",
+        "Subsidized Exchange",
+        "CHIP",
+        "Military",
+        "Other"]
 
     let sel_colors = [
-    "#F44336",
-    "#FF9800",
-    "#FDD835",
-    "#FFF8E1",
-    "#26A69A",
-    "#4DD0E1",
-    "#F06292",
-    "#5C6BC0",
-    "#90A4AE",
-    "#E0E0E0"
+        "#f44336", // "Medicaid",
+        "#FF9800", // "Medicare",
+        "#FDD835", // "Medicare+Medicaid",
+        "#FFF8E1", // "Employer",
+        "#26A69A", // "Uninsured",
+        "#4DD0E1", // "Direct Purchase",
+        "#F06292", // "Subsidized Exchange",
+        "#5C6BC0", // "CHIP",
+        "#90A4AE", // "Military",
+        "#E0E0E0"  // "Other"
     ]
 
-    let year_state = 2009;
+    let year_state = 2020;
+
     let d2020 = data.filter(d => d.year == 2020)
     let d2009 = data.filter(d => d.year == 2009)
 
-    let series = d3.stack().keys(sel_cols)(d2009);
-    console.log(series)
+    let series2020 = d3.stack().keys(sel_cols)(d2020);
+    let series2009 = d3.stack().keys(sel_cols)(d2009);
 
     let color = d3.scaleOrdinal()
         .domain(sel_cols)
@@ -70,153 +63,195 @@ let svgDancingBar = d3.select("body").select("#dancing-bar-chart")
     let xAxisSettings = d3.axisBottom(x)
         .tickSize(6)
         .tickPadding(6)
-        .ticks(10)
-        .tickFormat(d3.format(".0f"))
         .tickValues([5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95])
+        .tickFormat(d3.format(".0f"))
 
-    let xAxisTicks = svgDancingBar.append("g")
+    let xAxis = svg.append("g")
         .attr("class", "x axis")
         .call(xAxisSettings)
         .call(g => g.selectAll(".domain").remove())
-        .attr("transform", `translate(0,${height - margin.bottom})`)
+        .attr("transform", "translate(0," + height + ")")
 
     let yAxisSettings = d3.axisLeft(y)
         .tickValues([.2, .4, .6, .8])
-        .tickSize(0)
+        .tickSize(6)
         .tickPadding(4)
         .tickFormat(d3.format(".0%"))
 
-    let yAxisTicks = svgDancingBar
-        .append("g")
+    let yAxis = svg.append("g")
         .attr("class", "y axis")
         .call(yAxisSettings)
         .call(g => g.selectAll(".domain").remove())
 
-    let hed = d3.select(".hed")
+    let stacks = svg.append("g")
+        .attr("class", "stacks")
 
-  // Area chart
-    let areaChart = svgDancingBar.append("g")
+    let hed = d3.select(".headline")
+    let employer = svg.append("text")
+                        .attr("class", "label")
+                        .attr("x", 818)
+                        .attr("y", 238)
+                        .text("Employer")
 
-    areaChart
-      .selectAll("path")
-      .data(series)
-      .join("path")
-      .attr("class", d => d.key)
-      .attr("fill", d => color(d.key))
-      .attr("d", area)
+    let medicaid = svg.append("text")
+                        .attr("class", "label")
+                        .attr("x", 30)
+                        .attr("y", 422)
+                        .text("Medicaid")
+                        .style("fill", "white")
 
-  function update() {
-      console.log("update")
-      console.log("old year state " + year_state);
+    let uninsured = svg.append("text")
+                        .attr("class", "label")
+                        .attr("x", 164)
+                        .attr("y", 94)
+                        .text("Uninsured")
+                        .style("fill", "white")
 
-      if (year_state == "2020") {
-          year_state = "2009"
-          dance(d2009)
-          hed.html("American health insurance by income in <span class=highlightpink>2009</span>")
+    let medicare = svg.append("text")
+                        .attr("class", "label")
+                        .attr("x", 48)
+                        .attr("y", 282)
+                        .text("Medicare")
 
-      } else {
-          year_state = "2020"
-          dance(d2020)
-          hed.html("American health insurance by income in <span class=highlightpink>2020</span>")
+    stacks
+        .selectAll("path")
+        .data(series2020)
+        .join("path")
+        .attr("class", d => d.key)
+        .attr("fill", d => color(d.key))
+        .attr("d", area)
 
-      }
-      console.log("new year state " + year_state);
-  }
+    svg.append("text")
+        .attr("class", "smallLabel")
+        .attr("x", 970)
+        .attr("y", 38)
+        .text("Direct Purchase")
 
-  function dance(new_data) {
-    new_series = d3.stack()
-      .keys(sel_cols)
-      (new_data);
+    svg.append("text")
+        .attr("class", "axis-label")
+        .attr("x", width / 2)
+        .attr("y", height + 50)
+        .text("income percentile")
+        .attr("text-anchor", "middle")
 
-    areaChart
-      .selectAll("path")
-      .data(new_series)
-      .join("path")
-      .attr("class", d => d.key)
-      .transition()
-      .duration(500)
-      .ease(d3.easeLinear)
-      .attr("fill", d => color(d.key))
-      .attr("d", area)
-  }
+    function update() {
+        if (year_state == 2020) {
+            year_state = 2009
+            dance(series2009, 828, 266, 44, 430, 54, 122, 77, 330)
+            hed.html("Health Insurance by Income: 2009")
+        } else {
+            year_state = 2020
+            dance(series2020, 818, 232, 30, 422, 164, 94, 48, 282)
+            hed.html("Health Insurance by Income: 2020")
+        }
+    }
 
-  var timer = d3.interval(update, 3000) //in milliseconds
+    function dance(series, x1, y1, x2, y2, x3, y3, x4, y4) {
+        stacks
+            .selectAll("path")
+            .data(series)
+            .join("path")
+            .attr("class", d => d.key)
+            .transition()
+            .duration(1300)
+            .ease(d3.easeCubic)
+            .attr("fill", d => color(d.key))
+            .attr("d", area)
 
-  // Annotations
-   svgDancingBar.append("text")
-      .attr("class", "label")
-      .attr("x", 600)
-      .attr("y", 250)
-      .text("Employer")
+        employer
+            .transition()
+            .duration(1300)
+            .ease(d3.easeCubic)
+            .attr("class", "label")
+            .attr("x", x1)
+            .attr("y", y1)
+            .text("Employer")
 
-   svgDancingBar.append("text")
-      .attr("class", "label")
-      .attr("x", 75)
-      .attr("y", 430)
-      .text("Medicaid")
-      .style("fill", "black")
+        medicaid
+            .transition()
+            .duration(1300)
+            .ease(d3.easeCubic)
+            .attr("class", "label")
+            .attr("x", x2)
+            .attr("y", y2)
+            .text("Medicaid")
+            .style("fill", "white")
 
-    svgDancingBar.append("text")
-      .attr("class", "label")
-      .attr("x", 75)
-      .attr("y", 295)
-      .text("Medicare")
-      .style("fill", "black")
+        uninsured
+            .transition()
+            .duration(1300)
+            .ease(d3.easeCubic)
+            .attr("class", "label")
+            .attr("x", x3)
+            .attr("y", y3)
+            .text("Uninsured")
+            .style("fill", "white")
 
-    svgDancingBar.append("text")
-      .attr("class", "label")
-      .attr("x", 75)
-      .attr("y", 75)
-      .text("Uninsured")
-      .style("fill", "black")
+        medicare
+            .transition()
+            .duration(1300)
+            .ease(d3.easeCubic)
+            .attr("class", "label")
+            .attr("x", x4)
+            .attr("y", y4)
+            .text("Medicare")
 
-    svgDancingBar.append("text")
-      .attr("class", "axis-label")
-      .attr("x", width / 2)
-      .attr("y", height + 15)
-      .text("Income percentile")
-      .attr("text-anchor", "middle")
-      .style("font-size", "14px")
-      .style("opacity", 0.5)
+    }
 
-    svgDancingBar.append("text")
-      .attr("class", "axis-label")
-      .attr("x", width - 30)
-      .attr("y", height + 15)
-      .text("Higher income")
-      .attr("text-anchor", "middle")
-      .style("font-size", "14px")
-      .style("opacity", 0.5)
+    var timer = d3.interval(update, 3000)
+    stacks.on("click", () => { timer.stop()})
 
-    svgDancingBar.append("text")
-      .attr("class", "axis-label")
-      .attr("x", margin.left)
-      .attr("y", height + 15)
-      .text("Lower income")
-      .attr("text-anchor", "start")
-      .style("font-size", "14px")
-      .style("opacity", 0.5)
-
-    // Add one dot in the legend for each name.
-    svgDancingBar.selectAll("mydots")
-  .data(sel_colors)
-  .enter()
-  .append("circle")
-    .attr("cx", 820)
-    .attr("cy", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
-    .attr("r", 7)
-    .style("fill", function(d){ return color(d)})
-
-// Add one dot in the legend for each name.
-svgDancingBar.selectAll("mylabels")
-  .data(sel_cols)
-  .enter()
-  .append("text")
-    .attr("x", 840)
-    .attr("y", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
-    // .style("fill", function(d){ return color(d)})
-    .text(function(d){ return d})
-    .attr("text-anchor", "left")
-    .style("alignment-baseline", "middle")
 })
 
+
+           function dance(series, x1, y1, x2, y2, x3, y3, x4, y4) {
+            stacks
+                .selectAll("path")
+                .data(series)
+                .join("path")
+                .attr("class", d => d.key)
+                .transition()
+                .duration(1300)
+                .ease(d3.easeCubic)
+                .attr("fill", d => color(d.key))
+                .attr("d", area)
+
+            employer
+                .transition()
+                .duration(1300)
+                .ease(d3.easeCubic)
+                .attr("class", "label")
+                .attr("x", x1)
+                .attr("y", y1)
+                .text("Employer")
+
+            medicaid
+                .transition()
+                .duration(1300)
+                .ease(d3.easeCubic)
+                .attr("class", "label")
+                .attr("x", x2)
+                .attr("y", y2)
+                .text("Medicaid")
+                .style("fill", "white")
+
+            uninsured
+                .transition()
+                .duration(1300)
+                .ease(d3.easeCubic)
+                .attr("class", "label")
+                .attr("x", x3)
+                .attr("y", y3)
+                .text("Uninsured")
+                .style("fill", "white")
+
+            medicare
+                .transition()
+                .duration(1300)
+                .ease(d3.easeCubic)
+                .attr("class", "label")
+                .attr("x", x4)
+                .attr("y", y4)
+                .text("Medicare")
+
+        }
