@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jacob Jameson">
+<meta name="description" content="In this lesson, we will go over how to install packages and load them using the library() function. We will spend some time understanding what a package is (a collection of functions) by making use of some of the functions that exist in the tidyverse library. Students will learn how to check their working directory and set it to a file location to read in data. Once we have read in data, we will go through the process of accessing our data through indexing.">
+
+<title>Jacob Jameson - Module 2: Installing Packages and Reading Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="Jacob Jameson - Module 2: Installing Packages and Reading Data">
+<meta name="twitter:description" content="In this lesson, we will go over how to install packages and load them using the library() function. We will spend some time understanding what a package is (a collection of functions) by making use of some of the functions that exist in the tidyverse library. Students will learn how to check their working directory and set it to a file location to read in data. Once we have read in data, we will go through the process of accessing our data through indexing.">
+<meta name="twitter:image" content="https://www.jacobjameson.github.io/docs/images/profile.png">
+<meta name="twitter:creator" content="@JacobCJameson">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="612">
+<meta name="twitter:image-width" content="612">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Jacob Jameson</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html">Coding</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html">Teaching</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../dataviz.html">Data Visualization</a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jacobjameson/jacobjameson.github.io"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson/"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#installing-packages-and-reading-data" id="toc-installing-packages-and-reading-data" class="nav-link active" data-scroll-target="#installing-packages-and-reading-data">Installing Packages and Reading Data</a></li>
+  <li><a href="#lab-2" id="toc-lab-2" class="nav-link" data-scroll-target="#lab-2">Lab 2</a>
+  <ul class="collapse">
+  <li><a href="#general-guidelines" id="toc-general-guidelines" class="nav-link" data-scroll-target="#general-guidelines">General Guidelines:</a></li>
+  <li><a href="#warm-up" id="toc-warm-up" class="nav-link" data-scroll-target="#warm-up">Warm-up</a></li>
+  <li><a href="#islr-chapter-2-q8" id="toc-islr-chapter-2-q8" class="nav-link" data-scroll-target="#islr-chapter-2-q8">ISLR Chapter 2 Q8</a></li>
+  <li><a href="#islr-chapter-2-q9" id="toc-islr-chapter-2-q9" class="nav-link" data-scroll-target="#islr-chapter-2-q9">ISLR Chapter 2 Q9</a></li>
+  <li><a href="#islr-chapter-2-q10" id="toc-islr-chapter-2-q10" class="nav-link" data-scroll-target="#islr-chapter-2-q10">ISLR Chapter 2 Q10</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Module 2: Installing Packages and Reading Data</h1>
+</div>
+
+<div>
+  <div class="description">
+    <p>In this lesson, we will go over how to install packages and load them using the library() function. We will spend some time understanding what a package is (a collection of functions) by making use of some of the functions that exist in the tidyverse library. Students will learn how to check their working directory and set it to a file location to read in data. Once we have read in data, we will go through the process of accessing our data through indexing.</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jacob Jameson </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="installing-packages-and-reading-data" class="level2">
+<h2 class="anchored" data-anchor-id="installing-packages-and-reading-data">Installing Packages and Reading Data</h2>
+<p><a href="slides1.html">Download a copy of Module 2 slides</a></p>
+<p><a href="data2.zip">Download data for Module 2 lab and tutorial</a></p>
+<center>
+<iframe width="700" height="500" src="https://www.youtube.com/embed/NMfdOmic30U">
+</iframe>
+</center>
+</section>
+<section id="lab-2" class="level2">
+<h2 class="anchored" data-anchor-id="lab-2">Lab 2</h2>
+<section id="general-guidelines" class="level3">
+<h3 class="anchored" data-anchor-id="general-guidelines">General Guidelines:</h3>
+<p>You will encounter a few functions we did not cover in the lecture video. This will give you some practice on how to use a new function for the first time. You can try following steps:</p>
+<ol type="1">
+<li>Start by typing <code>?new_function</code> in your Console to open up the help page</li>
+<li>Read the help page of this <code>new_function</code>. The description might be too technical for now. That’s OK. Pay attention to the Usage and Arguments, especially the argument <code>x</code> or <code>x</code>,<code>y</code> (when two arguments are required)</li>
+<li>At the bottom of the help page, there are a few examples. Run the first few lines to see how it works</li>
+<li>Apply it in your lab questions</li>
+</ol>
+<p><strong>It is highly likely that you will encounter error messages while doing this lab Here are a few steps that might help get you through it.</strong></p>
+<ol type="1">
+<li>Locate which line is causing this error first</li>
+<li>Check if you may have a typo in the code. Sometimes another person can spot a typo faster than you.</li>
+<li>If you enter the code without any typo, try googling the error message</li>
+<li>Scroll through the top few links see if any of them helps</li>
+</ol>
+</section>
+<section id="warm-up" class="level3">
+<h3 class="anchored" data-anchor-id="warm-up">Warm-up</h3>
+<ol type="1">
+<li><p>Create a new Rmd and add code to load the <code>tidyverse</code> package.</p></li>
+<li><p>Your classmate comes to you and says they can’t get data to load after restarting their R session. You see the code:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"haven"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>awesome_data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"awesome_data.dta"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">read_dta</span>(<span class="st">"awesome_data.dta"</span>) <span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">"read_dta"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Diagnose the problem.</p>
+<p><em>Note</em>: If they say the code worked before, it’s likely they had loaded haven in the console or perhaps in an earlier script. R packages will stay attached as long as the R session is live.</p>
+<ol start="3" type="1">
+<li><p>In general, once you have successfully used <code>install.packages(pkg)</code> for a “pkg”, you won’t need to do it again. Install <code>haven</code> and <code>readxl</code> using the console.</p></li>
+<li><p>In your script, load <code>haven</code> and <code>readxl</code>. Notice that if you had to restart R right now. You could reproduce the entire warm-up by running the script. We strive for reproducibility by keeping the code we want organized in scripts or Rmds.</p></li>
+<li><p>It’s good practice when starting a new project to clear your R environment. This helps you make sure you are not relying on data or functions you wrote in another project. After you <code>library()</code> statements add the following code <code>rm(list = ls())</code>.</p></li>
+<li><p><code>rm()</code> is short for remove. Find the examples in <code>?rm</code> and run them in the console.</p></li>
+</ol>
+</section>
+<section id="islr-chapter-2-q8" class="level3">
+<h3 class="anchored" data-anchor-id="islr-chapter-2-q8">ISLR Chapter 2 Q8</h3>
+<p>This exercise relates to the College data set, which can be found in the file <code>College.csv</code>. It contains a number of variables for 777 different universities and colleges in the US. The variables are</p>
+<table class="table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Private</code></td>
+<td style="text-align: left;">Public/private indicator</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Apps</code></td>
+<td style="text-align: left;">Number of applications received</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Accept</code></td>
+<td style="text-align: left;">Number of applicants accepted</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Enroll</code></td>
+<td style="text-align: left;">Number of new students enrolled</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Top10perc</code></td>
+<td style="text-align: left;">New students from top 10 % of high school class</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Top25perc</code></td>
+<td style="text-align: left;">New students from top 25 % of high school class</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>F.Undergrad</code></td>
+<td style="text-align: left;">Number of full-time undergraduates</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>P.Undergrad</code></td>
+<td style="text-align: left;">Number of part-time undergraduates</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Outstate</code></td>
+<td style="text-align: left;">Out-of-state tuition</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Room.Board</code></td>
+<td style="text-align: left;">Room and board costs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Books</code></td>
+<td style="text-align: left;">Estimated book costs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Personal</code></td>
+<td style="text-align: left;">Estimated personal spending</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>PhD</code></td>
+<td style="text-align: left;">Percent of faculty with Ph.D.’s</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Terminal</code></td>
+<td style="text-align: left;">Percent of faculty with terminal degree</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>S.F.Ratio</code></td>
+<td style="text-align: left;">Student/faculty ratio</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>perc.alumni</code></td>
+<td style="text-align: left;">Percent of alumni who donate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Expend</code></td>
+<td style="text-align: left;">Instructional expenditure per student</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Grad.Rate</code></td>
+<td style="text-align: left;">Graduation rate</td>
+</tr>
+</tbody>
+</table>
+<p>Before reading the data into R, it can be viewed in Excel or a text editor. Make sure that you have the directory set to the correct location for the data.</p>
+<ol type="a">
+<li><p>Use the base R <code>read.csv()</code> function to read the data into R with option <code>stringsAsFactors=T</code> (this is needed later on for plotting figures). Call the loaded data <code>college</code>.</p></li>
+<li><p>Look at the data using the <code>View()</code> function. You should notice that the first column is just the name of each university. Load your data and then try the following commands:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#set your working directory ,fill in your code after this line</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#read in the file College.csv using read.csv() with option `stringsAsFactors=T`</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>college <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'College.csv'</span>, <span class="at">stringsAsFactors =</span> T)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Give data frame college rownames</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(college) <span class="ot">&lt;-</span> college[,<span class="dv">1</span>] </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Please comment out View function after using it. Otherwise you'll see some error when knit.</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># View(college)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="a">
+<li>You should see that there is now a row.names column with the name of each university recorded. This means that R has given each row a name corresponding to the appropriate university. R will <strong>not</strong> try to perform calculations on the row names. Next, we will remove the first column in the data where the names are stored. Try</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use a negative number to generate a subset with all but one column</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># college[, -c(1, 2, 3)]  will generate a subset with all but the first three columns</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>college <span class="ot">&lt;-</span> college[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># as.factor can turn a character column to a factor column so that we can use it to plot later on</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>college<span class="sc">$</span>Private <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(college<span class="sc">$</span>Private)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#View(college)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now you should see that the first data column is Private. Note that another column labeled row.names now appears before the Private column. However, this is not a data column but rather the name that R is giving to each row.</p>
+<ol type="i">
+<li><p>Use the <code>summary()</code> function to produce a numerical summary of the variables in the data set. Hint: <code>summary()</code> takes in an object such as data.frame and return the summery results</p></li>
+<li><p>Use the <code>pairs()</code> function to produce a scatterplot matrix of the first five columns or variables of the data. Recall that you can reference the first five columns of a data frame dat using <code>dat[,1:5]</code></p></li>
+<li><p>Use the <code>plot()</code> function to produce side-by-side boxplots of Outstate versus Private. Hint: <code>plot()</code> takes two arguments one vector for x axis and one vector for y axis. Try <code>plot(dat$col_name, dat$col_name)</code>.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replicate "No" for the same times as the number of colleges using rep()</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Elite <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"No"</span>,<span class="fu">nrow</span>(college))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># change the values in Elite for colleges with proportion of students </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># coming from the top 10% of their high school classes </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># exceeds 50 % to "Yes"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Elite[college<span class="sc">$</span>Top10perc <span class="sc">&gt;</span><span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="st">"Yes"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># as.factor change ELite, a character vector to a factor vector</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (we will touch on factors later in class) </span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Elite <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(Elite)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># add the newly created vector to the college data frame</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>college <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(college ,Elite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="i">
+<li>Use the <code>summary()</code> function to see how many elite universities there are. Now use the <code>plot()</code> function to produce side-by-side boxplots of Outstate versus Elite.</li>
+</ol>
+<p>Continue exploring the data, and provide a brief summary of what you discover.</p>
+</section>
+<section id="islr-chapter-2-q9" class="level3">
+<h3 class="anchored" data-anchor-id="islr-chapter-2-q9">ISLR Chapter 2 Q9</h3>
+<p>This exercise involves the Auto data set. <code>na.omit()</code> removes the missing values from the data and returns a new data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load the Auto.csv into a variable called auto using read_csv()</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remove all rows with missing values using na.omit()</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>auto <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can use <code>class()</code> to check which of the columns are quantitative (numeric or integer), and which are qualitative( logical or character). And <code>sapply()</code> function takes in a data frame and a function (in this case <code>class()</code>), apply the class function to each column. Try the following commands:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#apply the class() function to each column of auto data frame</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(auto, class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li><p>What is the range of each quantitative columns? You can answer this using the <code>range()</code> function. <em>Hint: You can call <code>range()</code> function individually on each column. You can also subset the quantitative columns by creating a variable <code>quant_cols</code> equal to all columns with a numeric mode, then use <code>sapply</code> the function <code>range()</code> with the data frame with only quantitative columns. This is not required.</em></p></li>
+<li><p>Using the functions <code>mean()</code> and <code>sd()</code>. Find out what is the mean and standard deviation of each quantitative columns?</p></li>
+<li><p>Now remove the 10th through 85th observations (rows). What is the range, mean, and standard deviation of each column in the subset of the data that remains? <em>Hint: We’ve seen removing columns in question 8. To remove the rows, we can use the negative sign - again. For example, <code>auto[-c(1,3),]</code> removes the first and third row</em></p></li>
+<li><p>Using the full data set, investigate the columns graphically, using scatterplots (pairs or plot) or other tools of your choice. Create some plots highlighting the relationships among the columns Comment on your findings.</p></li>
+<li><p>Suppose that we wish to predict gas mileage (mpg) on the basis of the other numerical variables. Do your plots suggest that any of the other variables might be useful in predicting mpg? Justify your answer.</p></li>
+</ol>
+</section>
+<section id="islr-chapter-2-q10" class="level3">
+<h3 class="anchored" data-anchor-id="islr-chapter-2-q10">ISLR Chapter 2 Q10</h3>
+<p>This exercise involves the Boston housing data set.</p>
+<p>To begin, load in the Boston data set. The Boston data set is part of the <code>MASS</code> library in R. You may need to install the package using <code>install.packages()</code> function if you haven’t done so.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(MASS)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now the data set is contained in the object Boston.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Boston</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Read about the data set:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>?Boston</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li><p>How many rows are in this data set? How many columns? What do the rows and columns represent?</p></li>
+<li><p>Make some pairwise scatterplots of the columns in this data set. Describe your findings. <em>Hint: Use function <code>pairs()</code></em></p></li>
+<li><p>How many of the suburbs in this data set bound the Charles river? Hint: Subset the data using a logical vector to check if variable <code>chas==1</code>, then use <code>nrow()</code> to see the number of suburbs.</p></li>
+<li><p>Using <code>median()</code>, find out what is the median pupil-teacher ratio among the towns in this data set?</p></li>
+</ol>
+<p>Well done! You’ve learned how to work with R to read in data and perform some simple analysis and exploration!</p>
+<p><strong>Want to improve this tutorial?</strong> Report any suggestions/bugs/improvements on <a href="mailto:jacobjameson@uchicago.edu">here</a>! We’re interested in learning from you how we can make this tutorial better.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022, Jacob Jameson</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jacobjameson/jacobjameson.github.io">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

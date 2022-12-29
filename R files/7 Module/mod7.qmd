@@ -1,0 +1,188 @@
+---
+title: "Module 7: Grouped Analysis"
+from: markdown+emoji
+page-layout: full
+description: |
+  In this lesson, we learn how to use the dplyr verb group_by() to conduct grouped analysis.
+author: Jacob Jameson
+---
+
+## Grouped Analysis
+
+[Download a copy of Module 7 slides](slides7.html)
+
+[Download data for Module 7 lab and tutorial](data7.zip)
+
+
+
+<center> 
+<iframe width="700" height="500"
+src="https://www.youtube.com/embed/EbAxnUT5aWA">
+</iframe>
+</center>
+
+
+## Lab 7
+
+In this lab, you will work with `data_traffic.csv`.
+
+### General Guidelines:
+
+You will encounter a few functions we did not cover in the lecture video. This will give you some practice on how to use a new function for the first time. You can try following steps:
+
+1. Start by typing `?new_function` in your Console to open up the help page
+2. Read the help page of this new_function. The description might be too technical for now. That’s OK. Pay attention to the Usage and Arguments, especially the argument `x` or `x`,`y` (when two arguments are required)
+3. At the bottom of the help page, there are a few examples. Run the first few lines to see how it works
+4. Apply it in your lab questions
+
+**It is highly likely that you will encounter error messages while doing this lab Here are a few steps that might help get you through it.**
+
+1. Locate which line is causing this error first
+2. Check if you may have a typo in the code. Sometimes another person can spot a typo faster than you.
+3. If you enter the code without any typo, try googling the error message
+4. Scroll through the top few links see if any of them helps
+5. Try working on the next few questions while waiting for answers by TAs
+
+
+
+
+### Background and Data 
+Read the background and data section before lab.
+
+![](damon.png)
+
+Follow the [tweet thread](https://twitter.com/nomadj1s/status/1294390352904966151) and you’ll see how Professor Damon Jones, of Harris,  prepares and analyzes his data. In this lab, you’re going to follow his lead and dig into traffic stop data from the University of Chicago Police Department, one of the largest private police forces in the world.
+
+
+### Warm-up
+1. Open a new Rmd and save it in your coding lab folder; if you downloaded the data, move your data file to your preferred data location.
+
+2. In your Rmd, write code to load your packages. If you load packages in the console, you will get an error when you knit because knitting starts a fresh R session.
+
+3. Load `data_traffic.csv` and assign it to the name `traffic_data`. This data was scrapped from the UCPD website and partially cleaned by Prof. Jones.
+
+4. Recall that `group_by()` operates silently. Below I create a new data frame called `grouped_data.`
+
+```{r, include=F}
+library(tidyverse)
+traffic_data <- read_csv('data_traffic.csv')
+```
+
+
+```{r}
+grouped_data <- traffic_data %>%
+  group_by(Race, Gender)
+```
+
+  - a. How can you tell `grouped_data` is different from `traffic_data`?
+  - b. How many groups (Race-Gender pairs) are in the data? (This information should be available without writing additional code!)
+  
+  - c. Without running the code, predict the dimensions (number of rows by number of columns) of the tibbles created by `traffic_data %>% summarize(n = n())` and `grouped_data %>% summarize(n
+= n())`.
+  - d. Now check you intuition by running the code.
+
+5. Use `group_by()` and `summarize()` to recreate the following table.
+
+```{r, echo=F }
+traffic_data %>% 
+  group_by(Race) %>% 
+  summarize(n = n())
+```
+
+6. Use `count()` to produce the same table.
+
+
+
+### Moving beyond counts
+
+1. Raw counts are okay, but frequencies (or proportions) are easier to compare across data sets. Add a column with frequencies and assign the new tibble to the name `traffic_stop_freq.` The result should be identical to Prof. Jones’s analysis on twitter.
+
+Try on your own first. If you’re not sure how to add a frequency though, you could google “add a proportion to count with tidyverse” and find this [stackoverflow post](https://stackoverflow.com/questions/24576515/relative-frequencies-proportions-with-dplyr). Follow the advice of the number one answer. The green checkmark and large number of upvotes indicate the answer is likely reliable.
+
+
+2. The frequencies out of context are not super insightful. What additional information do we need to argue the police are disproportionately stopping members of a certain group? (Hint: Prof. Jones shares the information in his tweets.)
+
+
+3. For the problem above, your groupmate tried the following code. Explain why the frequencies are all 1.
+
+
+```{r, results='hide'}
+traffic_stop_freq_bad <- traffic_data %>%
+  group_by(Race) %>% 
+  summarize(n = n(),
+            freq = n / sum(n)) 
+
+traffic_stop_freq_bad
+```
+
+Now we want to go a step further. Do outcomes differ by race? In the first code block below, I provide code so you can visualize disposition by race. “Disposition” is police jargon that means the current status or final outcome of a police interaction.
+
+```{r, results='hide'}
+citation_strings <- c("citation issued", "citations issued",
+                      "citation issued" )
+
+arrest_strings <- c("citation issued, arrested on active warrant",
+                    "citation issued; arrested on warrant",
+                    "arrested by cpd", "arrested on warrant",
+                    "arrested","arrest")
+
+disposition_by_race <- traffic_data %>%
+  mutate(Disposition = str_to_lower(Disposition),
+         Disposition = case_when(Disposition %in% citation_strings ~ "citation",
+                                 Disposition %in% arrest_strings ~ "arrest",
+                                 TRUE ~ Disposition)) %>%
+  count(Race, Disposition) %>% group_by(Race) %>%
+  mutate(freq = round(n / sum(n), 3))
+
+disposition_by_race %>%
+  filter(n > 5, Disposition == "citation") %>%
+  ggplot(aes(y = freq, x = Race)) + geom_col() +
+  labs(y = "Citation Rate Once Stopped", x = "", title = "Traffic Citation Rate") +
+  theme_minimal()
+```
+
+
+Let’s break down how we got to this code. First, I ran `traffic_data %>% count(Race, Disposition)` and noticed that we have a lot of variety in how officers enter information into the system. I knew I could deal with some of the issue by standardizing capitalization.
+
+  - a. In the console, try out `str_to_lower(...)` by replacing the ... with different strings. The name may be clear enough, but what does `str_to_lower()` do?
+  
+After using mutate with `str_to_lower()`, I piped into `count()` again and looked for strings that represent the same Disposition. I stored terms in character vectors (e.g. `citation_strings`). The purpose is to make the `case_when()` easier to code and read. Once I got that right, I added frequencies to finalize `disposition_by_race`.
+
+5. To make the graph, I first tried to get all the disposition data on the same plot.
+
+```{r}
+ disposition_by_race %>%
+  ggplot(aes(y = freq, x = Race, fill = Disposition)) + 
+  geom_col()
+```
+
+By default, the bar graph is stacked. Look at the resulting graph and discuss the pros and cons of this plot.
+
+
+6. I decided I would focus on citations only and added the `filter(n > 5, Disposition == "citation")` to the code. What is the impact of filtering based on `n > 5`? Would you make the same choice? This question doesn’t have a “right” answer. You should try different options and reflect.
+
+
+7. Now, you can create a similar plot based called “Search Rate” using the Search variable. Write code to re-produce this plot.
+
+```{r, echo=F}
+search <- traffic_data %>%
+  mutate(Search = str_to_lower(Search),
+         Search = ifelse(is.na(Search) | Search == "N/A","No" , Search)) %>%
+  count(Race, Search) %>% group_by(Race) %>% 
+  mutate(freq = n / sum(n))
+
+search %>%
+  filter(Search == "yes", n > 0) %>%
+  ggplot(aes(y = freq, x = Race)) + geom_col() +
+  labs(y = "Search Rate Once Stopped", x = "", title = "Search Rate") + 
+  theme_minimal()
+```
+
+
+
+Well done! You've learned how to conduct grouped analysis using real-world data!
+
+
+**Want to improve this tutorial?** Report any suggestions/bugs/improvements on  [here](mailto:jacobjameson@uchicago.edu)! We're interested in learning from you how we can make this tutorial better.
+
+

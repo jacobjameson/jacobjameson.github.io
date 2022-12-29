@@ -1,0 +1,161 @@
+---
+title: "Odds Ratio Schmodds Ratio: Report the Relative Risk"
+description: |
+  A short tutorial on how to report relative risk in R.
+author: "Jacob Jameson"
+date: "2022-12-24"
+categories: [relative risk, odds ratios]
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+link-citations: yes
+reference-location: margin
+comments:
+  utterances:
+    repo: jacobjameson/jacobjameson.github.io
+format:
+  html:
+    theme: slate
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+
+
+Logistic regression is a commonly used statistical technique in the social sciences, and odds ratios (ORs) are often used to report the results of these analyses. However, correctly interpreting ORs can be challenging, and it's common for them to be misunderstood or misinterpreted. This post aims to help you understand the correct interpretation of ORs and how to transform them into the more intuitive and easily understood relative risk (RRs) estimate.
+
+
+
+
+```{r, message=F, warning=F}
+library(tidyverse)
+library(RNHANES)
+library(pROC)
+library(sjPlot)
+library(sjmisc)
+library(sjlabelled)
+```
+
+
+
+
+
+```{r, message=F, warning=F}
+d07 = nhanes_load_data("DEMO_E", "2007-2008") %>%
+  select(SEQN, cycle, RIAGENDR, RIDAGEYR) %>%
+  transmute(SEQN=SEQN, wave=cycle, RIAGENDR, RIDAGEYR) %>% 
+  left_join(nhanes_load_data("VID_E", "2007-2008"), by="SEQN") %>%
+  select(SEQN, wave, RIAGENDR, RIDAGEYR, LBXVIDMS) %>% 
+  transmute(SEQN, wave, RIAGENDR, RIDAGEYR, vitD=LBXVIDMS) %>% 
+  left_join(nhanes_load_data("BIOPRO_E", "2007-2008"), by="SEQN") %>%
+  select(SEQN, wave, RIAGENDR, RIDAGEYR, vitD, LBXSCA) %>% 
+  transmute(SEQN, wave, RIAGENDR, RIDAGEYR, vitD, Calcium = LBXSCA) %>% 
+  left_join(nhanes_load_data("OSQ_E", "2007-2008"), by="SEQN") %>%
+  select(SEQN, wave, RIAGENDR, RIDAGEYR, vitD, Calcium, OSQ060) %>% 
+  transmute(SEQN, wave, RIAGENDR, RIDAGEYR, vitD, Calcium, Osteop = OSQ060)
+
+d09 = nhanes_load_data("DEMO_F", "2009-2010") %>%
+  select(SEQN, cycle, RIAGENDR, RIDAGEYR) %>%
+  transmute(SEQN=SEQN, wave=cycle, RIAGENDR, RIDAGEYR) %>% 
+  left_join(nhanes_load_data("VID_F", "2009-2010"), by="SEQN") %>%
+  select(SEQN, wave, RIAGENDR, RIDAGEYR, LBXVIDMS) %>% 
+  transmute(SEQN, wave, RIAGENDR, RIDAGEYR, vitD=LBXVIDMS) %>% 
+  left_join(nhanes_load_data("BIOPRO_F", "2009-2010"), by="SEQN") %>%
+  select(SEQN, wave, RIAGENDR, RIDAGEYR, vitD,  LBXSCA) %>% 
+  transmute(SEQN, wave, RIAGENDR, RIDAGEYR, vitD, Calcium = LBXSCA) %>% 
+  left_join(nhanes_load_data("OSQ_F", "2009-2010"), by="SEQN") %>%
+  select(SEQN, wave, RIAGENDR, RIDAGEYR, vitD, Calcium, OSQ060) %>% 
+  transmute(SEQN, wave, RIAGENDR, RIDAGEYR, vitD, Calcium, Osteop = OSQ060)
+
+dat = bind_rows(d07, d09) %>% as.data.frame()
+```
+
+
+Institute of Medicine cutoffs for Vitamin D
+
+Vitamin D deficiency: Serum 25OHD less than 30 nmol/L (12 ng/mL)
+
+
+
+
+
+```{r}
+dat <- dat %>% 
+  mutate(vitD_deficient = ifelse(vitD < 30, 1, 0))
+
+#exclude missing observations
+dat <- dat %>% 
+  filter(!is.na(vitD_deficient), !is.na(Calcium), !is.na(Osteop), Osteop!=9) %>% 
+  mutate(Gender = recode_factor(RIAGENDR, 
+                           `1` = "Man", 
+                           `2` = "Woman"),
+         Osteop = recode_factor(Osteop, 
+                           `1` = 1, 
+                           `2` = 0))
+
+head(dat)
+```
+
+
+
+
+```{r, message=F, warning=F}
+fit <- glm(Osteop ~ vitD_deficient + Calcium + Gender + RIDAGEYR, 
+           data = dat, family = "binomial")
+
+tab_model(fit)
+```
+
+
+```{r, warning=F, message=F}
+plot_model(fit, vline.color = "red") + theme_bw() 
+```
+
+
+```{r}
+library(ggeffects)
+
+df.1 <- ggpredict(fit, terms = 'vitD_deficient') %>%
+  select(vitD_deficient=x, coef=predicted, lower=conf.low, upper=conf.high)
+
+
+
+ggplot(df.1, aes(x=coef,fill=vitD_deficient)) +
+  geom_ribbon(aes(ymin=lower,ymax=upper), alpha=0.2) +
+  geom_line(aes(y=coef))  +
+  theme_minimal() + theme(text = element_text(size = 20)) + 
+  scale_y_continuous(labels = scales::percent) + geom_vline(xintercept =0, color='darkred') +
+  labs(x = "\nChange in Relative GE from Adolescence to Adulthood",
+       y = "Predicted Probability of Behavior in Adulthood\n", 
+       fill='Gender Expression in Adolescence',
+       title = 'Mariginal Effects of Adolescent to Young Adult GE Change on Predicted Substance Use',
+       caption = str_wrap('\n\n\n\nIncreases in relative GE are associated with greater predicted probability of young adult substance use behavior. For mariijuana and recreational drug use, the impact of relative changes in GE are sharper for respondents who had greater GE than the average male of their school during adolescence.', 145)) +
+  theme(legend.position="bottom", plot.caption = element_text(hjust = 0))  
+
+
+ggplot(df.1) +
+    geom_bar( aes(x=vitD_deficient, y=coef), 
+              stat="identity", fill="skyblue", alpha=0.7) +
+    geom_errorbar( aes(x=vitD_deficient, ymin=lower, ymax=upper),
+                   width=0.4, colour="orange", alpha=0.9, size=1.3) +
+  theme_minimal() + theme(text = element_text(size = 20)) + 
+  scale_y_continuous(labels = scales::percent) + geom_vline(xintercept =0, color='darkred') +
+  labs(x = "\nChange in Relative GE from Adolescence to Adulthood",
+       y = "Predicted Probability of Behavior in Adulthood\n", 
+       fill='Gender Expression in Adolescence',
+       title = 'Mariginal Effects of Adolescent to Young Adult GE Change on Predicted Substance Use',
+       caption = str_wrap('\n\n\n\nIncreases in relative GE are associated with greater predicted probability of young adult substance use behavior. For mariijuana and recreational drug use, the impact of relative changes in GE are sharper for respondents who had greater GE than the average male of their school during adolescence.', 145)) +
+  theme(legend.position="bottom", plot.caption = element_text(hjust = 0))  
+
+```
+

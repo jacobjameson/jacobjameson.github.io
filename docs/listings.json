@@ -10,6 +10,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/2022-12-24-ORs/2022-12-24-ORs.html",
       "/posts/2022-11-01-SNA/2022-11-01-SNA.html"
     ]
   },
@@ -17,6 +18,21 @@
     "listing": "/dataviz.html",
     "items": [
       "/Data/viz/healthcare area chart/healthcare_areachart.html"
+    ]
+  },
+  {
+    "listing": "/Intro R.html",
+    "items": [
+      "/R files/0 Module/mod0.html",
+      "/R files/1 Module/mod1.html",
+      "/R files/2 Module/mod2.html",
+      "/R files/3 Module/mod3.html",
+      "/R files/4 Module/mod4.html",
+      "/R files/5 Module/mod5.html",
+      "/R files/6 Module/mod6.html",
+      "/R files/7 Module/mod7.html",
+      "/R files/8 Module/mod8.html",
+      "/R files/9 Module/mod9.html"
     ]
   }
 ]

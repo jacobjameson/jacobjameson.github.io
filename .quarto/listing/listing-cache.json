@@ -11,6 +11,10 @@
     ],
     "dataviz.qmd": [
       "Data/viz"
+    ],
+    "Intro R.qmd": [
+      "posts",
+      "R files"
     ]
   }
 }
