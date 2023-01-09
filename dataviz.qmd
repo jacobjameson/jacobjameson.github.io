@@ -18,6 +18,7 @@ format:
 page-layout: full
 ---
 
-This is my data visualization portfolio!
+*Data can’t speak for itself; it’s up to you to give it a voice. Try to speak truthfully.* - **Ronald Coase**
+
 
 
