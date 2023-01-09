@@ -38,11 +38,11 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/index.html</loc>
-    <lastmod>2022-12-29T19:49:40.596Z</lastmod>
+    <lastmod>2023-01-09T16:45:05.977Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/teaching.html</loc>
-    <lastmod>2022-12-20T03:09:51.254Z</lastmod>
+    <lastmod>2023-01-09T16:44:59.062Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/code.html</loc>
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/blog.html</loc>
-    <lastmod>2022-12-29T19:49:41.330Z</lastmod>
+    <lastmod>2023-01-09T16:45:07.105Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/Data/Intro_R_Course/Intro R.html</loc>
@@ -62,15 +62,15 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/horror.html</loc>
-    <lastmod>2022-12-14T14:47:52.988Z</lastmod>
+    <lastmod>2023-01-09T16:45:06.553Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/posts/2022-11-01-SNA/2022-11-01-SNA.html</loc>
-    <lastmod>2022-12-14T14:58:58.372Z</lastmod>
+    <lastmod>2023-01-09T16:45:02.613Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/dataviz.html</loc>
-    <lastmod>2022-12-20T03:18:05.943Z</lastmod>
+    <lastmod>2023-01-09T16:49:43.291Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/Data/viz/healthcare area chart/healthcare_areachart.html</loc>
@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/posts/2022-12-24-ORs/2022-12-24-ORs.html</loc>
-    <lastmod>2022-12-29T19:49:39.892Z</lastmod>
+    <lastmod>2023-01-09T16:45:05.364Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/Data/Intro_R_Course/mod0.html</loc>
@@ -94,7 +94,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/Intro R.html</loc>
-    <lastmod>2022-12-29T19:49:42.238Z</lastmod>
+    <lastmod>2023-01-09T16:45:07.929Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.github.io/docs/R files/0 Module/mod0.html</loc>
@@ -147,5 +147,9 @@
   <url>
     <loc>https://www.jacobjameson.github.io/docs/R files/6 Module/mod6.html</loc>
     <lastmod>2022-12-29T19:16:03.413Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.github.io/docs/Data/viz/2023-01-03 Tidy Tuesday/TT_wk1.html</loc>
+    <lastmod>2023-01-09T16:48:45.095Z</lastmod>
   </url>
 </urlset>

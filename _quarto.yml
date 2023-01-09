@@ -18,7 +18,7 @@ website:
       - icon: twitter
         href: https://twitter.com/JacobCJameson/
   page-footer:
-    left: "Copyright 2022, Jacob Jameson"
+    left: "Copyright 2023, Jacob Jameson"
     right:
       - icon: github
         href: https://github.com/jacobjameson/jacobjameson.github.io

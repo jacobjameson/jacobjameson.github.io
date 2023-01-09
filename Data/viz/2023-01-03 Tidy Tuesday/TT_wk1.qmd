@@ -1,0 +1,55 @@
+---
+title: "Tidy Tuesday, 2023 Week 1"
+author: "Jacob Jameson"
+description: |
+  #TidyTuesday Week 1, 2023: Bring your own data from 2022!
+categories: [Tidy Tuesday, R]
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: spacelab  
+page-layout: full
+comments:
+  utterances:
+    repo: jacobjameson/jacobjameson.github.io
+---
+
+The theme of this week's #TidyTuesday is "Bring your own data from 2022!"
+
+| Week | Date | Data | Source | Article
+| :---: | :---: | :--- | :--- | :---|
+| 1 | `2023-01-03` | Bring your own data from 2022! | | |
+
+
+I decided to use data from Tidy Tuesday 2022-07-05. Here is a little more information about the data:
+
+
+# SF Rents
+
+The data this week comes from [Kate Pennington](https://www.katepennington.org/data), [data.sfgov.org](https://data.sfgov.org/Housing-and-Buildings/Building-Permits/i98e-djp9/data), [Vital Signs](https://www.vitalsigns.mtc.ca.gov/housing-production).
+
+If using Dr. Pennington's data, please cite:
+
+> Pennington, Kate (2018).  Bay Area Craigslist Rental Housing Posts, 2000-2018. Retrieved from https://github.com/katepennington/historic_bay_area_craigslist_housing_posts/blob/master/clean_2000_2018.csv.zip.
+
+Her methodology can be found at [her website](https://www.katepennington.org/clmethod).
+
+> What impact does new housing have on rents, displacement, and gentrification in the surrounding neighborhood? Read our interview with economist Kate Pennington about her article, “Does Building New Housing Cause Displacement?:The Supply and Demand Effects of Construction in San Francisco.” - [Kate Pennington on Gentrification and Displacement in San Francisco](https://matrix.berkeley.edu/research-article/kate-pennington-on-gentrification-and-displacement-in-san-francisco/)
+
+All building permits can be found at the [Socrata API endpoint](https://dev.socrata.com/foundry/data.sfgov.org/i98e-djp9).
+
+[Does Building New Housing Cause Displacement?: The Supply and Demand Effects of Construction in San Francisco, Kate Pennington](https://deliverypdf.ssrn.com/delivery.php?ID=633098025092007018100111000090099113028078052014017010096086115031084093005071006121006013001017037121004120115095110019127088030002028047082021105096077030116126112035012004119111070017001125071120113001081103019023004097110009123126028091014027071110&EXT=pdf&INDEX=TRUE)
+
+
+## My plot
+
+### 🏡 SF Housing Prices by Kate Pennington's Craigslist scrape of Bay Area housing posts 
+
+![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-03/w1.png)
+
+[Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-03/) 
+
+
+
+

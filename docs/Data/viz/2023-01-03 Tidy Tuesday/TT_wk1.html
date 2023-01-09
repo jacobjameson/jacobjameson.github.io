@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jacob Jameson">
+<meta name="description" content="#TidyTuesday Week 1, 2023: Bring your own data from 2022!">
 
-<title>Jacob Jameson - Data Visualization</title>
+<title>Jacob Jameson - Tidy Tuesday, 2023 Week 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,24 +20,22 @@ ul.task-list{list-style: none;}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -55,41 +55,11 @@ ul.task-list{list-style: none;}
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
-<meta name="twitter:title" content="Jacob Jameson - Data Visualization">
-<meta name="twitter:description" content="This is my data visualization portfolio!">
+<link rel="stylesheet" href="../../../styles.css">
+<meta name="twitter:title" content="Jacob Jameson - Tidy Tuesday, 2023 Week 1">
+<meta name="twitter:description" content="#TidyTuesday Week 1, 2023: Bring your own data from 2022!">
 <meta name="twitter:image" content="https://www.jacobjameson.github.io/docs/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
@@ -103,7 +73,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Jacob Jameson</span>
   </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -112,18 +82,18 @@ ul.task-list{list-style: none;}
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./code.html">Coding</a>
+    <a class="nav-link" href="../../../code.html">Coding</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html">Teaching</a>
+    <a class="nav-link" href="../../../teaching.html">Teaching</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./dataviz.html" aria-current="page">Data Visualization</a>
+    <a class="nav-link" href="../../../dataviz.html">Data Visualization</a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html">Blog</a>
+    <a class="nav-link" href="../../../blog.html">Blog</a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jacobjameson/jacobjameson.github.io"><i class="bi bi-github" role="img">
@@ -144,22 +114,51 @@ ul.task-list{list-style: none;}
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sf-rents" id="toc-sf-rents" class="nav-link active" data-scroll-target="#sf-rents">SF Rents</a>
+  <ul class="collapse">
+  <li><a href="#my-plot" id="toc-my-plot" class="nav-link" data-scroll-target="#my-plot">My plot</a>
+  <ul class="collapse">
+  <li><a href="#sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts" id="toc-sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts" class="nav-link" data-scroll-target="#sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts">🏡 SF Housing Prices by Kate Pennington’s Craigslist scrape of Bay Area housing posts</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="D3">D3 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Tidy Tuesday">Tidy Tuesday <span class="quarto-category-count">(1)</span></div><div class="category" data-category="area chart">area chart <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Visualization</h1>
-</div>
+<h1 class="title">Tidy Tuesday, 2023 Week 1</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Tidy Tuesday</div>
+    <div class="quarto-category">R</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    <p>#TidyTuesday Week 1, 2023: Bring your own data from 2022!</p>
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jacob Jameson </p>
+          </div>
+  </div>
     
     
   </div>
@@ -167,92 +166,54 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>This is my data visualization portfolio!</p>
+<p>The theme of this week’s #TidyTuesday is “Bring your own data from 2022!”</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Week</th>
+<th style="text-align: center;">Date</th>
+<th style="text-align: left;">Data</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Article</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><code>2023-01-03</code></td>
+<td style="text-align: left;">Bring your own data from 2022!</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>I decided to use data from Tidy Tuesday 2022-07-05. Here is a little more information about the data:</p>
+<section id="sf-rents" class="level1">
+<h1>SF Rents</h1>
+<p>The data this week comes from <a href="https://www.katepennington.org/data">Kate Pennington</a>, <a href="https://data.sfgov.org/Housing-and-Buildings/Building-Permits/i98e-djp9/data">data.sfgov.org</a>, <a href="https://www.vitalsigns.mtc.ca.gov/housing-production">Vital Signs</a>.</p>
+<p>If using Dr.&nbsp;Pennington’s data, please cite:</p>
+<blockquote class="blockquote">
+<p>Pennington, Kate (2018). Bay Area Craigslist Rental Housing Posts, 2000-2018. Retrieved from https://github.com/katepennington/historic_bay_area_craigslist_housing_posts/blob/master/clean_2000_2018.csv.zip.</p>
+</blockquote>
+<p>Her methodology can be found at <a href="https://www.katepennington.org/clmethod">her website</a>.</p>
+<blockquote class="blockquote">
+<p>What impact does new housing have on rents, displacement, and gentrification in the surrounding neighborhood? Read our interview with economist Kate Pennington about her article, “Does Building New Housing Cause Displacement?:The Supply and Demand Effects of Construction in San Francisco.” - <a href="https://matrix.berkeley.edu/research-article/kate-pennington-on-gentrification-and-displacement-in-san-francisco/">Kate Pennington on Gentrification and Displacement in San Francisco</a></p>
+</blockquote>
+<p>All building permits can be found at the <a href="https://dev.socrata.com/foundry/data.sfgov.org/i98e-djp9">Socrata API endpoint</a>.</p>
+<p><a href="https://deliverypdf.ssrn.com/delivery.php?ID=633098025092007018100111000090099113028078052014017010096086115031084093005071006121006013001017037121004120115095110019127088030002028047082021105096077030116126112035012004119111070017001125071120113001081103019023004097110009123126028091014027071110&amp;EXT=pdf&amp;INDEX=TRUE">Does Building New Housing Cause Displacement?: The Supply and Demand Effects of Construction in San Francisco, Kate Pennington</a></p>
+<section id="my-plot" class="level2">
+<h2 class="anchored" data-anchor-id="my-plot">My plot</h2>
+<section id="sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts" class="level3">
+<h3 class="anchored" data-anchor-id="sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts">🏡 SF Housing Prices by Kate Pennington’s Craigslist scrape of Bay Area housing posts</h3>
+<p><img src="https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-03/w1.png" class="img-fluid"></p>
+<p><a href="https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-03/">Code here</a></p>
 
 
+</section>
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Tidy Tuesday,R" data-listing-file-modified-sort="1673282902341" data-listing-reading-time-sort="0.97">
-<div class="thumbnail">
-<p><a href="./Data/viz/2023-01-03 Tidy Tuesday/TT_wk1.html"> <img src="https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-03/w1.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./Data/viz/2023-01-03 Tidy Tuesday/TT_wk1.html">
-<h3 class="no-anchor listing-title">
-Tidy Tuesday, 2023 Week 1
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Tidy Tuesday'); return false;">
-Tidy Tuesday
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<a href="./Data/viz/2023-01-03 Tidy Tuesday/TT_wk1.html">
-<div class="listing-description">
-<p>#TidyTuesday Week 1, 2023: Bring your own data from 2022!</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./Data/viz/2023-01-03 Tidy Tuesday/TT_wk1.html">
-<div class="listing-author">
-Jacob Jameson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="area chart,D3" data-listing-file-modified-sort="1673282168632" data-listing-reading-time-sort="0.515">
-<div class="thumbnail">
-<a href="./Data/viz/healthcare area chart/healthcare_areachart.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./Data/viz/healthcare area chart/healthcare_areachart.html"></a></p>
-</div>
-<div class="body">
-<a href="./Data/viz/healthcare area chart/healthcare_areachart.html">
-<h3 class="no-anchor listing-title">
-Healthcare Area Chart
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('area chart'); return false;">
-area chart
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('D3'); return false;">
-D3
-</div>
-</div>
-<a href="./Data/viz/healthcare area chart/healthcare_areachart.html">
-<div class="listing-description">
-<p>In 2020, a greater percent of previously uninsured people in the U.S. with low incomes were enrolled in Medicare or Medicaid.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./Data/viz/healthcare area chart/healthcare_areachart.html">
-<div class="listing-author">
-Jacob Jameson
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -350,10 +311,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://utteranc.es/client.js" repo="jacobjameson/jacobjameson.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2023, Jacob Jameson</div>   
+    <div class="nav-footer-left">Copyright 2022, Jacob Jameson</div>   
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
