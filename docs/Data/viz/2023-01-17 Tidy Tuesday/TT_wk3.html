@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jacob Jameson">
-<meta name="description" content="#TidyTuesday Week 1, 2023: Bring your own data from 2022!">
+<meta name="description" content="#TidyTuesday Week 3, 2023: Art History">
 
-<title>Jacob Jameson - Tidy Tuesday, 2023 Week 1 🏡</title>
+<title>Jacob Jameson - Tidy Tuesday, 2023 Week 3 🎨</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,8 +58,8 @@ ul.task-list{list-style: none;}
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta name="twitter:title" content="Jacob Jameson - Tidy Tuesday, 2023 Week 1 🏡">
-<meta name="twitter:description" content="#TidyTuesday Week 1, 2023: Bring your own data from 2022!">
+<meta name="twitter:title" content="Jacob Jameson - Tidy Tuesday, 2023 Week 3 🎨">
+<meta name="twitter:description" content="#TidyTuesday Week 3, 2023: Art History">
 <meta name="twitter:image" content="https://www.jacobjameson.github.io/docs/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
@@ -119,11 +119,11 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sf-rents" id="toc-sf-rents" class="nav-link active" data-scroll-target="#sf-rents">SF Rents</a>
+  <li><a href="#art-history" id="toc-art-history" class="nav-link active" data-scroll-target="#art-history">Art History</a>
   <ul class="collapse">
   <li><a href="#my-plot" id="toc-my-plot" class="nav-link" data-scroll-target="#my-plot">My plot</a>
   <ul class="collapse">
-  <li><a href="#sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts" id="toc-sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts" class="nav-link" data-scroll-target="#sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts">🏡 SF Housing Prices by Kate Pennington’s Craigslist scrape of Bay Area housing posts</a></li>
+  <li><a href="#art-histpry" id="toc-art-histpry" class="nav-link" data-scroll-target="#art-histpry">🎨 Art Histpry</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -137,7 +137,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tidy Tuesday, 2023 Week 1 🏡</h1>
+<h1 class="title">Tidy Tuesday, 2023 Week 3 🎨</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Tidy Tuesday</div>
     <div class="quarto-category">R</div>
@@ -146,7 +146,7 @@ ul.task-list{list-style: none;}
 
 <div>
   <div class="description">
-    <p>#TidyTuesday Week 1, 2023: Bring your own data from 2022!</p>
+    <p>#TidyTuesday Week 3, 2023: Art History</p>
   </div>
 </div>
 
@@ -166,7 +166,7 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>The theme of this week’s #TidyTuesday is “Bring your own data from 2022!”</p>
+<p>Data for this week’s TidyTuesday comes from Art History!</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -179,34 +179,53 @@ ul.task-list{list-style: none;}
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;"><code>2023-01-03</code></td>
-<td style="text-align: left;">Bring your own data from 2022!</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><code>2023-01-17</code></td>
+<td style="text-align: left;"><a href="2023-01-17/readme.md">Art history data</a></td>
+<td style="text-align: left;"><a href="https://saralemus7.github.io/arthistory/">arthistory data package</a></td>
+<td style="text-align: left;"><a href="https://github.com/hollandstam1/thesis/blob/main/_book/Quantifying-Art-Historical-Narratives.pdf">Quantifying Art Historical Narratives</a></td>
 </tr>
 </tbody>
 </table>
-<p>I decided to use data from Tidy Tuesday 2022-07-05. Here is a little more information about the data:</p>
-<section id="sf-rents" class="level1">
-<h1>SF Rents</h1>
-<p>The data this week comes from <a href="https://www.katepennington.org/data">Kate Pennington</a>, <a href="https://data.sfgov.org/Housing-and-Buildings/Building-Permits/i98e-djp9/data">data.sfgov.org</a>, <a href="https://www.vitalsigns.mtc.ca.gov/housing-production">Vital Signs</a>.</p>
-<p>If using Dr.&nbsp;Pennington’s data, please cite:</p>
+<p>Here is a little more information about the data:</p>
+<section id="art-history" class="level1">
+<h1>Art History</h1>
+<p>The data this week comes from the <a href="https://saralemus7.github.io/arthistory/">arthistory data package</a></p>
 <blockquote class="blockquote">
-<p>Pennington, Kate (2018). Bay Area Craigslist Rental Housing Posts, 2000-2018. Retrieved from https://github.com/katepennington/historic_bay_area_craigslist_housing_posts/blob/master/clean_2000_2018.csv.zip.</p>
+<p>This dataset contains data that was used for Holland Stam’s thesis work, titled <a href="https://research.repository.duke.edu/concern/datasets/q811kk70n?locale=en">Quantifying art historical narratives</a>. The data was collected to assess the demographic representation of artists through editions of Janson’s History of Art and Gardner’s Art Through the Ages, two of the most popular art history textbooks used in the American education system. In this package specifically, both artist-level and work-level data was collected along with variables regarding the artists’ demographics and numeric metrics for describing how much space they or their work took up in each edition of each textbook.</p>
 </blockquote>
-<p>Her methodology can be found at <a href="https://www.katepennington.org/clmethod">her website</a>.</p>
 <blockquote class="blockquote">
-<p>What impact does new housing have on rents, displacement, and gentrification in the surrounding neighborhood? Read our interview with economist Kate Pennington about her article, “Does Building New Housing Cause Displacement?:The Supply and Demand Effects of Construction in San Francisco.” - <a href="https://matrix.berkeley.edu/research-article/kate-pennington-on-gentrification-and-displacement-in-san-francisco/">Kate Pennington on Gentrification and Displacement in San Francisco</a></p>
+<p>This package contains three datasets:</p>
 </blockquote>
-<p>All building permits can be found at the <a href="https://dev.socrata.com/foundry/data.sfgov.org/i98e-djp9">Socrata API endpoint</a>.</p>
-<p><a href="https://deliverypdf.ssrn.com/delivery.php?ID=633098025092007018100111000090099113028078052014017010096086115031084093005071006121006013001017037121004120115095110019127088030002028047082021105096077030116126112035012004119111070017001125071120113001081103019023004097110009123126028091014027071110&amp;EXT=pdf&amp;INDEX=TRUE">Does Building New Housing Cause Displacement?: The Supply and Demand Effects of Construction in San Francisco, Kate Pennington</a></p>
+<blockquote class="blockquote">
+<ul>
+<li>worksjanson: Contains individual work-level data by edition of Gardner’s art history textbook from 1963 until 2011. For each work, there is information about the size of the work and text as displayed in the textbook as well as details about the work’s medium and year created. Demographic data about the artist is also included.</li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>worksgardner: Contains individual work-level data by edition of Gardner’s art history textbook from 1926 until 2020. For each work, there is information about the size of the work as displayed in the textbook as well as the size of the accompanying descriptive text. Demographic data about the artist is also included.</li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>artists: Contains various information about artists by edition of Gardner or Janson’s art history textbook from 1926 until 2020. Data includes demographic information, space occupied in the textbook, as well as presence in the MoMA and Whitney museums.</li>
+</ul>
+</blockquote>
+<p>Acknowledging arthistory</p>
+<blockquote class="blockquote">
+<p>Citation</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Lemus S, Stam H (2022). arthistory: Art History Textbook Data. https://github.com/saralemus7/arthistory, https://saralemus7.github.io/arthistory/.</p>
+</blockquote>
+<p>Examples of analyses are included in <a href="https://github.com/hollandstam1/thesis">Holland Stam’s thesis</a> in Quarto files.</p>
 <section id="my-plot" class="level2">
 <h2 class="anchored" data-anchor-id="my-plot">My plot</h2>
-<section id="sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts" class="level3">
-<h3 class="anchored" data-anchor-id="sf-housing-prices-by-kate-penningtons-craigslist-scrape-of-bay-area-housing-posts">🏡 SF Housing Prices by Kate Pennington’s Craigslist scrape of Bay Area housing posts</h3>
-<p><img src="https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-03/w1.png" class="img-fluid"></p>
-<p><a href="https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-03/">Code here</a></p>
+<section id="art-histpry" class="level3">
+<h3 class="anchored" data-anchor-id="art-histpry">🎨 Art Histpry</h3>
+<p><img src="https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-17/w3.png" class="img-fluid"></p>
+<p><a href="https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-17/">Code here</a></p>
 
 
 </section>
