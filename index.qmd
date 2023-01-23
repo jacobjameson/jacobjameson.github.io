@@ -23,6 +23,19 @@ from: markdown+emoji
 page-layout: full
 ---
 
+
+<!-- Include the library. -->
+<script
+src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js">
+</script>
+
+<!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
+<link
+rel="stylesheet"
+href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+/>
+
+
 ::: typewriter
 <h1 style="font-weight: bold; color:#8B0000;">
 
@@ -39,3 +52,26 @@ I am a PhD student at Harvard University studying Health Policy and Decision Sci
 I study the quantitative techniques that are used for informing decision-making at the individual and population levels, including decision analysis, risk analysis, cost-benefit and cost-effectiveness analysis, disease and policy simulation modeling, and behavioral decision theory. My research aims to quantify trade offs of harms versus benefits to directly inform a decision being made under conditions of uncertainty.
 
 Prior to starting my PhD, I completed an M.S. in Computational Analysis and Public Policy at The University of Chicago. Before that, I was a middle school mathematics teacher in New Haven, CT (the best job I have ever had). Aside from research I am very interested in K-12 computer science education.
+
+
+
+<!-- Prepare a container for your calendar. -->
+<div class="calendar">
+<!-- Loading stuff -->
+Loading the data just for you.
+</div>
+
+<script>
+GitHubCalendar(".calendar", "jacobjameson");
+
+// or enable responsive functionality:
+GitHubCalendar(".calendar", "jacobjameson", { responsive: true });
+
+// Use a proxy
+GitHubCalendar(".calendar", "jacobjameson", {
+ proxy (username) {
+   return fetch(`https://your-proxy.com/github?user=${jacobjameson}`)
+ }
+}).then(r => r.text())
+</script>
+
