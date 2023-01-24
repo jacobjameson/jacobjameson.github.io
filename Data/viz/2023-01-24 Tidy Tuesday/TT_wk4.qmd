@@ -1,8 +1,8 @@
 ---
-title: "Tidy Tuesday, 2023 Week 3 🎨"
+title: "Tidy Tuesday, 2023 Week 4 🐻"
 author: "Jacob Jameson"
 description: |
-  #TidyTuesday Week 3, 2023: Art History
+  #TidyTuesday Week 4, 2023: ALONE
 categories: [Tidy Tuesday, R]
 format:
   html:
@@ -15,47 +15,45 @@ comments:
     repo: jacobjameson/jacobjameson.github.io
 ---
 
-Data for this week's TidyTuesday comes from Art History!
+Data for this week's TidyTuesday comes from the TV show ALONE!
 
 | Week | Date | Data | Source | Article
 | :---: | :---: | :--- | :--- | :---|
-| 3 | `2023-01-17` | [Art history data](2023-01-17/readme.md) | [arthistory data package](https://saralemus7.github.io/arthistory/) | [Quantifying Art Historical Narratives](https://github.com/hollandstam1/thesis/blob/main/_book/Quantifying-Art-Historical-Narratives.pdf) |
-
+| 4 | `2023-01-24` | [Alone data](2023-01-24/readme.md) | [Alone data package](https://github.com/doehm/alone) | [Alone R package: Datasets from the survival TV series](https://gradientdescending.com/alone-r-package-datasets-from-the-survival-tv-series/) |
 
 
 Here is a little more information about the data:
 
+# Alone
 
-# Art History
+The data this week comes from the [Alone data package](https://github.com/doehm/alone) by Dan Oehm. 
 
-The data this week comes from the [arthistory data package](https://saralemus7.github.io/arthistory/)
+> This dataset contains data from the TV series [Alone](https://www.history.com/shows/alone) collected and shared by [Dan Oehm](https://gradientdescending.com/). As described in Oehm's blog post](https://gradientdescending.com/alone-r-package-datasets-from-the-survival-tv-series/), in the survival TV series ‘Alone,’ 10 survivalists are dropped in an extremely remote area and must fend for themselves. They aim to last 100 days in the Artic winter, living off the land through their survival skills, endurance, and mental fortitude. 
 
-> This dataset contains data that was used for Holland Stam’s thesis work, titled [Quantifying art historical narratives](https://research.repository.duke.edu/concern/datasets/q811kk70n?locale=en). The data was collected to assess the demographic representation of artists through editions of Janson’s History of Art and Gardner’s Art Through the Ages, two of the most popular art history textbooks used in the American education system. In this package specifically, both artist-level and work-level data was collected along with variables regarding the artists’ demographics and numeric metrics for describing how much space they or their work took up in each edition of each textbook.
+> This package contains four datasets:
 
-> This package contains three datasets:
+> * survivalists.csv: A data frame of survivalists across all 9 seasons detailing name and demographics, location and profession, result, days lasted, reasons for tapping out (detailed and categorised), and page URL.
 
-> * worksjanson: Contains individual work-level data by edition of Gardner’s art history textbook from 1963 until 2011. For each work, there is information about the size of the work and text as displayed in the textbook as well as details about the work’s medium and year created. Demographic data about the artist is also included.
+> * loadouts.csv: The rules allow each survivalist to take 10 items with them. This dataset includes information on each survivalist’s loadout. It has detailed item descriptions and a simplified version for easier aggregation and analysis
 
-> * worksgardner: Contains individual work-level data by edition of Gardner’s art history textbook from 1926 until 2020. For each work, there is information about the size of the work as displayed in the textbook as well as the size of the accompanying descriptive text. Demographic data about the artist is also included.
+> * episodes.csv: This dataset contains details of each episode including the title, number of viewers, beginning quote, and IMDb rating. New episodes are added at the end of future seasons.
 
-> * artists: Contains various information about artists by edition of Gardner or Janson’s art history textbook from 1926 until 2020. Data includes demographic information, space occupied in the textbook, as well as presence in the MoMA and Whitney museums.
+> * seasons.csv: The season summary dataset includes location, latitude and longitude, and other season-level information. It includes the date of drop-off where the information exists.
 
-Acknowledging arthistory
+Acknowledging the Alone dataset
 
-> Citation
-
-> Lemus S, Stam H (2022). arthistory: Art History Textbook Data. https://github.com/saralemus7/arthistory, https://saralemus7.github.io/arthistory/.
-
-Examples of analyses are included in [Holland Stam's thesis](https://github.com/hollandstam1/thesis) in Quarto files.
+> Dan Oehm:
+* Alone data package: [https://github.com/doehm/alone](https://github.com/doehm/alone)
+* Alone data package blog post: [https://gradientdescending.com/alone-r-package-datasets-from-the-survival-tv-series/](https://gradientdescending.com/alone-r-package-datasets-from-the-survival-tv-series/)
 
 
 ## My plot
 
-### 🎨 Art Histpry
+### 🐻 ALONE  
 
-![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-17/w3.png)
+![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-24/w4.png)
 
-[Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-17/) 
+[Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-24/) 
 
 
 

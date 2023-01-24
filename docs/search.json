@@ -144,7 +144,7 @@
     "href": "dataviz.html",
     "title": "Data Visualization",
     "section": "",
-    "text": "Tidy Tuesday, 2023 Week 3 🎨\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nR\n\n\n\n\n#TidyTuesday Week 3, 2023: Art History\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nTidy Tuesday, 2023 Week 2 🐦\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nR\n\n\n\n\n#TidyTuesday Week 2, 2023: Project FeederWatch\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nTidy Tuesday, 2023 Week 1 🏡\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nR\n\n\n\n\n#TidyTuesday Week 1, 2023: Bring your own data from 2022!\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHealthcare Area Chart\n\n\n\n\n\n\n\narea chart\n\n\nD3\n\n\n\n\nIn 2020, a greater percent of previously uninsured people in the U.S. with low incomes were enrolled in Medicare or Medicaid.\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\nNo matching items"
+    "text": "Tidy Tuesday, 2023 Week 4 🐻\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nR\n\n\n\n\n#TidyTuesday Week 4, 2023: ALONE\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nTidy Tuesday, 2023 Week 3 🎨\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nR\n\n\n\n\n#TidyTuesday Week 3, 2023: Art History\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nTidy Tuesday, 2023 Week 2 🐦\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nR\n\n\n\n\n#TidyTuesday Week 2, 2023: Project FeederWatch\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nTidy Tuesday, 2023 Week 1 🏡\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nR\n\n\n\n\n#TidyTuesday Week 1, 2023: Bring your own data from 2022!\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHealthcare Area Chart\n\n\n\n\n\n\n\narea chart\n\n\nD3\n\n\n\n\nIn 2020, a greater percent of previously uninsured people in the U.S. with low incomes were enrolled in Medicare or Medicaid.\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Data/viz/healthcare area chart/healthcare_areachart.html",
@@ -544,5 +544,19 @@
     "title": "Tidy Tuesday, 2023 Week 3 🎨",
     "section": "My plot",
     "text": "My plot\n\n🎨 Art Histpry\n\nCode here"
+  },
+  {
+    "objectID": "Data/viz/2023-01-24 Tidy Tuesday/TT_wk4.html",
+    "href": "Data/viz/2023-01-24 Tidy Tuesday/TT_wk4.html",
+    "title": "Tidy Tuesday, 2023 Week 4 🐻",
+    "section": "",
+    "text": "Data for this week’s TidyTuesday comes from the TV show ALONE!\nHere is a little more information about the data:"
+  },
+  {
+    "objectID": "Data/viz/2023-01-24 Tidy Tuesday/TT_wk4.html#my-plot",
+    "href": "Data/viz/2023-01-24 Tidy Tuesday/TT_wk4.html#my-plot",
+    "title": "Tidy Tuesday, 2023 Week 4 🐻",
+    "section": "My plot",
+    "text": "My plot\n\n🐻 ALONE\n\nCode here"
   }
 ]
