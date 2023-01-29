@@ -170,6 +170,20 @@ code span.kw {
 
 /*# sourceMappingURL=debc5d5d77c3f9108843748ff7464032.css.map */
 
+/* DEMO-SPECIFIC STYLES */
+.typewriter h1 {
+  color: #000000;
+  font-family: Courier;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
@@ -267,3 +281,7 @@ code span.kw {
   padding: 10px;
 }
 
+
+background {
+  color: #FFFFFF;
+}
