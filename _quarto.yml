@@ -39,4 +39,4 @@ format:
     footnotes-hover: true
     fontsize: 1em
     theme: spacelab
-    css: styles.css
+    css: my-liera.scss.css
