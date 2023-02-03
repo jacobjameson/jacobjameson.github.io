@@ -16,33 +16,156 @@ comments:
     repo: jacobjameson/jacobjameson.github.io
 ---
 
+<style>
+.chart-container {
+max-width: 1050px;
+margin: 0 auto;
+font-family: 'Libre Franklin Light', sans-serif;
+}
+
+svg {
+overflow: visible;
+}
+
+h1 {
+margin: 0px 0px;
+font-size: 26px;
+font-weight: lighter;
+font-family: 'Libre Franklin Light', sans-serif;
+}
+
+.x .tick line {
+stroke: rgba(0, 0, 0, 1);
+}
+
+.y .tick line {
+stroke: rgba(0, 0, 0, .2);
+}
+
+.x .domain {
+display: none;
+}
+
+.y .domain {
+display: none;
+}
+
+.y .tick text {
+font-size: 13px;
+font-weight: 100;
+fill: #333;
+}
+
+.x .tick text {
+font-size: 13px;
+font-weight: 100;
+fill: #333;
+}
+
+.label {
+font-size: 18.5px;
+font-weight: 300;
+}
+
+.smallLabel {
+font-size: 13px;
+font-weight: 300;
+}
+
+.axis-label {
+font-size: 13px;
+font-weight: lighter;
+text-transform: uppercase;
+}
+
+.source {
+font-size: 12.4px;
+max-width: 600px;
+margin: 0px 180px;
+line-height: 18px;
+color: rgba(0, 0, 0, 0.4)
+}
+
+.legend { 
+list-style: none; 
+margin: 0px 81px 0px 0px;
+}
+
+.legend li { 
+float: right; 
+margin-right: 8px;
+font-family: 'Libre Franklin Light', sans-serif;
+font-weight: lighter;
+font-size: 12.5px;
+display: inline;
+}
+
+.legend span { 
+float: left; 
+width: 12.5px; 
+height: 12.5px; 
+margin: 1px 2.5px; 
+}
+
+.legend .fifthblock { 
+background-color: #E0E0E0; 
+}
+
+.legend .fourthblock { 
+background-color: #90A4AE; 
+}
+
+.legend .thirdblock {
+background-color: #5C6BC0; 
+}
+
+.legend .secondblock { 
+background-color: #F06292; 
+}
+
+.legend .firstblock { 
+background-color: #FDD835; 
+}
+
+.flex {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+}
+
+</style>
+
+
+
+
+<body>
+<div class="chart-container">
+<header class="flex">
+<h1 class="headline">
+Health Insurance by Income: 2020
+</h1>
+<ul class="legend">
+<li><span class="fifthblock"></span style = > Other</li>
+<li><span class="fourthblock"></span> Military</li>
+<li><span class="thirdblock"></span> CHIP</li>
+<li><span class="secondblock"></span> Subsidized Exchange</li>
+<li><span class="firstblock"></span> Medicare and Medicaid</li>
+</ul>
+</header>
+<svg width="1050px" height="562px"></svg>
+<p class="source">
+Note: The income measure used here is 
+<span style= "color:#000000">
+disposable income
+</span>
+, which is defined as market income plus cash transfers from the government and noncash benefits like food stamps and public housing. It excludes taxes, out-of-pocket medical spending, insurance premiums and other expenses. There have been small changes in the census questionnaire between the two survey dates. Source: Current Population Survey, analysis by Matt Bruenig</p>
+</div>
+</body>
 
 <script src="https://d3js.org/d3.v6.min.js"></script>
-<script src="https://unpkg.com/topojson@3"></script>
-<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
-
-
-<p class="intro">
-
-<div class="chart-container">
-<h5 class="hed">
-American health insurance by income in
-<span class=highlightpink>2020</span>
-</h5>
-
-<p class="caption">
-In 2020, a greater percent of previously uninsured people in the U.S.
-with low incomes were enrolled in Medicare or Medicaid.
-</p>
-
-<svg width="700px" height="500px" id="dancing-bar-chart"></svg>
-
-<div class='spacer'></div>
-
-<p class="source">
-Note: The income measure used here is disposable income, which is defined as market income plus cash  transfers from the government and noncash benefits like food stamps and public housing. It excludes taxes, out-of-pocket medical spending, insurance premiums and other expenses. There have been small changes in the census questionnaire between the two survey dates. Source: Current Population Survey, analysis by Matt Bruenig
-</p>
-</div>
-
-
 <script src=dancing-bar-chart.js ></script>
+
+
+[Code here](https://github.com/jacobjameson/jacobjameson.github.io/blob/main/Data/viz/healthcare%20area%20chart/dancing-bar-chart.js) 
+
+
