@@ -1,0 +1,45 @@
+---
+title: "Tidy Tuesday, 2023 Week 6 📈"
+author: "Jacob Jameson"
+description: |
+  #TidyTuesday Week 6, 2023: Big Tech Stock Prices
+categories: [Tidy Tuesday, R]
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: spacelab  
+page-layout: full
+comments:
+  utterances:
+    repo: jacobjameson/jacobjameson.github.io
+---
+
+
+| Week | Date | Data | Source | Article
+| :---: | :---: | :--- | :--- | :---|
+| 6 | `2023-02-07` | [Big Tech Stock Prices](2023-02-07/readme.md) | [Big Tech Stock Prices on Kaggle](https://www.kaggle.com/datasets/evangower/big-tech-stock-prices) | [5 Charts on Big Tech Stocks’ Collapse](https://www.morningstar.com/articles/1129535/5-charts-on-big-tech-stocks-collapse) |
+
+Here is a little more information about the data:
+
+# Big Tech Stock Prices
+
+The data this week comes from Yahoo Finance via [Kaggle](https://www.kaggle.com/datasets/evangower/big-tech-stock-prices) (by [Evan Gower](https://github.com/rfordatascience/tidytuesday/issues/509)).
+
+> This dataset consists of the daily stock prices and volume of 14 different tech companies, including Apple (AAPL), Amazon (AMZN), Alphabet (GOOGL), and Meta Platforms (META) and more!
+
+A number of articles have examined the collapse of "Big Tech" stock prices, including [this article from morningstar.com](https://www.morningstar.com/articles/1129535/5-charts-on-big-tech-stocks-collapse).
+
+Note: All `stock_symbol`s have 3271 prices, except META (2688) and TSLA (3148) because they were not publicly traded for part of the period examined.
+
+## My plot
+
+### 📈 Big Tech Stock Prices
+
+![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-02-07/w6.png)
+
+[Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-02-07/) 
+
+
+
+

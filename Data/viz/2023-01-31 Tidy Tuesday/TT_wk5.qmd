@@ -15,7 +15,6 @@ comments:
     repo: jacobjameson/jacobjameson.github.io
 ---
 
-Data for this week's TidyTuesday comes from the TV show ALONE!
 
 | Week | Date | Data | Source | Article
 | :---: | :---: | :--- | :--- | :---|
@@ -43,7 +42,7 @@ Additional datasets for the [US](https://www.datarepository.movebank.org/handle/
 
 ## My plot
 
-### 🐱 ALONE  
+### 🐱 Pet Cats UK  
 
 ![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-31/week5_edit.png)
 
