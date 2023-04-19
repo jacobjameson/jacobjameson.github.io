@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.0.38">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Jacob Jameson">
 <meta name="description" content="We will spend time motivating why R is such a commonly used and powerful language in statistical programming and how it will be useful for them in their future endeavors (public policy, economics, data science applications, etc.). We will go through the interface of R Studio to better understand the environment and learn how to do simple variable assignment, arithmetic, and logical comparison.">
-
 <title>Jacob Jameson - Module 1: An Introduction and Motivation for R Programming</title>
 <style>
 code{white-space: pre-wrap;}
@@ -82,7 +79,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -98,8 +94,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -117,10 +112,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-
-<link rel="stylesheet" href="../../styles.css">
+}</script><link rel="stylesheet" href="../../my-liera.scss.css">
 <meta name="twitter:title" content="Jacob Jameson - Module 1: An Introduction and Motivation for R Programming">
 <meta name="twitter:description" content="We will spend time motivating why R is such a commonly used and powerful language in statistical programming and how it will be useful for them in their future endeavors (public policy, economics, data science applications, etc.). We will go through the interface of R Studio to better understand the environment and learn how to do simple variable assignment, arithmetic, and logical comparison.">
 <meta name="twitter:image" content="https://www.jacobjameson.github.io/docs/images/profile.png">
@@ -129,13 +121,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:image-height" content="612">
 <meta name="twitter:image-width" content="612">
 </head>
-
 <body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Jacob Jameson</span>
   </a>
@@ -144,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../code.html">Coding</a>
   </li>  
   <li class="nav-item">
@@ -154,8 +143,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="nav-link" href="../../dataviz.html">Data Visualization</a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
     <a class="nav-link" href="../../blog.html">Blog</a>
   </li>  
   <li class="nav-item compact">
@@ -169,39 +158,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  </a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+<div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#an-introduction-and-motivation-for-r-programming" id="toc-an-introduction-and-motivation-for-r-programming" class="nav-link active" data-scroll-target="#an-introduction-and-motivation-for-r-programming">An Introduction and Motivation for R Programming</a></li>
-  <li><a href="#lab-1" id="toc-lab-1" class="nav-link" data-scroll-target="#lab-1">Lab 1</a>
+<li><a href="#an-introduction-and-motivation-for-r-programming" id="toc-an-introduction-and-motivation-for-r-programming" class="nav-link active" data-scroll-target="#an-introduction-and-motivation-for-r-programming">An Introduction and Motivation for R Programming</a></li>
+  <li>
+<a href="#lab-1" id="toc-lab-1" class="nav-link" data-scroll-target="#lab-1">Lab 1</a>
   <ul class="collapse">
-  <li><a href="#general-guidelines" id="toc-general-guidelines" class="nav-link" data-scroll-target="#general-guidelines">General Guidelines:</a></li>
+<li><a href="#general-guidelines" id="toc-general-guidelines" class="nav-link" data-scroll-target="#general-guidelines">General Guidelines:</a></li>
   <li><a href="#warm-up" id="toc-warm-up" class="nav-link" data-scroll-target="#warm-up">Warm-up</a></li>
   <li><a href="#guess-the-output-algebra" id="toc-guess-the-output-algebra" class="nav-link" data-scroll-target="#guess-the-output-algebra">Guess the Output: Algebra</a></li>
   <li><a href="#guess-the-output-boolean" id="toc-guess-the-output-boolean" class="nav-link" data-scroll-target="#guess-the-output-boolean">Guess the Output: Boolean</a></li>
   <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
-  </ul></li>
   </ul>
-</nav>
-</nav>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</li>
+  </ul></nav>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Module 1: An Introduction and Motivation for R Programming</h1>
 </div>
 
@@ -225,21 +205,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
-</header>
-
-<section id="an-introduction-and-motivation-for-r-programming" class="level2">
-<h2 class="anchored" data-anchor-id="an-introduction-and-motivation-for-r-programming">An Introduction and Motivation for R Programming</h2>
+</header><section id="an-introduction-and-motivation-for-r-programming" class="level2"><h2 class="anchored" data-anchor-id="an-introduction-and-motivation-for-r-programming">An Introduction and Motivation for R Programming</h2>
+<p><a href="slides1.html">Download a copy of Module 1 slides</a></p>
 <center>
 <iframe width="700" height="500" src="https://www.youtube.com/embed/V_JdkNuuhms">
 </iframe>
 </center>
-<p><a href="slides1.html">Download a copy of Module 1 slides</a></p>
-</section>
-<section id="lab-1" class="level2">
-<h2 class="anchored" data-anchor-id="lab-1">Lab 1</h2>
+</section><section id="lab-1" class="level2"><h2 class="anchored" data-anchor-id="lab-1">Lab 1</h2>
 <p>We expect you to watch the Module 1 material prior to lab.</p>
-<section id="general-guidelines" class="level3">
-<h3 class="anchored" data-anchor-id="general-guidelines">General Guidelines:</h3>
+<section id="general-guidelines" class="level3"><h3 class="anchored" data-anchor-id="general-guidelines">General Guidelines:</h3>
 <p>You will encounter a few functions we did not cover in the lecture video. This will give you some practice on how to use a new function for the first time. You can try following steps:</p>
 <ol type="1">
 <li>Start by typing <code>?new_function</code> in your Console to open up the help page</li>
@@ -253,10 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Check if you may have a typo in the code. Sometimes another person can spot a typo faster than you.</li>
 <li>If you enter the code without any typo, try googling the error message</li>
 <li>Scroll through the top few links see if any of them helps</li>
-</ol>
-</section>
-<section id="warm-up" class="level3">
-<h3 class="anchored" data-anchor-id="warm-up">Warm-up</h3>
+</ol></section><section id="warm-up" class="level3"><h3 class="anchored" data-anchor-id="warm-up">Warm-up</h3>
 <ol type="1">
 <li><p>The most important warm up question: do you have R and RStudio installed?</p></li>
 <li><p>Which of these allow you to pull up the documentation for a command in R?</p></li>
@@ -264,146 +235,135 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol type="a">
 <li><code>*</code></li>
 <li><code>?</code></li>
-<li><code>help()</code></li>
+<li><code><a href="https://rdrr.io/r/utils/help.html">help()</a></code></li>
 <li><code>documentation()</code></li>
 </ol>
 <ol start="3" type="1">
-<li>In the code block below, run code that will pull up documentation for the function <code>paste0()</code>.</li>
+<li>In the code block below, run code that will pull up documentation for the function <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">paste0</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What does this function do?</p>
 <ol start="4" type="1">
 <li>What are the two ways that you can assign a value to a variable?</li>
-</ol>
-</section>
-<section id="guess-the-output-algebra" class="level3">
-<h3 class="anchored" data-anchor-id="guess-the-output-algebra">Guess the Output: Algebra</h3>
+</ol></section><section id="guess-the-output-algebra" class="level3"><h3 class="anchored" data-anchor-id="guess-the-output-algebra">Guess the Output: Algebra</h3>
 <ol start="5" type="1">
 <li>Guess the output of the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> a<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
+<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="va">a</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span></span>
+<span><span class="va">b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, run the code block to check your answer.</p>
 <ol start="6" type="1">
 <li>Guess the output of the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span><span class="dv">3</span> <span class="sc">%%</span> a</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">b</span> <span class="op">&lt;-</span><span class="fl">3</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="va">a</span></span>
+<span></span>
+<span><span class="va">b</span> <span class="op">+</span> <span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><em>Hint</em>: If you are not sure what <code>%%</code> does you can try running <code>?'%%'</code> to better understand.</p>
+<p><em>Hint</em>: If you are not sure what <code>%%</code> does you can try running <code><a href="https://rdrr.io/r/base/Arithmetic.html">?'%%'</a></code> to better understand.</p>
 <ol start="7" type="1">
 <li>Guess the output of the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> a<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="va">a</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span></span>
+<span><span class="va">b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="guess-the-output-boolean" class="level3">
-<h3 class="anchored" data-anchor-id="guess-the-output-boolean">Guess the Output: Boolean</h3>
+</section><section id="guess-the-output-boolean" class="level3"><h3 class="anchored" data-anchor-id="guess-the-output-boolean">Guess the Output: Boolean</h3>
 <ol start="8" type="1">
 <li>Guess the output of the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span> <span class="sc">&gt;=</span> <span class="dv">14</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">25</span> <span class="op">&gt;=</span> <span class="fl">14</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="9" type="1">
 <li>Guess the output of the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">!=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">10</span> <span class="op">!=</span> <span class="fl">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="10" type="1">
 <li>Guess the output of the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span><span class="sc">%%</span><span class="dv">5</span> <span class="sc">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">7</span><span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span><span class="fl">5</span> <span class="op">==</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="11" type="1">
 <li>Guess the output of the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">7</span>) <span class="sc">&amp;</span> (<span class="dv">7</span> <span class="sc">*</span> <span class="dv">7</span> <span class="sc">==</span> <span class="dv">49</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="fl">5</span> <span class="op">&gt;</span> <span class="fl">7</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="fl">7</span> <span class="op">*</span> <span class="fl">7</span> <span class="op">==</span> <span class="fl">49</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="12" type="1">
 <li>Ok, let’s try some logic! Try to figure out each one before running the code!</li>
 </ol>
 <ol type="a">
-<li></li>
-</ol>
+<li>
+</li></ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="a">
-<li></li>
-</ol>
+<li>
+</li></ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="a">
-<li></li>
-</ol>
+<li>
+</li></ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> (<span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">TRUE</span> <span class="op">|</span> <span class="op">(</span><span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="4" type="a">
-<li></li>
-</ol>
+<li>
+</li></ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> (<span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">FALSE</span> <span class="op">|</span> <span class="op">(</span><span class="cn">TRUE</span> <span class="op">|</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="5" type="a">
-<li></li>
-</ol>
+<li>
+</li></ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="cn">TRUE</span> <span class="sc">&amp;</span> (<span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span>)) <span class="sc">|</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="op">(</span><span class="cn">TRUE</span> <span class="op">|</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op">|</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="data-types" class="level3">
-<h3 class="anchored" data-anchor-id="data-types">Data Types</h3>
+</section><section id="data-types" class="level3"><h3 class="anchored" data-anchor-id="data-types">Data Types</h3>
 <ol start="13" type="1">
 <li>Run these lines to create these variables in your environment.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>item_1 <span class="ot">&lt;-</span> <span class="st">"Hi, my name is item 1!"</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>item_2 <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>item_3 <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">item_1</span> <span class="op">&lt;-</span> <span class="st">"Hi, my name is item 1!"</span></span>
+<span><span class="va">item_2</span> <span class="op">&lt;-</span> <span class="fl">7</span></span>
+<span><span class="va">item_3</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What are the type (or mode) of each of these items?</p>
-<p><em>Hint</em>: If you are not sure, you could apply the <code>mode()</code> function to each item and check the output. If you are unsure about how to apply the <code>mode()</code> function, you can always run <code>?mode()</code>.</p>
+<p><em>Hint</em>: If you are not sure, you could apply the <code><a href="https://rdrr.io/r/base/mode.html">mode()</a></code> function to each item and check the output. If you are unsure about how to apply the <code><a href="https://rdrr.io/r/base/mode.html">mode()</a></code> function, you can always run <code>?mode()</code>.</p>
 <ol start="14" type="1">
 <li>Guess the output of the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(item_2 <span class="sc">+</span> <span class="dv">19</span> <span class="sc">&lt;=</span> <span class="dv">25</span>) <span class="sc">==</span> item_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">item_2</span> <span class="op">+</span> <span class="fl">19</span> <span class="op">&lt;=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">==</span> <span class="va">item_3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="15" type="1">
-<li>Do you remember earlier when you ran <code>?paste0()</code>? We are now going to try to use this function. In the code block below, initialize two variables that are of mode “character”. The output when you apply <code>paste0()</code> to these variables should be “Hello, world!”.</li>
+<li>Do you remember earlier when you ran <code>?paste0()</code>? We are now going to try to use this function. In the code block below, initialize two variables that are of mode “character”. The output when you apply <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> to these variables should be “Hello, world!”.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#v1 &lt;-</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#v2 &lt;- </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#v1 &lt;-</span></span>
+<span><span class="co">#v2 &lt;- </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Well done! You’ve learned how to work with R to perform simple variable assignment and operations!</p>
 <p><strong>Want to improve this tutorial?</strong> Report any suggestions/bugs/improvements on <a href="mailto:jacobjameson@g.harvard.edu">here</a>! We’re interested in learning from you how we can make this tutorial better.</p>
 
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -501,12 +461,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2022, Jacob Jameson</div>   
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Jacob Jameson</div>   
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jacobjameson/jacobjameson.github.io">
       <i class="bi bi-github" role="img">
 </i> 
@@ -519,10 +478,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
 
 
 </body></html>
