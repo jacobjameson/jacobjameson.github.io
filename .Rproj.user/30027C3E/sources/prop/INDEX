@@ -82,6 +82,7 @@
 ~%2FDownloads%2Fbootstrap.css="E056405E"
 ~%2FDownloads%2Fsample_script.R="F49BE757"
 ~%2FGitHub%2Fjacobjameson.github.io%2F.gitattributes="EAB962BA"
+~%2FGitHub%2Fjacobjameson.github.io%2F.gitignore="F106F2E4"
 ~%2FGitHub%2Fjacobjameson.github.io%2FData%2Fviz%2F2023-01-03%20Tidy%20Tuesday%2FTT_wk1.qmd="C2CCC38F"
 ~%2FGitHub%2Fjacobjameson.github.io%2FData%2Fviz%2F2023-01-10%20Tidy%20Tuesday%2FTT_wk2.qmd="E49A14E4"
 ~%2FGitHub%2Fjacobjameson.github.io%2FData%2Fviz%2F2023-01-17%20Tidy%20Tuesday%2FTT_wk3.qmd="4805CC79"
@@ -100,3 +101,4 @@
 ~%2FGitHub%2Fjacobjameson.github.io%2Findex.qmd="C89A4F80"
 ~%2FGitHub%2Fjacobjameson.github.io%2Fmy-liera.scss.css="C536DC16"
 ~%2FGitHub%2Fjacobjameson.github.io%2Fstyles.css="BCCD936E"
+~%2FGitHub%2Fjacobjameson.github.io%2Fteaching.qmd="A9F46A8F"
