@@ -38,5 +38,5 @@ format:
     reference-location: margin
     footnotes-hover: true
     fontsize: 1em
-    theme: spacelab
+    theme: minty
     css: my-liera.scss.css

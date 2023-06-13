@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.0.38">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Jacob Jameson">
 <meta name="description" content="This lesson is about making sure students can access and manipulate their data. We will introduce the pipe operator and how can they can use it to organize their code. We will discuss several important dplyr functions and their usefulness in data manipulation and analysis.">
-
 <title>Jacob Jameson - Module 4: Data Manipulation</title>
 <style>
 code{white-space: pre-wrap;}
@@ -82,7 +79,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -98,8 +94,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -117,26 +112,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="../../styles.css">
+}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="../../my-liera.scss.css">
 <meta name="twitter:title" content="Jacob Jameson - Module 4: Data Manipulation">
 <meta name="twitter:description" content="This lesson is about making sure students can access and manipulate their data. We will introduce the pipe operator and how can they can use it to organize their code. We will discuss several important dplyr functions and their usefulness in data manipulation and analysis.">
 <meta name="twitter:image" content="https://www.jacobjameson.github.io/docs/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="612">
-<meta name="twitter:image-width" content="612">
+<meta name="twitter:image-height" content="452">
+<meta name="twitter:image-width" content="455">
 </head>
-
 <body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Jacob Jameson</span>
   </a>
@@ -145,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../code.html">Coding</a>
   </li>  
   <li class="nav-item">
@@ -155,8 +143,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="nav-link" href="../../dataviz.html">Data Visualization</a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
     <a class="nav-link" href="../../blog.html">Blog</a>
   </li>  
   <li class="nav-item compact">
@@ -170,39 +158,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  </a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+<div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-manipulation" id="toc-data-manipulation" class="nav-link active" data-scroll-target="#data-manipulation">Data Manipulation</a></li>
-  <li><a href="#lab-4" id="toc-lab-4" class="nav-link" data-scroll-target="#lab-4">Lab 4</a>
+<li><a href="#data-manipulation" id="toc-data-manipulation" class="nav-link active" data-scroll-target="#data-manipulation">Data Manipulation</a></li>
+  <li>
+<a href="#lab-4" id="toc-lab-4" class="nav-link" data-scroll-target="#lab-4">Lab 4</a>
   <ul class="collapse">
-  <li><a href="#general-guidelines" id="toc-general-guidelines" class="nav-link" data-scroll-target="#general-guidelines">General Guidelines:</a></li>
+<li><a href="#general-guidelines" id="toc-general-guidelines" class="nav-link" data-scroll-target="#general-guidelines">General Guidelines:</a></li>
   <li><a href="#warm-up" id="toc-warm-up" class="nav-link" data-scroll-target="#warm-up">Warm-up</a></li>
   <li><a href="#examining-wid_data" id="toc-examining-wid_data" class="nav-link" data-scroll-target="#examining-wid_data">Examining ’wid_data</a></li>
   <li><a href="#manipulating-world-inequality-data-with-dplyr" id="toc-manipulating-world-inequality-data-with-dplyr" class="nav-link" data-scroll-target="#manipulating-world-inequality-data-with-dplyr">Manipulating World Inequality Data with <code>dplyr</code></a></li>
   <li><a href="#manipulating-midwest-demographic-data-with-dplyr" id="toc-manipulating-midwest-demographic-data-with-dplyr" class="nav-link" data-scroll-target="#manipulating-midwest-demographic-data-with-dplyr">Manipulating Midwest Demographic Data with <code>dplyr</code></a></li>
-  </ul></li>
   </ul>
-</nav>
-</nav>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</li>
+  </ul></nav>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content page-columns page-full column-body" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content page-columns page-full column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Module 4: Data Manipulation</h1>
 </div>
 
@@ -226,22 +205,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
-</header>
-
-<section id="data-manipulation" class="level2">
-<h2 class="anchored" data-anchor-id="data-manipulation">Data Manipulation</h2>
+</header><section id="data-manipulation" class="level2"><h2 class="anchored" data-anchor-id="data-manipulation">Data Manipulation</h2>
 <p><a href="slides4.html">Download a copy of Module 4 slides</a></p>
 <p><a href="data4.zip">Download data for Module 4 lab and tutorial</a></p>
 <center>
 <iframe width="700" height="500" src="https://www.youtube.com/embed/Ld1PSDW7KsE">
 </iframe>
 </center>
-</section>
-<section id="lab-4" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="lab-4">Lab 4</h2>
+</section><section id="lab-4" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="lab-4">Lab 4</h2>
 <p>In this lab, you will work with 2 data sets (<code>world_wealth_inequality.xlsx</code> and <code>midwest.dta</code>).</p>
-<section id="general-guidelines" class="level3">
-<h3 class="anchored" data-anchor-id="general-guidelines">General Guidelines:</h3>
+<section id="general-guidelines" class="level3"><h3 class="anchored" data-anchor-id="general-guidelines">General Guidelines:</h3>
 <p>You will encounter a few functions we did not cover in the lecture video. This will give you some practice on how to use a new function for the first time. You can try following steps:</p>
 <ol type="1">
 <li>Start by typing <code>?new_function</code> in your Console to open up the help page</li>
@@ -256,31 +229,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>If you enter the code without any typo, try googling the error message</li>
 <li>Scroll through the top few links see if any of them helps</li>
 <li>Try working on the next few questions while waiting for answers by TAs</li>
-</ol>
-</section>
-<section id="warm-up" class="level3">
-<h3 class="anchored" data-anchor-id="warm-up">Warm-up</h3>
+</ol></section><section id="warm-up" class="level3"><h3 class="anchored" data-anchor-id="warm-up">Warm-up</h3>
 <ol type="1">
 <li>Which of these are commands from <code>dplyr</code>?</li>
 </ol>
 <ol type="a">
 <li><code>mutate()</code></li>
-<li><code>filter()</code></li>
-<li><code>mean()</code></li>
+<li><code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code></li>
+<li><code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code></li>
 </ol>
 <ol start="2" type="1">
-<li><p>In the videos, you learned about <code>head()</code>. What if you wanted to get the tail end of your data instead?</p></li>
+<li><p>In the videos, you learned about <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>. What if you wanted to get the tail end of your data instead?</p></li>
 <li><p>Imagine you have a data set, <code>df</code> with 4 variables, <code>county</code>, <code>year</code>, <code>income</code>, and <code>employment</code>. You only need the year and employment status of people whose income is below $5000. Which two <code>dplyr</code> commands do you need to do this? Can you write the code for this?</p></li>
-<li><p>Remember the <code>mean()</code> function? What <code>dplyr</code> commands would we need if we want the average income in counties for the year 2003? Can you write the code for this?</p></li>
+<li><p>Remember the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function? What <code>dplyr</code> commands would we need if we want the average income in counties for the year 2003? Can you write the code for this?</p></li>
 <li><p>Load <code>tidyverse</code>, <code>haven</code>, and <code>readxl</code> in your Rmd. If you haven’t yet, download the data from this page and put the data in your data folder and set your working directory. The data source is the World Inequality Database where you can find data about the distribution of income and wealth in several contries over time. Outside of lab time, check out <a href="https://wid.world">wid.world</a> for more information.</p></li>
 <li><p>If you followed the set-up from above, you should be able to run the following code with no error.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>wid_data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"world_wealth_inequality.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wid_data</span> <span class="op">&lt;-</span> <span class="fu">read_xlsx</span><span class="op">(</span><span class="st">"world_wealth_inequality.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="examining-wid_data" class="level3">
-<h3 class="anchored" data-anchor-id="examining-wid_data">Examining ’wid_data</h3>
+</section><section id="examining-wid_data" class="level3"><h3 class="anchored" data-anchor-id="examining-wid_data">Examining ’wid_data</h3>
 <ol type="1">
 <li><p>Look at the data. What is the main problem here?</p></li>
 <li><p>We don’t have columns headers. The World Inequality Database says the “structure” of the download is as shown in the image below.</p></li>
@@ -288,81 +256,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="dataimg.png" class="img-fluid"></p>
 <p>So we can create our own header in read_xlsx. Calling the read_xlsx function using readxl::read_xlsx() ensures that we use the read_xlsx() function from the readxl package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wid_data_raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"world_wealth_inequality.xlsx"</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"country"</span>, <span class="st">"indicator"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                                 <span class="st">"percentile"</span>, <span class="st">"year"</span>, <span class="st">"value"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wid_data_raw</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx</a></span><span class="op">(</span><span class="st">"world_wealth_inequality.xlsx"</span>,</span>
+<span>                                   col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"country"</span>, <span class="st">"indicator"</span>,</span>
+<span>                                                 <span class="st">"percentile"</span>, <span class="st">"year"</span>, <span class="st">"value"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now when we look at the second column. It’s a mess. We can separate it based on where the <code>\n</code> are and then deal with the data later. Don’t worry about this code right now.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>wid_data_raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"world_wealth_inequality.xlsx"</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"country"</span>, <span class="st">"indicator"</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"percentile"</span>, <span class="st">"year"</span>, </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"value"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(indicator, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">n"</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"row_tag"</span>, <span class="st">"type"</span>, <span class="st">"notes"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wid_data_raw</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx</a></span><span class="op">(</span><span class="st">"world_wealth_inequality.xlsx"</span>,</span>
+<span>                                  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"country"</span>, <span class="st">"indicator"</span>,</span>
+<span>                                                <span class="st">"percentile"</span>, <span class="st">"year"</span>, </span>
+<span>                                                <span class="st">"value"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">separate</span><span class="op">(</span><span class="va">indicator</span>, sep <span class="op">=</span> <span class="st">"\\n"</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"row_tag"</span>, <span class="st">"type"</span>, <span class="st">"notes"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Note</em>: We want a clean reproducible script so you should just have one block of code reading the data: that last one. The other code were building blocks. If you want to keep “extra” code temporarily in your script you can use # to comment out the code.</p>
-</section>
-<section id="manipulating-world-inequality-data-with-dplyr" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="manipulating-world-inequality-data-with-dplyr">Manipulating World Inequality Data with <code>dplyr</code></h3>
-<p>Now we have some data and are ready to use <code>select()</code>, <code>filter()</code>, <code>mutate()</code>, <code>summarize()</code> and <code>arrange()</code> to explore it.</p>
+</section><section id="manipulating-world-inequality-data-with-dplyr" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="manipulating-world-inequality-data-with-dplyr">Manipulating World Inequality Data with <code>dplyr</code>
+</h3>
+<p>Now we have some data and are ready to use <code>select()</code>, <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>, <code>mutate()</code>, <code>summarize()</code> and <code>arrange()</code> to explore it.</p>
 <ol type="1">
 <li><p>The data comes with some redundant columns that add clutter when we examine the data. What <code>dplyr</code> verb let’s you choose what columns to see? Remove the unwanted column <code>row_tag</code> and move notes to the last column position and assign the output to the name <code>wid_data</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
-<li><p>Let’s start to dig into the data. We have two types of data: “Net personal wealth” and “National income”. Start by <code>filter()</code>ing the data so we only have “Net personal wealth” for France, name the resulting data <code>french_data</code> and then run the code below to visualize the data.</p></li>
+<li><p>Let’s start to dig into the data. We have two types of data: “Net personal wealth” and “National income”. Start by <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>ing the data so we only have “Net personal wealth” for France, name the resulting data <code>french_data</code> and then run the code below to visualize the data.</p></li>
 </ol>
 <div class="no-row-height column-margin column-container"><li id="fn1" role="doc-endnote"><p><sup>1</sup>&nbsp;Hint: You can type all the column names or use the slicker <code>select(-notes, everything())</code></p></li></div><div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace each ... with relevant code</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>french_data <span class="ot">&lt;-</span> wid_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>( ... , ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># replace each ... with relevant code</span></span>
+<span><span class="va">french_data</span> <span class="op">&lt;-</span> <span class="va">wid_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span> <span class="va">...</span> , <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Note</em>: When refering to words in the data, make sure they are in quotes “France”, “Net personal wealth”. When referring to columns, do not use quotes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>french_data <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> value, <span class="at">x =</span> year, <span class="at">color =</span> percentile)) <span class="sc">+</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">french_data</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">value</span>, x <span class="op">=</span> <span class="va">year</span>, color <span class="op">=</span> <span class="va">percentile</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we’re getting somewhere! The plot shows the proportion of national wealth owned by different segements of French society overtime. For example in 2000, the top 1 percent owned roughly 28 percent of the wealth, while the bottom 50 percent owned abouy 7 percent.</p>
 <ol start="3" type="1">
-<li><p>Explain the gaps in the plot. Using <code>filter()</code>, look at french_data in the years between 1960 and 1970. Does what you see line up with what you guessed by looking at the graph?</p></li>
+<li><p>Explain the gaps in the plot. Using <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>, look at french_data in the years between 1960 and 1970. Does what you see line up with what you guessed by looking at the graph?</p></li>
 <li><p>Using <code>mutate()</code>, create a new column called <code>perc_national_wealth</code> that equals value multiplied by 100. Adjust the graph code so that the y axis shows <code>perc_national_wealth</code> instead of value.</p></li>
 <li><p>Now following the same steps, explore data from the “Russian Federation”.</p></li>
-<li><p>The data for “Russian Federation” does not start in 1900, but our y-axis does. That’s because we have a bunch of <code>NA</code>s. Let’s filter out the <code>NA</code>s and remake the plot. You cannot test for <code>NA</code> using <code>==</code> (Try: <code>NA == NA</code>). Instead we have a function called <code>is.na()</code>. (Try: <code>is.na(NA)</code> and <code>!is.na(NA)</code>).</p></li>
+<li><p>The data for “Russian Federation” does not start in 1900, but our y-axis does. That’s because we have a bunch of <code>NA</code>s. Let’s filter out the <code>NA</code>s and remake the plot. You cannot test for <code>NA</code> using <code>==</code> (Try: <code>NA == NA</code>). Instead we have a function called <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>. (Try: <code>is.na(NA)</code> and <code>!is.na(NA)</code>).</p></li>
 <li><p>Use two <code>dplyr</code> verbs to figure out what year the bottom 50 percent held the least wealth. First, choose the rows that cover the bottom 50 percent and then sort the data in descending order using <code>arrange()</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p></li>
 </ol>
 <div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;Hint: Look at the examples in <code>?arrange</code></p></li></div><div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace ... with relevant code</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>russian_data <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(...) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># replace ... with relevant code</span></span>
+<span><span class="va">russian_data</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="6" type="1">
 <li>For both the Russian Federation and French data, calculate the average proportion of wealth owned by the top 10 percent over the period from 1995 to 2010. You’ll have to <code>filter</code> and then summarize with <code>summarize()</code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace ... with relevant code</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>russian_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(...) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">top10 =</span> <span class="fu">mean</span>(...))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># replace ... with relevant code</span></span>
+<span><span class="va">russian_data</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>top10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="manipulating-midwest-demographic-data-with-dplyr" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="manipulating-midwest-demographic-data-with-dplyr">Manipulating Midwest Demographic Data with <code>dplyr</code></h3>
+</section><section id="manipulating-midwest-demographic-data-with-dplyr" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="manipulating-midwest-demographic-data-with-dplyr">Manipulating Midwest Demographic Data with <code>dplyr</code>
+</h3>
 <ol type="1">
 <li><p>Now we’ll use midwestern demographic data which is at this link. The dataset includes county level data for a single year. We call data this type of data “cross-sectional” since it gives a point-in-time cross-section of the counties of the midwest. (The world inequality data is “timeseries” data).</p></li>
 <li><p>Save <code>midwest.dta</code> in your data folder and load it into R.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>midwest <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">'midwest.dta'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">midwest</span> <span class="op">&lt;-</span> <span class="fu">read_dta</span><span class="op">(</span><span class="st">'midwest.dta'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
 <li>Run the following code to get a sense of what the data looks like:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(midwest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">midwest</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="4" type="1">
 <li>I wanted a tibble called <code>midwest_pop</code> that only had county identifiers and the 9 columns from midwest concerned with population counts. Replicate my work to create <code>midwest_pop on</code> your own<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</li>
 </ol>
 <div class="no-row-height column-margin column-container"><li id="fn3" role="doc-endnote"><p><sup>3</sup>&nbsp;Hint: notice that all the columns start with the same few letters.</p></li></div><div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(midwest_pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">midwest_pop</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "county"          "state"           "poptotal"        "popdensity"     
  [5] "popwhite"        "popblack"        "popamerindian"   "popasian"       
@@ -371,8 +337,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><em>Hint</em>: I went to <code>?select</code> and found a selection helper that allowed me to select those 9 columns without typing all their names</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace ... with relevant code</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>midwest_pop <span class="ot">&lt;-</span> midwest <span class="sc">%&gt;%</span> <span class="fu">select</span>(county, state, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># replace ... with relevant code</span></span>
+<span><span class="va">midwest_pop</span> <span class="op">&lt;-</span> <span class="va">midwest</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">county</span>, <span class="va">state</span>, <span class="va">...</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="5" type="1">
 <li><p>From <code>midwest_pop</code> calculate the area of each county<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. What’s the largest county in the midwest? How about in Illinois?</p></li>
@@ -384,12 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Want to improve this tutorial?</strong> Report any suggestions/bugs/improvements on <a href="mailto:jacobjameson@uchicago.edu">here</a>! We’re interested in learning from you how we can make this tutorial better.</p>
 
 
-</section>
-</section>
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -487,12 +448,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2022, Jacob Jameson</div>   
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Jacob Jameson</div>   
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jacobjameson/jacobjameson.github.io">
       <i class="bi bi-github" role="img">
 </i> 
@@ -505,10 +465,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
 
 
 </body></html>
