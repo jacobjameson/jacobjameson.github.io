@@ -37,7 +37,7 @@ href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.c
 ::: typewriter
 <h1 style="font-weight: bold; color:#3EB489;">
 
-Welcome to my page!
+Welcome!
 
 </h1>
 :::
@@ -51,10 +51,9 @@ I study the quantitative techniques that are used for informing decision-making 
 
 Prior to starting my PhD, I completed an M.S. in Computational Analysis and Public Policy at The University of Chicago. Before that, I was a middle school mathematics teacher in New Haven, CT. Aside from research I am very interested in K-12 computer science education.
 
+\hline
 
-**What am I currently listening to?**
-
-![](https://spotify-github-profile.vercel.app/api/view?uid=22pabhxtridwheejz7rfec6fq&cover_image=true&theme=default&show_offline=false&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=false){width=30%}
+**What am I currently listening to?** ![](https://spotify-github-profile.vercel.app/api/view?uid=22pabhxtridwheejz7rfec6fq&cover_image=true&theme=novatorem&show_offline=false&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=true)
 
 
 <div class="calendar">
