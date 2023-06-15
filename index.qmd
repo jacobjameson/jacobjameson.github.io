@@ -42,8 +42,6 @@ Welcome!
 </h1>
 :::
 
-<br>
-
 
 I am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr. Soroush Saghafian and work in [The Public Impact Analytics Science Lab (PIAS-Lab)](https://scholar.harvard.edu/saghafian/public-impact-analytics-science-lab-pias-lab-harvard) at Harvard.
 
@@ -53,8 +51,7 @@ Prior to starting my PhD, I completed an M.S. in Computational Analysis and Publ
 
 \hline
 
-**What am I currently listening to?** ![](https://spotify-github-profile.vercel.app/api/view?uid=22pabhxtridwheejz7rfec6fq&cover_image=true&theme=novatorem&show_offline=false&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=true)
-
+**What am I currently listening to?** [![](https://spotify-github-profile.vercel.app/api/view?uid=22pabhxtridwheejz7rfec6fq&cover_image=true&theme=novatorem&show_offline=false&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=true)](https://spotify-github-profile.vercel.app/api/view?uid=22pabhxtridwheejz7rfec6fq&redirect=true)
 
 <div class="calendar">
 </div>
