@@ -130,7 +130,7 @@
     "href": "blog.html",
     "title": "Jacob Jameson",
     "section": "",
-    "text": "Basic Network Analysis and Visualization for Directed Graphs in R\n\n\n\n\n\n\n\nnetworks\n\n\ncentrality\n\n\n\n\nChoosing the Right Centrality Measure.\n\n\n\n\n\n\nNov 1, 2022\n\n\nJacob Jameson\n\n\n\n\n\n\nNo matching items"
+    "text": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research\n\n\n\n\n\n\n\nmarginal effects\n\n\n\n\nMarginal Effects >>> Odds Ratios\n\n\n\n\n\n\nSep 1, 2023\n\n\nJacob Jameson\n\n\n\n\n\n\n\n\nBasic Network Analysis and Visualization for Directed Graphs in R\n\n\n\n\n\n\n\nnetworks\n\n\ncentrality\n\n\n\n\nChoosing the Right Centrality Measure.\n\n\n\n\n\n\nNov 1, 2022\n\n\nJacob Jameson\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Data/horrorplots/haunted/haunted.html",
@@ -600,5 +600,75 @@
     "title": "Tidy Tuesday, 2023 Week 7 🎬",
     "section": "My plot",
     "text": "My plot\n\n🎬 Hollywood Age Gaps\n\nCode here"
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "",
+    "text": "Odds ratios have been a long-standing mainstay in health research. Their use can be found sprinkled throughout countless academic journals and research papers. But just because something is popular doesn’t mean it’s the best choice for all contexts. The purpose of this article is to shed light on the limitations of odds ratios, particularly when it comes to interpretation, and advocate for the more intuitive marginal effects and predicted probabilities."
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html#the-odd-issue-with-odds-ratios",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html#the-odd-issue-with-odds-ratios",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "The Odd Issue with Odds Ratios",
+    "text": "The Odd Issue with Odds Ratios\nImagine a study on the effect of a new drug on reducing heart attack risk. The findings say there’s an odds ratio of 2. Sounds impressive, doesn’t it? But what does that really mean? It’s tempting to think that patients on the drug are twice as likely to avoid heart attacks. But that’s not quite right. They actually have twice the odds, which isn’t the same as probability, especially when the event is common.\nHere’s the crux of the issue: while odds ratios can be a neat statistical tool, they aren’t always intuitive. They can be easily misinterpreted, leading to overstated or misunderstood results."
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html#the-math-behind-odds-ratios",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html#the-math-behind-odds-ratios",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "The math behind odds ratios",
+    "text": "The math behind odds ratios\nTo understand why odds ratios can be confusing, let’s briefly discuss what they represent.\nIn a logistic regression, the fundamental equation is:\n\\[log(\\frac{p}{1-p}) = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + ...\\]\nWhere \\(p\\) is the probability of an event occurring.\nThe odds ratio for a given predictor (let’s say \\(X_1\\)) is simply the exponentiated coefficient for that predictor:\nOdds Ratio for \\(X_1 = E^{\\beta_1}\\)\nIt represents the multiplicative change in the odds of the outcome for a one-unit increase in \\(X_1\\) , holding other variables constant. If this sounds confusing, you’re not alone."
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html#when-odds-ratios-mislead",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html#when-odds-ratios-mislead",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "When Odds Ratios Mislead",
+    "text": "When Odds Ratios Mislead\nThe challenge with odds ratios arises particularly when the outcome of interest is common. The reason being, odds ratios tend to exaggerate relative risks for common outcomes.\nLet’s say we find an odds ratio of 2 for a drug reducing heart attack risk. Many might (mistakenly) interpret this as “patients on the drug are twice as likely to avoid heart attacks.” In reality, they have twice the odds, which doesn’t translate directly to actual probabilities, especially when the event is common."
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html#marginal-effects-clarity-over-confusion",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html#marginal-effects-clarity-over-confusion",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "Marginal Effects: Clarity over Confusion",
+    "text": "Marginal Effects: Clarity over Confusion\nMarginal effects shine where odds ratios falter. They convey the change in the probability of an outcome for a one-unit change in the predictor, holding other variables constant. It’s a direct measure that offers a tangible understanding of impact.\nMathematically, for a binary predictor (like drug use: yes or no):\n\\[\\text{Marginal Effect} (dy/dx) = P(Y = 1|X=1) - P(Y=1|X=0)\\]\nFor continuous predictors, the marginal effect represents the derivative of the probability with respect to the predictor, which essentially gives us the rate of change."
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html#predicted-probabilities-concrete-scenarios-over-abstract-odds",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html#predicted-probabilities-concrete-scenarios-over-abstract-odds",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "Predicted Probabilities: Concrete Scenarios Over Abstract Odds",
+    "text": "Predicted Probabilities: Concrete Scenarios Over Abstract Odds\nPredicted probabilities go a step further, providing the likelihood of an outcome under specific conditions. Instead of leaving things in the realm of odds and abstract increases, we can state tangible scenarios."
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html#demonstrating-with-real-world-data",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html#demonstrating-with-real-world-data",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "Demonstrating with “Real-World” Data",
+    "text": "Demonstrating with “Real-World” Data\nTo provide concrete evidence of the limitations of odds ratios, let’s explore a simulated dataset that mirrors a health study on heart attacks, age, and drug use for high-risk individuals.\nFirst, we’ll generate a dataset with age as a continuous predictor and drug_use as a binary predictor:\nSimulate data\n\nShow the code# Setting the seed for reproducibility\nset.seed(1234)\n\nn <- 1000\n\n# Age distribution: Normally distributed between 40 and 70\nage <- rnorm(n, 55, 7.5)\n\n# Drug use: 50% of the participants use the drug\ndrug_use <- rbinom(n, 1, 0.5)\n\n# Log odds of heart attack: Base risk, then increasing slightly with age, \n# and decreasing with drug use (this is where we're setting the odds ratio to roughly 2 for drug use)\nlog_odds_heart_attack <- -2 + 0.04 * age - log(2) * drug_use\n\n# Converting log odds to probability\nprob_heart_attack <- exp(log_odds_heart_attack) / (1 + exp(log_odds_heart_attack))\n\n# Simulating whether a heart attack occurs or not\nheart_attack <- rbinom(n, 1, prob_heart_attack)\n\n# Create a dataframe\ndata_high_risk <- data.frame(age, drug_use, heart_attack)\n\n\n\nnrow(data_high_risk)\n\n[1] 1000\n\n\n\ndata_high_risk\n\n\n\n\n\n\n age \n    drug_use \n    heart_attack \n  \n\n\n 45.94701 \n    0 \n    1 \n  \n\n 57.08072 \n    0 \n    1 \n  \n\n 63.13331 \n    1 \n    0 \n  \n\n 37.40727 \n    1 \n    0 \n  \n\n 58.21844 \n    0 \n    1 \n  \n\n 58.79542 \n    1 \n    0 \n  \n\n 50.68945 \n    1 \n    0 \n  \n\n 50.90026 \n    0 \n    0 \n  \n\n 50.76661 \n    1 \n    0 \n  \n\n 48.32472 \n    0 \n    1 \n  \n\n\n\n\nModeling and Results\nUsing a logistic regression, we’ll model the probability of a heart attack based on age and drug use:\n\nmodel_high_risk <- glm(heart_attack ~ age + drug_use, \n                       data=data_high_risk, family = binomial)\n\nsummary(model_high_risk)\n\n\nCall:\nglm(formula = heart_attack ~ age + drug_use, family = binomial, \n    data = data_high_risk)\n\nDeviance Residuals: \n   Min      1Q  Median      3Q     Max  \n-1.662  -1.049  -0.854   1.188   1.685  \n\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)    \n(Intercept) -2.24031    0.49848  -4.494 6.98e-06 ***\nage          0.04281    0.00896   4.777 1.78e-06 ***\ndrug_use    -0.66254    0.13064  -5.072 3.94e-07 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 1373.7  on 999  degrees of freedom\nResidual deviance: 1324.4  on 997  degrees of freedom\nAIC: 1330.4\n\nNumber of Fisher Scoring iterations: 4\n\n\nUpon examining the output, you’ll observe an odds ratio close to 2 for drug use (exponentiate the coeffecient). A common misinterpretation might be: “Patients on the drug have twice the likelihood to avoid heart attacks.” This is a misconception. They have twice the odds, not twice the probability. This distinction becomes especially murky when the event (heart attack) is common.\nMarginal Effects and Interpretation\nThe marginal effect of the drug can be found by computing the difference in predicted probabilities between drug users and non-users, holding other variables constant. This gives a more direct measure of the drug’s impact on the probability of heart attack.\nUsing our model, you can compute the marginal effect for any given age. For example, for someone aged 55:\n\npredicted_prob_on_drug <- predict(model_high_risk, \n                                  newdata = data.frame(age = 55, drug_use = 1),\n                                  type = \"response\")\n\npredicted_prob_off_drug <- predict(model_high_risk, \n                                   newdata = data.frame(age = 55, drug_use = 0),\n                                   type = \"response\")\n\nmarginal_effect_55 <- predicted_prob_on_drug - predicted_prob_off_drug\n\nmarginal_effect_55\n\n         1 \n-0.1622666 \n\n\nThe result is a clear percentage point decrease in the probability of a heart attack for drug users compared to non-users.\nThis means that, for individuals aged 55, using the drug results in a 16 percentage point decrease in the probability of experiencing a heart attack compared to those not using the drug. This direct interpretation offers a tangible sense of the drug’s impact and is far more intuitive than grappling with odds ratios."
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html#conclusion-a-call-to-transition",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html#conclusion-a-call-to-transition",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "Conclusion: A Call to Transition",
+    "text": "Conclusion: A Call to Transition\nThe era of odds ratios has provided us with valuable insights, but as the field of health research progresses, so should our statistical tools and reporting practices. Marginal effects and predicted probabilities provide clearer, more intuitive insights, pushing us away from the ambiguous realm of odds and into the tangible world of real impact.\nAfter all, the end goal of our research is to provide clear, actionable insights that can be readily applied to improve health outcomes. Let’s choose clarity over tradition, and marginal effects over odds ratios.\nThank you!\nJacob"
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html#average-marginal-effects-a-comprehensive-view",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html#average-marginal-effects-a-comprehensive-view",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "Average Marginal Effects: A Comprehensive View",
+    "text": "Average Marginal Effects: A Comprehensive View\nBeyond just evaluating the marginal effect at specific values, we can compute the average marginal effect (AME) across our sample. AMEs provide a holistic view of the predictor’s impact by averaging its effects over all observations in our dataset. It’s particularly insightful when dealing with continuous predictors like age.\nComputing the Average Marginal Effects\nTo compute the AMEs in R, you can leverage the margins package:\n\n#install.packages(\"margins\")\nlibrary(margins)\n\name <- margins(model_high_risk, variables = \"drug_use\")\nsummary(ame)\n\n   factor     AME     SE       z      p   lower   upper\n drug_use -0.1556 0.0291 -5.3429 0.0000 -0.2127 -0.0985\n\n\nThis will give you the average marginal effect of drug use on the probability of a heart attack across all ages in the dataset.\nInterpreting the AMEs\nSuppose the AME for drug use is -0.156. This means that, on average, across all ages in our sample, using the drug is associated with a 15.6 percentage point decrease in the probability of experiencing a heart attack relative to not using the drug.\nThis single number provides an overarching sense of the drug’s impact, making it immensely useful for policy and clinical decisions. For instance, in public health discussions or in communications with patients, being able to state the average effect of a treatment can be more practical than specifying its impact at particular ages or conditions.\nBy incorporating AMEs into your analysis, you’re providing an extra layer of depth to your findings. This approach shifts the discussion from “what might the effect be?” to “here’s the effect, on average, across our population.” When combined with specific marginal effects and predicted probabilities, this trio offers a robust, comprehensive, and intuitive understanding of your predictors’ impacts."
+  },
+  {
+    "objectID": "posts/2023-09-01-OR/2023-09-01-OR.html#visualizing-predicted-probabilities",
+    "href": "posts/2023-09-01-OR/2023-09-01-OR.html#visualizing-predicted-probabilities",
+    "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
+    "section": "Visualizing Predicted Probabilities",
+    "text": "Visualizing Predicted Probabilities\nTo provide a tangible representation, let’s plot the predicted probabilities of heart attacks by age from our model:\n\nlibrary(ggplot2)\n\ndata_high_risk$predicted_prob <- predict(model_high_risk, type = \"response\")\npredictions <- predict(model_high_risk, type = \"response\", se.fit = TRUE)\ndata_high_risk$lower_ci <- predictions$fit - 1.96 * predictions$se.fit\ndata_high_risk$upper_ci <- predictions$fit + 1.96 * predictions$se.fit\n\n\nggplot(data_high_risk, aes(x = age, \n                           y = predicted_prob, \n                           color = as.factor(drug_use))) +\n  geom_ribbon(aes(ymin = lower_ci, \n                  ymax = upper_ci, \n                  fill = as.factor(drug_use)), alpha = 0.3) +\n  geom_line() +\n  labs(title = \"Predicted Probability of Heart Attack by Age with 95% CI\",\n       y = \"Predicted Probability\",\n       x = \"Age\",\n       color = \"Drug Use\",\n       fill = \"Drug Use\") +\n  scale_color_discrete(labels = c(\"No Drug\", \"On Drug\")) +\n  scale_fill_discrete(labels = c(\"No Drug\", \"On Drug\")) +\n  theme_minimal()\n\n\n\n\nThe visual clearly illustrates the beneficial effect of the drug over time. It gives a tangible sense of how the risk of heart attacks evolves with age for both groups and the significant advantage of drug users. This can be especially useful for diagnostic purposes or to demonstrate the results of your model to stakeholders."
   }
 ]

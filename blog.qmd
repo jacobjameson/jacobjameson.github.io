@@ -9,6 +9,12 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: spacelab
+    from: markdown+emoji
 page-layout: full
 ---
 
