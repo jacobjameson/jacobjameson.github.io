@@ -1,6 +1,6 @@
 ---
 title: "Links"
-image: images/profile.png
+image: ../images/profile.png
 about:
   template: solana
   links:
@@ -18,7 +18,7 @@ about:
       href: https://www.linkedin.com/in/jacob-jameson/
     - icon: mortarboard
       text: CV
-      href: /Data/vitae.pdf
+      href: ../Data/vitae.pdf
 from: markdown+emoji
 page-layout: full
 ---

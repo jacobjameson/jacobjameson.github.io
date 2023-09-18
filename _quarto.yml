@@ -7,9 +7,9 @@ website:
   description: "My academic website"
   navbar:
     left:
-      - code.qmd
       - teaching.qmd
       - dataviz.qmd
+      - research.qmd
     right:
       - text: Blog
         href: blog.qmd

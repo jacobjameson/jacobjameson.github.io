@@ -10,6 +10,10 @@ page-layout: full
 
 My teaching experiences are quite diverse. The summer after completing my undergraduate degree, I began teaching in a highschool Algebra II credit recovery program in The School District of Philadelphia. I then transitioned to a full-time middle school mathematics position in New Haven, CT, where I	spent the next two years falling in love with the profession. During my second year, I held the Grade-level Chair position for the 8th grade and consulted for the Achievement First Charter Network on [middle school mathematics curriculum](https://www.achievementfirst.org/opensource/). I am also passionate about computer science education, and have experience running Girls Who Code clubs and participating in the Code.org Middle and High School Computer Science Professional Learning Program for educators in computer science. Since teaching at the middle school level, I have been fortunate to hold a variety of teaching positions at The University of Chicago and Harvard University. I hope to pursue a teaching career after completing my PhD. 
 
+## [Introduction to R Programming](Intro R.html)
+
+This page contains the content for the "Introduction to Data Analysis in R" mini-course. The goal is to introduce R programming concepts with a focus on preparing and analyzing data, and conducting statistical simulations. We will cover how to read data into R, manipulate data with a suite of tools from the tidyverse package dplyr. We will also discuss some basic programming concepts including data types and operators. This mini-course is aimed at people with no programming background that are looking for a gentle and practical introduction to data analysis in R.
+
 
 ### Harvard T.H. Chan School of Public Health
 - Decision Science for Public Health. Teaching Fellow (2023)
