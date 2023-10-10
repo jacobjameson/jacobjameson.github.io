@@ -245,12 +245,6 @@ var paperLink = "URL for Paper " + paperId; // Replace with the actual URL
 window.open(paperLink, '_blank');
 }
 
-// Function to open the code link in a new tab
-function openCodeLink(paperId) {
-var codeLink = "URL for Code " + paperId; // Replace with the actual URL
-window.open(codeLink, '_blank');
-}
-
 // Attach the openPaperLink and openCodeLink functions to the button click events
 document.getElementById("paperLinkButton1").addEventListener("click", function() {
 openPaperLink(1);
