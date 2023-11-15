@@ -26,8 +26,8 @@ website:
         menu:
           - text: "Jacob's Teaching Experience"
             href: teaching.qmd
-          - text: R for Data Science
-            href: https://r4ds.hadley.nz/
+          - text: "Introduction to R"
+            href: Intro R.qmd
             target: _blank
       - text: Research
         href: research.qmd
