@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.3.433">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Jacob Jameson">
 <meta name="dcterms.date" content="2023-09-01">
 <meta name="description" content="Marginal Effects >>> Odds Ratios">
+
 <title>Jacob Jameson - The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -41,44 +50,15 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -95,7 +75,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -111,88 +92,96 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
-}</script><script src="../../site_libs/kePrint/kePrint.js"></script><link href="../../site_libs/lightable/lightable.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="../../my-liera.scss.css">
+}</script>
+
+<script src="../../site_libs/kePrint/kePrint.js"></script>
+<link href="../../site_libs/lightable/lightable.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
 <meta name="twitter:title" content="Jacob Jameson - The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research">
 <meta name="twitter:description" content="Marginal Effects >>> Odds Ratios">
-<meta name="twitter:image" content="https://www.jacobjameson.github.io/docs/images/profile.png">
+<meta name="twitter:image" content="https://www.jacobjameson.com/posts/2023-09-01-OR/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="452">
-<meta name="twitter:image-width" content="455">
 </head>
-<body class="floating nav-fixed">
+
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../../index.html">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Jacob Jameson</span>
-  </a>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
-    <a class="nav-link" href="../../teaching.html">Teaching</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../dataviz.html">Data Visualization</a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../research.html">Research</a>
-  </li>  
-</ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item">
-    <a class="nav-link" href="../../blog.html">Blog</a>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jacobjameson/jacobjameson.github.io"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson" rel="" target="_blank"><i class="bi bi-twitter" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/JacobCJameson/"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/jacobjameson" rel="" target="_blank"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Teaching</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+        <li>
+    <a class="dropdown-item" href="../../teaching.html" rel="" target="">
+ <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://r4ds.hadley.nz/" rel="" target="_blank">
+ <span class="dropdown-text">R for Data Science</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
   </li>  
 </ul>
-<div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc"><h2 id="toc-title">On this page</h2>
-   
-  <ul>
-<li><a href="#the-math-behind-odds-ratios" id="toc-the-math-behind-odds-ratios" class="nav-link active" data-scroll-target="#the-math-behind-odds-ratios">The math behind odds ratios</a></li>
-  <li><a href="#when-odds-ratios-mislead" id="toc-when-odds-ratios-mislead" class="nav-link" data-scroll-target="#when-odds-ratios-mislead">When Odds Ratios Mislead</a></li>
-  <li><a href="#marginal-effects-clarity-over-confusion" id="toc-marginal-effects-clarity-over-confusion" class="nav-link" data-scroll-target="#marginal-effects-clarity-over-confusion">Marginal Effects: Clarity over Confusion</a></li>
-  <li><a href="#predicted-probabilities-concrete-scenarios-over-abstract-odds" id="toc-predicted-probabilities-concrete-scenarios-over-abstract-odds" class="nav-link" data-scroll-target="#predicted-probabilities-concrete-scenarios-over-abstract-odds">Predicted Probabilities: Concrete Scenarios Over Abstract Odds</a></li>
-  <li>
-<a href="#demonstrating-with-real-world-data" id="toc-demonstrating-with-real-world-data" class="nav-link" data-scroll-target="#demonstrating-with-real-world-data">Demonstrating with “Real-World” Data</a>
-  <ul class="collapse">
-<li><a href="#modeling-and-results" id="toc-modeling-and-results" class="nav-link" data-scroll-target="#modeling-and-results">Modeling and Results</a></li>
-  <li><a href="#marginal-effects-and-interpretation" id="toc-marginal-effects-and-interpretation" class="nav-link" data-scroll-target="#marginal-effects-and-interpretation">Marginal Effects and Interpretation</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#average-marginal-effects-a-comprehensive-view" id="toc-average-marginal-effects-a-comprehensive-view" class="nav-link" data-scroll-target="#average-marginal-effects-a-comprehensive-view">Average Marginal Effects: A Comprehensive View</a>
-  <ul class="collapse">
-<li><a href="#computing-the-average-marginal-effects" id="toc-computing-the-average-marginal-effects" class="nav-link" data-scroll-target="#computing-the-average-marginal-effects">Computing the Average Marginal Effects</a></li>
-  <li><a href="#interpreting-the-ames" id="toc-interpreting-the-ames" class="nav-link" data-scroll-target="#interpreting-the-ames">Interpreting the AMEs</a></li>
-  </ul>
-</li>
-  <li><a href="#visualizing-predicted-probabilities" id="toc-visualizing-predicted-probabilities" class="nav-link" data-scroll-target="#visualizing-predicted-probabilities">Visualizing Predicted Probabilities</a></li>
-  <li><a href="#conclusion-a-call-to-transition" id="toc-conclusion-a-call-to-transition" class="nav-link" data-scroll-target="#conclusion-a-call-to-transition">Conclusion: A Call to Transition</a></li>
-  </ul></nav>
-</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    </div>
+<!-- margin-sidebar -->
+    
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
 <h1 class="title">The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research</h1>
   <div class="quarto-categories">
     <div class="quarto-category">marginal effects</div>
@@ -221,12 +210,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <p class="date">September 1, 2023</p>
     </div>
   </div>
+  
     
   </div>
   
 
-</header><p>Odds ratios have been a long-standing mainstay in health research. Their use can be found sprinkled throughout countless academic journals and research papers. But just because something is popular doesn’t mean it’s the best choice for all contexts. The purpose of this article is to shed light on the limitations of odds ratios, particularly when it comes to interpretation, and advocate for the more intuitive marginal effects and predicted probabilities.</p>
-<section id="the-math-behind-odds-ratios" class="level2"><h2 class="anchored" data-anchor-id="the-math-behind-odds-ratios">The math behind odds ratios</h2>
+</header>
+
+<p>Odds ratios have been a long-standing mainstay in health research. Their use can be found sprinkled throughout countless academic journals and research papers. But just because something is popular doesn’t mean it’s the best choice for all contexts. The purpose of this article is to shed light on the limitations of odds ratios, particularly when it comes to interpretation, and advocate for the more intuitive marginal effects and predicted probabilities.</p>
+<section id="the-math-behind-odds-ratios" class="level2">
+<h2 class="anchored" data-anchor-id="the-math-behind-odds-ratios">The math behind odds ratios</h2>
 <p>To understand why odds ratios can be confusing, let’s briefly discuss what they represent.</p>
 <p>In a logistic regression, the fundamental equation is:</p>
 <p><span class="math display">\[log(\frac{p}{1-p}) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ...\]</span></p>
@@ -234,126 +227,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The odds ratio for a given predictor (let’s say <span class="math inline">\(X_1\)</span>) is simply the exponentiated coefficient for that predictor:</p>
 <p>Odds Ratio for <span class="math inline">\(X_1 = E^{\beta_1}\)</span></p>
 <p>It represents the multiplicative change in the odds of the outcome for a one-unit increase in <span class="math inline">\(X_1\)</span> , holding other variables constant. If this sounds confusing, you’re not alone.</p>
-</section><section id="when-odds-ratios-mislead" class="level2"><h2 class="anchored" data-anchor-id="when-odds-ratios-mislead">When Odds Ratios Mislead</h2>
+</section>
+<section id="when-odds-ratios-mislead" class="level2">
+<h2 class="anchored" data-anchor-id="when-odds-ratios-mislead">When Odds Ratios Mislead</h2>
 <p>The challenge with odds ratios arises particularly when the outcome of interest is common. The reason being, odds ratios tend to exaggerate relative risks for common outcomes.</p>
 <p>Let’s say we find an odds ratio of 2 for a drug reducing heart attack risk. Many might (mistakenly) interpret this as “patients on the drug are twice as likely to avoid heart attacks.” In reality, they have twice the odds, which doesn’t translate directly to actual probabilities, especially when the event is common.</p>
-</section><section id="marginal-effects-clarity-over-confusion" class="level2"><h2 class="anchored" data-anchor-id="marginal-effects-clarity-over-confusion">Marginal Effects: Clarity over Confusion</h2>
+</section>
+<section id="marginal-effects-clarity-over-confusion" class="level2">
+<h2 class="anchored" data-anchor-id="marginal-effects-clarity-over-confusion">Marginal Effects: Clarity over Confusion</h2>
 <p>Marginal effects shine where odds ratios falter. They convey the change in the probability of an outcome for a one-unit change in the predictor, holding other variables constant. It’s a direct measure that offers a tangible understanding of impact.</p>
 <p>Mathematically, for a binary predictor (like drug use: yes or no):</p>
 <p><span class="math display">\[\text{Marginal Effect} (dy/dx) = P(Y = 1|X=1) - P(Y=1|X=0)\]</span></p>
 <p>For continuous predictors, the marginal effect represents the derivative of the probability with respect to the predictor, which essentially gives us the rate of change.</p>
-</section><section id="predicted-probabilities-concrete-scenarios-over-abstract-odds" class="level2"><h2 class="anchored" data-anchor-id="predicted-probabilities-concrete-scenarios-over-abstract-odds">Predicted Probabilities: Concrete Scenarios Over Abstract Odds</h2>
+</section>
+<section id="predicted-probabilities-concrete-scenarios-over-abstract-odds" class="level2">
+<h2 class="anchored" data-anchor-id="predicted-probabilities-concrete-scenarios-over-abstract-odds">Predicted Probabilities: Concrete Scenarios Over Abstract Odds</h2>
 <p>Predicted probabilities go a step further, providing the likelihood of an outcome under specific conditions. Instead of leaving things in the realm of odds and abstract increases, we can state tangible scenarios.</p>
-</section><section id="demonstrating-with-real-world-data" class="level2"><h2 class="anchored" data-anchor-id="demonstrating-with-real-world-data">Demonstrating with “Real-World” Data</h2>
+</section>
+<section id="demonstrating-with-real-world-data" class="level2">
+<h2 class="anchored" data-anchor-id="demonstrating-with-real-world-data">Demonstrating with “Real-World” Data</h2>
 <p>To provide concrete evidence of the limitations of odds ratios, let’s explore a simulated dataset that mirrors a health study on heart attacks, age, and drug use for high-risk individuals.</p>
 <p>First, we’ll generate a dataset with age as a continuous predictor and drug_use as a binary predictor:</p>
 <p><em>Simulate data</em></p>
 <div class="cell">
-<details><summary>Show the code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Setting the seed for reproducibility</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
-<span></span>
-<span><span class="co"># Age distribution: Normally distributed between 40 and 70</span></span>
-<span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">55</span>, <span class="fl">7.5</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Drug use: 50% of the participants use the drug</span></span>
-<span><span class="va">drug_use</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Log odds of heart attack: Base risk, then increasing slightly with age, </span></span>
-<span><span class="co"># and decreasing with drug use (this is where we're setting the odds ratio to roughly 2 for drug use)</span></span>
-<span><span class="va">log_odds_heart_attack</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">0.04</span> <span class="op">*</span> <span class="va">age</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="va">drug_use</span></span>
-<span></span>
-<span><span class="co"># Converting log odds to probability</span></span>
-<span><span class="va">prob_heart_attack</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">log_odds_heart_attack</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">log_odds_heart_attack</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Simulating whether a heart attack occurs or not</span></span>
-<span><span class="va">heart_attack</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">1</span>, <span class="va">prob_heart_attack</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Create a dataframe</span></span>
-<span><span class="va">data_high_risk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">drug_use</span>, <span class="va">heart_attack</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the seed for reproducibility</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Age distribution: Normally distributed between 40 and 70</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">55</span>, <span class="fl">7.5</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Drug use: 50% of the participants use the drug</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>drug_use <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.5</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Log odds of heart attack: Base risk, then increasing slightly with age, </span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># and decreasing with drug use (this is where we're setting the odds ratio to roughly 2 for drug use)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>log_odds_heart_attack <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.04</span> <span class="sc">*</span> age <span class="sc">-</span> <span class="fu">log</span>(<span class="dv">2</span>) <span class="sc">*</span> drug_use</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting log odds to probability</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>prob_heart_attack <span class="ot">&lt;-</span> <span class="fu">exp</span>(log_odds_heart_attack) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(log_odds_heart_attack))</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulating whether a heart attack occurs or not</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>heart_attack <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, prob_heart_attack)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>data_high_risk <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(age, drug_use, heart_attack)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">data_high_risk</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data_high_risk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1000</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_high_risk</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_high_risk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
-<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 15px; margin-left: auto; margin-right: auto;">
-<thead><tr>
-<th style="text-align:right;"> age </th>
-   <th style="text-align:right;"> drug_use </th>
-   <th style="text-align:right;"> heart_attack </th>
-  </tr></thead>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">drug_use</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">heart_attack</th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<td style="text-align:right;"> 45.94701 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> 57.08072 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> 63.13331 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> 37.40727 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> 58.21844 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> 58.79542 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> 50.68945 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> 50.90026 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> 50.76661 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-<tr>
-<td style="text-align:right;"> 48.32472 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: right;">45.94701</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">57.08072</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">63.13331</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">37.40727</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">58.21844</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">58.79542</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">50.68945</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50.90026</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">50.76661</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48.32472</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
 </tbody>
 </table>
 </div>
+
+
 </div>
-<section id="modeling-and-results" class="level3"><h3 class="anchored" data-anchor-id="modeling-and-results">Modeling and Results</h3>
+</div>
+<section id="modeling-and-results" class="level3">
+<h3 class="anchored" data-anchor-id="modeling-and-results">Modeling and Results</h3>
 <p>Using a logistic regression, we’ll model the probability of a heart attack based on age and drug use:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model_high_risk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">heart_attack</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">drug_use</span>, </span>
-<span>                       data<span class="op">=</span><span class="va">data_high_risk</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model_high_risk</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model_high_risk <span class="ot">&lt;-</span> <span class="fu">glm</span>(heart_attack <span class="sc">~</span> age <span class="sc">+</span> drug_use, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data=</span>data_high_risk, <span class="at">family =</span> binomial)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_high_risk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -382,21 +391,23 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
 <p>Upon examining the output, you’ll observe an odds ratio close to 2 for drug use (exponentiate the coeffecient). A common misinterpretation might be: “Patients on the drug have twice the likelihood to avoid heart attacks.” This is a misconception. They have twice the odds, not twice the probability. This distinction becomes especially murky when the event (heart attack) is common.</p>
-</section><section id="marginal-effects-and-interpretation" class="level3"><h3 class="anchored" data-anchor-id="marginal-effects-and-interpretation">Marginal Effects and Interpretation</h3>
+</section>
+<section id="marginal-effects-and-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="marginal-effects-and-interpretation">Marginal Effects and Interpretation</h3>
 <p>The marginal effect of the drug can be found by computing the difference in predicted probabilities between drug users and non-users, holding other variables constant. This gives a more direct measure of the drug’s impact on the probability of heart attack.</p>
 <p>Using our model, you can compute the marginal effect for any given age. For example, for someone aged 55:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">predicted_prob_on_drug</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">model_high_risk</span>, </span>
-<span>                                  newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fl">55</span>, drug_use <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
-<span>                                  type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">predicted_prob_off_drug</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">model_high_risk</span>, </span>
-<span>                                   newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fl">55</span>, drug_use <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,</span>
-<span>                                   type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">marginal_effect_55</span> <span class="op">&lt;-</span> <span class="va">predicted_prob_on_drug</span> <span class="op">-</span> <span class="va">predicted_prob_off_drug</span></span>
-<span></span>
-<span><span class="va">marginal_effect_55</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>predicted_prob_on_drug <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_high_risk, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age =</span> <span class="dv">55</span>, <span class="at">drug_use =</span> <span class="dv">1</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>predicted_prob_off_drug <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_high_risk, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age =</span> <span class="dv">55</span>, <span class="at">drug_use =</span> <span class="dv">0</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>marginal_effect_55 <span class="ot">&lt;-</span> predicted_prob_on_drug <span class="sc">-</span> predicted_prob_off_drug</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>marginal_effect_55</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         1 
 -0.1622666 </code></pre>
@@ -404,65 +415,79 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 <p>The result is a clear percentage point decrease in the probability of a heart attack for drug users compared to non-users.</p>
 <p><strong>This means that, for individuals aged 55, using the drug results in a 16 percentage point decrease in the probability of experiencing a heart attack compared to those not using the drug.</strong> This direct interpretation offers a tangible sense of the drug’s impact and is far more intuitive than grappling with odds ratios.</p>
-</section></section><section id="average-marginal-effects-a-comprehensive-view" class="level2"><h2 class="anchored" data-anchor-id="average-marginal-effects-a-comprehensive-view">Average Marginal Effects: A Comprehensive View</h2>
+</section>
+</section>
+<section id="average-marginal-effects-a-comprehensive-view" class="level2">
+<h2 class="anchored" data-anchor-id="average-marginal-effects-a-comprehensive-view">Average Marginal Effects: A Comprehensive View</h2>
 <p>Beyond just evaluating the marginal effect at specific values, we can compute the average marginal effect (AME) across our sample. AMEs provide a holistic view of the predictor’s impact by averaging its effects over all observations in our dataset. It’s particularly insightful when dealing with continuous predictors like age.</p>
-<section id="computing-the-average-marginal-effects" class="level3"><h3 class="anchored" data-anchor-id="computing-the-average-marginal-effects">Computing the Average Marginal Effects</h3>
+<section id="computing-the-average-marginal-effects" class="level3">
+<h3 class="anchored" data-anchor-id="computing-the-average-marginal-effects">Computing the Average Marginal Effects</h3>
 <p>To compute the AMEs in R, <a href="https://cran.r-project.org/web/packages/margins/vignettes/Introduction.html">you can leverage the <code>margins</code> package</a>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#install.packages("margins")</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leeper/margins">margins</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ame</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/margins/man/margins.html">margins</a></span><span class="op">(</span><span class="va">model_high_risk</span>, variables <span class="op">=</span> <span class="st">"drug_use"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ame</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("margins")</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(margins)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ame <span class="ot">&lt;-</span> <span class="fu">margins</span>(model_high_risk, <span class="at">variables =</span> <span class="st">"drug_use"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ame)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   factor     AME     SE       z      p   lower   upper
  drug_use -0.1556 0.0291 -5.3429 0.0000 -0.2127 -0.0985</code></pre>
 </div>
 </div>
 <p>This will give you the average marginal effect of drug use on the probability of a heart attack across all ages in the dataset.</p>
-</section><section id="interpreting-the-ames" class="level3"><h3 class="anchored" data-anchor-id="interpreting-the-ames">Interpreting the AMEs</h3>
+</section>
+<section id="interpreting-the-ames" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-the-ames">Interpreting the AMEs</h3>
 <p>Suppose the AME for drug use is -0.156. This means that, on average, across all ages in our sample, using the drug is associated with a 15.6 percentage point decrease in the probability of experiencing a heart attack relative to not using the drug.</p>
 <p>This single number provides an overarching sense of the drug’s impact, making it immensely useful for policy and clinical decisions. For instance, in public health discussions or in communications with patients, being able to state the average effect of a treatment can be more practical than specifying its impact at particular ages or conditions.</p>
 <p>By incorporating AMEs into your analysis, you’re providing an extra layer of depth to your findings. This approach shifts the discussion from “what might the effect be?” to “here’s the effect, on average, across our population.” When combined with specific marginal effects and predicted probabilities, this trio offers a robust, comprehensive, and intuitive understanding of your predictors’ impacts.</p>
-</section></section><section id="visualizing-predicted-probabilities" class="level2"><h2 class="anchored" data-anchor-id="visualizing-predicted-probabilities">Visualizing Predicted Probabilities</h2>
+</section>
+</section>
+<section id="visualizing-predicted-probabilities" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-predicted-probabilities">Visualizing Predicted Probabilities</h2>
 <p>To provide a tangible representation, let’s plot the predicted probabilities of heart attacks by age from our model:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">data_high_risk</span><span class="op">$</span><span class="va">predicted_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">model_high_risk</span>, type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></span>
-<span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">model_high_risk</span>, type <span class="op">=</span> <span class="st">"response"</span>, se.fit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">data_high_risk</span><span class="op">$</span><span class="va">lower_ci</span> <span class="op">&lt;-</span> <span class="va">predictions</span><span class="op">$</span><span class="va">fit</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">predictions</span><span class="op">$</span><span class="va">se.fit</span></span>
-<span><span class="va">data_high_risk</span><span class="op">$</span><span class="va">upper_ci</span> <span class="op">&lt;-</span> <span class="va">predictions</span><span class="op">$</span><span class="va">fit</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">predictions</span><span class="op">$</span><span class="va">se.fit</span></span>
-<span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data_high_risk</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, </span>
-<span>                           y <span class="op">=</span> <span class="va">predicted_prob</span>, </span>
-<span>                           color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">drug_use</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_ribbon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">lower_ci</span>, </span>
-<span>                  ymax <span class="op">=</span> <span class="va">upper_ci</span>, </span>
-<span>                  fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">drug_use</span><span class="op">)</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Predicted Probability of Heart Attack by Age with 95% CI"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"Predicted Probability"</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">"Age"</span>,</span>
-<span>       color <span class="op">=</span> <span class="st">"Drug Use"</span>,</span>
-<span>       fill <span class="op">=</span> <span class="st">"Drug Use"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_color_discrete</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No Drug"</span>, <span class="st">"On Drug"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No Drug"</span>, <span class="st">"On Drug"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>data_high_risk<span class="sc">$</span>predicted_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_high_risk, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_high_risk, <span class="at">type =</span> <span class="st">"response"</span>, <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>data_high_risk<span class="sc">$</span>lower_ci <span class="ot">&lt;-</span> predictions<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> predictions<span class="sc">$</span>se.fit</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>data_high_risk<span class="sc">$</span>upper_ci <span class="ot">&lt;-</span> predictions<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> predictions<span class="sc">$</span>se.fit</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_high_risk, <span class="fu">aes</span>(<span class="at">x =</span> age, </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                           <span class="at">y =</span> predicted_prob, </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                           <span class="at">color =</span> <span class="fu">as.factor</span>(drug_use))) <span class="sc">+</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower_ci, </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ymax =</span> upper_ci, </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="fu">as.factor</span>(drug_use)), <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Predicted Probability of Heart Attack by Age with 95% CI"</span>,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Probability"</span>,</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Age"</span>,</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Drug Use"</span>,</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Drug Use"</span>) <span class="sc">+</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Drug"</span>, <span class="st">"On Drug"</span>)) <span class="sc">+</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Drug"</span>, <span class="st">"On Drug"</span>)) <span class="sc">+</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="2023-09-01-OR_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The visual clearly illustrates the beneficial effect of the drug over time. It gives a tangible sense of how the risk of heart attacks evolves with age for both groups and the significant advantage of drug users. This can be especially useful for diagnostic purposes or to demonstrate the results of your model to stakeholders.</p>
-</section><section id="conclusion-a-call-to-transition" class="level2"><h2 class="anchored" data-anchor-id="conclusion-a-call-to-transition">Conclusion: A Call to Transition</h2>
+</section>
+<section id="conclusion-a-call-to-transition" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-a-call-to-transition">Conclusion: A Call to Transition</h2>
 <p>The era of odds ratios has provided us with valuable insights, but as the field of health research progresses, so should our statistical tools and reporting practices. Marginal effects and predicted probabilities provide clearer, more intuitive insights, pushing us away from the ambiguous realm of odds and into the tangible world of real impact.</p>
 <p>After all, the end goal of our research is to provide clear, actionable insights that can be readily applied to improve health outcomes. Let’s choose clarity over tradition, and marginal effects over odds ratios.</p>
 <p>Thank you!</p>
 <p>Jacob</p>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -489,9 +514,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -503,7 +542,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -531,56 +587,143 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
-</script><script src="https://utteranc.es/client.js" repo="jacobjameson/jacobjameson.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+<script src="https://utteranc.es/client.js" repo="jacobjameson/jacobjameson.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2023, Jacob Jameson</div>   
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jacobjameson/jacobjameson.github.io">
-      <i class="bi bi-github" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/JacobCJameson">
-      <i class="bi bi-twitter" role="img">
-</i> 
-    </a>
-  </li>  
-</ul>
-</div>
-  </div>
-</footer>
+
 
 
 </body></html>

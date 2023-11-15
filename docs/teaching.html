@@ -61,14 +61,13 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="style.css">
 <meta name="twitter:title" content="Jacob Jameson - Teaching">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://www.jacobjameson.github.io/docs/images/profile.png">
+<meta name="twitter:image" content="https://www.jacobjameson.com/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="582">
 <meta name="twitter:image-width" content="565">
-<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="floating nav-fixed">
@@ -87,34 +86,44 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./teaching.html" rel="" target="" aria-current="page">
- <span class="menu-text">Teaching</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./dataviz.html" rel="" target="">
- <span class="menu-text">Data Visualization</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./research.html" rel="" target="">
- <span class="menu-text">Research</span></a>
-  </li>  
-</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson" rel="" target="_blank"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jacobjameson" rel="" target="_blank"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="./blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jacobjameson/jacobjameson.github.io" rel="" target=""><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Teaching</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+        <li>
+    <a class="dropdown-item" href="./teaching.html" rel="" target="">
+ <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
   </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/JacobCJameson/" rel="" target=""><i class="bi bi-twitter" role="img">
-</i> 
- <span class="menu-text"></span></a>
+        <li>
+    <a class="dropdown-item" href="https://r4ds.hadley.nz/" rel="" target="_blank">
+ <span class="dropdown-text">R for Data Science</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools">
@@ -128,19 +137,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-to-r-programming" id="toc-introduction-to-r-programming" class="nav-link active" data-scroll-target="#introduction-to-r-programming">Introduction to R Programming</a>
-  <ul class="collapse">
-  <li><a href="#harvard-t.h.-chan-school-of-public-health" id="toc-harvard-t.h.-chan-school-of-public-health" class="nav-link" data-scroll-target="#harvard-t.h.-chan-school-of-public-health">Harvard T.H. Chan School of Public Health</a></li>
+  <li><a href="#harvard-t.h.-chan-school-of-public-health" id="toc-harvard-t.h.-chan-school-of-public-health" class="nav-link active" data-scroll-target="#harvard-t.h.-chan-school-of-public-health">Harvard T.H. Chan School of Public Health</a></li>
   <li><a href="#harvard-kennedy-school" id="toc-harvard-kennedy-school" class="nav-link" data-scroll-target="#harvard-kennedy-school">Harvard Kennedy School</a></li>
   <li><a href="#the-university-of-chicago-center-for-translational-science" id="toc-the-university-of-chicago-center-for-translational-science" class="nav-link" data-scroll-target="#the-university-of-chicago-center-for-translational-science">The University of Chicago, Center for Translational Science</a></li>
   <li><a href="#the-university-of-chicago-department-of-computer-science" id="toc-the-university-of-chicago-department-of-computer-science" class="nav-link" data-scroll-target="#the-university-of-chicago-department-of-computer-science">The University of Chicago, Department of Computer Science</a></li>
   <li><a href="#the-university-of-chicago-booth-school-of-business" id="toc-the-university-of-chicago-booth-school-of-business" class="nav-link" data-scroll-target="#the-university-of-chicago-booth-school-of-business">The University of Chicago Booth School of Business</a></li>
   <li><a href="#the-university-of-chicago-harris-school-of-public-policy" id="toc-the-university-of-chicago-harris-school-of-public-policy" class="nav-link" data-scroll-target="#the-university-of-chicago-harris-school-of-public-policy">The University of Chicago Harris School of Public Policy</a></li>
   <li><a href="#teach-for-america-achievement-first-amistad-academy-middle-school" id="toc-teach-for-america-achievement-first-amistad-academy-middle-school" class="nav-link" data-scroll-target="#teach-for-america-achievement-first-amistad-academy-middle-school">Teach For America, Achievement First Amistad Academy Middle School</a></li>
-  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -169,9 +175,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>My teaching experiences are quite diverse. The summer after completing my undergraduate degree, I began teaching in a highschool Algebra II credit recovery program in The School District of Philadelphia. I then transitioned to a full-time middle school mathematics position in New Haven, CT, where I spent the next two years falling in love with the profession. During my second year, I held the Grade-level Chair position for the 8th grade and consulted for the Achievement First Charter Network on <a href="https://www.achievementfirst.org/opensource/">middle school mathematics curriculum</a>. I am also passionate about computer science education, and have experience running Girls Who Code clubs and participating in the Code.org Middle and High School Computer Science Professional Learning Program for educators in computer science. Since teaching at the middle school level, I have been fortunate to hold a variety of teaching positions at The University of Chicago and Harvard University. I hope to pursue a teaching career after completing my PhD.</p>
-<section id="introduction-to-r-programming" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-to-r-programming"><a href="Intro R.html">Introduction to R Programming</a></h2>
-<p>This page contains the content for the “Introduction to Data Analysis in R” mini-course. The goal is to introduce R programming concepts with a focus on preparing and analyzing data, and conducting statistical simulations. We will cover how to read data into R, manipulate data with a suite of tools from the tidyverse package dplyr. We will also discuss some basic programming concepts including data types and operators. This mini-course is aimed at people with no programming background that are looking for a gentle and practical introduction to data analysis in R.</p>
 <section id="harvard-t.h.-chan-school-of-public-health" class="level3">
 <h3 class="anchored" data-anchor-id="harvard-t.h.-chan-school-of-public-health">Harvard T.H. Chan School of Public Health</h3>
 <ul>
@@ -182,8 +185,8 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="harvard-kennedy-school">Harvard Kennedy School</h3>
 <ul>
 <li>Math Camp. Instructor (2023)</li>
-<li>Big Data and Machine Learning. Course Assistant (2023)</li>
-<li>Game Theory. Teaching Fellow (2023)</li>
+<li>Big Data and Machine Learning. Teaching Fellow (2024)</li>
+<li>Game Theory. Teaching Fellow (2023, 2024)</li>
 <li>Data and Programming for Policymakers. Course Assistant (2023)</li>
 <li>Resources, Incentives, and Choices I: Markets and Market Failures. Teaching Fellow (2022, 2023)</li>
 </ul>
@@ -222,7 +225,6 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -460,30 +462,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2023, Jacob Jameson</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jacobjameson/jacobjameson.github.io">
-      <i class="bi bi-github" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/JacobCJameson">
-      <i class="bi bi-twitter" role="img">
-</i> 
-    </a>
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 
