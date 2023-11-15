@@ -8,7 +8,7 @@ about:
   links:
     - icon: rss
       text: Blog
-      href: https://www.jacobjameson.com/blog
+      href: https://jacobjameson.com/blog
     - icon: envelope
       text: Email
       href: jacobjameson@g.harvard.edu

@@ -9,6 +9,8 @@ website:
     image: images/profile.png
     card-style: summary_large_image
     creator: "@JacobCJameson"
+  page-footer:
+    left: "Copyright 2023, Jacob Jameson"
   navbar:
     right:
       - icon: linkedin
@@ -28,9 +30,12 @@ website:
             href: teaching.qmd
           - text: "Introduction to R"
             href: Intro R.qmd
+          - text: "Code 4 MDM"
+            href: https://code4mdm.github.io
             target: _blank
       - text: Research
         href: research.qmd
+
 format:
   html:
     theme:

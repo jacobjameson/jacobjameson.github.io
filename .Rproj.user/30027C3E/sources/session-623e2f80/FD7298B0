@@ -1,26 +1,26 @@
 {
-    "id": "1B1A12B2",
-    "path": "~/GitHub/jacobjameson.github.io/teaching.qmd",
-    "project_path": "teaching.qmd",
+    "id": "FD7298B0",
+    "path": "~/GitHub/jacobjameson.github.io/research.qmd",
+    "project_path": "research.qmd",
     "type": "quarto_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1700074859736.0,
+    "created": 1700080759343.0,
     "source_on_save": false,
-    "relative_order": 4,
+    "relative_order": 7,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "4,13",
-        "scrollLine": "2"
+        "cursorPosition": "13,25",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1700076817,
+    "lastKnownWriteTime": 1700084570,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1700076817813,
+    "last_content_update": 1700084570514,
     "read_only": false,
     "read_only_alternatives": []
 }

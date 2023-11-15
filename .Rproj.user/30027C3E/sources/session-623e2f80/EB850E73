@@ -3,7 +3,7 @@
     "path": "~/GitHub/jacobjameson.github.io/theme-light.scss",
     "project_path": "theme-light.scss",
     "type": "css",
-    "hash": "3193765245",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1700075391402.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "35,0",
-        "scrollLine": "4"
+        "cursorPosition": "55,27",
+        "scrollLine": "36"
     },
     "folds": "",
-    "lastKnownWriteTime": 1700075393,
+    "lastKnownWriteTime": 1700081595,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1700075393,
+    "last_content_update": 1700081595499,
     "read_only": false,
     "read_only_alternatives": []
 }

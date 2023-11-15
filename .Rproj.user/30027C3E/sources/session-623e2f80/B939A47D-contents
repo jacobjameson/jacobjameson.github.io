@@ -1,0 +1,22 @@
+---
+title: "Jacob Jameson"
+listing:
+  contents: posts
+  sort:
+    - "date desc"
+    - "title desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: spacelab
+    from: markdown+emoji
+page-layout: full
+---
+
+Welcome to my blog!
+
