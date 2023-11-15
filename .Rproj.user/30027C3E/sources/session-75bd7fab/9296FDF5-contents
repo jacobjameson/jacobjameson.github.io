@@ -1,0 +1,120 @@
+---
+title: "Research"
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: spacelab    
+page-layout: full
+---
+
+# Philosphy
+
+*An article about computational science in a scientific publication is not the scholarship itself, it is merely advertising of the scholarship. The actual scholarship is the complete software development environment and the complete set of instructions which generated the figures.* - **J. Buckheit and D. Donoho**
+
+
+I am committed to open science principles and research reproducibility. You can find the code repositories for my academic papers on my [Github](https://github.com/jacobjameson).
+
+## Published Papers
+
+### Does the Doctor–Patient Relationship Affect Enrollment in Clinical Research?
+#### *Academic Medicine*
+
+Recruiting patients for clinical research is challenging, especially for underrepresented populations, and may be influenced by patients’ relationships with their physicians, care experiences, and engagement with care. This study sought to understand predictors of enrollment in a research study among socioeconomically diverse participants in studies of care models that promote continuity in the doctor–patient relationship.
+
+<button id="copyCitationButton1">Copy Citation</button>
+<button id="paperLinkButton1">PDF</button>
+<button id="codeLinkButton1">Code Repo</button>
+
+
+
+## Under Review
+
+
+### Masculinity and Toxins: Exploring Connections between Adolescent Male Gender Expression, School Social Networks and Gender Norms, and Adult Substance Use
+
+<button id="copyCitationButton2">Copy Citation</button>
+<button id="paperLinkButton2">PDF</button>
+<button id="codeLinkButton2">Code Repo</button>
+
+
+### The Way to a Man’s Heart (Disease): Exploring Connections between Male Adherence with Gendered Behavior and Cardiovascular Disease Risk
+
+
+<button id="copyCitationButton3">Copy Citation</button>
+<button id="paperLinkButton3">PDF</button>
+<button id="codeLinkButton3">Code Repo</button>
+
+
+
+<script>
+// Define an object to store citations for multiple papers
+var paperCitations = {
+paper1: "Soo, Jackie; Jameson, Jacob; Flores, Andrea; Dubin, Lisa; Perish, Emily; Afzal, Azka; Berry, Grace; DiMaggio, Vinny; Krishnamoorthi, V. Ram; Porter, Justin; Tang, Joyce MD11; Meltzer, David MD, PhD. Does the Doctor–Patient Relationship Affect Enrollment in Clinical Research?. Academic Medicine 98(6S):p S17-S24, June 2023. | DOI: 10.1097/ACM.0000000000005195",
+paper2: "Glasser, Nathaniel J.; Jameson, Jacob; Pollack, Harold A.; Tung, Elizabeth; and Lindau, Stacy Tessler. "Masculinity and Toxins: Exploring Connections between Adolescent Male Gender Expression, School Social Networks and Gender Norms, and Adult Substance Use." Under Review.",
+paper3: "Glasser, Nathaniel J.; Jameson, Jacob; Tung, Elizabeth; Huang, Elbert S.; Peek, Monica; and Pollack, Harold A. "The Way to a Man’s Heart (Disease): Exploring Connections between Male Adherence with Gendered Behavior and Cardiovascular Disease Risk." Under Review.",
+// Add more papers and their citations as needed
+};
+
+
+// Function to copy the citation to the clipboard
+function copyCitation(paperId) {
+var citationText = paperCitations[paperId];
+var tempInput = document.createElement("input");
+tempInput.value = citationText;
+document.body.appendChild(tempInput);
+tempInput.select();
+document.execCommand("copy");
+document.body.removeChild(tempInput);
+alert("Citation copied to clipboard!");
+}
+
+// Attach the copyCitation function to the button click events
+document.getElementById("copyCitationButton1").addEventListener("click", function() {
+copyCitation("paper1");
+});
+
+document.getElementById("copyCitationButton2").addEventListener("click", function() {
+copyCitation("paper2");
+});
+
+document.getElementById("copyCitationButton3").addEventListener("click", function() {
+copyCitation("paper3");
+});
+
+</script>
+
+<script>
+// Function to open the paper link in a new tab
+function openPaperLink(paperId) {
+var paperLink = "URL for Paper " + paperId; // Replace with the actual URL
+window.open(paperLink, '_blank');
+}
+
+// Attach the openPaperLink and openCodeLink functions to the button click events
+document.getElementById("paperLinkButton1").addEventListener("click", function() {
+openPaperLink(1);
+});
+
+document.getElementById("codeLinkButton1").addEventListener("click", function() {
+openCodeLink(1);
+});
+
+document.getElementById("paperLinkButton2").addEventListener("click", function() {
+openPaperLink(2);
+});
+
+document.getElementById("codeLinkButton2").addEventListener("click", function() {
+openCodeLink(2);
+});
+
+
+document.getElementById("paperLinkButton3").addEventListener("click", function() {
+openPaperLink(3);
+});
+
+document.getElementById("codeLinkButton3").addEventListener("click", function() {
+openCodeLink(3);
+});
+</script>
+

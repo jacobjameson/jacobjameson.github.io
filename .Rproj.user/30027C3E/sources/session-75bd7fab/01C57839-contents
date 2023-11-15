@@ -1,0 +1,595 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP:300, 300i&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Creepster:400,400i,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+:root {
+  --bs-blue: #446e9b;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #e83e8c;
+  --bs-red: #cd0200;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #d47500;
+  --bs-green: #3cb521;
+  --bs-teal: #20c997;
+  --bs-cyan: #3399f3;
+  --bs-black: #000;
+  --bs-white: #fff;
+  --bs-gray: #777;
+  --bs-gray-dark: #333;
+  --bs-gray-100: #f8f9fa;
+  --bs-gray-200: #eee;
+  --bs-gray-300: #dee2e6;
+  --bs-gray-400: #ced4da;
+  --bs-gray-500: #999;
+  --bs-gray-600: #777;
+  --bs-gray-700: #495057;
+  --bs-gray-800: #333;
+  --bs-gray-900: #2d2d2d;
+  --bs-primary: #446e9b;
+  --bs-secondary: #999;
+  --bs-success: #3cb521;
+  --bs-info: #3399f3;
+  --bs-warning: #d47500;
+  --bs-danger: #cd0200;
+  --bs-light: #eee;
+  --bs-dark: #333;
+  --bs-primary-rgb: 68, 110, 155;
+  --bs-secondary-rgb: 153, 153, 153;
+  --bs-success-rgb: 60, 181, 33;
+  --bs-info-rgb: 51, 153, 243;
+  --bs-warning-rgb: 212, 117, 0;
+  --bs-danger-rgb: 205, 2, 0;
+  --bs-light-rgb: 238, 238, 238;
+  --bs-dark-rgb: 51, 51, 51;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-body-color-rgb: 119, 119, 119;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-font-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #777;
+  --bs-body-bg: #fff;
+  --bs-border-width: 1px;
+  --bs-border-style: solid;
+  --bs-border-color: #dee2e6;
+  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+  --bs-border-radius: 0.375rem;
+  --bs-border-radius-sm: 0.25rem;
+  --bs-border-radius-lg: 0.5rem;
+  --bs-border-radius-xl: 1rem;
+  --bs-border-radius-2xl: 2rem;
+  --bs-border-radius-pill: 50rem;
+  --bs-link-color: #3399f3;
+  --bs-link-hover-color: #297ac2;
+  --bs-code-color: #e83e8c;
+  --bs-highlight-bg: #f6e3cc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+
+body {
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: #ffffff;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lato";
+  letter-spacing: 2px;
+  line-height: 2rem; /* increases, so wrapping headers don't overlap */
+  font-weight: 300;
+}
+
+d-title {
+  padding-top: 13rem; /*so that navbar doesn't overlap fixed title */
+}
+
+d-title h1,
+d-article h2 {
+	font-weight: 300;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+
+/* --------------Navbar-------------------- */
+
+
+/* background-image for fade-to-white color of navbar */
+.distill-site-header{
+  padding: 40px 0px;
+  background-image: linear-gradient(to bottom, rgba(146, 0, 0, 1), rgba(146,0,0,0.5));
+  background-color: transparent;
+  font-size: 15px;
+  font-family: "Noto Serif JP";
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.distill-site-header .logo img{
+  max-height: 40px; /* Makes logo bigger, default was 20px */
+}
+
+/* dropdown navbar color on mobile */
+
+@media screen and (max-width: 768px){
+  .distill-site-header.responsive {
+      background: rgba(146,0,0,0.99);
+  }
+}
+
+
+/* Navbar Links with Animated Hover */
+
+.distill-site-header a { /* A normal link in navbar */
+  color: #1f1f1f;
+  display: inline-block; /* This line and line below is so pseudo-element will work later */
+  position: relative;
+  text-decoration: none;
+  padding-left: 0px; /* overrides default so animation looks Ok */
+  padding-right: 0px; /* overrides default so animation looks Ok */
+  margin: 10px 14px; /* replaces default padding values for margin values */
+}
+
+
+.distill-site-header a:hover { /* (unanimated) hover behavior for navbar links */
+  color: #787878;
+  padding-left: 0px; /* overrides default so animation looks Ok */
+  padding-right: 0px; /* overrides default so animation looks Ok */
+  margin: 10px 14px; /* replaces default padding values for margin values */
+}
+
+.distill-site-header a:before { /*Creates pseudoelement line under link */
+  background-color: #787878;
+  content: '';
+  height: 1px;
+  position: absolute;
+  bottom: -1px;
+  transition: width 0.3s ease-in-out; /* animate the width */
+  width: 100%;
+}
+
+.distill-site-header a:hover:before {
+  width: 0; /* Shrinks width of pseudoelement to 0 when hovered */
+}
+
+/* Makes sure animation does NOT apply to Title or Logo links (or toggle on mobile) */
+
+.distill-site-header a.title:before, .distill-site-nav a.logo:before, a.nav-toggle:before {
+  display: none;
+}
+
+.distill-site-header a.title, .distill-site-nav a.logo {
+  padding: 10px 0px;
+  margin: 10px 14px;
+}
+
+
+/* No navbar links on mobile except title and nav-toggle */
+
+@media screen and (max-width: 768px) {
+  .distill-site-header a, .distill-site-header .nav-dropdown {
+    display: none;
+  }
+
+  .distill-site-header a.title, .distill-site-header a.nav-toggle {
+    display: inline-block;
+    padding: 10px 0px;
+    margin: 10px 14px;
+  }
+}
+
+/* -------------Appendix---------------- */
+
+d-appendix {
+  background-color: #fdf7f9;
+  border-top: none !important;
+  color: #1a162d !important;
+}
+
+/* -------------Footer------------------*/
+
+.distill-site-footer {
+  color: #7e7b88;
+  background-color: #ca225e3d;
+  margin-top: 0px;
+  padding: 50px 20px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 12px;
+
+}
+
+d-byline div.byline.grid div p,
+d-byline,
+d-byline p,
+p.author,
+p.affiliation,
+d-byline h3,
+.d-toc,
+.d-toc-header,
+.d-toc ul,
+d-appendix p {
+	font-size: 0.9rem;
+}
+
+d-appendix h3 + * {
+	margin-top: 1.5em !important;
+}
+
+
+/*----- COLORED LIST BULLET----*/
+
+d-article ul {
+  list-style: none; /* Remove default bullets */
+}
+
+d-article ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #CA225E; /* Change the color */
+  font-weight: normal; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1.5em; /* Also needed for space (tweak if needed) */
+  margin-left: -1.5em; /* Also needed for space (tweak if needed) */
+}
+
+d-article ul > li > p {
+  display: inline; /* to have content show up next to bullet */
+  line-height: 1.6em;
+}
+
+d-article ul > li { /*to add back in space between bullet items that I took away by making p display inline */
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.d-toc ul li::before {
+  content: " ";  /* Remove toc bullets */
+}
+
+/* quarto syntax highlight colors */
+:root {
+  --quarto-hl-ot-color: #003B4F;
+  --quarto-hl-at-color: #657422;
+  --quarto-hl-ss-color: #20794D;
+  --quarto-hl-an-color: #5E5E5E;
+  --quarto-hl-fu-color: #4758AB;
+  --quarto-hl-st-color: #20794D;
+  --quarto-hl-cf-color: #003B4F;
+  --quarto-hl-op-color: #5E5E5E;
+  --quarto-hl-er-color: #AD0000;
+  --quarto-hl-bn-color: #AD0000;
+  --quarto-hl-al-color: #AD0000;
+  --quarto-hl-va-color: #111111;
+  --quarto-hl-bu-color: inherit;
+  --quarto-hl-ex-color: inherit;
+  --quarto-hl-pp-color: #AD0000;
+  --quarto-hl-in-color: #5E5E5E;
+  --quarto-hl-vs-color: #20794D;
+  --quarto-hl-wa-color: #5E5E5E;
+  --quarto-hl-do-color: #5E5E5E;
+  --quarto-hl-im-color: #00769E;
+  --quarto-hl-ch-color: #20794D;
+  --quarto-hl-dt-color: #AD0000;
+  --quarto-hl-fl-color: #AD0000;
+  --quarto-hl-co-color: #5E5E5E;
+  --quarto-hl-cv-color: #5E5E5E;
+  --quarto-hl-cn-color: #8f5902;
+  --quarto-hl-sc-color: #5E5E5E;
+  --quarto-hl-dv-color: #AD0000;
+  --quarto-hl-kw-color: #003B4F;
+}
+
+/* other quarto variables */
+:root {
+  --quarto-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+pre > code.sourceCode > span {
+  color: #003B4F;
+}
+
+code span {
+  color: #003B4F;
+}
+
+code.sourceCode > span {
+  color: #003B4F;
+}
+
+div.sourceCode,
+div.sourceCode pre.sourceCode {
+  color: #003B4F;
+}
+
+code span.ot {
+  color: #003B4F;
+}
+
+code span.at {
+  color: #657422;
+}
+
+code span.ss {
+  color: #20794D;
+}
+
+code span.an {
+  color: #5E5E5E;
+}
+
+code span.fu {
+  color: #4758AB;
+}
+
+code span.st {
+  color: #20794D;
+}
+
+code span.cf {
+  color: #003B4F;
+}
+
+code span.op {
+  color: #5E5E5E;
+}
+
+code span.er {
+  color: #AD0000;
+}
+
+code span.bn {
+  color: #AD0000;
+}
+
+code span.al {
+  color: #AD0000;
+}
+
+code span.va {
+  color: #111111;
+}
+
+code span.pp {
+  color: #AD0000;
+}
+
+code span.in {
+  color: #5E5E5E;
+}
+
+code span.vs {
+  color: #20794D;
+}
+
+code span.wa {
+  color: #5E5E5E;
+  font-style: italic;
+}
+
+code span.do {
+  color: #5E5E5E;
+  font-style: italic;
+}
+
+code span.im {
+  color: #00769E;
+}
+
+code span.ch {
+  color: #20794D;
+}
+
+code span.dt {
+  color: #AD0000;
+}
+
+code span.fl {
+  color: #AD0000;
+}
+
+code span.co {
+  color: #5E5E5E;
+}
+
+code span.cv {
+  color: #5E5E5E;
+  font-style: italic;
+}
+
+code span.cn {
+  color: #8f5902;
+}
+
+code span.sc {
+  color: #5E5E5E;
+}
+
+code span.dv {
+  color: #AD0000;
+}
+
+code span.kw {
+  color: #003B4F;
+}
+
+.prevent-inlining {
+  content: "</";
+}
+
+/*# sourceMappingURL=debc5d5d77c3f9108843748ff7464032.css.map */
+
+/* DEMO-SPECIFIC STYLES */
+.typewriter h1 {
+  color: #000000;
+  font-family: Courier;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
+
+.chart-container {
+  max-width: 850px;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+}
+
+.highlightgreen {
+	background-color: #E2F5D0;
+}
+
+
+.caption {
+  font-size: 14px;
+}
+
+.spacer {
+    height: 30px;
+}
+
+.source {
+  font-size: 12px;
+  color: #777;
+  font-weight: 400;
+  margin-right: 250px;
+}
+
+.highlightpink {
+  text-decoration: underline;
+  color: #d66982;
+}
+
+
+.x .tick line {
+  stroke: rgba(0, 0, 0, .2);
+}
+
+.y .tick line {
+  stroke: rgba(0, 0, 0, .2);
+}
+
+.x .domain {
+  display: none;
+}
+
+.y .domain {
+  display: none;
+}
+
+.y .tick text {
+  font-size: 14px;
+  fill: #333;
+  font-family: 'Lato';
+}
+
+.x .tick text {
+  font-size: 14px;
+  fill: #333;
+  font-family: 'Lato';
+}
+
+.highlightpink {
+  text-decoration: underline;
+  color: #d66982;
+}
+
+.source {
+  font-size: 12px;
+  color: #777;
+  font-weight: 400;
+  margin-right: 250px;
+}
+
+.pop-up {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 1px;
+  line-height: 1.2;
+  width: 200px;
+  /* height: 100px; */
+  pointer-events: none;
+  background-color: white;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+	body {
+		background-color: #f7f2df;
+		margin-left: 1.5rem;
+		margin-right: 1.5rem;
+		margin-bottom: 0.25rem
+	}
+
+	h1 {
+		font-size: 45px;
+		font-weight: 100;
+		margin-top: 5rem;
+		color: #1d4f16;
+		}
+
+  .container {
+    display: block;
+  }
+
+	.clip-container {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+		margin-right: 0.1rem;
+	}
+}
+
+svg {
+  overflow: visible;
+}

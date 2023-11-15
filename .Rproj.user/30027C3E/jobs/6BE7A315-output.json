@@ -1,0 +1,7 @@
+[1,"Installing 'tufte' ...\n"]
+[2,"trying URL 'https://cran.rstudio.com/bin/macosx/big-sur-x86_64/contrib/4.3/tufte_0.13.tgz'\n"]
+[2,"Content type 'application/x-gzip' length 275484 bytes (269 KB)\n===="]
+[2,"==============================================\ndownloaded 269 KB\n\n"]
+[1,"The downloaded binary packages are in\n"]
+[1,"\t/var/folders/7g/0d68rs0n3ll4wm72m096lrkw0000gn/T//RtmpjXO5Iu/downloaded_packages\n"]
+[2,"\n\n✔ Package 'tufte' successfully installed.\n"]
