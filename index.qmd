@@ -11,7 +11,7 @@ about:
       href: https://jacobjameson.com/blog
     - icon: envelope
       text: Email
-      href: jacobjameson@g.harvard.edu
+      href: mailto:jacobjameson@g.harvard.edu
     - icon: github
       text: Github
       href: https://github.com/jacobjameson
@@ -30,7 +30,7 @@ page-layout: full
 
 I am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr. Soroush Saghafian and work in [The Public Impact Analytics Science Lab (PIAS-Lab)](https://scholar.harvard.edu/saghafian/public-impact-analytics-science-lab-pias-lab-harvard) at Harvard. I also hold a research position in [Boston Children's Hospital](https://www.childrenshospital.org) General Pediatric Unit. 
 
-I use tools from operations research, engineering, computer science, and economics to inform decision being made under conditions of uncertainty.
+I use tools from operations research, engineering, computer science, and economics to inform decisions being made under conditions of uncertainty.
 
 
 
