@@ -1,0 +1,14 @@
+{
+  "hash": "723f910aaee9b06bc15116990d170789",
+  "result": {
+    "markdown": "---\ntitle: \"The 'Odd' Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research\"\ndescription: \"Marginal Effects >>> Odds Ratios\"\nauthor: \"Jacob Jameson\"\ndate: \"2023-09-01\"\ncategories: [marginal effects]\noutput:\n  tufte::tufte_html: default\n  tufte::tufte_handout:\n    citation_package: natbib\n    latex_engine: xelatex\n  tufte::tufte_book:\n    citation_package: natbib\n    latex_engine: xelatex\nlink-citations: true\nreference-location: margin\ncomments:\n  utterances:\n    repo: jacobjameson/jacobjameson.github.io\nformat:\n  html:\n    theme: slate\n---\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(0)\nn <- 1000  # Number of observations\nX <- matrix(rnorm(n * 2), ncol = 2)  # Two covariates\nbeta <- c(0.5, -0.25)  # True effect sizes\nintercept <- 0.2  # True intercept\nnoise <- rnorm(n) * 0.5  # Noise\n\n# Linear outcome\nlinear_y <- intercept + X %*% beta + noise\n\n# Binary outcome\nbinary_y <- as.integer(linear_y > 0)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nols_fit <- lm(linear_y ~ X)\nsummary(ols_fit)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n\nCall:\nlm(formula = linear_y ~ X)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1.57460 -0.32400  0.00088  0.31575  1.48493 \n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)    \n(Intercept)  0.23440    0.01511   15.52   <2e-16 ***\nX1           0.50587    0.01514   33.41   <2e-16 ***\nX2          -0.24042    0.01462  -16.45   <2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.4775 on 997 degrees of freedom\nMultiple R-squared:  0.5843,\tAdjusted R-squared:  0.5834 \nF-statistic: 700.6 on 2 and 997 DF,  p-value: < 2.2e-16\n```\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlogit_fit <- glm(binary_y ~ X, family = binomial)\nsummary(logit_fit)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n\nCall:\nglm(formula = binary_y ~ X, family = binomial)\n\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)    \n(Intercept)  0.97739    0.09451  10.341   <2e-16 ***\nX1           1.83890    0.12592  14.603   <2e-16 ***\nX2          -0.86529    0.09277  -9.328   <2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 1310.25  on 999  degrees of freedom\nResidual deviance:  859.56  on 997  degrees of freedom\nAIC: 865.56\n\nNumber of Fisher Scoring iterations: 5\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

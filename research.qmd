@@ -10,17 +10,33 @@ page-layout: full
 
 ## Published Papers
 
+### Associations of Adolescent School Social Networks, Gender Norms, and Adolescent-to-Adult Changes in Male Gender Expression with Adult Substance Use
+### **Journal of Adolescent Health**
+
+Reflecting sociocultural pressures around masculinity, measures of male gender expression (MGE) have previously been associated with health outcomes. In this study, we examine associations between of adolescent school social networksnetwork variables and school, gender norms, and with adolescent-to-young-adult MGE changes, and of MGE changes in male gender expression (GE) with young adult substance use.
+
+
+<div style="display: flex; justify-content: center; align-items: center;">
+<img src="/Data/papers/figures/masc_toxins_fig2.png" alt="Second Image" style="width: 50%;"/>
+</div>
+
+<a href="https://www.jahonline.org/article/S1054-139X(23)00599-2/fulltext" class="button" id="siteButton1">Publisher's Site</a>
+<a href="https://github.com/jacobjameson/masculinity-and-toxins" class="button" id="codeLinkButton">Code Repo</a>
+
+
+
+
+
 ### Does the Doctor–Patient Relationship Affect Enrollment in Clinical Research?
 ### **Academic Medicine**
 
-*Soo, Jackie PhD; Jameson, Jacob MS; Flores, Andrea MPP; Dubin, Lisa; Perish, Emily MPP; Afzal, Azka MD; Berry, Grace MD; DiMaggio, Vinny MD; Krishnamoorthi, V. Ram MD; Porter, Justin MD; Tang, Joyce MD; Meltzer, David MD, PhD. Does the Doctor–Patient Relationship Affect Enrollment in Clinical Research?. Academic Medicine 98(6S):p S17-S24, June 2023. | DOI: 10.1097/ACM.0000000000005195*
 
 Recruiting patients for clinical research is challenging, especially for underrepresented populations, and may be influenced by patients’ relationships with their physicians, care experiences, and engagement with care. This study sought to understand predictors of enrollment in a research study among socioeconomically diverse participants in studies of care models that promote continuity in the doctor–patient relationship.
 
 
 
 <div style="display: flex; justify-content: center; align-items: center;">
-<img src="/Data/papers/figures/doctor_rel_fig1.png" alt="First Image" style="width: 90%; margin-right: 10px;"/>
+<img src="/Data/papers/figures/doctor_rel_fig1.png" alt="First Image" style="width: 50%; margin-right: 10px;"/>
 </div>
 
 
@@ -33,30 +49,17 @@ Recruiting patients for clinical research is challenging, especially for underre
 
 ### To Batch or Not to Batch: Test-Ordering Variability in the Emergency Department and the Impact on Care Delivery
 
-*Jameson, J., S. Saghafian, R.S. Huckman, and N.R. Hodgson. Working Paper. "To Batch or Not to Batch: Test-Ordering Variability in the Emergency Department and the Impact on Care Delivery". Under Review.*
 
 Emergency Department (ED) patients may receive varying diagnostic workups and dispositions based on physician factors instead of solely based on presenting conditions. This study delves into the contrasting practices of batch-ordering multiple tests simultaneously versus the sequential ordering of tests based on previous results. Our analysis revealed stark differences in physician diagnostic approaches, even when working in similar environments. Findings suggest that physicians who predominantly make use of batching (“batchers”) tend to order more tests, which is associated with longer lengths of stay and increased costs. In contrast, other physicians (“non-batchers”) order fewer tests, which is associated with lower lengths of stay and costs, without any impact on primary ED outcome measures, such as the 72-hour rate of return. 
 
 
 <div style="display: flex; justify-content: center; align-items: center;">
-<img src="/Data/papers/figures/to_batch_fig1.png" alt="First Image" style="width: 90%; margin-right: 10px;"/>
+<img src="/Data/papers/figures/to_batch_fig1.png" alt="First Image" style="width: 50%; margin-right: 10px;"/>
 </div>
 
 <a href="/Data/papers/To Batch or Not to Batch.pdf" class="button" id="paperLinkButton">PDF</a>
 <a href="https://github.com/jacobjameson/batch-vs-sequence" class="button" id="codeLinkButton">Code Repo</a>
 
-
-### Associations of Adolescent School Social Networks, Gender Norms, and Adolescent-to-Adult Changes in Male Gender Expression with Adult Substance Use
-
-Reflecting sociocultural pressures around masculinity, measures of male gender expression (MGE) have previously been associated with health outcomes. In this study, we examine associations between of adolescent school social networksnetwork variables and school, gender norms, and with adolescent-to-young-adult MGE changes, and of MGE changes in male gender expression (GE) with young adult substance use.
-
-
-<div style="display: flex; justify-content: center; align-items: center;">
-<img src="/Data/papers/figures/masc_toxins_fig2.png" alt="Second Image" style="width: 100%;"/>
-</div>
-
-<a href="#link_to_pdf" class="button" id="paperLinkButton">PDF</a>
-<a href="https://github.com/jacobjameson/masculinity-and-toxins" class="button" id="codeLinkButton">Code Repo</a>
 
 
 

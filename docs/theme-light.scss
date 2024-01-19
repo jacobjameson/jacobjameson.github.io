@@ -59,3 +59,10 @@ p.subtitle.lead {
 }
 
 
+.navbar-brand {  /* This class might be different for your site */
+  background: url('images/sig.png') no-repeat center center;
+  display: block;
+  width: 200px; /* Adjust to the size of your image */
+  height: 50px; /* Adjust to the size of your image */
+  text-indent: -9999px; /* Hide the text */
+}

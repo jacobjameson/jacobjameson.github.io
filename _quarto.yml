@@ -12,6 +12,10 @@ website:
   page-footer:
     left: "Copyright 2023, Jacob Jameson"
   navbar:
+    logo: "images/sig.png"
+    align: center
+    title: false
+    collapse-below: lg
     right:
       - icon: linkedin
         href: https://www.linkedin.com/in/jacob-jameson
@@ -43,3 +47,4 @@ format:
     fontsize: 1.0em
     code-copy: true
     code-overflow: wrap
+
