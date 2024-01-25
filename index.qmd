@@ -71,6 +71,16 @@ setTimeout(type, timeout);
 
 type(); // Initialize typing effect
 
+.animated-text {
+font-size: 24px;
+font-weight: bold;
+}
+.dynamic-text {
+border-right: 2px solid;
+display: inline;
+color: darkblue; /* This line sets the text color to dark blue */
+}
+
 </script>
 
 
