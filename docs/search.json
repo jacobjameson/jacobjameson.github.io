@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Jacob Jameson",
     "section": "",
-    "text": "I am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr. Soroush Saghafian and work in The Public Impact Analytics Science Lab (PIAS-Lab) at Harvard. I also hold a research position in Boston Children’s Hospital General Pediatric Unit and I am an Educational Innovation Scholar at the Harvard Center for Health Decision Science.\nI use tools from operations research, engineering, computer science, and economics to inform decisions being made under conditions of uncertainty, with a focus on healthcare.\nAside from research, I am passionate about teaching. I have extensive experience teaching students in a variety of settings, including as a teaching fellow at Harvard, instructor at UChicago Medicine, and as a Teach For America corps member in New Haven Public Schools."
+    "text": "I am a \n\n\nI am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr. Soroush Saghafian and work in The Public Impact Analytics Science Lab (PIAS-Lab) at Harvard. I also hold a research position in Boston Children’s Hospital General Pediatric Unit and I am an Educational Innovation Scholar at the Harvard Center for Health Decision Science and Global Health Education and Learning Incubator.\nI use tools from operations research, engineering, computer science, and economics to inform decisions being made under conditions of uncertainty, with a focus on healthcare.\nAside from research, I am passionate about teaching. I have extensive experience teaching students in a variety of settings, including as a teaching fellow at Harvard, instructor at UChicago Medicine, and as a Teach For America corps member in New Haven Public Schools."
   },
   {
     "objectID": "teaching.html",
@@ -711,7 +711,7 @@
     "href": "index.html#about-me",
     "title": "Jacob Jameson",
     "section": "",
-    "text": "I am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr. Soroush Saghafian and work in The Public Impact Analytics Science Lab (PIAS-Lab) at Harvard. I also hold a research position in Boston Children’s Hospital General Pediatric Unit and I am an Educational Innovation Scholar at the Harvard Center for Health Decision Science.\nI use tools from operations research, engineering, computer science, and economics to inform decisions being made under conditions of uncertainty, with a focus on healthcare.\nAside from research, I am passionate about teaching. I have extensive experience teaching students in a variety of settings, including as a teaching fellow at Harvard, instructor at UChicago Medicine, and as a Teach For America corps member in New Haven Public Schools."
+    "text": "I am a \n\n\nI am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr. Soroush Saghafian and work in The Public Impact Analytics Science Lab (PIAS-Lab) at Harvard. I also hold a research position in Boston Children’s Hospital General Pediatric Unit and I am an Educational Innovation Scholar at the Harvard Center for Health Decision Science and Global Health Education and Learning Incubator.\nI use tools from operations research, engineering, computer science, and economics to inform decisions being made under conditions of uncertainty, with a focus on healthcare.\nAside from research, I am passionate about teaching. I have extensive experience teaching students in a variety of settings, including as a teaching fellow at Harvard, instructor at UChicago Medicine, and as a Teach For America corps member in New Haven Public Schools."
   },
   {
     "objectID": "Intro R.html#about-this-course",
@@ -740,5 +740,117 @@
     "title": "The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research",
     "section": "",
     "text": "set.seed(0)\nn &lt;- 1000  # Number of observations\nX &lt;- matrix(rnorm(n * 2), ncol = 2)  # Two covariates\nbeta &lt;- c(0.5, -0.25)  # True effect sizes\nintercept &lt;- 0.2  # True intercept\nnoise &lt;- rnorm(n) * 0.5  # Noise\n\n# Linear outcome\nlinear_y &lt;- intercept + X %*% beta + noise\n\n# Binary outcome\nbinary_y &lt;- as.integer(linear_y &gt; 0)\n\n\nols_fit &lt;- lm(linear_y ~ X)\nsummary(ols_fit)\n\n\nCall:\nlm(formula = linear_y ~ X)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1.57460 -0.32400  0.00088  0.31575  1.48493 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  0.23440    0.01511   15.52   &lt;2e-16 ***\nX1           0.50587    0.01514   33.41   &lt;2e-16 ***\nX2          -0.24042    0.01462  -16.45   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.4775 on 997 degrees of freedom\nMultiple R-squared:  0.5843,    Adjusted R-squared:  0.5834 \nF-statistic: 700.6 on 2 and 997 DF,  p-value: &lt; 2.2e-16\n\n\n\nlogit_fit &lt;- glm(binary_y ~ X, family = binomial)\nsummary(logit_fit)\n\n\nCall:\nglm(formula = binary_y ~ X, family = binomial)\n\nCoefficients:\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  0.97739    0.09451  10.341   &lt;2e-16 ***\nX1           1.83890    0.12592  14.603   &lt;2e-16 ***\nX2          -0.86529    0.09277  -9.328   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 1310.25  on 999  degrees of freedom\nResidual deviance:  859.56  on 997  degrees of freedom\nAIC: 865.56\n\nNumber of Fisher Scoring iterations: 5"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html",
+    "href": "api 222 files/section 1/section1.html",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "",
+    "text": "Notes build on previous TFs (Ibou Dieye, Laura Morris, Amy Wickett & Emily Mower)\nThe following code is meant as a first introduction to R. It is therefore helpful to run it one line at a time and see what happens. To run one line of code in RStudio, you can highlight the code you want to run and hit “Run” at the top of the script.\nOn a mac, you can highlight the code you want to run and hit Command + Enter. On a PC, you can highlight the code you want to run and hit Ctrl + Enter. If you ever forget how a function works, you can type ? followed immediately (e.g. with no space) by the function name to get the help file."
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#part-1-r-fundamentals",
+    "href": "api 222 files/section 1/section1.html#part-1-r-fundamentals",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Part 1: R Fundamentals",
+    "text": "Part 1: R Fundamentals\nValues can be assigned names and used in subsequent operations. Instead of the traditional “=” sign, the convention in R is “&lt;-”. The “=” sign also works, but I will use “&lt;-” to be consistent with convention.\nThe general form for calling R functions is:\n\n# FunctionName(arg.1 = value.1, arg.2 = value.2, ..., arg.n = value.n)"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#part-2-vectors",
+    "href": "api 222 files/section 1/section1.html#part-2-vectors",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Part 2: Vectors",
+    "text": "Part 2: Vectors\nFirst, we will learn how to make different types of vectors. Our first vector will contain integers 1 through 4:\n\nvec1 &lt;- c(1, 2, 3, 4)\nprint(vec1)\n\n[1] 1 2 3 4\n\n\nIn R, we use square brackets for indexing. So, for example, if we want to print the 1st element of our vector:\n\nprint(vec1[1])\n\n[1] 1\n\n\nIf we want to print the 4th element of our vector:\n\nprint(vec1[4])\n\n[1] 4\n\n\nIf we want to print the 1st and the 4th elements in one go, we make a vector with the desired indices and place that index vector within square brackets:\n\nprint(vec1[c(1,4)])\n\n[1] 1 4\n\n\nAn alternative way to create vec1 would be using the seq() command, which allows us to generate a vector according to a sequence:\n\nprint(seq(4))\n\n[1] 1 2 3 4\n\nprint(seq(-4))\n\n[1]  1  0 -1 -2 -3 -4\n\nvec2 &lt;- seq(4)\nprint(vec2)\n\n[1] 1 2 3 4\n\nprint(seq(from = 100, to = 120, by = 5))\n\n[1] 100 105 110 115 120\n\n# Help file for seq function\n?seq\n\n# Breaking the sequence command into multiple lines\nprint(seq(from = 100, \n          to = 120, \n          by = 5))\n\n[1] 100 105 110 115 120\n\nprint(1:10)\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\nprint(10:1)\n\n [1] 10  9  8  7  6  5  4  3  2  1\n\n\nVectors don’t have to be numeric. They could also be character/string vectors:\n\nword_vec &lt;- c(\"Hello\", \"Time To\", \"Learn\", \"R\", \"!\")\nprint(word_vec)\n\n[1] \"Hello\"   \"Time To\" \"Learn\"   \"R\"       \"!\"      \n\n# Using the which() function\nprint(which(word_vec == \"Learn\"))\n\n[1] 3\n\nprint(which(word_vec == \"Hi!\"))\n\ninteger(0)\n\n# Finding the length of a vector\nprint(length(vec1))\n\n[1] 4\n\nprint(length(seq(10)))\n\n[1] 10\n\nprint(length(seq(from = 100, to = 120, by = 2)))\n\n[1] 11\n\n# Calculating statistics about vectors\nprint(mean(vec1))\n\n[1] 2.5\n\nprint(median(vec1))\n\n[1] 2.5\n\nprint(min(vec1))\n\n[1] 1\n\nprint(max(vec1))\n\n[1] 4\n\n# Variance and standard deviation\nprint(var(vec1))\n\n[1] 1.666667\n\nprint(sd(vec1))\n\n[1] 1.290994\n\n# Comparing vectors\nvec4 &lt;- c(1, 4, 9, 16)\nprint(vec4)\n\n[1]  1  4  9 16\n\nprint(vec1 == vec4)\n\n[1]  TRUE FALSE FALSE FALSE\n\n# Checking if two vectors are exactly the same\nprint(all.equal(vec1, vec2))\n\n[1] TRUE\n\nprint(all.equal(vec1, vec4))\n\n[1] \"Mean relative difference: 2.222222\""
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#part-3-logical-statements",
+    "href": "api 222 files/section 1/section1.html#part-3-logical-statements",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Part 3: Logical statements",
+    "text": "Part 3: Logical statements\n“if statements” can be very useful. They work as follows:\nif (the logical statement in these parentheses is TRUE) {\n  do this} \nelse {\n  do that\n}\nLet’s try it.\n\n## Example 1:\nif (2 + 2 == 5) {\n  print(\"Yikes\")\n} else {\n  print(\"Good job!\")\n}\n\n[1] \"Good job!\"\n\n\n\n## Example 2:\nif (vec1[2] == 2) {\n  print(\"Hello\")\n}else {\n  print(\"Goodbye\")\n}\n\n[1] \"Hello\""
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#part-5-matrices",
+    "href": "api 222 files/section 1/section1.html#part-5-matrices",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Part 5: Matrices",
+    "text": "Part 5: Matrices\nTo make a matrix, use the matrix() command. The first element fed in is the data you want to put in matrix form. Then, you specify the number of rows and columns. By default, it fills information down the columns, but you can tell it to do by row\n\nmtx1 &lt;- matrix(vec1, nrow = 2, ncol = 2)\nprint(mtx1)\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n\n\nmtx2 &lt;- matrix(vec1, nrow = 2, ncol = 2, byrow = TRUE)\nprint(mtx2)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n\n\nNote that mtx2 is the transpose of mtx1. If you want to transpose a matrix, you can use t()\n\nprint(mtx1)\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nprint(t(mtx1))\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n\n\nAs with vectors, you can check if two matrices are equal\n\nprint(mtx1 == mtx2)\n\n      [,1]  [,2]\n[1,]  TRUE FALSE\n[2,] FALSE  TRUE\n\nprint(all.equal(mtx1, mtx2))\n\n[1] \"Mean relative difference: 0.4\"\n\nprint(mtx1 == t(mtx2))\n\n     [,1] [,2]\n[1,] TRUE TRUE\n[2,] TRUE TRUE\n\nprint(all.equal(mtx1, t(mtx2)))\n\n[1] TRUE\n\n\nMatrices are indexed by [row,column]\n\nprint(mtx1[1,2])\n\n[1] 3\n\nprint(mtx2[1,2])\n\n[1] 2\n\n\nLet’s make a bigger matrix\n\nmtx3 &lt;- matrix(c(vec1, vec4), nrow = 4, ncol = 2)\nprint(mtx3)\n\n     [,1] [,2]\n[1,]    1    1\n[2,]    2    4\n[3,]    3    9\n[4,]    4   16"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#part-6-random-numbers",
+    "href": "api 222 files/section 1/section1.html#part-6-random-numbers",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Part 6: Random numbers",
+    "text": "Part 6: Random numbers\nYou can also generate random numbers in R. However, one concern with analyses. done using random numbers is that you might not be able to reproduce them. One way to avoid this is to set the “seed”. Here’s a reference for random seeds: https://en.wikipedia.org/wiki/Random_seed\n\nset.seed(222)\n\nWe can generate random numbers from all kinds of distributions. For now, we will generate a random normal variable. If I don’t specify a mean or variance, it will assume mean = 0, standard deviation = 1.\n\nnorm_var1 &lt;- rnorm(1)\nprint(norm_var1)\n\n[1] 1.487757\n\n\nAlternatively, we can specify the mean and standard deviation\n\nnorm_var2 &lt;- rnorm(1, mean = 100, sd = 10)\nprint(norm_var2)\n\n[1] 99.98108\n\n\nThe first element inside the parentheses is how many random variables I want to draw. For example, I could draw 10\n\nnorm_vec  &lt;- rnorm(10, mean = 5, sd = 1)\nprint(norm_vec)\n\n [1] 6.381021 4.619786 5.184136 4.753104 3.784439 6.561405 5.427310 3.798976\n [9] 6.052458 3.694936\n\n\nYou can also draw from other distributions, like the uniform distribution\n\nuni_var1 &lt;- runif(1)\nprint(uni_var1)\n\n[1] 0.2442779"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#part-7-data-frames",
+    "href": "api 222 files/section 1/section1.html#part-7-data-frames",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Part 7: Data frames",
+    "text": "Part 7: Data frames\nThere are lots of great datasets available as part of R packages. Page 14 of Introduction to Statistical Learning with Applications in R. Table 1.1 lays out 15 data sets available from R packages. You can install a package in R using the install.packages() function. Once a package is installed you may use the library function to attach it so that it can be used. Then, every time you want to use the package, you use library(package_name)\n\nlibrary(ISLR)\n\nSometimes we will use outside datasets, not contained in R. In order to read data from a file, you have to know what kind of file it is. The table below lists functions that can import data from common plain-text formats.\n\n\n\nData Type\nFunction\n\n\n\n\ncomma separated\nread_csv()\n\n\ntab separated\nread_delim()\n\n\nother delimited formats\nread_table()\n\n\nfixed width\nread_fwf()\n\n\n\n\ncollege_data  &lt;- College\n?College\n\nLet’s learn about our data. To get the names of the columns in the dataframe, we can use the function colnames()\n\ncolnames(college_data)\n\n [1] \"Private\"     \"Apps\"        \"Accept\"      \"Enroll\"      \"Top10perc\"  \n [6] \"Top25perc\"   \"F.Undergrad\" \"P.Undergrad\" \"Outstate\"    \"Room.Board\" \n[11] \"Books\"       \"Personal\"    \"PhD\"         \"Terminal\"    \"S.F.Ratio\"  \n[16] \"perc.alumni\" \"Expend\"      \"Grad.Rate\"  \n\n\nTo find out how many rows and columns are in the dataset, use dim(). Recall that this gives us Rows followed by Columns\n\ndim(college_data)\n\n[1] 777  18\n\n\nTo find out what type of data is in each column, we can use typeof()\n\ntypeof(college_data[,1])\n\n[1] \"integer\"\n\ntypeof(college_data[,2])\n\n[1] \"double\"\n\n\nYou can also look in the “environment” tab, press the blue arrow next to college_data and it will drop down showing the column names with their types and first few values. For college, all columns except the first are numeric. The first column is a factor column, which means it’s categorical. To get a better sense of the data, let’s look at it\n\nView(college_data)\n\nTo grab a column from a dataframe in R, you have 3 popular options:\ndf$column_name\ndf[,column_number]\ndf[,\"column_name\"]\nThis will be useful so we can separate our outcome column from the feature columns. Let’s try! So that we aren’t overwhelmed by output, we will also use the function head(), which prints only the first few entries\n\nhead(college_data$PhD)\n\n[1] 70 29 53 92 76 67\n\nhead(college_data[,13])\n\n[1] 70 29 53 92 76 67\n\nhead(college_data[,\"PhD\"])\n\n[1] 70 29 53 92 76 67"
+  },
+  {
+    "objectID": "API222.html#table-of-contents",
+    "href": "API222.html#table-of-contents",
+    "title": "API 222 Section Materials",
+    "section": "Table of Contents",
+    "text": "Table of Contents"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#exercise-1-basic-operations-and-functions",
+    "href": "api 222 files/section 1/section1.html#exercise-1-basic-operations-and-functions",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Exercise 1: Basic Operations and Functions",
+    "text": "Exercise 1: Basic Operations and Functions\nCreate a new vector: Create a vector my.vector containing any five numbers. Print the vector. Basic calculations: Find the sum, product, and average of the numbers in my.vector.\n\n\nSample Solution\n# Create a vector with five numbers\nmy.vector &lt;- c(1, 3, 5, 7, 9)\nprint(my.vector)\n\n# Perform basic calculations\nsum(my.vector)\nprod(my.vector)\nmean(my.vector)\n\n\nUse a built-in function: Use the length() function to find the length of my.vector.\n\n\nSample Solution\n# Use a built-in function\nlength(my.vector)"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#exercise-2-vector-manipulation",
+    "href": "api 222 files/section 1/section1.html#exercise-2-vector-manipulation",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Exercise 2: Vector Manipulation",
+    "text": "Exercise 2: Vector Manipulation\nCreate and modify a vector: Create a numeric vector numbers from 1 to 20. Then, extract and print the first 5 elements.\n\n\nSample Solution\n# Create and modify a vector\nnumbers &lt;- 1:20\nprint(numbers[1:5])\n\n\nLogical indexing: From numbers, create a new vector even.numbers that contains only the even numbers. Print even.numbers.\n\n\nSample Solution\n# Logical indexing for even numbers\neven.numbers &lt;- numbers[numbers %% 2 == 0]\nprint(even.numbers)\n\n\nVector arithmetic: Create a new vector that is the square of each element in numbers.\n\n\nSample Solution\nsquared.numbers &lt;- numbers^2\nprint(squared.numbers)"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#exercise-3-matrices",
+    "href": "api 222 files/section 1/section1.html#exercise-3-matrices",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Exercise 3: Matrices",
+    "text": "Exercise 3: Matrices\nCreate a matrix: Convert numbers into a \\(4 \\times 5\\) matrix matrix.1. Print matrix.1.\n\n\nSample Solution\nmatrix.1 &lt;- matrix(numbers, nrow = 4, ncol = 5)\nprint(matrix.1)\n\n\nMatrix transposition: Print the transpose of matrix.1.\n\n\nSample Solution\n# Matrix transposition\nprint(t(matrix.1))\n\n\nMatrix indexing: Extract and print the element in the 2nd row and 3rd column of matrix.1.\n\n\nSample Solution\n# Matrix indexing\nprint(matrix.1[2, 3])"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#exercise-4-logical-statements",
+    "href": "api 222 files/section 1/section1.html#exercise-4-logical-statements",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Exercise 4: Logical Statements",
+    "text": "Exercise 4: Logical Statements\nSimple if-else: Write an if-else statement that prints “Big” if the average of numbers is greater than 10, and “Small” otherwise.\n\n\nSample Solution\n# Simple if-else\nif (mean(numbers) &gt; 10) {\n  print(\"Big\")\n} else {\n  print(\"Small\")\n}\n\n\nNested if-else: Modify the above to include a check if the average is exactly 10, printing “Exactly 10”.\n\n\nSample Solution\n# Nested if-else\nif (mean(numbers) == 10) {\n  print(\"Exactly 10\")\n} else if (mean(numbers) &gt; 10) {\n  print(\"Big\")\n} else {\n  print(\"Small\")\n}"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#exercise-5-random-numbers",
+    "href": "api 222 files/section 1/section1.html#exercise-5-random-numbers",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Exercise 5: Random Numbers",
+    "text": "Exercise 5: Random Numbers\nGenerate random numbers: Generate a vector of 5 random numbers drawn from a normal distribution with mean 0 and standard deviation 1. Print the vector.\n\n\nSample Solution\n# Generate random numbers\nrandom.numbers &lt;- rnorm(5)\nprint(random.numbers)\n\n\nReproducibility: Set a seed of your choice and generate the same vector of random numbers as above.\n\n\nSample Solution\n# Generate random numbers\nset.seed(222) # Set seed for reproducibility\nrandom.numbers &lt;- rnorm(5)\nprint(random.numbers)"
+  },
+  {
+    "objectID": "api 222 files/section 1/section1.html#exercise-6-data-frames",
+    "href": "api 222 files/section 1/section1.html#exercise-6-data-frames",
+    "title": "Section 1 - Intro to API 222 and R",
+    "section": "Exercise 6: Data Frames",
+    "text": "Exercise 6: Data Frames\nExplore college.data: Print the first 6 rows of college.data.\n\n\nSample Solution\n# Explore `college.data`\nhead(college.data)\n\n\nColumn operations: Calculate the mean of the PhD column in college.data.\n\n\nSample Solution\n# Column operations\nmean(college.data$PhD)\n\n\nSubsetting: Create a new data frame small.college that only includes colleges with less than 5000 students (use college.data$Enroll for enrollment numbers).\n\n\nSample Solution\n# Subsetting data frame\nsmall.college &lt;- college.data[college.data$Enroll &lt; 5000, ]\nprint(small.college)"
+  },
+  {
+    "objectID": "API222.html",
+    "href": "API222.html",
+    "title": "API 222 Section Materials",
+    "section": "",
+    "text": "Welcome to the Section Materials for API-222! This course is a journey through the fascinating world of machine learning, tailored to provide you with a strong foundation in both the theoretical and practical aspects of the field. With a focus on policy-making and decision-making applications, you will gain not only an understanding of the statistical theories behind the algorithms but also the skills to apply them to solve real-world problems.\nIn this supplementary section, our primary goal is to enhance your coding abilities. While the main lectures of the course delve into the concepts and theories of machine learning, here we will put those theories into practice.\nThe section materials are neatly segmented to mirror the course’s structure, which is divided into two main units:\n\nSupervised Learning: We start with a deep dive into algorithms designed to predict and analyze outcomes based on input data. You’ll learn to navigate through regression, classification, cross-validation, and more, using R to bring these concepts to life.\nUnsupervised Learning: The second half of the course explores the patterns and structures in data where outcomes aren’t provided. Clustering, dimensionality reduction, and other techniques will be covered, giving you a comprehensive toolkit for data analysis.\n\nWhether you are running regressions, classifying data, or implementing advanced machine learning models, these section materials are crafted to provide you with hands-on experience. Through a series of code examples, exercises, and assignments, you will build the confidence to tackle complex datasets and extract meaningful insights.\nRemember, while mastering the syntax and functions of a programming language is essential, the real magic lies in applying these tools to real-world scenarios. Let’s code our way to a deeper understanding of machine learning!"
+  },
+  {
+    "objectID": "API222.html#section-materials-introduction",
+    "href": "API222.html#section-materials-introduction",
+    "title": "API 222 Section Materials",
+    "section": "",
+    "text": "Welcome to the Section Materials for API-222! This course is a journey through the fascinating world of machine learning, tailored to provide you with a strong foundation in both the theoretical and practical aspects of the field. With a focus on policy-making and decision-making applications, you will gain not only an understanding of the statistical theories behind the algorithms but also the skills to apply them to solve real-world problems.\nIn this supplementary section, our primary goal is to enhance your coding abilities. While the main lectures of the course delve into the concepts and theories of machine learning, here we will put those theories into practice.\nThe section materials are neatly segmented to mirror the course’s structure, which is divided into two main units:\n\nSupervised Learning: We start with a deep dive into algorithms designed to predict and analyze outcomes based on input data. You’ll learn to navigate through regression, classification, cross-validation, and more, using R to bring these concepts to life.\nUnsupervised Learning: The second half of the course explores the patterns and structures in data where outcomes aren’t provided. Clustering, dimensionality reduction, and other techniques will be covered, giving you a comprehensive toolkit for data analysis.\n\nWhether you are running regressions, classifying data, or implementing advanced machine learning models, these section materials are crafted to provide you with hands-on experience. Through a series of code examples, exercises, and assignments, you will build the confidence to tackle complex datasets and extract meaningful insights.\nRemember, while mastering the syntax and functions of a programming language is essential, the real magic lies in applying these tools to real-world scenarios. Let’s code our way to a deeper understanding of machine learning!"
   }
 ]
