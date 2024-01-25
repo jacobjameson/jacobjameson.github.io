@@ -28,9 +28,10 @@ page-layout: full
 
 ## About Me
 
-<div id="animated-text">I am a <span id="dynamic-text"></span></div>
-
-<br>
+<div class="flex">
+<p class="header-sub-title" id="word"></p>
+<p class="header-sub-title blink">|</p>
+</div>
 
 I am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr. Soroush Saghafian and work in [The Public Impact Analytics Science Lab (PIAS-Lab)](https://scholar.harvard.edu/saghafian/public-impact-analytics-science-lab-pias-lab-harvard) at Harvard. I also hold a research position in [Boston Children's Hospital](https://www.childrenshospital.org) General Pediatric Unit and I am an Educational Innovation Scholar at the Harvard [Center for Health Decision Science](https://chds.hsph.harvard.edu) and [Global Health Education and Learning Incubator](https://gheli.harvard.edu).
 
@@ -42,45 +43,45 @@ Aside from research, I am passionate about teaching. I have [extensive experienc
 
 
 <script>
-car text = ["PhD Student", "Health Policy Researcher", "Data Scientist", "Teacher"];onst phrases = ["data scientist", "teacher", "decision scientist"];
-let currentPhrase = 0;
-let currentLetter = 0;
-let isDeleting = false;
-const typingSpeed = 200;
-const deletingSpeed = 100;
-const dynamicText = document.getElementById("dynamic-text");
+const words = ["Data scientist", "Teacher", "Health policy researcher", "Decision scientist"];
+let i = 0;
+let timer;
 
-function type() {
-let currentText = phrases[currentPhrase];
-let displayedText = isDeleting ? currentText.substring(0, currentLetter--) : currentText.substring(0, currentLetter++);
+function typingEffect() {
+	let word = words[i].split("");
+	var loopTyping = function() {
+		if (word.length > 0) {
+			document.getElementById('word').innerHTML += word.shift();
+		} else {
+			deletingEffect();
+			return false;
+		};
+		timer = setTimeout(loopTyping, 200);
+	};
+	loopTyping();
+};
 
-dynamicText.textContent = displayedText;
+function deletingEffect() {
+	let word = words[i].split("");
+	var loopDeleting = function() {
+		if (word.length > 0) {
+			word.pop();
+			document.getElementById('word').innerHTML = word.join("");
+		} else {
+			if (words.length > (i + 1)) {
+				i++;
+			} else {
+				i = 0;
+			};
+			typingEffect();
+			return false;
+		};
+		timer = setTimeout(loopDeleting, 120);
+	};
+	loopDeleting();
+};
 
-if (!isDeleting && displayedText === currentText) {
-// Finish typing. Start deleting after a pause
-setTimeout(() => (isDeleting = true), 2000);
-} else if (isDeleting && displayedText === '') {
-// Finish deleting. Move to the next phrase
-isDeleting = false;
-currentPhrase = (currentPhrase + 1) % phrases.length;
-}
-
-let timeout = isDeleting ? deletingSpeed : typingSpeed;
-setTimeout(type, timeout);
-}
-
-type(); // Initialize typing effect
-
-.animated-text {
-font-size: 24px;
-font-weight: bold;
-}
-.dynamic-text {
-border-right: 2px solid;
-display: inline;
-color: darkblue; /* This line sets the text color to dark blue */
-}
-
+typingEffect();
 </script>
 
 

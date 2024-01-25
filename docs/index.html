@@ -182,46 +182,53 @@ ul.task-list li input[type="checkbox"] {
   <div class="about-contents"><main class="content column-page" id="quarto-document-content">
 <section id="about-me" class="level2">
 <h2 data-anchor-id="about-me">About Me</h2>
-<div id="animated-text">
-I am a <span id="dynamic-text"></span>
+<div class="flex">
+<p class="header-sub-title" id="word">
+</p>
+<p class="header-sub-title blink">
+|
+</p>
 </div>
-<p><br></p>
 <p>I am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr.&nbsp;Soroush Saghafian and work in <a href="https://scholar.harvard.edu/saghafian/public-impact-analytics-science-lab-pias-lab-harvard">The Public Impact Analytics Science Lab (PIAS-Lab)</a> at Harvard. I also hold a research position in <a href="https://www.childrenshospital.org">Boston Children’s Hospital</a> General Pediatric Unit and I am an Educational Innovation Scholar at the Harvard <a href="https://chds.hsph.harvard.edu">Center for Health Decision Science</a> and <a href="https://gheli.harvard.edu">Global Health Education and Learning Incubator</a>.</p>
 <p>I use tools from operations research, engineering, computer science, and economics to inform decisions being made under conditions of uncertainty, with a focus on healthcare.</p>
 <p>Aside from research, I am passionate about teaching. I have <a href="./teaching.html">extensive experience teaching</a> students in a variety of settings, including as a teaching fellow at Harvard, instructor at UChicago Medicine, and as a Teach For America corps member in New Haven Public Schools.</p>
 <script>
-car text = ["PhD Student", "Health Policy Researcher", "Data Scientist", "Teacher"];onst phrases = ["data scientist", "teacher", "decision scientist"];
-let currentPhrase = 0;
-let currentLetter = 0;
-let isDeleting = false;
-const typingSpeed = 200;
-const deletingSpeed = 100;
-const dynamicText = document.getElementById("dynamic-text");
-function type() {
-let currentText = phrases[currentPhrase];
-let displayedText = isDeleting ? currentText.substring(0, currentLetter--) : currentText.substring(0, currentLetter++);
-dynamicText.textContent = displayedText;
-if (!isDeleting && displayedText === currentText) {
-// Finish typing. Start deleting after a pause
-setTimeout(() => (isDeleting = true), 2000);
-} else if (isDeleting && displayedText === '') {
-// Finish deleting. Move to the next phrase
-isDeleting = false;
-currentPhrase = (currentPhrase + 1) % phrases.length;
-}
-let timeout = isDeleting ? deletingSpeed : typingSpeed;
-setTimeout(type, timeout);
-}
-type(); // Initialize typing effect
-.animated-text {
-font-size: 24px;
-font-weight: bold;
-}
-.dynamic-text {
-border-right: 2px solid;
-display: inline;
-color: darkblue; /* This line sets the text color to dark blue */
-}
+const words = ["Data scientist", "Teacher", "Health policy researcher", "Decision scientist"];
+let i = 0;
+let timer;
+function typingEffect() {
+    let word = words[i].split("");
+    var loopTyping = function() {
+        if (word.length > 0) {
+            document.getElementById('word').innerHTML += word.shift();
+        } else {
+            deletingEffect();
+            return false;
+        };
+        timer = setTimeout(loopTyping, 200);
+    };
+    loopTyping();
+};
+function deletingEffect() {
+    let word = words[i].split("");
+    var loopDeleting = function() {
+        if (word.length > 0) {
+            word.pop();
+            document.getElementById('word').innerHTML = word.join("");
+        } else {
+            if (words.length > (i + 1)) {
+                i++;
+            } else {
+                i = 0;
+            };
+            typingEffect();
+            return false;
+        };
+        timer = setTimeout(loopDeleting, 100);
+    };
+    loopDeleting();
+};
+typingEffect();
 </script>
 
 

@@ -34,15 +34,6 @@ p.subtitle.lead {
   background-color: #18bc9c;
 }
 
-.animated-text {
-font-size: 24px;
-font-weight: bold;
-}
-.dynamic-text {
-border-right: 2px solid;
-display: inline;
-color: darkblue; /* This line sets the text color to dark blue */
-}
 
 
 .button {
@@ -69,3 +60,27 @@ color: darkblue; /* This line sets the text color to dark blue */
 }
 
 
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
+h2, a, p {
+	font-family: Roboto;
+	text-decoration: none;
+}
+p>a {
+	color: #fd084a;
+}
+.blink {
+  animation: blink 0.5s infinite;
+}
+@keyframes blink{
+  to { opacity: .0; }
+}
+.flex {
+	display: flex;
+}
+.header-sub-title {
+  color: darkblue;
+  font-family: "Courier";
+  font-size: 20px;
+  padding: 0.1em;
+}
