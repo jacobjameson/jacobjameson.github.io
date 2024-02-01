@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jacob Jameson">
+<meta name="dcterms.date" content="2024-02-01">
+<meta name="description" content="A deep dive into the K-Nearest Neighbors (KNN) algorithm, exploring its mathematical foundations and practical applications.">
+
+<title>Jacob Jameson - Demystifying KNN</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Jacob Jameson - Demystifying KNN">
+<meta name="twitter:description" content="A deep dive into the K-Nearest Neighbors (KNN) algorithm, exploring its mathematical foundations and practical applications.">
+<meta name="twitter:image" content="https://www.jacobjameson.com/posts/2024-02-01-KNN/images/profile.png">
+<meta name="twitter:creator" content="@JacobCJameson">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/sig.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson" rel="" target="_blank"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jacobjameson" rel="" target="_blank"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Teaching</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+        <li>
+    <a class="dropdown-item" href="../../teaching.html" rel="" target="">
+ <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Intro R.html" rel="" target="">
+ <span class="dropdown-text">Introduction to R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://code4mdm.github.io" rel="" target="">
+ <span class="dropdown-text">Code 4 MDM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../API222.html" rel="" target="_blank">
+ <span class="dropdown-text">API 222 Section Material</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Demystifying KNN</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">knn</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A deep dive into the K-Nearest Neighbors (KNN) algorithm, exploring its mathematical foundations and practical applications.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jacob Jameson </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 1, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In the realm of machine learning, few algorithms are as intuitively appealing as the K-Nearest Neighbors (KNN). It’s a method that echoes the human instinct to classify based on similarity and proximity, offering a gateway into the world of pattern recognition and predictive analytics.</p>
+<section id="the-mathematical-compass" class="level2">
+<h2 class="anchored" data-anchor-id="the-mathematical-compass">The Mathematical Compass</h2>
+<p>Before we dive into the practical applications, let’s lay the mathematical groundwork that underpins these techniques—a foundation as crucial to understanding their functionality as a compass is to navigation.</p>
+<section id="k-nearest-neighbors-knn-a-non-parametric-approach" class="level3">
+<h3 class="anchored" data-anchor-id="k-nearest-neighbors-knn-a-non-parametric-approach">K-Nearest Neighbors (KNN): A Non-Parametric Approach</h3>
+<p>KNN’s beauty lies in its simplicity and the intuitive concept of “neighborliness.” It posits that data points with similar characteristics (features) are likely to share the same outcome. Whether we’re classifying flowers based on petal sizes or predicting housing prices from neighborhood characteristics, KNN asks, “Who are your nearest neighbors?”</p>
+<section id="mathematical-intuition" class="level4">
+<h4 class="anchored" data-anchor-id="mathematical-intuition">Mathematical Intuition:</h4>
+<p>For a given data point, KNN looks at the ‘K’ closest points (neighbors) and makes a prediction based on their majority class (classification) or average value (regression). The distance between points—Euclidean, Manhattan, or any other metric—serves as the basis for determining “closeness.”</p>
+<p>To elaborate on this with mathematical expressions and to visualize it within a coordinate plane, let’s dive deeper:</p>
+<section id="distance-metrics" class="level5">
+<h5 class="anchored" data-anchor-id="distance-metrics">Distance Metrics</h5>
+<p>The most common distance metric used in KNN is the Euclidean distance, which in a two-dimensional space can be expressed as:</p>
+<p><span class="math display">\[d(p, q) = \sqrt{(p_1 - q_1)^2 + (p_2 - q_2)^2}\]</span></p>
+<p>where <span class="math inline">\(p = (p_1, p_2)\)</span> and <span class="math inline">\(q = (q_1, q_2)\)</span> are two points in the Euclidean plane.</p>
+<p>For higher dimensions, the formula generalizes to:</p>
+<p><span class="math display">\[d(p, q) = \sqrt{\sum_{i=1}^{n} (p_i - q_i)^2}\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the number of dimensions (features) and <span class="math inline">\(p_i\)</span>, <span class="math inline">\(q_i\)</span> are the coordinates of <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> in each dimension.</p>
+</section>
+<section id="knn-algorithm" class="level5">
+<h5 class="anchored" data-anchor-id="knn-algorithm">KNN Algorithm</h5>
+<ol type="1">
+<li><strong>Compute Distance</strong>: Calculate the distance between the query instance and all the training samples.</li>
+<li><strong>Sort Distances</strong>: Order the training samples by their distance from the query instance.</li>
+<li><strong>Select K Nearest Neighbors</strong>: Identify the top <span class="math inline">\(K\)</span> closest training samples.</li>
+<li><strong>Majority Vote or Average</strong>: For classification, the predicted class is the most common class among the <span class="math inline">\(K\)</span> nearest neighbors. For regression, it is the average of the values.</li>
+</ol>
+</section>
+<section id="decision-boundary-visualization" class="level5">
+<h5 class="anchored" data-anchor-id="decision-boundary-visualization">Decision Boundary Visualization</h5>
+<p>In a 2D coordinate plane, imagine plotting various data points, each belonging to one of two classes. The decision boundary that KNN creates is not linear but forms curves that encircle clusters of points belonging to the same class. This can be visualized as follows:</p>
+<ol type="1">
+<li>Create a dense grid of points covering the entire plane.</li>
+<li>Use KNN to classify each point on the grid.</li>
+<li>Color the points differently based on the predicted class, revealing the decision boundary.</li>
+</ol>
+<p>This boundary demarcates the regions of the plane where a query point would be classified as one class or the other. It’s worth noting that the shape of the boundary depends on <span class="math inline">\(K\)</span> and the distance metric used.</p>
+</section>
+<section id="k-selection" class="level5">
+<h5 class="anchored" data-anchor-id="k-selection">K Selection</h5>
+<p>Choosing the right <span class="math inline">\(K\)</span> is critical for the model’s performance. Too small a <span class="math inline">\(K\)</span> leads to a highly complex model that may overfit, capturing noise in the training data. Conversely, too large a <span class="math inline">\(K\)</span> simplifies the model excessively, potentially underfitting and missing key patterns.</p>
+<p><span class="math display">\[K_{optimal} = \text{argmin}_K (\text{Error}(K))\]</span></p>
+<p>The optimal <span class="math inline">\(K\)</span> minimizes the prediction error, which can be determined through cross-validation.</p>
+<p>By understanding the mathematical foundations of KNN and visualizing its application in a coordinate plane, we can better appreciate its flexibility and the importance of distance metrics and <span class="math inline">\(K\)</span> selection in shaping the decision boundaries.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="exploring-the-iris-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-iris-dataset">Exploring the Iris Dataset</h2>
+<p>The Iris dataset is a classic in machine learning and statistics, known for its simplicity and utility in demonstrating basic principles of classification. It consists of 150 observations of iris flowers, divided into three species: Setosa, Versicolor, and Virginica. Each observation includes four features: sepal length, sepal width, petal length, and petal width, all measured in centimeters.</p>
+<section id="summary-statistics-and-visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="summary-statistics-and-visualizations">Summary Statistics and Visualizations</h3>
+<p>Let’s start by exploring the dataset with some summary statistics and visualizations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>iris.data <span class="ot">&lt;-</span> iris </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot visualizing petal width and length grouped by species</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>scatter <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris.data, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Width, <span class="at">y =</span> Petal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Scatter Plot of Petal Dimensions by Species"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scatter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="2024-02-01-KNN_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot visualizing variation in petal width between species</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris.data, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Petal.Width, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Boxplot of Petal Width by Species"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(boxplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="2024-02-01-KNN_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="a-quick-note-on-training-and-testing-data" class="level2">
+<h2 class="anchored" data-anchor-id="a-quick-note-on-training-and-testing-data">A Quick Note on Training and Testing Data</h2>
+<p>One of the pivotal steps in the machine learning workflow is the division of your dataset into training and testing sets. This practice is not just routine but foundational, ensuring that we evaluate our models accurately and fairly. But why do we take this step, and what does it achieve?</p>
+<section id="crafting-and-validating-predictive-models" class="level3">
+<h3 class="anchored" data-anchor-id="crafting-and-validating-predictive-models">Crafting and Validating Predictive Models</h3>
+<p>The essence of machine learning lies in learning from data and making predictions. When we train a model, we are essentially ‘teaching’ it to recognize patterns and make decisions based on historical data. However, the true test of a model’s mettle is not how well it memorizes the training data, but how effectively it can apply its learned knowledge to new, unseen data. This is where the concept of generalization comes into play.</p>
+</section>
+<section id="why-not-learn-from-all-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-learn-from-all-the-data">Why Not Learn from All the Data?</h3>
+<p>A natural question arises: if our goal is to make the best possible predictions, why not train our model on the entire dataset? The answer lies in the risk of overfitting. An overfitted model is akin to a student who memorizes facts for an exam rather than understanding the underlying concepts. Just as the student might struggle to apply their knowledge in real-world situations, an overfitted model performs well on its training data but poorly on any new data.</p>
+</section>
+<section id="training-set-the-learning-phase" class="level3">
+<h3 class="anchored" data-anchor-id="training-set-the-learning-phase">Training Set: The Learning Phase</h3>
+<p>The training set serves as the educational cornerstone for our model. It’s the data on which the model trains, learns patterns, and adjusts its parameters. For KNN, this involves storing the features and labels of the training examples to later find the nearest neighbors of unseen instances.</p>
+</section>
+<section id="testing-set-the-examination-phase" class="level3">
+<h3 class="anchored" data-anchor-id="testing-set-the-examination-phase">Testing Set: The Examination Phase</h3>
+<p>After training, we introduce the model to the testing set, a separate portion of the data withheld from the training phase. This step is the model’s exam—it’s where we assess its ability to generalize the patterns it learned during training to new examples. The performance on the testing set gives us a realistic estimate of how the model is expected to perform in real-world scenarios.</p>
+</section>
+<section id="the-significance-of-the-split" class="level3">
+<h3 class="anchored" data-anchor-id="the-significance-of-the-split">The Significance of the Split</h3>
+<p>Splitting data into training and testing sets is a critical step that balances the need for a model to learn effectively and the necessity of evaluating its predictive power honestly. By adhering to this practice, we ensure that our models are tested in a manner that mimics their eventual use on new, unseen data, providing a reliable measure of their performance and generalization capability.</p>
+<p>End of note :)</p>
+</section>
+</section>
+<section id="splitting-the-data-and-visualizing-decision-boundaries-for-k3" class="level2">
+<h2 class="anchored" data-anchor-id="splitting-the-data-and-visualizing-decision-boundaries-for-k3">Splitting the Data and Visualizing Decision Boundaries for k=3</h2>
+<p>Now, let’s split the dataset into training and testing sets, apply KNN classification with k=3, and visualize the decision boundary and compute the error rate. Why are we choosing k=3? It’s a common starting point, and we’ll explore the impact of different k values in the next section. We are going to work with a simplified version of the iris dataset using only three features: Sepal.Length, Sepal.Width, and Species.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">513</span>) <span class="co"># For reproducibility</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Select features and species for simplicity</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>iris_simplified <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sepal.Length, Sepal.Width, Species)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data into training and test sets</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="fu">nrow</span>(iris_simplified) <span class="sc">*</span> <span class="fl">0.7</span> <span class="co"># 70% for training</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>training_indices <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(iris_simplified), sample_size)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>training_data <span class="ot">&lt;-</span> iris_simplified[training_indices, ]</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> iris_simplified[<span class="sc">-</span>training_indices, ]</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform KNN classification with k = 3</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>knn_result <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train =</span> training_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                  <span class="at">test =</span> test_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cl =</span> training_data[, <span class="dv">3</span>],</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                  <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the predictions to the test_data dataframe for plotting</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>test_data<span class="sc">$</span>PredictedSpecies <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(knn_result)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the results</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> test_data, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width)) <span class="sc">+</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> Species, <span class="at">shape =</span> PredictedSpecies), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">18</span>)) <span class="sc">+</span> <span class="co"># Different shapes for actual vs. predicted</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'red'</span>, <span class="st">'blue'</span>, <span class="st">'green'</span>)) <span class="sc">+</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"KNN Classification of Iris Species"</span>,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sepal Length"</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Sepal Width"</span>,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Actual Species"</span>,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">shape =</span> <span class="st">"Predicted Species"</span>) <span class="sc">+</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="2024-02-01-KNN_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="visualizing-decision-boundaries" class="level1">
+<h1>Visualizing Decision Boundaries</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the decision boundaries by coloring the grid</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x_range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Length) <span class="sc">-</span> <span class="fl">0.5</span>, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">to =</span> <span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Length) <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>y_range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Width) <span class="sc">-</span> <span class="fl">0.5</span>, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">to =</span> <span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Width) <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Sepal.Length =</span> x_range, <span class="at">Sepal.Width =</span> y_range)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict species for each point in the grid</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">$</span>Species <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train =</span> training_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">test =</span> grid,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cl =</span> training_data[, <span class="dv">3</span>],</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert grid predictions into a factor for coloring</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">$</span>Species <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(grid<span class="sc">$</span>Species)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">data =</span> grid, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width, <span class="at">fill =</span> Species), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> test_data, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width, <span class="at">color =</span> Species), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'setosa'</span> <span class="ot">=</span> <span class="st">'red'</span>, <span class="st">'versicolor'</span> <span class="ot">=</span> <span class="st">'blue'</span>, <span class="st">'virginica'</span> <span class="ot">=</span> <span class="st">'green'</span>)) <span class="sc">+</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'setosa'</span> <span class="ot">=</span> <span class="st">'red'</span>, <span class="st">'versicolor'</span> <span class="ot">=</span> <span class="st">'blue'</span>, <span class="st">'virginica'</span> <span class="ot">=</span> <span class="st">'green'</span>)) <span class="sc">+</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"KNN Decision Boundaries with Test Data"</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sepal Length"</span>,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Sepal Width"</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Predicted Species"</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Actual Species"</span>) <span class="sc">+</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="2024-02-01-KNN_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Ok so we have visualized the decision boundaries for k=3. Now let’s compute the error rate for k=3 and then we will explore the impact of different k values.</p>
+<section id="fine-tuning-our-approach" class="level2">
+<h2 class="anchored" data-anchor-id="fine-tuning-our-approach">Fine-tuning Our Approach</h2>
+<p>Having visualized how K-Nearest Neighbors (KNN) operates with (k = 3), we’ve seen firsthand the impact of the choice of (k) on our model’s decision boundaries and, consequently, its predictions. But this naturally leads us to a pivotal question: Is (k = 3) truly the best choice for our Iris classification task? Or, more broadly, how do we pinpoint the most suitable number of neighbors for any given problem?</p>
+</section>
+<section id="the-significance-of-k" class="level2">
+<h2 class="anchored" data-anchor-id="the-significance-of-k">The Significance of (k)</h2>
+<p>The parameter (k) in KNN serves as a tuning knob, adjusting the balance between the simplicity and complexity of the model. A smaller (k) makes the model more sensitive to noise in the data, potentially leading to overfitting. Conversely, a larger (k) smoothens the decision boundaries, which might simplify the model to the point of underfitting. Thus, finding the optimal (k) is crucial for achieving the best model performance.</p>
+</section>
+<section id="search-for-optimal-k" class="level2">
+<h2 class="anchored" data-anchor-id="search-for-optimal-k">Search for Optimal (k)</h2>
+<p>To embark on this quest, we employ a systematic approach: evaluating the model’s performance across a range of (k) values and selecting the one that minimizes error. Specifically, we compute the error rates for (k = 1) through (k = 10) on our Iris dataset. The error rate here is defined as the proportion of incorrect predictions out of all predictions made by the model on the test set.</p>
+<section id="the-process-unfolded" class="level3">
+<h3 class="anchored" data-anchor-id="the-process-unfolded">The Process Unfolded</h3>
+<ul>
+<li><p><strong>Iterate Over (k)</strong>: We loop through each (k) value from 1 to 10, applying the KNN model to our training data and making predictions on our test data at each iteration.</p></li>
+<li><p><strong>Compute Error Rates</strong>: For each (k), we calculate the error rate by comparing the predicted species against the actual species in our test set.</p></li>
+<li><p><strong>Tabulate Results</strong>: We record the (k) values and their corresponding error rates in a table, allowing us to clearly visualize how the error rate varies with (k).</p></li>
+<li><p><strong>Select the Optimal (k)</strong>: The optimal (k) is the one with the lowest error rate, striking the perfect balance between overfitting and underfitting for our dataset.</p></li>
+</ul>
+</section>
+<section id="what-this-means-for-our-iris-classification-task" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-means-for-our-iris-classification-task">What This Means for Our Iris Classification Task</h3>
+<p>By undertaking this analysis, we ensure that our choice of (k) is not arbitrary but is instead data-driven and optimized for performance. This methodical approach not only enhances the accuracy of our KNN model on the Iris dataset but also exemplifies a best practice in machine learning that can be applied to various classification tasks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty data frame to store k values and theirerror rates</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>error_rates <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">k =</span> <span class="fu">integer</span>(), <span class="at">error_rate =</span> <span class="fu">numeric</span>())</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through k values from 1 to 10</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Apply KNN model</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  predicted_species <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train =</span> training_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                           <span class="at">test =</span> test_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                           <span class="at">cl =</span> training_data[, <span class="dv">3</span>],</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                           <span class="at">k =</span> k)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute the error rate</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  error_rate <span class="ot">&lt;-</span> <span class="fu">sum</span>(predicted_species <span class="sc">!=</span> test_data[, <span class="dv">3</span>]) <span class="sc">/</span> <span class="fu">nrow</span>(test_data)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the results to the error_rates data frame</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  error_rates <span class="ot">&lt;-</span> <span class="fu">rbind</span>(error_rates, <span class="fu">data.frame</span>(<span class="at">k =</span> k, <span class="at">error_rate =</span> error_rate))</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(error_rates, <span class="at">caption =</span> <span class="st">"Error Rates for K=1 to 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Error Rates for K=1 to 10</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">k</th>
+<th style="text-align: right;">error_rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.2888889</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.3111111</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.2444444</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.2444444</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.1777778</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.2000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.1777778</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.2222222</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.2000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.1777778</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>It looks like the error rate is lowest for (k = 5), which means that the KNN model with (k = 5) yields the most accurate predictions on the Iris dataset.</p>
+<p>Let’s visualize our ned results and see how the decision boundaries look for (k = 5).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the decision boundaries by coloring the grid</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x_range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Length) <span class="sc">-</span> <span class="fl">0.5</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">to =</span> <span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Length) <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>y_range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Width) <span class="sc">-</span> <span class="fl">0.5</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">to =</span> <span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Width) <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Sepal.Length =</span> x_range, <span class="at">Sepal.Width =</span> y_range)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict species for each point in the grid</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">$</span>Species <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train =</span> training_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">test =</span> grid,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cl =</span> training_data[, <span class="dv">3</span>],</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">k =</span> <span class="dv">5</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert grid predictions into a factor for coloring</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">$</span>Species <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(grid<span class="sc">$</span>Species)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">data =</span> grid, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width, <span class="at">fill =</span> Species), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> test_data, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width, <span class="at">color =</span> Species), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'setosa'</span> <span class="ot">=</span> <span class="st">'red'</span>, <span class="st">'versicolor'</span> <span class="ot">=</span> <span class="st">'blue'</span>, <span class="st">'virginica'</span> <span class="ot">=</span> <span class="st">'green'</span>)) <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'setosa'</span> <span class="ot">=</span> <span class="st">'red'</span>, <span class="st">'versicolor'</span> <span class="ot">=</span> <span class="st">'blue'</span>, <span class="st">'virginica'</span> <span class="ot">=</span> <span class="st">'green'</span>)) <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"KNN Decision Boundaries with Test Data"</span>,</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sepal Length"</span>,</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Sepal Width"</span>,</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Predicted Species"</span>,</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Actual Species"</span>) <span class="sc">+</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="2024-02-01-KNN_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In this post, we have explored the K-Nearest Neighbors (KNN) algorithm and its application to the Iris dataset. We have seen how KNN operates by classifying new data points based on their similarity to existing data points. We have also visualized the decision boundaries of the KNN model and observed how the choice of (k) impacts the model’s predictions.</p>
+<p>Furthermore, we have demonstrated the significance of selecting the optimal (k) value for our KNN model. By systematically evaluating the model’s performance across a range of (k) values, we have identified the most suitable (k) for our Iris classification task. This approach ensures that our choice of (k) is not arbitrary but is instead data-driven and optimized for performance.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="jacobjameson/jacobjameson.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2024, Jacob Jameson</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
