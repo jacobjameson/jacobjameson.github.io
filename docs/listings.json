@@ -45,7 +45,9 @@
   {
     "listing": "/API222.html",
     "items": [
-      "/api 222 files/section 1/section1.html"
+      "/api 222 files/section 1/section1.html",
+      "/api 222 files/section 2/section2.html",
+      "/api 222 files/section 2/section2.1.html"
     ]
   }
 ]

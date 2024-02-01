@@ -1,0 +1,153 @@
+---
+title: "Section 2.1 - KNN and Linear Regression Notes"
+from: markdown+emoji
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+description: |
+author: Jacob Jameson
+
+---
+
+Note that the material in these notes draws on past TF’s notes (Ibou Dieye, Laura Morris, Emily Mower, Amy Wickett), and the more thorough treatment of these topics in *Introduction to Statistical Learning* by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.
+
+
+## Important Machine Learning Concepts
+
+### Regression vs Classification
+Prediction problems can be defined based on the characteristics of the outcome variable we want to predict. 
+
+- **Regression** problems are those where the outcome is quantitative 
+
+- **Classification** problems are those where the outcome is qualitative / categorical
+
+Sometimes the same methods can be used for regression and classification problems, but many methods are useful for only one of the two problem types.
+
+### Bias-Variance Trade-off
+The **variance** of a statistical learning method is the amount by which the prediction function would change if it was estimated on a different training set. A model that overfits has high variance, whereas a model that underfits has low variance. 
+
+To remember the difference between low variance and high variance models, I find it helpful to think of examples. Suppose your model was ``use the mean of the training data as the predicted value for all new data points.'' The mean shouldn't change much across training sets, so this has low variance. On the other hand, a model that picked up super complex patterns is likely to be picking up noise in addition to signal. The noise will vary by training set, so such a method would have high variance. 
+
+The **bias** of a statistical learning method is the error produced by representing a real world problem by a statistical learning method. Very flexible models (which are prone to overfitting) can capture complex patterns and so tend to have low bias. Very simple models (which are prone to underfitting) are limited in their ability to pick up patterns and so may have high bias. 
+
+The book uses the example of representing a non-linear function by a linear one to show that no matter how much data you have, a linear model will not do a great prediction job when the process generating the data is non-linear. Bias also applies to methods that might not fit your traditional concept of a statistical function. In the K-Nearest Neighbors section, we will discuss bias in that setting. 
+
+Often, we will talk about the **bias-variance trade-off**. In an ideal world, we would find a model that has low variance and low bias, because that would yield a good and consistent model. In practice, you usually have to allow bias to increase in order to decrease variance and vice versa. However, there are many models that will decrease one (bias or variance) significantly while only increasing the other a little. 
+
+### Supervised v. Unsupervised Learning
+
+**Supervised learning** refers to problems where there is a known outcome. In these problems, you can train a model to take features and predict the known outcome. 
+
+**Unsupervised learning** refers to problems where you are interested in uncovering patterns and do not have a target outcome in mind. 
+
+An example of supervised learning would be using students' high school grades, class enrollments, and demographic variables to predict whether or not they attend college. 
+
+An example of unsupervised learning would be using the same grades, enrollment, and demographic features to identify ``types'' of high school students. That is, students who look similar according to these features. Perhaps you are interested in this because you want to make classes that contain a mix of different types of students. Often, unsupervised learning is useful for creating features for supervised learning problems, but sometimes uncovering patterns is the final objective.
+
+### Measuring Model Performance
+
+There are different functions you can use to measure model performance, and which function you choose depends on your data and your objective. These functions are called ``loss functions,'' which is a somewhat intuitive name when you think about the fact that your machine learning algorithm is trying to minimize this function and thus minimize your loss. 
+
+To understand how and why loss functions depend on your data and objectives, examples can be helpful. 
+
+Consider first that you are trying to predict the future college majors of this year's incoming freshmen (a classification problem). In this case, your prediction will either be right (you predict the major they end up choosing) or it will be wrong. Therefore, you might use accuracy (\% correct) to measure model performance. 
+
+What if, though, you cared more about being wrong for some majors than others? For example, imagine that all biology majors are going to need personalized lab equipment in their junior year and that the lab equipment is really expensive if ordered last minute but a lot cheaper if ordered a year or more in advance? Then, you might want to give more weight to people who end up being biology majors so that your model does better for predicting biology majors than other majors.
+
+Now consider that you are trying to predict home prices (a regression problem). You might measure your performance using mean-squared error (MSE), which is found by taking the difference between the predicted sale price for each home and the true sale price (the error), squaring it for each home, and then taking the mean of these squared errors. However, home prices are skewed (e.g. some homes are extremely expensive compared to most homes on the market). This means that a 5\% error on a \$3 million home is a lot bigger than a 5\% error on a \$100,000 home. When you square the errors (as you do when calculating MSE), the difference becomes enormous. 
+
+But since both errors are 5\%, maybe you want to penalize them the same. One option is to use Mean Percentage Error (MPE), but this has the weird effect that if you over-predict one home by 5\% and under-predict the other by 5\%, your MPE is zero. Therefore, a popular option is to use the Mean Absolute Percentage Error (MAPE), which is the mean of the absolute values of the percentage errors and thus would be 5\% in this example. 
+
+For many prediction problems in the policy sphere, we may not only care about accuracy of prediction but also about fairness or other  objectives. The loss function is a place where we can explicitly tell the model to optimize for these concerns in addition to predictive performance.
+
+## K-Nearest Neighbors
+
+### Concept
+The idea underlying K-Nearest Neighbors (KNN) is that we expect observations with similar features to have similar outcomes. KNN makes no other assumptions about functional form, so it is quite flexible. 
+
+### Method
+KNN can be used for either regression or classification, though it works slightly differently depending on what setting we are in. In the classification setting, the prediction is a majority vote of the observation's $K$-nearest neighbors. In the regression setting, the prediction is the average outcome of the observation's $K$-nearest neighbors. 
+
+For KNN, bias will be lower when $K$ is lower. Bias will increase quickly as k increases, with further away neighbors being included in the prediction.
+
+The only choice we have to make when implementing KNN is the value of $K$ (e.g. how many neighbors should we use in our prediction?). A good way to find $K$ is through cross-validation, something we will cover a little later, but which broadly involves training the algorithm on one set of data and seeing how well it does on a different set.
+
+### Implementation and Considerations
+A concern with KNN is whether you have good coverage of your feature space. Imagine that all of your training points were in one region of the feature space, but some of your test points are far away from this region. You will still use the $K$ nearest neighbors to predict the outcome for these far-away test points, but it might not work as well as if the points were close together. Therefore, when implementing KNN, it's good to think about how similar the features in your test set will be to the features in your training set. If they differ systematically, that is a concern (as it would be for other ML methods as well).
+
+Another important consideration is whether there is an imbalance in the frequency of one outcome compared to another. For example, suppose we are trying to classify points as ``true'' or ``false'' and most points are ``true.'' Even if the ``false'' outcomes are clustered together in the feature space, if we use a large enough value of $K$, we will predict ``true'' for these observations simply because there are many more ``true'' observations than ``false'' observations. Therefore, we would do better to use a small value for $K$ in this setting.
+
+Another consideration is whether proximity in each variable is equally important or if proximity in one variable is more important than proximity in another variable. KNN will normalize variables so that they are all on the same scale (same mean and variance) and then treat distance in all normalized variables the same. If you want to up-weight proximity for some variables and down-weight it for others, you can change the way each variable is normalized to accomplish this. Alternatively, you can include only those variables you think are important. When you have this type of uncertainty, there are more principled ways of selecting variables that will be discussed later in the course.
+
+### Extensions 
+You might think that neighbors that are really close should be weighted more than neighbors that are a bit further away. Many people agree, so there are methods to allow you to weight different observations differently. You might also think that you shouldn't use just the $K$ nearest neighbors, but all the neighbors within a certain distance. Or maybe you think there's information available in all observations, but there's more information in closer neighbors. All of these adjustments fall under the umbrella of **kernel regression**. In fact, KNN is a special case of kernel regression. Broadly defined, kernel regression methods are a class of methods that generate predictions by taking weighted averages of observations. Because these methods (KNN included) do not specify a functional form, they are called ``non-parametric regression'' methods.
+
+
+## Linear Regression
+
+### Concept
+Linear regression is a parametric model that is additive and linear in the provided features. It is a classic technique used in many fields, and its widespread popularity greatly pre-dates the popularity of machine learning. Its general form is
+
+\begin{equation}
+    \hat{y} = \hat{\beta}X
+\end{equation}
+
+Where $\hat{y}$ is a vector of predicted $y$ values and $X$ is a matrix whose rows correspond to observations and whose columns correspond to features.
+
+When there is only one feature on the right hand side, the model is called a ``simple linear regression." When there are multiple features on the right hand side, the model is called ``multiple linear regression."
+
+When used for inference, we are interested in $\hat{\beta}$. However, when used for prediction, we are only interested in $\hat{y}$, and we cannot say that the $\hat{\beta}$s reflect any sort of causal relationship between the features and the outcome. For more information on how to test the significance of regression coefficients, please see Chapter 3 of *ISLR* for a reference on $t$-tests (in the simple model) and $F$-tests (in the multivariate model). 
+
+### Method 
+To find the coefficients $\hat{\beta}$ in a linear regression, we find the value of $\hat{\beta}$ that minimizes the residual sum of squares (RSS) in the training data. The classic formula for $\hat{\beta}$ uses matrix algebra and is
+\begin{equation}
+    \hat{\beta} = (X^\prime X)^{-1}X^\prime y
+\end{equation}
+We will estimate $\hat{\beta}$ using statistical software. 
+
+It is worth noting that the traditional measure of fit for linear regression is $R^2$, but $R^2$ mechanically increases with the inclusion of additional features. Therefore, in the prediction setting, the $R^2$ on the training data is less important than the mean squared error (MSE) on the test data.
+
+
+### Implementation and Considerations
+
+There are a few things to watch out for as far as the features that you feed into a linear regression. 
+
+
+- There must be fewer features than observations. Later in the semester, we will cover penalized regression methods that do variable selection to yield estimable linear models, even when the number of available features exceeds the number of observations. Common penalized regression methods are lasso and ridge regression.
+
+- You can use quantitative or qualitative features for the $X$s. When using qualitative features, generate indicator variables for all but one category. The omitted category will serve as the ``baseline,'' meaning that the coefficients on the included categories can be thought of as the differential effect of being in that category compared to the baseline (omitted) one.
+
+- The reason you omit one category when making indicator variables is to avoid linear dependence. If all categories were represented, the indicator columns would all sum to 1, which would mean they were linearly dependent. More generally, you cannot have collinearity or multi-collinearity, which means you cannot have features that are (close to) perfectly correlated.
+
+- You can interact two features (e.g. create a feature that is the product of two other features), and such interactions are valid on categorical and continuous features. However, when you include an interaction, you should also include each of the features on their own as well. Interactions have intuitive appeal if you think there are synergies between two features in terms of their effect on $y$.
+
+- You can exponentiate features and include the exponentiated features in your model. The resulting model is sometimes called polynomial regression and is appropriate when there appears to be a non-linear relationship between a feature and the outcome. 
+
+- Check for influential points -- those that are both *outliers* (they have an unusual or extreme $y$ value) and *high leverage* (they have an unusual or extreme $x$), as these points can greatly influence the model fit. You may want to exclude them or at least check your model's sensitivity to including them versus excluding them.
+
+
+If you are interested in inference (e.g. looking at the $\hat{\beta}$s to understand a causal relationship), it is important to be aware of Omitted Variables Bias (OVB). OVB occurs when you have two correlated features that each have an effect on $y$ but only one is included in the regression. In that case, the coefficient on the included feature is biased, because it is partially picking up the true effect of the feature on the outcome and is also partially picking up the effect of the omitted feature on the outcome (since the omitted feature is correlated with the included feature). 
+
+As an example of OVB, suppose $X_1$ and $X_2$ are positively (but not perfectly) correlated. If they are also both positively correlated with $y$, then when $X_2$ is omitted from the regression, the coefficient on $X_1$ will be higher than when both $X_1$ and $X_2$ are included. This is because the coefficient on $X_1$ will now pick up both the effect of $X_1$ on $y$ and part of the effect of $X_2$ on $y$ (since $X_1$ is a proxy for $X_2$ because the two features are positively correlated).
+
+When implementing linear regression, you should also take a look at your residuals and make sure there are no red flags:
+
+- When you plot residuals, they should appear randomly scattered. Any non-linearity or patterns in the residuals suggest your model is not appropriate.
+
+- Linear regression assumes residuals are uncorrelated. Evidence of correlated residuals indicates a problem with your model or your data that should be investigated.
+
+- Residuals should have constant variance. If you plot your residuals and their variance seems to be a function of $x$, then the errors are *heteroskedastic* (a fancy word for ``a function of $x$''). In this case, traditional statistical measures of significance are invalid, but other valid methods are available.
+
+
+ 
+
+### Comparison to KNN
+The main difference of note between linear regression and KNN is that linear regression is a parametric model whereas KNN is a non-parametric model. There are a few general differences between parametric and non-parametric models that are worth noting
+
+- Non-parametric models are more flexible whereas parametric models impose stronger assumptions
+
+- When there is a small number of observations per feature, parametric models tend to outperform non-parametric models 
+
+In addition to the general differences between parametric and non-parametric models, a key difference between KNN and linear regression is that linear regression is quite simple to fit. In fact, it only requires estimation of a few $\beta$s, whereas KNN is much more computationally intensive. Because of this simplicity, linear regression is also more interpretable than KNN.

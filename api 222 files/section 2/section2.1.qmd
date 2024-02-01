@@ -1,0 +1,461 @@
+---
+title: "Section 2.2 - KNN and Linear Regression Code"
+from: markdown+emoji
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+description: |
+author: Jacob Jameson
+
+---
+There are lots of great datasets available as part of R packages. Page 14 of Introduction to Statistical Learning with Applications in R Table 1.1 lays out 15 data sets available from R packages. We will use the College dataset from the ISLR package. The first time you ever use a package, you need to install it. Then, every time you want to use the package, you use `library(package_name)`. We will use the college data. Note that details on this data are available online: https://cran.r-project.org/web/packages/ISLR/ISLR.pdf Page 5. You can also get the same information in R by typing: help("College") or ?College. 
+
+## Explore Data
+
+```{r}
+library(ISLR)
+
+data(College)
+college_data  <- College
+```
+
+Let's learn about our data. To get the names of the columns in the dataframe, we can use the function `colnames()`
+
+```{r}
+colnames(college_data)
+```
+
+To find out how many rows and columns are in the dataset, use `dim()` Recall that this gives us Rows followed by Columns
+
+```{r}
+dim(college_data)
+```
+
+You can also look in the "environment" tab, press the blue arrow next to college_data and it will drop down showing the column names with their types and first few values. For college, all columns except the first are numeric. The first column is a factor column, which means it's categorical. To get a better sense of the data, let's look at it:
+
+
+```{r, eval=F}
+View(college_data)
+```
+
+Suppose we are interested in predicting whether a college is private or public based on available covariates, like Number accepted, enrolled, etc. Additionally, let's suppose you don't want certain variables included in your dataset. You can drop these functions using -c(). For example, let's suppose you don't want the Apps or Student to Faculty Ratio included in your dataset.  
+
+```{r}
+college_data <- college_data[, -c(15, 2)]
+```
+Be careful when you are dropping multiple columns. You need to put the numbers in reverse order (from highest to lowest). This is because if you drop the second column first, then the 15th column becomes the the 14th column.
+
+```{r}
+college_data <- College
+college_data <- college_data[, -c(2)]
+college_data <- college_data[, -c(15)]
+```
+
+A less manual way of dropping columns is to use R to first use R to find the corresponding indices in the data columns. Go back to the original college data
+
+```{r}
+college_data <- College
+```
+
+Find the indices (i.e. column positions) of the columns to drop 
+
+```{r}
+to_drop <- which(names(college_data) %in% c("Apps", "S.F.Ratio"))
+print(to_drop)
+```
+
+Reverse the indices as suggested above
+
+```{r}
+to_drop <- rev(to_drop)
+print(to_drop)
+```
+
+Now use the object you have defined to drop the columns
+
+```{r}
+college_data <- college_data[, -c(to_drop)]
+```
+
+
+Also sometimes we have factor variables that we want to convert to numeric variables. To check variable types, you can use the "str" function
+
+```{r}
+str(college_data)
+
+```
+
+You can see that the Private variable is a factor. We can convert it to a numeric variable using the "as.numeric" function. I like my binary variables in R to be 0/1. In R, most factors automatically convert to a binary 1/2 format. I usually prefer a binary 0/1 format. To transform, I subtract 1. 
+
+```{r}
+college_data$Private <- as.numeric(college_data$Private) - 1 
+summary(college_data$Private)
+summary(College$Private)
+```
+
+
+Let's get back our original sample 
+```{r}
+college_data <- College
+```
+
+
+## Testing and Training Sets
+
+In order to make this interesting, let's split our data into a training set and a test set. To do this, we will use `set.seed()`, which will allow us to draw the same pseudorandom numbers the next time we run this code, and we will use the `sample()` function. 
+
+
+
+```{r}
+set.seed(222)
+```
+
+The `sample()` function takes two arguments: The first is a vector of numbers from which to draw a random sample. The second is the number of random numbers to draw. The default is to sample without replacement, but you can sample with replacement by adding "`, replace = TRUE`" inside the function. Now, let's generate a list of indices from the original dataset that will be designated part of the test set using `sample()`
+
+```{r}
+test_ids <- sample(1:(nrow(college_data)), round(0.2 * nrow(college_data)))
+```
+
+To identify the training_ids, we want all of the numbers from 1:nrow(college_data) that aren't test IDs. Recall that `which()` returns the indices for which the statement inside the parentheses is true. `which(!())` returns the indices for which the statement inside the parentheses is false. The "!" means "not". Also, if you wanted to know which values of vector A were in vector B, you can use `which(A %in% B)`. So if you want to know which values of vector A are NOT in vector B, you use `which(!(A %in B))`, so that's what we will do -- vector A is the vector of all integers between 1 and the number of rows in our data. vector B is the vector of test IDs
+
+```{r}
+training_ids <- which(!(1:(nrow(college_data)) %in% test_ids))
+```
+
+
+We can use these indices to define our test and training sets by putting those vectors in the row position inside square brackets.
+
+```{r}
+test_data <- college_data[test_ids,]
+training_data <- college_data[training_ids,]
+```
+
+## KNN Classification
+
+Let's develop a KNN model to try to predict whether it's a private college using all available features.
+
+To use KNN for classification, we need to install and load the library "class"
+```{r}
+library(class)
+```
+
+knn() is the function we will use to run the KNN model. It takes four arguments:
+
+- train = training data features (no outcome)
+- test = test data features (no outcome)
+- cl = training data outcome (class each observation belongs to)
+- k = number of nearest neighbors to use
+
+For two-class classification problems, k should be odd (avoids tied votes). Let's run the model with 1 NN and 9 NNs. To exclude a column, use -# in the column position insider square brackets. (e.g. df[, -2] excludes the second column of dataframe df)
+
+```{r}
+knn_model1 <- knn(train = training_data[, -1],
+                  test = test_data[, -1],
+                  cl = training_data[, 1],
+                  k = 1)
+
+knn_model9 <- knn(train = training_data[, -1],
+                  test = test_data[, -1],
+                  cl = training_data[, 1],
+                  k = 9)
+```
+
+
+We are trying to predict Private Yes/No. `knn()` output predicted values for our test data, so we can compare actual v. predicted values. "prediction == actual" gives a vector with the same number of elements as there are observations in the test set. Each element will either be TRUE (the prediction was correct) or FALSE (the prediction was wrong). Applying which() to this vector will yield the index numbers for all the elements equal to TRUE. Applying length() to that vector tells us how many are TRUE (e.g. for how many observations prediction == actual). We can then divide by the number of observations in the test data to obtain the accuracy rate
+
+```{r}
+accuracy1  <- length(which(knn_model1 == test_data$Private)) / nrow(test_data)
+accuracy9 <- length(which(knn_model9 == test_data$Private)) / nrow(test_data)
+
+print(accuracy1)
+print(accuracy9)
+```
+
+Let's visualize what is happening in a KNN classification model. We will use the `ggplot2` package to create a scatterplot of the training data, and then overlay the test data on top of it. We will color the points by whether the school is private or not.
+
+```{r}
+library(ggplot2)
+ggplot(data = training_data, 
+       aes(x = Outstate, y = F.Undergrad, 
+           color = as.factor(Private))) +
+  geom_point() +
+  geom_point(data = test_data, aes(x = Outstate, y = F.Undergrad), 
+             color = "black", size = 1) +
+  scale_color_manual(values = c("red", "blue")) +
+  theme_minimal() +
+  guides(color = guide_legend(title = "Private")) 
+
+```
+
+
+This seems like excellent predictive performance. However, it's good to think about the distribution of the data. As an extreme example, if all schools in the data were private, we would expect 100% prediction accuracy regardless of our model. Let's see how well we do if our prediction is all schools are Private. Start by calculating the proportion of private schools
+
+```{r}
+print(length(which(test_data$Private == "Yes")) / nrow(test_data))
+```
+
+We can also check our accuracy on Private schools v. Public schools. To do this, we need to figure out which schools are private in the test data. Specifically, get the indices for the private schools
+
+```{r}
+private_schools <- which(test_data$Private == "Yes")
+public_schools <- which(test_data$Private == "No")
+
+print(private_schools)
+print(public_schools)
+```
+
+To calculate the prediction accuracy for private schools, we need to know how many (true not predicted) private schools are in the test data. Likewise, we need to know how many public schools are in the test data.
+
+```{r}
+num_private_schools <- length(private_schools)
+num_public_schools <- length(public_schools)
+```
+
+Now we will calculate the prediction accuracy separately for private and public schools. 
+
+```{r}
+private_accuracy1 <- length(
+  which(knn_model1[private_schools] == test_data$Private[private_schools])) /
+  num_private_schools
+
+private_accuracy9 <- length(
+  which(knn_model9[private_schools] == test_data$Private[private_schools])) /
+  num_private_schools
+```
+
+Now we will calculate the prediction accuracy separately for private and public schools. 
+
+```{r}
+## Private schools (% correctly predicted):
+private_accuracy1 <- length(
+  which(knn_model1[private_schools] == test_data$Private[private_schools])) /
+  num_private_schools
+
+private_accuracy9 <- length(
+  which(knn_model9[private_schools] == test_data$Private[private_schools])) /
+  num_private_schools
+```
+
+```{r}
+# Public schools (% correctly predicted): 
+public_accuracy1 <- length(
+  which(knn_model1[public_schools] == test_data$Private[public_schools])) /
+  num_public_schools
+
+public_accuracy9 <- length(
+  which(knn_model9[public_schools] == test_data$Private[public_schools])) /
+  num_public_schools
+```
+
+
+Let's see how it did on different school types:
+```{r}
+print(private_accuracy1)
+print(public_accuracy1)
+
+print(private_accuracy9)
+print(public_accuracy9)
+```
+
+
+Therefore, we did better on private schools than public schools because our prediction accuracy was higher on private schools. Thinking about differential performance by label is related to fairness of machine learning algorithms. For an interesting discussion on ML fairness and different ways to define fairness, see the following academic paper: 
+
+    Jon Kleinberg, Sendhil Mullainathan, and Manish Raghavan. 
+    Inherent Trade-Offs in the Fair
+    Determination of Risk Scores, November 2016
+
+
+## KNN for Regression
+
+Suppose we wanted to predict how many students would enroll given the other features available in the data. In that case, the classification function we used above will not work. We will need a KNN function designed for regression problems. This function is `knn.reg()` in the `FNN` package, so we should install then read in the FNN package.
+
+```{r, message=FALSE, warning=FALSE}
+#install.packages("FNN")
+library(FNN)
+```
+
+
+knn.reg() takes four arguments:
+- training data with only features (no outcome)
+- test data with only features (no outcome)
+- training outcomes
+- k = number of neighbors
+
+Enrollment is the fourth column, so we will exclude that from the features. Because public / private is a factor, we either need to convert it to a numeric variable or exclude it. We will exclude it for now. Note that you can scale your features using `scale()`. Deciding to scale your features or not is problem dependent. We will not scale here. If you're not sure whether or not to scale, you can always try it both ways and see how the performance changes.
+
+
+```{r}
+knn_reg1 <- knn.reg(training_data[, -c(1, 4)],
+                    test_data[, -c(1, 4)],
+                    training_data$Enroll,
+                    k = 1)
+
+knn_reg5 <- knn.reg(training_data[, -c(1, 4)],
+                    test_data[,-c(1, 4)],
+                    training_data$Enroll,
+                    k = 5)
+```
+
+
+
+MSE is an appropriate loss function for regression whereas accuracy is only relevant for classification
+
+```{r}
+mse_knn1 <- mean((knn_reg1$pred - test_data$Enroll)^2)
+mse_knn5 <- mean((knn_reg5$pred - test_data$Enroll)^2)
+
+print(mse_knn1)
+print(mse_knn5)
+```
+
+## Standard Linear Regression
+
+We will now do linear regression. To run a linear regression in R, we use the function `lm()`, which stands for linear model. `lm()` takes two main arguments. The first is the formula, which should be of the form Dependent Variable ~ Feature1 + Feature2 + ... The second is the training data -- including both features and the outcome. Note that "`~.`" means regress this variable on all other variables
+
+```{r}
+enroll_reg <- lm(Enroll ~ ., training_data)
+
+```
+
+lm() returns a list, which includes among other things coefficients, residuals, and fitted values for the training data. You can look at the elements in RStudio by using the blue arrow next to enroll_reg in the environment tab. In order to call one element of a list, you can use $
+
+```{r}
+enroll_reg$coefficients
+```
+
+
+In order to see a more traditional regression output, use `summary()`
+
+```{r}
+summary(enroll_reg)
+```
+
+
+If you want to use the coefficients from enroll_reg to predict enrollment values in the test data, you can use the function `predict()`. The first argument is the lm object (the whole thing -- not just the coefficients) and the second argument is the test data frame without the outcome column
+
+```{r}
+predicted_enroll <- predict(enroll_reg, test_data[, -4])
+```
+
+Let's see how well we did in terms of MSE
+
+```{r}
+MSE_lm_enroll <- mean((predicted_enroll - test_data$Enroll)^2)
+print(MSE_lm_enroll)
+```
+
+We can see how this compared to our training MSE
+
+```{r}
+print(mean((enroll_reg$residuals)^2))
+```
+
+Training MSE as % of Test MSE:
+
+```{r}
+print(mean((enroll_reg$residuals)^2) / MSE_lm_enroll)
+```
+
+
+We know that the coefficients might change if we exclude some variables. Let's pretend we only had Apps and Accept (columns 2 and 3) as features
+
+```{r}
+small_enroll_reg  <- lm(Enroll ~ Apps + Accept, training_data)
+```
+
+We can compare coefficients from the small regression and the full regression. If the coefficients in the small regression are different from the coefficients in the full regression, then the small regression suffers from Omitted Variables Bias (OVB).
+
+```{r}
+small_enroll_reg$coefficients
+enroll_reg$coefficients
+```
+
+
+## Stargazer for Regression Output
+
+If you want to compare the coefficients from different regressions, you can use the `stargazer` package. This package is not installed by default, so you will need to install it. 
+
+```{r, message=FALSE, warning=FALSE}
+#install.packages("stargazer")
+library(stargazer)
+
+stargazer(small_enroll_reg, enroll_reg, 
+          type = "text", column.labels = c("Small Model", "Full Model"))
+```
+
+You can also also use stargazer to get the latex code for a table. This is useful if you want to include the table in a paper or a presentation. 
+
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
+stargazer(small_enroll_reg, enroll_reg, 
+          type = "latex", 
+          column.labels = c("Small Model", "Full Model"))
+```
+
+<table style="text-align:center"><tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="2"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="2" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="2">Enroll</td></tr>
+<tr><td style="text-align:left"></td><td>Small Model</td><td>Full Model</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">PrivateYes</td><td></td><td>7.807</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(30.036)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Apps</td><td>-0.052<sup>***</sup></td><td>-0.028<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.013)</td><td>(0.008)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Accept</td><td>0.424<sup>***</sup></td><td>0.147<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.021)</td><td>(0.015)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Top10perc</td><td></td><td>4.016<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(1.283)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Top25perc</td><td></td><td>-2.269<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.997)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">F.Undergrad</td><td></td><td>0.144<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.004)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">P.Undergrad</td><td></td><td>-0.012<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.007)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Outstate</td><td></td><td>-0.003</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.004)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Room.Board</td><td></td><td>-0.024<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.011)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Books</td><td></td><td>-0.027</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.049)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Personal</td><td></td><td>0.008</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.014)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">PhD</td><td></td><td>-0.431</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(1.002)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Terminal</td><td></td><td>-0.540</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(1.094)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">S.F.Ratio</td><td></td><td>-0.253</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(2.843)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">perc.alumni</td><td></td><td>2.319<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.879)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Expend</td><td></td><td>0.003</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.003)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Grad.Rate</td><td></td><td>0.136</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.648)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>86.881<sup>***</sup></td><td>187.938<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(20.984)</td><td>(89.615)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>622</td><td>622</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.820</td><td>0.956</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.819</td><td>0.955</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>403.989 (df = 619)</td><td>202.349 (df = 604)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>1,405.761<sup>***</sup> (df = 2; 619)</td><td>768.822<sup>***</sup> (df = 17; 604)</td></tr>
+<tr><td colspan="3" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="2" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>
