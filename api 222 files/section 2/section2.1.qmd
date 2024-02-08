@@ -15,6 +15,7 @@ There are lots of great datasets available as part of R packages. Page 14 of Int
 
 ## Explore Data
 
+
 ```{r}
 library(ISLR)
 
@@ -46,6 +47,7 @@ Suppose we are interested in predicting whether a college is private or public b
 ```{r}
 college_data <- college_data[, -c(15, 2)]
 ```
+
 Be careful when you are dropping multiple columns. You need to put the numbers in reverse order (from highest to lowest). This is because if you drop the second column first, then the 15th column becomes the the 14th column.
 
 ```{r}
@@ -85,7 +87,6 @@ Also sometimes we have factor variables that we want to convert to numeric varia
 
 ```{r}
 str(college_data)
-
 ```
 
 You can see that the Private variable is a factor. We can convert it to a numeric variable using the "as.numeric" function. I like my binary variables in R to be 0/1. In R, most factors automatically convert to a binary 1/2 format. I usually prefer a binary 0/1 format. To transform, I subtract 1. 

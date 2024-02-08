@@ -38,7 +38,6 @@ website:
             href: https://code4mdm.github.io
           - text: "API 222 Section Material"
             href: API222.qmd
-            target: _blank
       - text: Research
         href: research.qmd
 
