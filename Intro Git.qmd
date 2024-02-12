@@ -1,0 +1,24 @@
+---
+title: "Introduction to Git and GitHub"
+from: markdown+emoji
+listing:
+  contents: git files
+  sort:
+    - "title asc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+format:
+  html:
+    theme: spacelab
+    from: markdown+emoji
+page-layout: full
+---
+
+Welcome to the Introduction to Git and GitHub. This is a collection of notes and references for using Git and GitHub. The goal is to provide a quick introduction and reference for common commands and workflows. 
+
+<center>
+![](git files/assets/github_gif.gif){width=30%}
+</center>
+

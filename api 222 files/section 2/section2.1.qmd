@@ -8,7 +8,6 @@ format:
 page-layout: full
 description: |
 author: Jacob Jameson
-
 ---
 
 There are lots of great datasets available as part of R packages. Page 14 of Introduction to Statistical Learning with Applications in R Table 1.1 lays out 15 data sets available from R packages. We will use the College dataset from the ISLR package. The first time you ever use a package, you need to install it. Then, every time you want to use the package, you use `library(package_name)`. We will use the college data. Note that details on this data are available online: https://cran.r-project.org/web/packages/ISLR/ISLR.pdf Page 5. You can also get the same information in R by typing: help("College") or ?College. 

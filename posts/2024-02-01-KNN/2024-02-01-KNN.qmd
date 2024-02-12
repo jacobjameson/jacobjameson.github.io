@@ -19,7 +19,9 @@ comments:
     repo: jacobjameson/jacobjameson.github.io
 format:
   html:
-    theme: slate
+    toc: true
+    toc-location: left
+page-layout: full
 ---
 
 ```{r setup, include=FALSE}

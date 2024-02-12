@@ -1,0 +1,59 @@
+---
+title: "Part 6: Additional Resources"
+description: "Links to additional git resource"
+author: "Jacob Jameson"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+link-citations: true
+reference-location: margin
+comments:
+  utterances:
+    repo: jacobjameson/jacobjameson.github.io
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+---
+
+# Git: Resources
+
+## Further Reading
+
+-   Understanding Git Conceptually
+    -   ​<https://www.sbf5.com/~cduan/technical/git/>
+-   Reference Guides to Git Commands
+    -   <https://git-scm.com/docs>
+-   Git Screwup Guide
+    -   <http://ohshitgit.com/>
+-   Git/Github Cheat Sheets
+    -   <https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf>
+    -   <http://ndpsoftware.com/git-cheatsheet.html>
+-   Licensing Open Source Code
+    -   ​<http://choosealicense.com/>
+    -   <https://help.github.com/articles/open-source-licensing/>
+-   <https://cs61.seas.harvard.edu/wiki/2012/Git>
+-   <http://www.eecs.harvard.edu/~cs161/resources/git.html>
+-   <https://git-scm.com/video/what-is-version-control>
+-   <https://git-scm.com/video/quick-wins>
+-   <http://slides.com/dhrumilmehta/how-to-tell-a-story-with-data-tools-of-the-trade-2#/4/21>
+
+## Learn to use Git from the Command Line
+
+-   Interactive Tutorials
+    -   ​<https://try.github.io>
+    -   <https://github.com/jlord/git-it-electron>
+-   Basic Git Commands
+    -   ​<http://www.teaching-materials.org/git/slides.html>
+    -   <http://rogerdudler.github.io/git-guide/>
+
+## Credits
+
+Information sourced from: <https://github.com/AlJohri/DAT-DC-12/blob/master/notebooks/intro-git.ipynb> and Dhrumil Mehta
+

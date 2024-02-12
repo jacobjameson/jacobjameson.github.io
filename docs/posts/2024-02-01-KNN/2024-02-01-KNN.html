@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -157,11 +157,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Introduction to R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://code4mdm.github.io" rel="" target="">
- <span class="dropdown-text">Code 4 MDM</span></a>
+    <a class="dropdown-item" href="../../Intro Git.html" rel="" target="">
+ <span class="dropdown-text">Introduction to Git/GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../API222.html" rel="" target="_blank">
+    <a class="dropdown-item" href="../../API222.html" rel="" target="">
  <span class="dropdown-text">API 222 Section Material</span></a>
   </li>  
     </ul>
@@ -178,12 +178,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-mathematical-compass" id="toc-the-mathematical-compass" class="nav-link active" data-scroll-target="#the-mathematical-compass">The Mathematical Compass</a>
+  <ul class="collapse">
+  <li><a href="#k-nearest-neighbors-knn-a-non-parametric-approach" id="toc-k-nearest-neighbors-knn-a-non-parametric-approach" class="nav-link" data-scroll-target="#k-nearest-neighbors-knn-a-non-parametric-approach">K-Nearest Neighbors (KNN): A Non-Parametric Approach</a></li>
+  </ul></li>
+  <li><a href="#exploring-the-iris-dataset" id="toc-exploring-the-iris-dataset" class="nav-link" data-scroll-target="#exploring-the-iris-dataset">Exploring the Iris Dataset</a>
+  <ul class="collapse">
+  <li><a href="#summary-statistics-and-visualizations" id="toc-summary-statistics-and-visualizations" class="nav-link" data-scroll-target="#summary-statistics-and-visualizations">Summary Statistics and Visualizations</a></li>
+  </ul></li>
+  <li><a href="#a-quick-note-on-training-and-testing-data" id="toc-a-quick-note-on-training-and-testing-data" class="nav-link" data-scroll-target="#a-quick-note-on-training-and-testing-data">A Quick Note on Training and Testing Data</a>
+  <ul class="collapse">
+  <li><a href="#crafting-and-validating-predictive-models" id="toc-crafting-and-validating-predictive-models" class="nav-link" data-scroll-target="#crafting-and-validating-predictive-models">Crafting and Validating Predictive Models</a></li>
+  <li><a href="#why-not-learn-from-all-the-data" id="toc-why-not-learn-from-all-the-data" class="nav-link" data-scroll-target="#why-not-learn-from-all-the-data">Why Not Learn from All the Data?</a></li>
+  <li><a href="#training-set-the-learning-phase" id="toc-training-set-the-learning-phase" class="nav-link" data-scroll-target="#training-set-the-learning-phase">Training Set: The Learning Phase</a></li>
+  <li><a href="#testing-set-the-examination-phase" id="toc-testing-set-the-examination-phase" class="nav-link" data-scroll-target="#testing-set-the-examination-phase">Testing Set: The Examination Phase</a></li>
+  <li><a href="#the-significance-of-the-split" id="toc-the-significance-of-the-split" class="nav-link" data-scroll-target="#the-significance-of-the-split">The Significance of the Split</a></li>
+  </ul></li>
+  <li><a href="#splitting-the-data-and-visualizing-decision-boundaries-for-k3" id="toc-splitting-the-data-and-visualizing-decision-boundaries-for-k3" class="nav-link" data-scroll-target="#splitting-the-data-and-visualizing-decision-boundaries-for-k3">Splitting the Data and Visualizing Decision Boundaries for k=3</a></li>
+  <li><a href="#visualizing-decision-boundaries" id="toc-visualizing-decision-boundaries" class="nav-link" data-scroll-target="#visualizing-decision-boundaries">Visualizing Decision Boundaries</a>
+  <ul class="collapse">
+  <li><a href="#fine-tuning-our-approach" id="toc-fine-tuning-our-approach" class="nav-link" data-scroll-target="#fine-tuning-our-approach">Fine-tuning Our Approach</a></li>
+  <li><a href="#the-significance-of-k" id="toc-the-significance-of-k" class="nav-link" data-scroll-target="#the-significance-of-k">The Significance of (k)</a></li>
+  <li><a href="#search-for-optimal-k" id="toc-search-for-optimal-k" class="nav-link" data-scroll-target="#search-for-optimal-k">Search for Optimal (k)</a>
+  <ul class="collapse">
+  <li><a href="#the-process-unfolded" id="toc-the-process-unfolded" class="nav-link" data-scroll-target="#the-process-unfolded">The Process Unfolded</a></li>
+  <li><a href="#what-this-means-for-our-iris-classification-task" id="toc-what-this-means-for-our-iris-classification-task" class="nav-link" data-scroll-target="#what-this-means-for-our-iris-classification-task">What This Means for Our Iris Classification Task</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">

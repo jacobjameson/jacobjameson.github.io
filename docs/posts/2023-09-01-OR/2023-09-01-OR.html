@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -160,11 +160,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Introduction to R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://code4mdm.github.io" rel="" target="">
- <span class="dropdown-text">Code 4 MDM</span></a>
+    <a class="dropdown-item" href="../../Intro Git.html" rel="" target="">
+ <span class="dropdown-text">Introduction to Git/GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../API222.html" rel="" target="_blank">
+    <a class="dropdown-item" href="../../API222.html" rel="" target="">
  <span class="dropdown-text">API 222 Section Material</span></a>
   </li>  
     </ul>
@@ -181,12 +181,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-math-behind-odds-ratios" id="toc-the-math-behind-odds-ratios" class="nav-link active" data-scroll-target="#the-math-behind-odds-ratios">The math behind odds ratios</a></li>
+  <li><a href="#when-odds-ratios-mislead" id="toc-when-odds-ratios-mislead" class="nav-link" data-scroll-target="#when-odds-ratios-mislead">When Odds Ratios Mislead</a></li>
+  <li><a href="#marginal-effects-clarity-over-confusion" id="toc-marginal-effects-clarity-over-confusion" class="nav-link" data-scroll-target="#marginal-effects-clarity-over-confusion">Marginal Effects: Clarity over Confusion</a></li>
+  <li><a href="#predicted-probabilities-concrete-scenarios-over-abstract-odds" id="toc-predicted-probabilities-concrete-scenarios-over-abstract-odds" class="nav-link" data-scroll-target="#predicted-probabilities-concrete-scenarios-over-abstract-odds">Predicted Probabilities: Concrete Scenarios Over Abstract Odds</a></li>
+  <li><a href="#demonstrating-with-real-world-data" id="toc-demonstrating-with-real-world-data" class="nav-link" data-scroll-target="#demonstrating-with-real-world-data">Demonstrating with “Real-World” Data</a>
+  <ul class="collapse">
+  <li><a href="#modeling-and-results" id="toc-modeling-and-results" class="nav-link" data-scroll-target="#modeling-and-results">Modeling and Results</a></li>
+  <li><a href="#marginal-effects-and-interpretation" id="toc-marginal-effects-and-interpretation" class="nav-link" data-scroll-target="#marginal-effects-and-interpretation">Marginal Effects and Interpretation</a></li>
+  </ul></li>
+  <li><a href="#average-marginal-effects-a-comprehensive-view" id="toc-average-marginal-effects-a-comprehensive-view" class="nav-link" data-scroll-target="#average-marginal-effects-a-comprehensive-view">Average Marginal Effects: A Comprehensive View</a>
+  <ul class="collapse">
+  <li><a href="#computing-the-average-marginal-effects" id="toc-computing-the-average-marginal-effects" class="nav-link" data-scroll-target="#computing-the-average-marginal-effects">Computing the Average Marginal Effects</a></li>
+  <li><a href="#interpreting-the-ames" id="toc-interpreting-the-ames" class="nav-link" data-scroll-target="#interpreting-the-ames">Interpreting the AMEs</a></li>
+  </ul></li>
+  <li><a href="#visualizing-predicted-probabilities" id="toc-visualizing-predicted-probabilities" class="nav-link" data-scroll-target="#visualizing-predicted-probabilities">Visualizing Predicted Probabilities</a></li>
+  <li><a href="#conclusion-a-call-to-transition" id="toc-conclusion-a-call-to-transition" class="nav-link" data-scroll-target="#conclusion-a-call-to-transition">Conclusion: A Call to Transition</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">

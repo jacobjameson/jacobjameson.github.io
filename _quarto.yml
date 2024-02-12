@@ -34,8 +34,8 @@ website:
             href: teaching.qmd
           - text: "Introduction to R"
             href: Intro R.qmd
-          - text: "Code 4 MDM"
-            href: https://code4mdm.github.io
+          - text: "Introduction to Git/GitHub"
+            href: Intro Git.qmd
           - text: "API 222 Section Material"
             href: API222.qmd
       - text: Research
