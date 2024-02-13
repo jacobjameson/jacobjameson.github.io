@@ -62,5 +62,48 @@
       "/git files/section 5/section 5.html",
       "/git files/section 6/section 6.html"
     ]
+  },
+  {
+    "listing": "/api 222 files/API222.html",
+    "items": [
+      "/api 222 files/section 1/section1.html",
+      "/api 222 files/section 2/section2.html",
+      "/api 222 files/section 2/section2.1.html",
+      "/api 222 files/section 3/section3.html"
+    ]
+  },
+  {
+    "listing": "/git files/Intro Git.html",
+    "items": [
+      "/git files/section 1/section1.html",
+      "/git files/section 2/section 2.html",
+      "/git files/section 3/section 3.html",
+      "/git files/section 4/section 4.html",
+      "/git files/section 5/section 5.html",
+      "/git files/section 6/section 6.html"
+    ]
+  },
+  {
+    "listing": "/posts/blog.html",
+    "items": [
+      "/posts/2024-02-01-KNN/2024-02-01-KNN.html",
+      "/posts/2023-09-01-OR/2023-09-01-OR.html",
+      "/posts/2022-11-01-SNA/2022-11-01-SNA.html"
+    ]
+  },
+  {
+    "listing": "/R files/Intro R.html",
+    "items": [
+      "/R files/0 Module/mod0.html",
+      "/R files/1 Module/mod1.html",
+      "/R files/2 Module/mod2.html",
+      "/R files/3 Module/mod3.html",
+      "/R files/4 Module/mod4.html",
+      "/R files/5 Module/mod5.html",
+      "/R files/6 Module/mod6.html",
+      "/R files/7 Module/mod7.html",
+      "/R files/8 Module/mod8.html",
+      "/R files/9 Module/mod9.html"
+    ]
   }
 ]

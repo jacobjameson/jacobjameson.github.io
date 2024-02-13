@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jacob Jameson - Teaching</title>
+<title>Jacob Jameson - Introduction to Git and GitHub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -59,26 +61,55 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<meta name="twitter:title" content="Jacob Jameson - Teaching">
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Jacob Jameson - Introduction to Git and GitHub">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://www.jacobjameson.com/images/profile.png">
+<meta name="twitter:image" content="https://www.jacobjameson.com/git files/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1104">
-<meta name="twitter:image-width" content="1004">
 </head>
 
-<body class="floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/sig.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/sig.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -103,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.qmd" rel="" target="">
+    <a class="nav-link" href="../posts/blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -112,25 +143,25 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
         <li>
-    <a class="dropdown-item" href="./teaching.html" rel="" target="">
+    <a class="dropdown-item" href="../teaching.html" rel="" target="">
  <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./R files/Intro R.html" rel="" target="">
+    <a class="dropdown-item" href="../R files/Intro R.html" rel="" target="">
  <span class="dropdown-text">Introduction to R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./git files/Intro Git.html" rel="" target="">
+    <a class="dropdown-item" href="../git files/Intro Git.html" rel="" target="">
  <span class="dropdown-text">Introduction to Git/GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./api 222 files/API222.html" rel="" target="">
+    <a class="dropdown-item" href="../api 222 files/API222.html" rel="" target="">
  <span class="dropdown-text">API 222 Section Material</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./research.html" rel="" target="">
+    <a class="nav-link" href="../research.html" rel="" target="">
  <span class="menu-text">Research</span></a>
   </li>  
 </ul>
@@ -143,31 +174,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#harvard-t.h.-chan-school-of-public-health" id="toc-harvard-t.h.-chan-school-of-public-health" class="nav-link active" data-scroll-target="#harvard-t.h.-chan-school-of-public-health">Harvard T.H. Chan School of Public Health</a></li>
-  <li><a href="#harvard-kennedy-school" id="toc-harvard-kennedy-school" class="nav-link" data-scroll-target="#harvard-kennedy-school">Harvard Kennedy School</a></li>
-  <li><a href="#the-university-of-chicago-center-for-translational-science" id="toc-the-university-of-chicago-center-for-translational-science" class="nav-link" data-scroll-target="#the-university-of-chicago-center-for-translational-science">The University of Chicago, Center for Translational Science</a></li>
-  <li><a href="#the-university-of-chicago-department-of-computer-science" id="toc-the-university-of-chicago-department-of-computer-science" class="nav-link" data-scroll-target="#the-university-of-chicago-department-of-computer-science">The University of Chicago, Department of Computer Science</a></li>
-  <li><a href="#the-university-of-chicago-booth-school-of-business" id="toc-the-university-of-chicago-booth-school-of-business" class="nav-link" data-scroll-target="#the-university-of-chicago-booth-school-of-business">The University of Chicago Booth School of Business</a></li>
-  <li><a href="#the-university-of-chicago-harris-school-of-public-policy" id="toc-the-university-of-chicago-harris-school-of-public-policy" class="nav-link" data-scroll-target="#the-university-of-chicago-harris-school-of-public-policy">The University of Chicago Harris School of Public Policy</a></li>
-  <li><a href="#teach-for-america-achievement-first-amistad-academy-middle-school" id="toc-teach-for-america-achievement-first-amistad-academy-middle-school" class="nav-link" data-scroll-target="#teach-for-america-achievement-first-amistad-academy-middle-school">Teach For America, Achievement First Amistad Academy Middle School</a></li>
-  </ul>
-</nav>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-    </div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div></div></div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Teaching</h1>
+<h1 class="title">Introduction to Git and GitHub</h1>
 </div>
 
 
@@ -182,60 +198,171 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>My teaching experiences are quite diverse. The summer after completing my undergraduate degree, I began teaching in a highschool Algebra II credit recovery program in The School District of Philadelphia. I then transitioned to a full-time middle school mathematics position in New Haven, CT, where I spent the next two years falling in love with the profession. During my second year, I held the Grade-level Chair position for the 8th grade and consulted for the Achievement First Charter Network on <a href="https://www.achievementfirst.org/opensource/">middle school mathematics curriculum</a>. I am also passionate about computer science education, and have experience running Girls Who Code clubs and participating in the Code.org Middle and High School Computer Science Professional Learning Program for educators in computer science. Since teaching at the middle school level, I have been fortunate to hold a variety of teaching positions at The University of Chicago and Harvard University. I hope to pursue a teaching career after completing my PhD.</p>
-<section id="harvard-t.h.-chan-school-of-public-health" class="level3">
-<h3 class="anchored" data-anchor-id="harvard-t.h.-chan-school-of-public-health">Harvard T.H. Chan School of Public Health</h3>
-<ul>
-<li>Decision Science for Public Health. Teaching Fellow (2023, 2024)</li>
-</ul>
-</section>
-<section id="harvard-kennedy-school" class="level3">
-<h3 class="anchored" data-anchor-id="harvard-kennedy-school">Harvard Kennedy School</h3>
-<ul>
-<li>Math Camp. Instructor (2023)</li>
-<li>Big Data and Machine Learning. Teaching Fellow (2024)</li>
-<li>Game Theory. Teaching Fellow (2023, 2024)</li>
-<li>Data and Programming for Policymakers. Course Assistant (2023)</li>
-<li>Resources, Incentives, and Choices I: Markets and Market Failures. Teaching Fellow (2022, 2023)</li>
-</ul>
-</section>
-<section id="the-university-of-chicago-center-for-translational-science" class="level3">
-<h3 class="anchored" data-anchor-id="the-university-of-chicago-center-for-translational-science">The University of Chicago, Center for Translational Science</h3>
-<ul>
-<li>Data, Quantitative Methods, and Applications in HSR. Teaching Assistant and Instructor (2021,2022,2023)</li>
-<li>Introduction to Health Services Research. Teaching Assistant (2021)</li>
-</ul>
-</section>
-<section id="the-university-of-chicago-department-of-computer-science" class="level3">
-<h3 class="anchored" data-anchor-id="the-university-of-chicago-department-of-computer-science">The University of Chicago, Department of Computer Science</h3>
-<ul>
-<li>Machine Learning for Public Policy. Teaching Assistant (2022)</li>
-<li>Mathematics for Data Analysis and Computer Science. Teaching Assistant (2022)</li>
-</ul>
-</section>
-<section id="the-university-of-chicago-booth-school-of-business" class="level3">
-<h3 class="anchored" data-anchor-id="the-university-of-chicago-booth-school-of-business">The University of Chicago Booth School of Business</h3>
-<ul>
-<li>Introductory Finance. Teaching Assistant (2020-2022)</li>
-<li>Data Analysis in R and Python. Teaching Assistant (2021)</li>
-</ul>
-</section>
-<section id="the-university-of-chicago-harris-school-of-public-policy" class="level3">
-<h3 class="anchored" data-anchor-id="the-university-of-chicago-harris-school-of-public-policy">The University of Chicago Harris School of Public Policy</h3>
-<ul>
-<li>Coding Lab for Public Policy. Instructor and Curriculum Developer (2021)</li>
-</ul>
-</section>
-<section id="teach-for-america-achievement-first-amistad-academy-middle-school" class="level3">
-<h3 class="anchored" data-anchor-id="teach-for-america-achievement-first-amistad-academy-middle-school">Teach For America, Achievement First Amistad Academy Middle School</h3>
-<ul>
-<li>7th/8th Grade Mathematics. Mathematics Teacher (2018-2020)</li>
-</ul>
+<p>Welcome to the Introduction to Git and GitHub. This is a collection of notes and references for using Git and GitHub. The goal is to provide a quick introduction and reference for common commands and workflows.</p>
+<center>
+<img src="assets/github_gif.gif" class="img-fluid" style="width:30.0%">
+</center>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1707769917253" data-listing-reading-time-sort="7">
+<div class="thumbnail">
+<p><a href="../git files/section 1/section1.html"> <p class="card-img-top"><img src="assets/sshkey.png"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="../git files/section 1/section1.html">
+<h3 class="no-anchor listing-title">
+Part 1: Git Installation and SSH Instructions
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>Help on installing git and setting up SSH keys for GitHub</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../git files/section 1/section1.html">
+<div class="listing-author">
+Jacob Jameson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1707769911886" data-listing-reading-time-sort="11">
+<div class="thumbnail">
+<p><a href="../git files/section 2/section 2.html"> <p class="card-img-top"><img src="http://petapixel.com/assets/uploads/2015/07/psdrevisioning.jpg"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="../git files/section 2/section 2.html">
+<h3 class="no-anchor listing-title">
+Part 2: Introduction to Git and GitHub
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>In this guide, we’ll cover the basics of Git and GitHub</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../git files/section 2/section 2.html">
+<div class="listing-author">
+Jacob Jameson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1707769913462" data-listing-reading-time-sort="4">
+<div class="thumbnail">
+<p><a href="../git files/section 3/section 3.html"> <p class="card-img-top"><img src="https://wac-cdn.atlassian.com/dam/jcr:746be214-eb99-462c-9319-04a4d2eeebfa/01.svg"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="../git files/section 3/section 3.html">
+<h3 class="no-anchor listing-title">
+Part 3: Branching
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+When using Git, branches are a part of your everyday development process. Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../git files/section 3/section 3.html">
+<div class="listing-author">
+Jacob Jameson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1707769915084" data-listing-reading-time-sort="5">
+<div class="thumbnail">
+<p><a href="../git files/section 4/section 4.html"> <p class="card-img-top"><img src="assets/pull_req.png"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="../git files/section 4/section 4.html">
+<h3 class="no-anchor listing-title">
+Part 4: Reference
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>A reference guide for git commands</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../git files/section 4/section 4.html">
+<div class="listing-author">
+Jacob Jameson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1707771012987" data-listing-reading-time-sort="2">
+<div class="thumbnail">
+<p><a href="../git files/section 5/section 5.html"> <p class="card-img-top"><img src="https://i.imgur.com/T6pJPY8.jpg"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="../git files/section 5/section 5.html">
+<h3 class="no-anchor listing-title">
+Part 5: Workflow
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>A reference guide for git commands</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../git files/section 5/section 5.html">
+<div class="listing-author">
+Jacob Jameson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1707771184212" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="../git files/section 6/section 6.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+</div>
+<div class="body">
+<a href="../git files/section 6/section 6.html">
+<h3 class="no-anchor listing-title">
+Part 6: Additional Resources
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>Links to additional git resource</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../git files/section 6/section 6.html">
+<div class="listing-author">
+Jacob Jameson
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

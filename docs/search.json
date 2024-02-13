@@ -1314,5 +1314,54 @@
     "title": "Part 6: Additional Resources",
     "section": "",
     "text": "Information sourced from: https://github.com/AlJohri/DAT-DC-12/blob/master/notebooks/intro-git.ipynb and Dhrumil Mehta"
+  },
+  {
+    "objectID": "api 222 files/API222.html",
+    "href": "api 222 files/API222.html",
+    "title": "API 222 Section Materials",
+    "section": "",
+    "text": "Welcome to the Section Materials for API-222! This course is a journey through the fascinating world of machine learning, tailored to provide you with a strong foundation in both the theoretical and practical aspects of the field. With a focus on policy-making and decision-making applications, you will gain not only an understanding of the statistical theories behind the algorithms but also the skills to apply them to solve real-world problems.\nIn this supplementary section, our primary goal is to enhance your coding abilities. While the main lectures of the course delve into the concepts and theories of machine learning, here we will put those theories into practice.\nThe section materials are neatly segmented to mirror the course’s structure, which is divided into two main units:\n\nSupervised Learning: We start with a deep dive into algorithms designed to predict and analyze outcomes based on input data. You’ll learn to navigate through regression, classification, cross-validation, and more, using R to bring these concepts to life.\nUnsupervised Learning: The second half of the course explores the patterns and structures in data where outcomes aren’t provided. Clustering, dimensionality reduction, and other techniques will be covered, giving you a comprehensive toolkit for data analysis.\n\nWhether you are running regressions, classifying data, or implementing advanced machine learning models, these section materials are crafted to provide you with hands-on experience. Through a series of code examples, exercises, and assignments, you will build the confidence to tackle complex datasets and extract meaningful insights.\nRemember, while mastering the syntax and functions of a programming language is essential, the real magic lies in applying these tools to real-world scenarios. Let’s code our way to a deeper understanding of machine learning!"
+  },
+  {
+    "objectID": "api 222 files/API222.html#section-materials-introduction",
+    "href": "api 222 files/API222.html#section-materials-introduction",
+    "title": "API 222 Section Materials",
+    "section": "",
+    "text": "Welcome to the Section Materials for API-222! This course is a journey through the fascinating world of machine learning, tailored to provide you with a strong foundation in both the theoretical and practical aspects of the field. With a focus on policy-making and decision-making applications, you will gain not only an understanding of the statistical theories behind the algorithms but also the skills to apply them to solve real-world problems.\nIn this supplementary section, our primary goal is to enhance your coding abilities. While the main lectures of the course delve into the concepts and theories of machine learning, here we will put those theories into practice.\nThe section materials are neatly segmented to mirror the course’s structure, which is divided into two main units:\n\nSupervised Learning: We start with a deep dive into algorithms designed to predict and analyze outcomes based on input data. You’ll learn to navigate through regression, classification, cross-validation, and more, using R to bring these concepts to life.\nUnsupervised Learning: The second half of the course explores the patterns and structures in data where outcomes aren’t provided. Clustering, dimensionality reduction, and other techniques will be covered, giving you a comprehensive toolkit for data analysis.\n\nWhether you are running regressions, classifying data, or implementing advanced machine learning models, these section materials are crafted to provide you with hands-on experience. Through a series of code examples, exercises, and assignments, you will build the confidence to tackle complex datasets and extract meaningful insights.\nRemember, while mastering the syntax and functions of a programming language is essential, the real magic lies in applying these tools to real-world scenarios. Let’s code our way to a deeper understanding of machine learning!"
+  },
+  {
+    "objectID": "git files/Intro Git.html",
+    "href": "git files/Intro Git.html",
+    "title": "Introduction to Git and GitHub",
+    "section": "",
+    "text": "Welcome to the Introduction to Git and GitHub. This is a collection of notes and references for using Git and GitHub. The goal is to provide a quick introduction and reference for common commands and workflows.\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nPart 1: Git Installation and SSH Instructions\n\n\n\n\n\nHelp on installing git and setting up SSH keys for GitHub\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nPart 2: Introduction to Git and GitHub\n\n\n\n\n\nIn this guide, we’ll cover the basics of Git and GitHub\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nPart 3: Branching\n\n\n\n\n\n\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nPart 4: Reference\n\n\n\n\n\nA reference guide for git commands\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nPart 5: Workflow\n\n\n\n\n\nA reference guide for git commands\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nPart 6: Additional Resources\n\n\n\n\n\nLinks to additional git resource\n\n\n\n\n\n\nJacob Jameson\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/blog.html",
+    "href": "posts/blog.html",
+    "title": "Jacob Jameson",
+    "section": "",
+    "text": "Welcome to my blog!\n\n\n\n\n\n\n\n\n  \n\n\n\n\nDemystifying KNN\n\n\n\n\n\n\n\nknn\n\n\n\n\nA deep dive into the K-Nearest Neighbors (KNN) algorithm, exploring its mathematical foundations and practical applications.\n\n\n\n\n\n\nFeb 1, 2024\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nThe ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research\n\n\n\n\n\n\n\nmarginal effects\n\n\n\n\nMarginal Effects &gt;&gt;&gt; Odds Ratios\n\n\n\n\n\n\nSep 1, 2023\n\n\nJacob Jameson\n\n\n\n\n\n\n  \n\n\n\n\nBasic Network Analysis and Visualization for Directed Graphs in R\n\n\n\n\n\n\n\nnetworks\n\n\ncentrality\n\n\n\n\nChoosing the Right Centrality Measure.\n\n\n\n\n\n\nNov 1, 2022\n\n\nJacob Jameson\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "R files/Intro R.html",
+    "href": "R files/Intro R.html",
+    "title": "Introduction to Programming in R",
+    "section": "",
+    "text": "This page contains the content for the “Introduction to Data Analysis in R” mini-course. The goal is to introduce R programming concepts with a focus on preparing and analyzing data, and conducting statistical simulations. We will cover how to read data into R, manipulate data with a suite of tools from the tidyverse package dplyr. We will also discuss some basic programming concepts including data types and operators.\nThis mini-course is aimed at people with no programming background that are looking for a gentle and practical introduction to data analysis in R.\nEach Module involves:\n\na pre-recorded lecture with guided practice exercises\na corresponding lab to practice the skills taught in the video and stretch your thinking\n\nThe labs are an essential part of the learning process as they walkthrough the use of many key functions and topics that are not explicitly covered in the videos.\n\nAdditional Resources\n\n\n\ntidyverse cheetsheets start with dplyr and ggplot\n\n\nR for Data Science: free online book with clear explanations of many tidyverse functions, the book to read on data analysis with R"
+  },
+  {
+    "objectID": "R files/Intro R.html#about-this-course",
+    "href": "R files/Intro R.html#about-this-course",
+    "title": "Introduction to Programming in R",
+    "section": "",
+    "text": "This page contains the content for the “Introduction to Data Analysis in R” mini-course. The goal is to introduce R programming concepts with a focus on preparing and analyzing data, and conducting statistical simulations. We will cover how to read data into R, manipulate data with a suite of tools from the tidyverse package dplyr. We will also discuss some basic programming concepts including data types and operators.\nThis mini-course is aimed at people with no programming background that are looking for a gentle and practical introduction to data analysis in R.\nEach Module involves:\n\na pre-recorded lecture with guided practice exercises\na corresponding lab to practice the skills taught in the video and stretch your thinking\n\nThe labs are an essential part of the learning process as they walkthrough the use of many key functions and topics that are not explicitly covered in the videos.\n\nAdditional Resources\n\n\n\ntidyverse cheetsheets start with dplyr and ggplot\n\n\nR for Data Science: free online book with clear explanations of many tidyverse functions, the book to read on data analysis with R"
+  },
+  {
+    "objectID": "R files/Intro R.html#table-of-contents",
+    "href": "R files/Intro R.html#table-of-contents",
+    "title": "Introduction to Programming in R",
+    "section": "Table of Contents",
+    "text": "Table of Contents"
   }
 ]

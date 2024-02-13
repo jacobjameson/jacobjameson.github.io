@@ -27,17 +27,17 @@ website:
         href: https://github.com/jacobjameson
         target: _blank
       - text: Blog
-        href: blog.qmd
+        href: posts/blog.qmd
       - text: Teaching
         menu:
           - text: "Jacob's Teaching Experience"
             href: teaching.qmd
           - text: "Introduction to R"
-            href: Intro R.qmd
+            href: R files/Intro R.qmd
           - text: "Introduction to Git/GitHub"
-            href: Intro Git.qmd
+            href: git files/Intro Git.qmd
           - text: "API 222 Section Material"
-            href: API222.qmd
+            href: api 222 files/API222.qmd
       - text: Research
         href: research.qmd
 

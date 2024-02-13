@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jacob Jameson - Teaching</title>
+<title>Jacob Jameson - API 222 Section Materials</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -59,26 +61,55 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<meta name="twitter:title" content="Jacob Jameson - Teaching">
+    const options = {
+      valueNames: ['listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Jacob Jameson - API 222 Section Materials">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://www.jacobjameson.com/images/profile.png">
+<meta name="twitter:image" content="https://www.jacobjameson.com/api 222 files/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1104">
-<meta name="twitter:image-width" content="1004">
 </head>
 
-<body class="floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/sig.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/sig.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -103,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.qmd" rel="" target="">
+    <a class="nav-link" href="../posts/blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -112,25 +143,25 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
         <li>
-    <a class="dropdown-item" href="./teaching.html" rel="" target="">
+    <a class="dropdown-item" href="../teaching.html" rel="" target="">
  <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./R files/Intro R.html" rel="" target="">
+    <a class="dropdown-item" href="../R files/Intro R.html" rel="" target="">
  <span class="dropdown-text">Introduction to R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./git files/Intro Git.html" rel="" target="">
+    <a class="dropdown-item" href="../git files/Intro Git.html" rel="" target="">
  <span class="dropdown-text">Introduction to Git/GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./api 222 files/API222.html" rel="" target="">
+    <a class="dropdown-item" href="../api 222 files/API222.html" rel="" target="">
  <span class="dropdown-text">API 222 Section Material</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./research.html" rel="" target="">
+    <a class="nav-link" href="../research.html" rel="" target="">
  <span class="menu-text">Research</span></a>
   </li>  
 </ul>
@@ -143,31 +174,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#harvard-t.h.-chan-school-of-public-health" id="toc-harvard-t.h.-chan-school-of-public-health" class="nav-link active" data-scroll-target="#harvard-t.h.-chan-school-of-public-health">Harvard T.H. Chan School of Public Health</a></li>
-  <li><a href="#harvard-kennedy-school" id="toc-harvard-kennedy-school" class="nav-link" data-scroll-target="#harvard-kennedy-school">Harvard Kennedy School</a></li>
-  <li><a href="#the-university-of-chicago-center-for-translational-science" id="toc-the-university-of-chicago-center-for-translational-science" class="nav-link" data-scroll-target="#the-university-of-chicago-center-for-translational-science">The University of Chicago, Center for Translational Science</a></li>
-  <li><a href="#the-university-of-chicago-department-of-computer-science" id="toc-the-university-of-chicago-department-of-computer-science" class="nav-link" data-scroll-target="#the-university-of-chicago-department-of-computer-science">The University of Chicago, Department of Computer Science</a></li>
-  <li><a href="#the-university-of-chicago-booth-school-of-business" id="toc-the-university-of-chicago-booth-school-of-business" class="nav-link" data-scroll-target="#the-university-of-chicago-booth-school-of-business">The University of Chicago Booth School of Business</a></li>
-  <li><a href="#the-university-of-chicago-harris-school-of-public-policy" id="toc-the-university-of-chicago-harris-school-of-public-policy" class="nav-link" data-scroll-target="#the-university-of-chicago-harris-school-of-public-policy">The University of Chicago Harris School of Public Policy</a></li>
-  <li><a href="#teach-for-america-achievement-first-amistad-academy-middle-school" id="toc-teach-for-america-achievement-first-amistad-academy-middle-school" class="nav-link" data-scroll-target="#teach-for-america-achievement-first-amistad-academy-middle-school">Teach For America, Achievement First Amistad Academy Middle School</a></li>
-  </ul>
-</nav>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-    </div>
+    
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Teaching</h1>
+<h1 class="title">API 222 Section Materials</h1>
 </div>
 
 
@@ -182,60 +196,94 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>My teaching experiences are quite diverse. The summer after completing my undergraduate degree, I began teaching in a highschool Algebra II credit recovery program in The School District of Philadelphia. I then transitioned to a full-time middle school mathematics position in New Haven, CT, where I spent the next two years falling in love with the profession. During my second year, I held the Grade-level Chair position for the 8th grade and consulted for the Achievement First Charter Network on <a href="https://www.achievementfirst.org/opensource/">middle school mathematics curriculum</a>. I am also passionate about computer science education, and have experience running Girls Who Code clubs and participating in the Code.org Middle and High School Computer Science Professional Learning Program for educators in computer science. Since teaching at the middle school level, I have been fortunate to hold a variety of teaching positions at The University of Chicago and Harvard University. I hope to pursue a teaching career after completing my PhD.</p>
-<section id="harvard-t.h.-chan-school-of-public-health" class="level3">
-<h3 class="anchored" data-anchor-id="harvard-t.h.-chan-school-of-public-health">Harvard T.H. Chan School of Public Health</h3>
+<section id="section-materials-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="section-materials-introduction">Section Materials Introduction</h2>
+<p>Welcome to the Section Materials for API-222! This course is a journey through the fascinating world of machine learning, tailored to provide you with a strong foundation in both the theoretical and practical aspects of the field. With a focus on policy-making and decision-making applications, you will gain not only an understanding of the statistical theories behind the algorithms but also the skills to apply them to solve real-world problems.</p>
+<p>In this supplementary section, our primary goal is to enhance your coding abilities. While the main lectures of the course delve into the concepts and theories of machine learning, here we will put those theories into practice.</p>
+<p>The section materials are neatly segmented to mirror the course’s structure, which is divided into two main units:</p>
 <ul>
-<li>Decision Science for Public Health. Teaching Fellow (2023, 2024)</li>
+<li><p>Supervised Learning: We start with a deep dive into algorithms designed to predict and analyze outcomes based on input data. You’ll learn to navigate through regression, classification, cross-validation, and more, using R to bring these concepts to life.</p></li>
+<li><p>Unsupervised Learning: The second half of the course explores the patterns and structures in data where outcomes aren’t provided. Clustering, dimensionality reduction, and other techniques will be covered, giving you a comprehensive toolkit for data analysis.</p></li>
 </ul>
-</section>
-<section id="harvard-kennedy-school" class="level3">
-<h3 class="anchored" data-anchor-id="harvard-kennedy-school">Harvard Kennedy School</h3>
-<ul>
-<li>Math Camp. Instructor (2023)</li>
-<li>Big Data and Machine Learning. Teaching Fellow (2024)</li>
-<li>Game Theory. Teaching Fellow (2023, 2024)</li>
-<li>Data and Programming for Policymakers. Course Assistant (2023)</li>
-<li>Resources, Incentives, and Choices I: Markets and Market Failures. Teaching Fellow (2022, 2023)</li>
-</ul>
-</section>
-<section id="the-university-of-chicago-center-for-translational-science" class="level3">
-<h3 class="anchored" data-anchor-id="the-university-of-chicago-center-for-translational-science">The University of Chicago, Center for Translational Science</h3>
-<ul>
-<li>Data, Quantitative Methods, and Applications in HSR. Teaching Assistant and Instructor (2021,2022,2023)</li>
-<li>Introduction to Health Services Research. Teaching Assistant (2021)</li>
-</ul>
-</section>
-<section id="the-university-of-chicago-department-of-computer-science" class="level3">
-<h3 class="anchored" data-anchor-id="the-university-of-chicago-department-of-computer-science">The University of Chicago, Department of Computer Science</h3>
-<ul>
-<li>Machine Learning for Public Policy. Teaching Assistant (2022)</li>
-<li>Mathematics for Data Analysis and Computer Science. Teaching Assistant (2022)</li>
-</ul>
-</section>
-<section id="the-university-of-chicago-booth-school-of-business" class="level3">
-<h3 class="anchored" data-anchor-id="the-university-of-chicago-booth-school-of-business">The University of Chicago Booth School of Business</h3>
-<ul>
-<li>Introductory Finance. Teaching Assistant (2020-2022)</li>
-<li>Data Analysis in R and Python. Teaching Assistant (2021)</li>
-</ul>
-</section>
-<section id="the-university-of-chicago-harris-school-of-public-policy" class="level3">
-<h3 class="anchored" data-anchor-id="the-university-of-chicago-harris-school-of-public-policy">The University of Chicago Harris School of Public Policy</h3>
-<ul>
-<li>Coding Lab for Public Policy. Instructor and Curriculum Developer (2021)</li>
-</ul>
-</section>
-<section id="teach-for-america-achievement-first-amistad-academy-middle-school" class="level3">
-<h3 class="anchored" data-anchor-id="teach-for-america-achievement-first-amistad-academy-middle-school">Teach For America, Achievement First Amistad Academy Middle School</h3>
-<ul>
-<li>7th/8th Grade Mathematics. Mathematics Teacher (2018-2020)</li>
-</ul>
+<p>Whether you are running regressions, classifying data, or implementing advanced machine learning models, these section materials are crafted to provide you with hands-on experience. Through a series of code examples, exercises, and assignments, you will build the confidence to tackle complex datasets and extract meaningful insights.</p>
+<p>Remember, while mastering the syntax and functions of a programming language is essential, the real magic lies in applying these tools to real-world scenarios. Let’s code our way to a deeper understanding of machine learning!</p>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Author</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1706216007953" data-listing-reading-time-sort="9" data-listing-title-sort="Section 1 - Intro to API 222 and R" data-listing-filename-sort="section1.qmd">
+<td>
+<a href="../api 222 files/section 1/section1.html" class="title listing-title">Section 1 - Intro to API 222 and R</a>
+</td>
+<td>
+<span class="listing-author">Jacob Jameson</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-file-modified-sort="1706796667471" data-listing-reading-time-sort="14" data-listing-title-sort="Section 2.1 - KNN and Linear Regression Notes" data-listing-filename-sort="section2.qmd">
+<td>
+<a href="../api 222 files/section 2/section2.html" class="title listing-title">Section 2.1 - KNN and Linear Regression Notes</a>
+</td>
+<td>
+<span class="listing-author">Jacob Jameson</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-file-modified-sort="1707767619078" data-listing-reading-time-sort="13" data-listing-title-sort="Section 2.2 - KNN and Linear Regression Code" data-listing-filename-sort="section2.1.qmd">
+<td>
+<a href="../api 222 files/section 2/section2.1.html" class="title listing-title">Section 2.2 - KNN and Linear Regression Code</a>
+</td>
+<td>
+<span class="listing-author">Jacob Jameson</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-file-modified-sort="1707407496383" data-listing-reading-time-sort="16" data-listing-title-sort="Section 3 - More on Linear Regression" data-listing-filename-sort="section3.qmd">
+<td>
+<a href="../api 222 files/section 3/section3.html" class="title listing-title">Section 3 - More on Linear Regression</a>
+</td>
+<td>
+<span class="listing-author">Jacob Jameson</span>
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

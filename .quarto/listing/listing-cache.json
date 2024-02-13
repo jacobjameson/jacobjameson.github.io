@@ -22,6 +22,22 @@
     ],
     "Intro Git.qmd": [
       "git files"
+    ],
+    "git files/Intro Git.qmd": [
+      "git files",
+      "B3049D40"
+    ],
+    "posts/blog.qmd": [
+      "posts",
+      "B3049D40"
+    ],
+    "api 222 files/API222.qmd": [
+      "api 222 files",
+      "B3049D40"
+    ],
+    "R files/Intro R.qmd": [
+      "R files",
+      "B3049D40"
     ]
   }
 }

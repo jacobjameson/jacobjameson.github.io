@@ -1,7 +1,6 @@
 ---
 title: "Jacob Jameson"
 listing:
-  contents: posts
   sort:
     - "date desc"
     - "title desc"
