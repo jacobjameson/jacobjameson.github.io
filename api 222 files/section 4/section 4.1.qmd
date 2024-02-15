@@ -1,0 +1,99 @@
+---
+title: "Section 4.1 - Classification Notes"
+from: markdown+emoji
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+description: |
+author: Jacob Jameson
+
+---
+
+
+Note that the material in these notes draws on past TF’s notes (Ibou Dieye, Laura Morris, Emily Mower, Amy Wickett), and the more thorough treatment of these topics in *Introduction to Statistical Learning* by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani. 
+
+
+# Logistic Regression
+
+## Concept
+Logistic regression is a parametric model that models the probability that $Y$ belongs to a particular category. It is somewhat similar to linear regression, but the linear regression form of $\beta_0+\beta_1 X_1 + \beta_2 X_2 + \dots$ undergoes a transformation that ensures the output will be bounded between 0 and 1 and can thus be interpreted as a probability. 
+
+ \begin{equation}
+     p(X) = \frac{e^{\beta_0+\beta_1 X}}{1 + e^{\beta_0 + \beta_1 X}}
+ \end{equation}
+ 
+ Therefore, while linear regression is best suited for regression problems, logistic regression is best suited for classification problems. Note that logistic regression produces a probability of class membership that then needs to be transformed to 0 or 1 using a decision rule, such as if $p(X)\geq 0.5$ then predict 1 otherwise predict 0.
+ 
+## Method 
+Logistic regression is estimated using Maximum Likelihood Estimation (MLE). MLE finds the values of $\beta_0$, $\beta_1$, etc. that maximize the probability of observing the observations in your training data given the values of the parameters $\beta_0$, $\beta_1$, etc. and the assumed functional form (e.g. see above).
+
+
+## Implementation and Considerations
+When implementing logistic regression, the restrictions on the features are the same as for linear regression (e.g. no collinearity, number of features must be less than number of observations, etc.). The outcome should be a binary class membership. You can extend the logistic regression to cover a scenario with more than two classes, and this is called multinomial logistic regression, but we will not cover that in class. 
+
+When you run logistic regression, the prediction output is a continuous value that reflects the predicted probability that the observation belongs to class 1. Therefore, a decision rule is required to convert the predicted probability to a predicted class (0 or 1). If you care equally about wrongly predicting positive for a True Negative (e.g. predicting class 1 for someone who is actually in class 0) and predicting negative for a True Positive, then a good decision rule is if $p(X)\geq 0.5$, predict 1 and otherwise predict 0. However, sometimes you care more about an error in one direction than the other. An example of this would be not wanting to offer a loan to someone who will default even if that means you deny more people who wouldn't default. In that case, you might lower the threshold to 0.2 or some other value. We explore this more in the \texttt{R} code.
+ 
+
+# Review of High-Level Concepts
+
+## Methods 
+
+At this point in the course, you have been introduced to three methods. The methods and their properties are summarized in the table below.
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+\hline
+Method & Parametric or Non-Parametric & Classification or Regression \\
+\hline
+KNN & Non-Parametric & Both, but implementation changes \\ 
+Linear Regression & Parametric & Regression \\ 
+Logistic Regression & Parametric & Classification \\ 
+\hline
+\end{tabular}
+\end{center}
+When thinking about if a model is parametric or non-parametric, it can be helpful to think: Do I have a set of parameters that I can use to find the predicted value of any new observation? If yes, it's parametric. When thinking about if a problem is a classification problem or a regression problem, it is helpful to think about the outcome in the training data. If the outcome is continuous, then it's a regression problem. If the outcome is categorical, it's a classification problem. The emphasis on the outcome in the *training* data is to avoid the confusion that arises when you look at prediction output. As we saw with logistic regression, even though it's a classification problem, the output will be a probability (which is continuous and needs to be converted to 0 or 1 in order to measure performance).
+
+## Classification
+
+Classification is really a two-step process. Usually, the model will predict something that looks like a probability that your observation belongs to each class. You then need to convert the probability to a class membership using a decision rule. A good general rule is: ``whichever class is assigned the highest probability is the predicted class.'' However, when you have reason to prefer an error in one direction (e.g. predicting more people will default than actually will), you should change this threshold. Exactly which threshold is optimal will depend on domain knowledge and other factors (such as how costly defaults are or how profitable repaid loans are).
+
+# Discriminant Analysis
+
+
+## Concept
+Recall that the *Bayes' Classifier* is the unattainable gold standard classifier. It assumes knowledge of the true underlying distribution of the data, which you will not have in practice. Given features $X$, it knows the true probability that $Y$ belongs to each possible class. It predicts the most likely class, which is the best decision rule given the available features. 
+
+*Linear Discriminant Analysis (LDA)* approximates the Bayes' Classifier, given the information available and the assumption that features are Normally (Gaussian) distributed within each class. The result is decision boundaries that are linear in the included features.
+
+When there is one feature (predictor), LDA estimates class-specific means $\hat{\mu}_k$ and a single variance $\hat{\sigma}^2$ that is common to all classes. When there are multiple features, LDA estimates class-specific mean vectors $\hat{\mu}_k$ and a single variance-covariance matrix $\hat{\Sigma}$ that is assumed to be relevant to all classes. In both cases (one feature or many features), LDA also calculates the unconditional probability of belonging to each class $\hat{\pi}_k$. LDA then takes these components (means, variance, and unconditional class probability) and calculates a discriminant function for each observation and each class. For each observation, the predicted class is determined by the largest discriminant.
+
+*Quadratic Discriminant Analysis (QDA)* is conceptually similar, though instead of requiring all classes to share the same variance or variance-covariance matrix, it allows for class-specific variances. This has the effect of allowing non-linear decision boundaries. The drawback, though, is that allowing for class-specific variances (and especially class-specific variance-covariance matrices) increases the number of parameters to estimate, increasing the likelihood of overfitting.
+
+## Method
+To estimate LDA or QDA, you estimate the feature means, feature variance(s), and unconditional (empirical) class probabilities for each class. Let $k$ index the classes, then if there is only one feature, LDA calculates the following discriminant function for each observation for each class:
+\begin{equation}
+\hat{\delta}_k(x) = x \cdot \frac{\hat{\mu}_k}{\hat{\sigma}^2}-\frac{\hat{\mu}_k^2}{2\hat{\sigma}^2}+\log(\hat{\pi}_k)
+\end{equation}
+Where $\hat{\pi}_k$ is the unconditional class probability, $\hat{\mu}_k$ is the mean feature value for class $k$, and $\hat{\sigma}^2$ is the common feature variance. When $p>1$ (e.g. there are multiple predictors), then we use $\hat{\Sigma}$ to represent the common feature variance-covariance matrix, $\hat{\mu}_k$ becomes a vector, and thus the LDA discriminant function becomes:
+\begin{equation}
+\hat{\delta}_k(x) = x^T\hat{\Sigma}^{-1}\hat{\mu}_k-\frac{1}{2}\hat{\mu}_k^T\hat{\Sigma}^{-1}\hat{\mu}_k+\log(\hat{\pi}_k)
+\end{equation}
+For QDA, the one feature discriminant function is:
+\begin{equation}
+\hat{\delta}_k(x) = x \cdot \frac{\hat{\mu}_k}{\hat{\sigma}_k^2}-\frac{\hat{\mu}_k^2}{2\hat{\sigma}_k^2}+\log(\hat{\pi}_k)
+\end{equation}
+Note that $\hat{\sigma}$ now has a subscript to indicate that the variance is class-specific. For multiple predictors, the QDA discriminant function is again just like the LDA one but with a subscripted $\Sigma$:
+\begin{equation}
+\hat{\delta}_k(x) = x^T\hat{\Sigma}_k^{-1}\hat{\mu}_k-\frac{1}{2}\hat{\mu}_k^T\hat{\Sigma}_k^{-1}\hat{\mu}_k+\log(\hat{\pi}_k)
+\end{equation}
+In practice, we will use the `lda()` and `qda()` functions that are part of the `MASS` package in `R`.
+
+## Implementation and Considerations
+LDA and QDA both generalize easily to settings where there are more than two classes. They are also parametric, which means they are computationally efficient with large data sets compared to non-parametric KNN. However, they both make the assumption that the features are normally distributed, so you should pay attention to your data. For example, binary variables will never be normally distributed nor well approximated by a normal distribution, and so the methods are not appropriate to use in the presence of binary features.
+
+QDA differs from LDA by assuming the variance or variance-covariance matrix of the feature(s) varies from class to class. This allows for more flexible and non-linear decision boundaries, but requires estimation of more parameters. As with all other models we've seen, estimating more parameters increases the likelihood of overfitting and so should only be used when the number of observations is large relative to the number of features and classes. 
+
+
+
+

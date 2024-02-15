@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jacob Jameson">
+
+<title>Jacob Jameson - Section 4.1 - Classification Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Jacob Jameson - Section 4.1 - Classification Notes">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://www.jacobjameson.com/api 222 files/section 4/images/profile.png">
+<meta name="twitter:creator" content="@JacobCJameson">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/sig.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson" rel="" target="_blank"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jacobjameson" rel="" target="_blank"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Teaching</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+        <li>
+    <a class="dropdown-item" href="../../teaching.html" rel="" target="">
+ <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../R files/Intro R.html" rel="" target="">
+ <span class="dropdown-text">Introduction to R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../git files/Intro Git.html" rel="" target="">
+ <span class="dropdown-text">Introduction to Git/GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../api 222 files/API222.html" rel="" target="">
+ <span class="dropdown-text">API 222 Section Material</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link active" data-scroll-target="#logistic-regression">Logistic Regression</a>
+  <ul class="collapse">
+  <li><a href="#concept" id="toc-concept" class="nav-link" data-scroll-target="#concept">Concept</a></li>
+  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method">Method</a></li>
+  <li><a href="#implementation-and-considerations" id="toc-implementation-and-considerations" class="nav-link" data-scroll-target="#implementation-and-considerations">Implementation and Considerations</a></li>
+  </ul></li>
+  <li><a href="#review-of-high-level-concepts" id="toc-review-of-high-level-concepts" class="nav-link" data-scroll-target="#review-of-high-level-concepts">Review of High-Level Concepts</a>
+  <ul class="collapse">
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
+  </ul></li>
+  <li><a href="#discriminant-analysis" id="toc-discriminant-analysis" class="nav-link" data-scroll-target="#discriminant-analysis">Discriminant Analysis</a>
+  <ul class="collapse">
+  <li><a href="#concept-1" id="toc-concept-1" class="nav-link" data-scroll-target="#concept-1">Concept</a></li>
+  <li><a href="#method-1" id="toc-method-1" class="nav-link" data-scroll-target="#method-1">Method</a></li>
+  <li><a href="#implementation-and-considerations-1" id="toc-implementation-and-considerations-1" class="nav-link" data-scroll-target="#implementation-and-considerations-1">Implementation and Considerations</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Section 4.1 - Classification Notes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jacob Jameson </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Note that the material in these notes draws on past TF’s notes (Ibou Dieye, Laura Morris, Emily Mower, Amy Wickett), and the more thorough treatment of these topics in <em>Introduction to Statistical Learning</em> by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.</p>
+<section id="logistic-regression" class="level1">
+<h1>Logistic Regression</h1>
+<section id="concept" class="level2">
+<h2 class="anchored" data-anchor-id="concept">Concept</h2>
+<p>Logistic regression is a parametric model that models the probability that <span class="math inline">\(Y\)</span> belongs to a particular category. It is somewhat similar to linear regression, but the linear regression form of <span class="math inline">\(\beta_0+\beta_1 X_1 + \beta_2 X_2 + \dots\)</span> undergoes a transformation that ensures the output will be bounded between 0 and 1 and can thus be interpreted as a probability.</p>
+<p><span class="math display">\[\begin{equation}
+     p(X) = \frac{e^{\beta_0+\beta_1 X}}{1 + e^{\beta_0 + \beta_1 X}}
+\end{equation}\]</span></p>
+<p>Therefore, while linear regression is best suited for regression problems, logistic regression is best suited for classification problems. Note that logistic regression produces a probability of class membership that then needs to be transformed to 0 or 1 using a decision rule, such as if <span class="math inline">\(p(X)\geq 0.5\)</span> then predict 1 otherwise predict 0.</p>
+</section>
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">Method</h2>
+<p>Logistic regression is estimated using Maximum Likelihood Estimation (MLE). MLE finds the values of <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, etc. that maximize the probability of observing the observations in your training data given the values of the parameters <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, etc. and the assumed functional form (e.g.&nbsp;see above).</p>
+</section>
+<section id="implementation-and-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-and-considerations">Implementation and Considerations</h2>
+<p>When implementing logistic regression, the restrictions on the features are the same as for linear regression (e.g.&nbsp;no collinearity, number of features must be less than number of observations, etc.). The outcome should be a binary class membership. You can extend the logistic regression to cover a scenario with more than two classes, and this is called multinomial logistic regression, but we will not cover that in class.</p>
+<p>When you run logistic regression, the prediction output is a continuous value that reflects the predicted probability that the observation belongs to class 1. Therefore, a decision rule is required to convert the predicted probability to a predicted class (0 or 1). If you care equally about wrongly predicting positive for a True Negative (e.g.&nbsp;predicting class 1 for someone who is actually in class 0) and predicting negative for a True Positive, then a good decision rule is if <span class="math inline">\(p(X)\geq 0.5\)</span>, predict 1 and otherwise predict 0. However, sometimes you care more about an error in one direction than the other. An example of this would be not wanting to offer a loan to someone who will default even if that means you deny more people who wouldn’t default. In that case, you might lower the threshold to 0.2 or some other value. We explore this more in the code.</p>
+</section>
+</section>
+<section id="review-of-high-level-concepts" class="level1">
+<h1>Review of High-Level Concepts</h1>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+At this point in the course, you have been introduced to three methods. The methods and their properties are summarized in the table below.
+<p>When thinking about if a model is parametric or non-parametric, it can be helpful to think: Do I have a set of parameters that I can use to find the predicted value of any new observation? If yes, it’s parametric. When thinking about if a problem is a classification problem or a regression problem, it is helpful to think about the outcome in the training data. If the outcome is continuous, then it’s a regression problem. If the outcome is categorical, it’s a classification problem. The emphasis on the outcome in the <em>training</em> data is to avoid the confusion that arises when you look at prediction output. As we saw with logistic regression, even though it’s a classification problem, the output will be a probability (which is continuous and needs to be converted to 0 or 1 in order to measure performance).</p>
+</section>
+<section id="classification" class="level2">
+<h2 class="anchored" data-anchor-id="classification">Classification</h2>
+<p>Classification is really a two-step process. Usually, the model will predict something that looks like a probability that your observation belongs to each class. You then need to convert the probability to a class membership using a decision rule. A good general rule is: ``whichever class is assigned the highest probability is the predicted class.’’ However, when you have reason to prefer an error in one direction (e.g.&nbsp;predicting more people will default than actually will), you should change this threshold. Exactly which threshold is optimal will depend on domain knowledge and other factors (such as how costly defaults are or how profitable repaid loans are).</p>
+</section>
+</section>
+<section id="discriminant-analysis" class="level1">
+<h1>Discriminant Analysis</h1>
+<section id="concept-1" class="level2">
+<h2 class="anchored" data-anchor-id="concept-1">Concept</h2>
+<p>Recall that the <em>Bayes’ Classifier</em> is the unattainable gold standard classifier. It assumes knowledge of the true underlying distribution of the data, which you will not have in practice. Given features <span class="math inline">\(X\)</span>, it knows the true probability that <span class="math inline">\(Y\)</span> belongs to each possible class. It predicts the most likely class, which is the best decision rule given the available features.</p>
+<p><em>Linear Discriminant Analysis (LDA)</em> approximates the Bayes’ Classifier, given the information available and the assumption that features are Normally (Gaussian) distributed within each class. The result is decision boundaries that are linear in the included features.</p>
+<p>When there is one feature (predictor), LDA estimates class-specific means <span class="math inline">\(\hat{\mu}_k\)</span> and a single variance <span class="math inline">\(\hat{\sigma}^2\)</span> that is common to all classes. When there are multiple features, LDA estimates class-specific mean vectors <span class="math inline">\(\hat{\mu}_k\)</span> and a single variance-covariance matrix <span class="math inline">\(\hat{\Sigma}\)</span> that is assumed to be relevant to all classes. In both cases (one feature or many features), LDA also calculates the unconditional probability of belonging to each class <span class="math inline">\(\hat{\pi}_k\)</span>. LDA then takes these components (means, variance, and unconditional class probability) and calculates a discriminant function for each observation and each class. For each observation, the predicted class is determined by the largest discriminant.</p>
+<p><em>Quadratic Discriminant Analysis (QDA)</em> is conceptually similar, though instead of requiring all classes to share the same variance or variance-covariance matrix, it allows for class-specific variances. This has the effect of allowing non-linear decision boundaries. The drawback, though, is that allowing for class-specific variances (and especially class-specific variance-covariance matrices) increases the number of parameters to estimate, increasing the likelihood of overfitting.</p>
+</section>
+<section id="method-1" class="level2">
+<h2 class="anchored" data-anchor-id="method-1">Method</h2>
+<p>To estimate LDA or QDA, you estimate the feature means, feature variance(s), and unconditional (empirical) class probabilities for each class. Let <span class="math inline">\(k\)</span> index the classes, then if there is only one feature, LDA calculates the following discriminant function for each observation for each class: <span class="math display">\[\begin{equation}
+\hat{\delta}_k(x) = x \cdot \frac{\hat{\mu}_k}{\hat{\sigma}^2}-\frac{\hat{\mu}_k^2}{2\hat{\sigma}^2}+\log(\hat{\pi}_k)
+\end{equation}\]</span> Where <span class="math inline">\(\hat{\pi}_k\)</span> is the unconditional class probability, <span class="math inline">\(\hat{\mu}_k\)</span> is the mean feature value for class <span class="math inline">\(k\)</span>, and <span class="math inline">\(\hat{\sigma}^2\)</span> is the common feature variance. When <span class="math inline">\(p&gt;1\)</span> (e.g.&nbsp;there are multiple predictors), then we use <span class="math inline">\(\hat{\Sigma}\)</span> to represent the common feature variance-covariance matrix, <span class="math inline">\(\hat{\mu}_k\)</span> becomes a vector, and thus the LDA discriminant function becomes: <span class="math display">\[\begin{equation}
+\hat{\delta}_k(x) = x^T\hat{\Sigma}^{-1}\hat{\mu}_k-\frac{1}{2}\hat{\mu}_k^T\hat{\Sigma}^{-1}\hat{\mu}_k+\log(\hat{\pi}_k)
+\end{equation}\]</span> For QDA, the one feature discriminant function is: <span class="math display">\[\begin{equation}
+\hat{\delta}_k(x) = x \cdot \frac{\hat{\mu}_k}{\hat{\sigma}_k^2}-\frac{\hat{\mu}_k^2}{2\hat{\sigma}_k^2}+\log(\hat{\pi}_k)
+\end{equation}\]</span> Note that <span class="math inline">\(\hat{\sigma}\)</span> now has a subscript to indicate that the variance is class-specific. For multiple predictors, the QDA discriminant function is again just like the LDA one but with a subscripted <span class="math inline">\(\Sigma\)</span>: <span class="math display">\[\begin{equation}
+\hat{\delta}_k(x) = x^T\hat{\Sigma}_k^{-1}\hat{\mu}_k-\frac{1}{2}\hat{\mu}_k^T\hat{\Sigma}_k^{-1}\hat{\mu}_k+\log(\hat{\pi}_k)
+\end{equation}\]</span> In practice, we will use the <code>lda()</code> and <code>qda()</code> functions that are part of the <code>MASS</code> package in <code>R</code>.</p>
+</section>
+<section id="implementation-and-considerations-1" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-and-considerations-1">Implementation and Considerations</h2>
+<p>LDA and QDA both generalize easily to settings where there are more than two classes. They are also parametric, which means they are computationally efficient with large data sets compared to non-parametric KNN. However, they both make the assumption that the features are normally distributed, so you should pay attention to your data. For example, binary variables will never be normally distributed nor well approximated by a normal distribution, and so the methods are not appropriate to use in the presence of binary features.</p>
+<p>QDA differs from LDA by assuming the variance or variance-covariance matrix of the feature(s) varies from class to class. This allows for more flexible and non-linear decision boundaries, but requires estimation of more parameters. As with all other models we’ve seen, estimating more parameters increases the likelihood of overfitting and so should only be used when the number of observations is large relative to the number of features and classes.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2024, Jacob Jameson</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

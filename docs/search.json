@@ -1363,5 +1363,306 @@
     "title": "Introduction to Programming in R",
     "section": "Table of Contents",
     "text": "Table of Contents"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#what-is-git",
+    "href": "git files/section 2/section 2 slides.html#what-is-git",
+    "title": "Section 2",
+    "section": "What is Git?",
+    "text": "What is Git?\nKeeping track of file versions is hard."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#git-versus-github",
+    "href": "git files/section 2/section 2 slides.html#git-versus-github",
+    "title": "Section 2",
+    "section": "Git versus GitHub",
+    "text": "Git versus GitHub\n\nGit is a distributed version control system. It is a technology.\n\nGitHub is a social coding platform where git repositories are stored and where people can collaborate on projects. GitHub is great both for collaboration within your organization, but also provides an excellent model for open source collaboration across organizations or with the public.\n\nOn GitHub you can find Git repositories.\n\n\nLearn More: https://jahya.net/blog/git-vs-github/"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#some-vocabulary",
+    "href": "git files/section 2/section 2 slides.html#some-vocabulary",
+    "title": "Section 2",
+    "section": "Some Vocabulary",
+    "text": "Some Vocabulary\nThe basics:\n\nGit - version control software\nRepository - a folder containing your files and also containing a structure that helps keep track of changes in those files. When you intialize a repository, git creates a hidden folder (.git folder) that stores the changes to those files.\nCommit - the basic unit of a git repository is a commit. It is a set of changes to a file. A commit usually comes with an id as well as a commit message that describes the change.\n\nWorking with others:\n\nGitHub - a place to host git repositories and collaborate\nLocal Repository - the version of a git repository on your local computer\nRemote Repository - the version of a git repository stored somewhere else that your local repository is connected to (frequently on GitHub)"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#lets-dive-in",
+    "href": "git files/section 2/section 2 slides.html#lets-dive-in",
+    "title": "Section 2",
+    "section": "Lets Dive In!",
+    "text": "Lets Dive In!\nVocab\n\nlocal repository a folder stored on your computer\nremote repository a folder stored on on GitHub\n\nLets take a look at a repository that is on GitHub.\n\nhttps://github.com/code4MDM/simple-r-script"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#some-of-githubs-features",
+    "href": "git files/section 2/section 2 slides.html#some-of-githubs-features",
+    "title": "Section 2",
+    "section": "(Some of) GitHub’s Features",
+    "text": "(Some of) GitHub’s Features\nThe README.md file\nGithub looks for a “readme” file and renders it as you’re navigating through the file structure. This is a great way to guide people through your code.\n\nReadme files are often given the .md extension, meaning they’re written in a language called markdown that allows for nicer formatting. You can check out this markdown cheet sheet (https://www.markdownguide.org/cheat-sheet/) if you want to see how formatting works, but you can also save a readme files as plain text. Github will also detect .txt files, or you can just write plain text inside your .md file."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#github-for-things-other-than-code",
+    "href": "git files/section 2/section 2 slides.html#github-for-things-other-than-code",
+    "title": "Section 2",
+    "section": "GitHub for things other than code",
+    "text": "GitHub for things other than code\n\nAuditing system for changes on a file\nFor collaboratively editing a text document\nFor drafting government web design standards!\nOpen comment period for policy\nDrafting and collaborating on legal documents\nDesign (image diff)\n\nhttps://help.github.com/articles/rendering-and-diffing-images/\n\nOpen journalsim showcase\n\nhttps://github.com/showcases/open-journalism\n\nGithub for Government\n\nhttps://government.github.com/\nhttps://government.github.com/community/"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#some-vocabulary-1",
+    "href": "git files/section 2/section 2 slides.html#some-vocabulary-1",
+    "title": "Section 2",
+    "section": "Some Vocabulary",
+    "text": "Some Vocabulary\n\nGit - version control software\nRepository - a folder containing your files and also containing a structure that helps keep track of changes in those files. When you intialize a repository, git creates a hidden folder (.git folder) that stores the changes to those files.\nGitHub - a place to host git repositories and collaborate\nLocal Repository - the version of a git repository on your local computer\nRemote Repository - the version of a git repository stored somewhere else that your local repository is connected to (frequently on GitHub)\nCommit - the basic unit of a git repository is a commit. It is a set of changes to a file. A commit usually comes with an id as well as a commit message that describes the change.\n\nWithin a Repository you have\n\nUntracked Changes - files that are in your folder but that git doesn’t pay attention to.\nStaging Area - a place where you can put files before you commit them. Once files are in the staging area, git is paying attention to them.\nCommit Log (aka Git History) - all of the commits (previous changes) to all of the files in your repository."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#components-of-a-git-repository",
+    "href": "git files/section 2/section 2 slides.html#components-of-a-git-repository",
+    "title": "Section 2",
+    "section": "Components of a Git Repository",
+    "text": "Components of a Git Repository\n\n\nThe working directory\n\n\ngit init creates a git repo inside current working directory. This means that this command can turn a regular folder into a git repository by generating a hidden .git folder that starts to keep track of changes.\ngit clone takes a git repo from somewhere else and makes a copy of that repo into your current working directory. We will frequently be cloning repos from GitHub.\n\n\nThe staging area\n\n\ngit add . adds changes from the working directory to the staging area\ngit add &lt;filename&gt; adds changes to filenames specified from the working directory to the staging area\n\n\nThe commit\n\n\ngit commit -m \"commit message\" adds changes in staging area to the repository\ngit log shows\n\nProtip: Run git status after each command in the beginning because it allows you to visualize what just happaned."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#pushing-to-github",
+    "href": "git files/section 2/section 2 slides.html#pushing-to-github",
+    "title": "Section 2",
+    "section": "Pushing to GitHub",
+    "text": "Pushing to GitHub\nKey Terms\n\ngithub - a service that hosts git remote repositories, and provides a web app to interact / collaborate on them\nremote - another repository that can be syncronized with a remote\nupstream - the name for a remote read-only repository\norigin - the name for a remote read-and-write repository\nclone - download an entire remote repository, to be used as a local repository\nfetch - downloading the set of changes (commits) from a remote repository\npull - fetching changes and merging them into the current branch\n\n\nIn order to show your remotes, you can run git remote -v show. The default remote is named “origin”\nIn order to push, you run git push. By default this will push from the branch you are on to a remote branch with the same name. (If you’d like to specify a branch, you can do that. The full formulation of this command is git push &lt;remote&gt; &lt;branch&gt;. So, for example you might say git push origin main to push to the “main” branch of the “origin” remote.)"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#example-simple-rscript",
+    "href": "git files/section 2/section 2 slides.html#example-simple-rscript",
+    "title": "Section 2",
+    "section": "❇️ Example: simple-rscript",
+    "text": "❇️ Example: simple-rscript\nLet’s give it a try! We’re going to clone a repository for a simple R script from GitHub down to our computer where we can work with it locally. We will make some edits to the code, commit those changes and then push the changes back up to the remote repository in GitHub.\nhttps://github.com/code4MDM/simple-r-script"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#git-introduction",
+    "href": "git files/section 2/section 2 slides.html#git-introduction",
+    "title": "Section 2",
+    "section": "Git Introduction",
+    "text": "Git Introduction\n\nGit (/ɡɪt/) is a version control system (VCS) for tracking changes in computer files and coordinating work on those files among multiple people. It is primarily used for source code management in software development, but it can be used to keep track of changes in any set of files. As a distributed revision control system it is aimed at speed, data integrity, and support for distributed, non-linear workflows. -Wikipedia\n\n\nGit is an open source program for tracking changes in text files. -GitHub (https://help.github.com/articles/github-glossary/)"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#github-introduction",
+    "href": "git files/section 2/section 2 slides.html#github-introduction",
+    "title": "Section 2",
+    "section": "GitHub Introduction",
+    "text": "GitHub Introduction\nGitHub is a place for:\n\nStoring and viewing your Git repositories\nCollaborating on coding projects within an organization\nOpen Source Collboration: People in other organizations or complete strangers can see your code and participate with you on your project. They can suggest fixes, point out errors, and start discussions. You can find other people’s work, and make sure you’re not duplicating something that already exists. Or you can interact with someone who has already worked on something similar to what you’re trying to tackle.\nWeb Hosting: The “Github Pages” feature allows you to host a static website for free, right on GitHub."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#using-git-locally",
+    "href": "git files/section 2/section 2 slides.html#using-git-locally",
+    "title": "Section 2",
+    "section": "Using Git Locally",
+    "text": "Using Git Locally\nNow let’s learn how to use Git locally from our computer. While there are GUIs (graphical user interfaces) for Git on your computer like GitHub Desktop, we’re going to use the command line to learn Git. That’s because this is a key transferrable skill that applies to any kind of coding.\n\nLearning objective: Build a “mental model” of what your computer is doing."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#so-what-is-git-and-why-does-it-help-us",
+    "href": "git files/section 2/section 2 slides.html#so-what-is-git-and-why-does-it-help-us",
+    "title": "Section 2",
+    "section": "So what is Git, and why does it help us?",
+    "text": "So what is Git, and why does it help us?\nAbove all else, Git is a fast and distributed version control system, that allows you to efficiently handle projects large and small.\nHere are some problems we face as developers, and how git solves them:"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#reverting-to-past-save-points-commits",
+    "href": "git files/section 2/section 2 slides.html#reverting-to-past-save-points-commits",
+    "title": "Section 2",
+    "section": "Reverting to past save points (commits)",
+    "text": "Reverting to past save points (commits)\nGit allows us to make save points at any time. These save points are called ‘commits’. Once a save point is made, it’s permanent, and allows us to go back to that save point at any time. From there, we can see what the code looked like at that point, or even start building off that version."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#keeping-track-of-what-each-save-point-meant-commit-messages",
+    "href": "git files/section 2/section 2 slides.html#keeping-track-of-what-each-save-point-meant-commit-messages",
+    "title": "Section 2",
+    "section": "Keeping track of what each save point ‘meant’ (commit messages)",
+    "text": "Keeping track of what each save point ‘meant’ (commit messages)\nEvery commit has a description (commit message), which allows us to describe what changes were made between the current and previous commit. This is usually a description of what features were added or what bugs were fixed.\nAdditionally, git supports tagging, which allows us to mark a specific commit as a specific version of our code (e.g. ‘2.4.5’)."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#comparing-changes-to-past-save-points-diff",
+    "href": "git files/section 2/section 2 slides.html#comparing-changes-to-past-save-points-diff",
+    "title": "Section 2",
+    "section": "Comparing changes to past save points (diff)",
+    "text": "Comparing changes to past save points (diff)\nIt’s often important to see content of the actual changes that were made. This can be useful when:\n\ntracking down when and how a bug was introduced\nunderstanding the changes a team member made so you can stay up-to-date with progress\nreviewing code as a team for correctness or quality/style\n\nGit allows us to easily see these changes (called a diff) for any given commit."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#non-linear-workflow-branches",
+    "href": "git files/section 2/section 2 slides.html#non-linear-workflow-branches",
+    "title": "Section 2",
+    "section": "Non-linear workflow (branches)",
+    "text": "Non-linear workflow (branches)\nGit enables you to work using a non-linear workflow. This means that you can have multiple versions of a project or “branches” with different save points, or “commits”, simultaneously within the same folder and easily toggle bgttween them. You can split new branches off a project when you’re looking to experiment or implement a new feature, and you can merge those branches back into the main (formerly known as “master”) branch when you’re ready to incorporate them into a project."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#fearlessness-in-making-changes",
+    "href": "git files/section 2/section 2 slides.html#fearlessness-in-making-changes",
+    "title": "Section 2",
+    "section": "Fearlessness in making changes",
+    "text": "Fearlessness in making changes\nIn developing software, we often want to experiment in adding a feature or refactoring (rewriting) existing code. Because git makes it easy to go back to a known good state, we can experiment without worrying that we’ll be unable to undo the experimental work."
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#other-uses",
+    "href": "git files/section 2/section 2 slides.html#other-uses",
+    "title": "Section 2",
+    "section": "Other Uses",
+    "text": "Other Uses\n\nA place to store code\nA place to store data\nA place for discussion about data and code\nA place for open source collaboration on projects\nA place for collaboration within an organization\nA place to find people working on the same things you are\nA place to find sources / people with expertise in a particular dataset\nA place to find other digital tools (scrapers, file converters, etc) \nA place to find open source work and analysis\nA portfolio of your technical work (or technical learning)"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#commit-log",
+    "href": "git files/section 2/section 2 slides.html#commit-log",
+    "title": "Section 2",
+    "section": "Commit Log",
+    "text": "Commit Log\n\nVocab\n\ncommit - the basic unit of a git repository is a commit. It is a set of changes to a file. A commit usually comes with an commit id as well as a commit message that describes the change.\ncommit log (aka Git History) - all of the commits (previous changes) to all of the files in your repository\n\n https://github.com/dmil/my-simple-website/commits/master"
+  },
+  {
+    "objectID": "git files/section 2/section 2 slides.html#history-raw-and-blame-for-any-file",
+    "href": "git files/section 2/section 2 slides.html#history-raw-and-blame-for-any-file",
+    "title": "Section 2",
+    "section": "History, Raw, and Blame for any file",
+    "text": "History, Raw, and Blame for any file\n\n\nRaw - actual contents of the file without any formatting applied.\n\nexample: https://github.com/fivethirtyeight/chartbuilder-2/blob/master/src/styles/core.scss\n\nHistory - every change ever made to that file within this branch.\n\nexample: https://github.com/fivethirtyeight/chartbuilder-2/commits/master/src/styles/core.scss\n\nBlame - provenance of each line currently in the file you’re looking at in the branch you’re looking at\n\nexample: https://github.com/fivethirtyeight/chartbuilder-2/blame/master/src/styles/core.scss\n\n\nBranches\nPull Requests\nProposing Edits\n\nYou can edit a file in GitHub in a new branch, thus proposing a change without actually making the change in the master branch. Just make sure to leave a meaningful description of the change you made in the commit message.\n\nDrag and Drop\n\nCollaboration\nCollaborators can push to the repository without asking your permission, they have full read and write access.\n\nIf I wasn’t a collaborator, I could still work with you on an open source project through a process called forking where I can make a copy of your repository in my GitHub account, make changes, and request that you merge them back into your project. We will discuss forking more in depth later.\nServing up Websites!\nGitHub is also great for serving up static websites. GitHub is only storing the code. Luckily, if your code happens to be a website, GitHub can also host it for you through a feature called “GitHub Pages”.\nSimply go to the “settings” menu, scroll down to “GitHub Pages”, and select “master branch”\n\nWhatever is in your master branch on GitHub should now appear at\nhttp://your-username.github.io/repository-name\nin my case it is http://madisoncoots.github.io/\nGitHub for things other than code\n\nAuditing system for changes on a file\nFor collaboratively editing a text document\nFor drafting government web design standards!\nOpen comment period for policy\nDrafting and collaborating on legal documents\nDesign (image diff)\n\nhttps://help.github.com/articles/rendering-and-diffing-images/\n\nOpen journalsim showcase\n\nhttps://github.com/showcases/open-journalism\n\nGithub for Government\n\nhttps://government.github.com/\nhttps://government.github.com/community/"
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.html",
+    "href": "api 222 files/section 4/section 4.html",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "",
+    "text": "Note that the material in these notes draws on past TF’s notes (Ibou Dieye, Laura Morris, Emily Mower, Amy Wickett), and the more thorough treatment of these topics in Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.html#concept",
+    "href": "api 222 files/section 4/section 4.html#concept",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Concept",
+    "text": "Concept\nLogistic regression is a parametric model that models the probability that \\(Y\\) belongs to a particular category. It is somewhat similar to linear regression, but the linear regression form of \\(\\beta_0+\\beta_1 X_1 + \\beta_2 X_2 + \\dots\\) undergoes a transformation that ensures the output will be bounded between 0 and 1 and can thus be interpreted as a probability.\n\\[\\begin{equation}\n     p(X) = \\frac{e^{\\beta_0+\\beta_1 X}}{1 + e^{\\beta_0 + \\beta_1 X}}\n\\end{equation}\\]\nTherefore, while linear regression is best suited for regression problems, logistic regression is best suited for classification problems. Note that logistic regression produces a probability of class membership that then needs to be transformed to 0 or 1 using a decision rule, such as if \\(p(X)\\geq 0.5\\) then predict 1 otherwise predict 0."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.html#method",
+    "href": "api 222 files/section 4/section 4.html#method",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Method",
+    "text": "Method\nLogistic regression is estimated using Maximum Likelihood Estimation (MLE). MLE finds the values of \\(\\beta_0\\), \\(\\beta_1\\), etc. that maximize the probability of observing the observations in your training data given the values of the parameters \\(\\beta_0\\), \\(\\beta_1\\), etc. and the assumed functional form (e.g. see above)."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.html#implementation-and-considerations",
+    "href": "api 222 files/section 4/section 4.html#implementation-and-considerations",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Implementation and Considerations",
+    "text": "Implementation and Considerations\nWhen implementing logistic regression, the restrictions on the features are the same as for linear regression (e.g. no collinearity, number of features must be less than number of observations, etc.). The outcome should be a binary class membership. You can extend the logistic regression to cover a scenario with more than two classes, and this is called multinomial logistic regression, but we will not cover that in class.\nWhen you run logistic regression, the prediction output is a continuous value that reflects the predicted probability that the observation belongs to class 1. Therefore, a decision rule is required to convert the predicted probability to a predicted class (0 or 1). If you care equally about wrongly predicting positive for a True Negative (e.g. predicting class 1 for someone who is actually in class 0) and predicting negative for a True Positive, then a good decision rule is if \\(p(X)\\geq 0.5\\), predict 1 and otherwise predict 0. However, sometimes you care more about an error in one direction than the other. An example of this would be not wanting to offer a loan to someone who will default even if that means you deny more people who wouldn’t default. In that case, you might lower the threshold to 0.2 or some other value. We explore this more in the code."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.html#methods",
+    "href": "api 222 files/section 4/section 4.html#methods",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Methods",
+    "text": "Methods\nAt this point in the course, you have been introduced to three methods. The methods and their properties are summarized in the table below.\nWhen thinking about if a model is parametric or non-parametric, it can be helpful to think: Do I have a set of parameters that I can use to find the predicted value of any new observation? If yes, it’s parametric. When thinking about if a problem is a classification problem or a regression problem, it is helpful to think about the outcome in the training data. If the outcome is continuous, then it’s a regression problem. If the outcome is categorical, it’s a classification problem. The emphasis on the outcome in the training data is to avoid the confusion that arises when you look at prediction output. As we saw with logistic regression, even though it’s a classification problem, the output will be a probability (which is continuous and needs to be converted to 0 or 1 in order to measure performance)."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.html#classification",
+    "href": "api 222 files/section 4/section 4.html#classification",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Classification",
+    "text": "Classification\nClassification is really a two-step process. Usually, the model will predict something that looks like a probability that your observation belongs to each class. You then need to convert the probability to a class membership using a decision rule. A good general rule is: ``whichever class is assigned the highest probability is the predicted class.’’ However, when you have reason to prefer an error in one direction (e.g. predicting more people will default than actually will), you should change this threshold. Exactly which threshold is optimal will depend on domain knowledge and other factors (such as how costly defaults are or how profitable repaid loans are)."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.html#concept-1",
+    "href": "api 222 files/section 4/section 4.html#concept-1",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Concept",
+    "text": "Concept\nRecall that the Bayes’ Classifier is the unattainable gold standard classifier. It assumes knowledge of the true underlying distribution of the data, which you will not have in practice. Given features \\(X\\), it knows the true probability that \\(Y\\) belongs to each possible class. It predicts the most likely class, which is the best decision rule given the available features.\nLinear Discriminant Analysis (LDA) approximates the Bayes’ Classifier, given the information available and the assumption that features are Normally (Gaussian) distributed within each class. The result is decision boundaries that are linear in the included features.\nWhen there is one feature (predictor), LDA estimates class-specific means \\(\\hat{\\mu}_k\\) and a single variance \\(\\hat{\\sigma}^2\\) that is common to all classes. When there are multiple features, LDA estimates class-specific mean vectors \\(\\hat{\\mu}_k\\) and a single variance-covariance matrix \\(\\hat{\\Sigma}\\) that is assumed to be relevant to all classes. In both cases (one feature or many features), LDA also calculates the unconditional probability of belonging to each class \\(\\hat{\\pi}_k\\). LDA then takes these components (means, variance, and unconditional class probability) and calculates a discriminant function for each observation and each class. For each observation, the predicted class is determined by the largest discriminant.\nQuadratic Discriminant Analysis (QDA) is conceptually similar, though instead of requiring all classes to share the same variance or variance-covariance matrix, it allows for class-specific variances. This has the effect of allowing non-linear decision boundaries. The drawback, though, is that allowing for class-specific variances (and especially class-specific variance-covariance matrices) increases the number of parameters to estimate, increasing the likelihood of overfitting."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.html#method-1",
+    "href": "api 222 files/section 4/section 4.html#method-1",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Method",
+    "text": "Method\nTo estimate LDA or QDA, you estimate the feature means, feature variance(s), and unconditional (empirical) class probabilities for each class. Let \\(k\\) index the classes, then if there is only one feature, LDA calculates the following discriminant function for each observation for each class: \\[\\begin{equation}\n\\hat{\\delta}_k(x) = x \\cdot \\frac{\\hat{\\mu}_k}{\\hat{\\sigma}^2}-\\frac{\\hat{\\mu}_k^2}{2\\hat{\\sigma}^2}+\\log(\\hat{\\pi}_k)\n\\end{equation}\\] Where \\(\\hat{\\pi}_k\\) is the unconditional class probability, \\(\\hat{\\mu}_k\\) is the mean feature value for class \\(k\\), and \\(\\hat{\\sigma}^2\\) is the common feature variance. When \\(p&gt;1\\) (e.g. there are multiple predictors), then we use \\(\\hat{\\Sigma}\\) to represent the common feature variance-covariance matrix, \\(\\hat{\\mu}_k\\) becomes a vector, and thus the LDA discriminant function becomes: \\[\\begin{equation}\n\\hat{\\delta}_k(x) = x^T\\hat{\\Sigma}^{-1}\\hat{\\mu}_k-\\frac{1}{2}\\hat{\\mu}_k^T\\hat{\\Sigma}^{-1}\\hat{\\mu}_k+\\log(\\hat{\\pi}_k)\n\\end{equation}\\] For QDA, the one feature discriminant function is: \\[\\begin{equation}\n\\hat{\\delta}_k(x) = x \\cdot \\frac{\\hat{\\mu}_k}{\\hat{\\sigma}_k^2}-\\frac{\\hat{\\mu}_k^2}{2\\hat{\\sigma}_k^2}+\\log(\\hat{\\pi}_k)\n\\end{equation}\\] Note that \\(\\hat{\\sigma}\\) now has a subscript to indicate that the variance is class-specific. For multiple predictors, the QDA discriminant function is again just like the LDA one but with a subscripted \\(\\Sigma\\): \\[\\begin{equation}\n\\hat{\\delta}_k(x) = x^T\\hat{\\Sigma}_k^{-1}\\hat{\\mu}_k-\\frac{1}{2}\\hat{\\mu}_k^T\\hat{\\Sigma}_k^{-1}\\hat{\\mu}_k+\\log(\\hat{\\pi}_k)\n\\end{equation}\\] In practice, we will use the lda() and qda() functions that are part of the MASS package in R."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.html#implementation-and-considerations-1",
+    "href": "api 222 files/section 4/section 4.html#implementation-and-considerations-1",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Implementation and Considerations",
+    "text": "Implementation and Considerations\nLDA and QDA both generalize easily to settings where there are more than two classes. They are also parametric, which means they are computationally efficient with large data sets compared to non-parametric KNN. However, they both make the assumption that the features are normally distributed, so you should pay attention to your data. For example, binary variables will never be normally distributed nor well approximated by a normal distribution, and so the methods are not appropriate to use in the presence of binary features.\nQDA differs from LDA by assuming the variance or variance-covariance matrix of the feature(s) varies from class to class. This allows for more flexible and non-linear decision boundaries, but requires estimation of more parameters. As with all other models we’ve seen, estimating more parameters increases the likelihood of overfitting and so should only be used when the number of observations is large relative to the number of features and classes."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.1.html",
+    "href": "api 222 files/section 4/section 4.1.html",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "",
+    "text": "Note that the material in these notes draws on past TF’s notes (Ibou Dieye, Laura Morris, Emily Mower, Amy Wickett), and the more thorough treatment of these topics in Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.2.html",
+    "href": "api 222 files/section 4/section 4.2.html",
+    "title": "Section 4.2 - Classification and Helpful Commands in R",
+    "section": "",
+    "text": "The goal of this session is to learn how to implement three classification models: 1. A logistic model 2. LDA 3. QDA"
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.2.html#reminders",
+    "href": "api 222 files/section 4/section 4.2.html#reminders",
+    "title": "Section 4.2 - Classification and Helpful Commands in R",
+    "section": "Reminders",
+    "text": "Reminders\nTo run one line of code in RStudio, you can highlight the code you want to run and hit “Run” at the top of the script. Alternatively, on a mac, you can highlight the code to run and hit Command + Enter. Or on a PC, you can highlight the code to run and hit Ctrl + Enter. If you ever forget how a function works, you can type ? followed immediately (e.g. with no space) by the function name to get the help file\nLet’s start by loading the necessary packages and data. We will use the “Default” dataset available from the ISLR package. This dataset contains information on credit card defaults, including a binary response variable “default” and three predictors: “student”, “balance”, and “income”. We will use this dataset to build and evaluate classification models.\n\n## Load the packages\nlibrary(ISLR)\nlibrary(FNN)\n\nData preparation\nNow extract the data and name it “default_data”\n\ndefault_data &lt;- Default\n\nLet’s get to know our data\n\nsummary(default_data)\n\n default    student       balance           income     \n No :9667   No :7056   Min.   :   0.0   Min.   :  772  \n Yes: 333   Yes:2944   1st Qu.: 481.7   1st Qu.:21340  \n                       Median : 823.6   Median :34553  \n                       Mean   : 835.4   Mean   :33517  \n                       3rd Qu.:1166.3   3rd Qu.:43808  \n                       Max.   :2654.3   Max.   :73554  \n\n\nIt looks like we have two categorical variables. We can convert them both to numeric\n\ndefault_data$default &lt;- as.numeric(default_data$default == \"Yes\")\ndefault_data$student &lt;- as.numeric(default_data$student == \"Yes\")\n\nLet’s again split our data into test and training data sets with a 20/80 split. We use set.seed() to ensure replicability.\n\nset.seed(222)\n\nThen we can use the sample function to split the data (as before)\n\n## First pick the test observations (20% of the data)\ntest_obs &lt;- sample(seq(nrow(default_data)), \n                   round(0.2 * nrow(default_data)))\n\n## The training observations are the remaining observations\ntrain_obs &lt;- setdiff(seq(nrow(default_data)), test_obs)\n\n## Use the indices now to extract the corresponding subsets of the data\ntest_data &lt;- default_data[test_obs,]\ntrain_data &lt;- default_data[train_obs,]"
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.2.html#logistic-regression",
+    "href": "api 222 files/section 4/section 4.2.html#logistic-regression",
+    "title": "Section 4.2 - Classification and Helpful Commands in R",
+    "section": "Logistic regression",
+    "text": "Logistic regression\nNow, let’s say we are interested in using a logistic regression. For a base case, let’s try to predict default from the other available variables using logistic regression. To run logistic regression in R, use glm(), which requires three arguments: - 1st: Your formula (y ~ x1 + x2) - 2nd: Family = binomial tells it to use logistic regression - 3rd: You data, including both x and y columns.\nWe will train the model on the training data, make predictions for the test data using predict(), and measure performance with Accuracy.\n\nlogistic_default &lt;- glm(default ~ student + balance + income,\n                        family = binomial,\n                        data = train_data)\n\nTo view information about the logistic regression, including coefficients, use summary()\n\nsummary(logistic_default)\n\n\nCall:\nglm(formula = default ~ student + balance + income, family = binomial, \n    data = train_data)\n\nCoefficients:\n              Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept) -1.108e+01  5.654e-01 -19.588   &lt;2e-16 ***\nstudent     -5.036e-01  2.638e-01  -1.909   0.0563 .  \nbalance      5.739e-03  2.619e-04  21.916   &lt;2e-16 ***\nincome       6.727e-06  9.312e-06   0.722   0.4701    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 2320.3  on 7999  degrees of freedom\nResidual deviance: 1252.6  on 7996  degrees of freedom\nAIC: 1260.6\n\nNumber of Fisher Scoring iterations: 8\n\n\nTo predict outcomes on the test_data using logistic regression, use:\n\nlogistic_predict &lt;-predict(logistic_default,\n                           test_data,\n                           type = \"response\")\n\nLet’s look at what we got from this prediction model. We will use the head() function, which prints the first few values of the object inside the parentheses. If you want to change the number of observations that are printed to 100, you can use head(object, n = 100)\n\nhead(logistic_predict)\n\n        4350           18         6678         4788         9481         9994 \n5.133197e-04 2.176129e-04 2.515555e-03 3.317590e-02 2.508148e-05 4.935658e-03 \n\n\nWe see that the prediction outputs are probabilities, so in order to make predictions we have to decide on a decision rule. A common one is if the predicted probability is &gt; 0.5, predict 1 otherwise 0. Let’s see how we would do using this rule. Because it’s a classification problem, accuracy is a good measure (% correct)\n\nclass_predictions &lt;- as.numeric(logistic_predict &gt; 0.5)\nlogistic_accuracy &lt;- mean(class_predictions == test_data$default)\nprint(logistic_accuracy)\n\n[1] 0.9745\n\n\nThe accuracy looks great! But, we might care more about different types of errors than overall error rate. For example, we may not want to give loans to people who will default even if this means denying loans to some people who wouldn’t default. We can measure error rate by true default status. Note that for defaulters, default = 1. Here, I pull out all the predictions for the true defaulters and see what fraction of those equal 1.\n\ntrue_pos_accuracy &lt;- mean(class_predictions[which(test_data$default == 1)] == 1)\nprint(true_pos_accuracy)\n\n[1] 0.3333333\n\n\nLike-wise for the non-defaulters, I see what fraction of those equal 0. This gives class-specific accuracy rates.\n\ntrue_neg_accuracy &lt;- mean(class_predictions[which(test_data$default == 0)] == 0)\nprint(true_neg_accuracy)\n\n[1] 0.9974107\n\n\nThese values summarise what can also be seen in the following table. Where the columns correspond to the true values and the rows correspond to the predicted values.\n\ntable(class_predictions, test_data$default)\n\n                 \nclass_predictions    0    1\n                0 1926   46\n                1    5   23\n\n\nSuppose instead of the accuracy, you wanted to directly calculate the error rate. How would you do it? Hint, errors are ones where the prediction does not equal the true value. In R, we use != for “does not equal”\nWe can also calculate the error rate for the true defaulters and non-defaulters.\n\ntrue_pos_error &lt;- mean(class_predictions\n                       [which(test_data$default == 1)] != 1)\nprint(true_pos_error)\n\n[1] 0.6666667\n\ntrue_neg_error &lt;- mean(class_predictions\n                       [which(test_data$default == 0)] != 0)\nprint(true_neg_error)\n\n[1] 0.002589332\n\n\nWe see that we did a lot better on the true negatives than the true positives. Among all the people who will default, we only predicted about 1/3% of them would default. If we want to do a better job identifying these people, we can do this by lowering the default threshold from a predicted probability of 0.5 to something lower, say 0.2. Note, though, that lowering this threshold means increasing the number of default predictions for people who don’t default as well. Since we aren’t really sure how low we want to make this threshold, we can try for a bunch of threshold values and then see how the performance changes to pick the one that is best for our setting. This involves domain knowledge, such as the cost of default and the earnings on loans extended to people who repay, so there’s not one right answer, but we can more clearly see the tradeoffs by trying many values and plotting the error rates in each group as a function of the threshold.\nTo do this, we can use a loop to try a bunch of threshold values and then calculate the error rates for each threshold. We can then plot the error rates as a function of the threshold to see how the error rates change as we change the threshold.\n\n## First, we need to specify the list of threshold values to assess\nthreshold_values &lt;- seq(from = 0.00, to = 0.50, by = 0.01)\n\nThen we initialize a matrix of error rates. This matrix will have a number of rows corresponding to the length of the list of threshold values and 2 columns corresponding to the true positive and true negative accuracy for each value that we test\n\nerror_rates &lt;- matrix(0, nrow = length(threshold_values), ncol = 2)\n\nNow we can start the loop. We initialize a tracker for the row index, then for each threshold value in our specified list of values, we update the tracker to reflect the row, generate the predicted classes using the specific threshold, calculate the true positive accuracy, calculate the true negative accuracy, and add the results to our matrix.\n\nindx &lt;- 0\n\nfor(threshold in threshold_values) {\n  \n  ## Update the tracker to reflect the row\n  indx &lt;- indx + 1\n  \n  ## Then generate the predicted classes using the specific threshold\n  class_predictions &lt;- as.numeric(logistic_predict &gt; threshold)\n  \n  ## Then calculate the true positive accuracy\n  true_pos_accuracy &lt;- mean(class_predictions[which(test_data$default == 1)] == 1)\n  \n  ## Then calculate the true negative accuracy\n  true_neg_accuracy &lt;- mean(class_predictions[which(test_data$default == 0)] == 0)\n  \n  ## Now we can add the results to our matrix \n  error_rates[indx,] &lt;- c(true_pos_accuracy, true_neg_accuracy)\n}\n\nLet’s plot each of these as a function of the threshold\n\nmatplot(x = threshold_values,\n        y = error_rates, \n        type = \"l\",\n        col = 3:4,\n        xlab = \"Threshold\",\n        ylab = \"Accuracy\",\n        main = \"Accuracy as a Function of Threshold\")\n        legend(\"topright\", legend = c(\"Defaulters\", \"Non-defaulters\"), \n               col = 3:4, pch = 1)"
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.1.html#concept",
+    "href": "api 222 files/section 4/section 4.1.html#concept",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Concept",
+    "text": "Concept\nLogistic regression is a parametric model that models the probability that \\(Y\\) belongs to a particular category. It is somewhat similar to linear regression, but the linear regression form of \\(\\beta_0+\\beta_1 X_1 + \\beta_2 X_2 + \\dots\\) undergoes a transformation that ensures the output will be bounded between 0 and 1 and can thus be interpreted as a probability.\n\\[\\begin{equation}\n     p(X) = \\frac{e^{\\beta_0+\\beta_1 X}}{1 + e^{\\beta_0 + \\beta_1 X}}\n\\end{equation}\\]\nTherefore, while linear regression is best suited for regression problems, logistic regression is best suited for classification problems. Note that logistic regression produces a probability of class membership that then needs to be transformed to 0 or 1 using a decision rule, such as if \\(p(X)\\geq 0.5\\) then predict 1 otherwise predict 0."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.1.html#method",
+    "href": "api 222 files/section 4/section 4.1.html#method",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Method",
+    "text": "Method\nLogistic regression is estimated using Maximum Likelihood Estimation (MLE). MLE finds the values of \\(\\beta_0\\), \\(\\beta_1\\), etc. that maximize the probability of observing the observations in your training data given the values of the parameters \\(\\beta_0\\), \\(\\beta_1\\), etc. and the assumed functional form (e.g. see above)."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.1.html#implementation-and-considerations",
+    "href": "api 222 files/section 4/section 4.1.html#implementation-and-considerations",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Implementation and Considerations",
+    "text": "Implementation and Considerations\nWhen implementing logistic regression, the restrictions on the features are the same as for linear regression (e.g. no collinearity, number of features must be less than number of observations, etc.). The outcome should be a binary class membership. You can extend the logistic regression to cover a scenario with more than two classes, and this is called multinomial logistic regression, but we will not cover that in class.\nWhen you run logistic regression, the prediction output is a continuous value that reflects the predicted probability that the observation belongs to class 1. Therefore, a decision rule is required to convert the predicted probability to a predicted class (0 or 1). If you care equally about wrongly predicting positive for a True Negative (e.g. predicting class 1 for someone who is actually in class 0) and predicting negative for a True Positive, then a good decision rule is if \\(p(X)\\geq 0.5\\), predict 1 and otherwise predict 0. However, sometimes you care more about an error in one direction than the other. An example of this would be not wanting to offer a loan to someone who will default even if that means you deny more people who wouldn’t default. In that case, you might lower the threshold to 0.2 or some other value. We explore this more in the code."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.1.html#methods",
+    "href": "api 222 files/section 4/section 4.1.html#methods",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Methods",
+    "text": "Methods\nAt this point in the course, you have been introduced to three methods. The methods and their properties are summarized in the table below.\nWhen thinking about if a model is parametric or non-parametric, it can be helpful to think: Do I have a set of parameters that I can use to find the predicted value of any new observation? If yes, it’s parametric. When thinking about if a problem is a classification problem or a regression problem, it is helpful to think about the outcome in the training data. If the outcome is continuous, then it’s a regression problem. If the outcome is categorical, it’s a classification problem. The emphasis on the outcome in the training data is to avoid the confusion that arises when you look at prediction output. As we saw with logistic regression, even though it’s a classification problem, the output will be a probability (which is continuous and needs to be converted to 0 or 1 in order to measure performance)."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.1.html#classification",
+    "href": "api 222 files/section 4/section 4.1.html#classification",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Classification",
+    "text": "Classification\nClassification is really a two-step process. Usually, the model will predict something that looks like a probability that your observation belongs to each class. You then need to convert the probability to a class membership using a decision rule. A good general rule is: ``whichever class is assigned the highest probability is the predicted class.’’ However, when you have reason to prefer an error in one direction (e.g. predicting more people will default than actually will), you should change this threshold. Exactly which threshold is optimal will depend on domain knowledge and other factors (such as how costly defaults are or how profitable repaid loans are)."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.1.html#concept-1",
+    "href": "api 222 files/section 4/section 4.1.html#concept-1",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Concept",
+    "text": "Concept\nRecall that the Bayes’ Classifier is the unattainable gold standard classifier. It assumes knowledge of the true underlying distribution of the data, which you will not have in practice. Given features \\(X\\), it knows the true probability that \\(Y\\) belongs to each possible class. It predicts the most likely class, which is the best decision rule given the available features.\nLinear Discriminant Analysis (LDA) approximates the Bayes’ Classifier, given the information available and the assumption that features are Normally (Gaussian) distributed within each class. The result is decision boundaries that are linear in the included features.\nWhen there is one feature (predictor), LDA estimates class-specific means \\(\\hat{\\mu}_k\\) and a single variance \\(\\hat{\\sigma}^2\\) that is common to all classes. When there are multiple features, LDA estimates class-specific mean vectors \\(\\hat{\\mu}_k\\) and a single variance-covariance matrix \\(\\hat{\\Sigma}\\) that is assumed to be relevant to all classes. In both cases (one feature or many features), LDA also calculates the unconditional probability of belonging to each class \\(\\hat{\\pi}_k\\). LDA then takes these components (means, variance, and unconditional class probability) and calculates a discriminant function for each observation and each class. For each observation, the predicted class is determined by the largest discriminant.\nQuadratic Discriminant Analysis (QDA) is conceptually similar, though instead of requiring all classes to share the same variance or variance-covariance matrix, it allows for class-specific variances. This has the effect of allowing non-linear decision boundaries. The drawback, though, is that allowing for class-specific variances (and especially class-specific variance-covariance matrices) increases the number of parameters to estimate, increasing the likelihood of overfitting."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.1.html#method-1",
+    "href": "api 222 files/section 4/section 4.1.html#method-1",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Method",
+    "text": "Method\nTo estimate LDA or QDA, you estimate the feature means, feature variance(s), and unconditional (empirical) class probabilities for each class. Let \\(k\\) index the classes, then if there is only one feature, LDA calculates the following discriminant function for each observation for each class: \\[\\begin{equation}\n\\hat{\\delta}_k(x) = x \\cdot \\frac{\\hat{\\mu}_k}{\\hat{\\sigma}^2}-\\frac{\\hat{\\mu}_k^2}{2\\hat{\\sigma}^2}+\\log(\\hat{\\pi}_k)\n\\end{equation}\\] Where \\(\\hat{\\pi}_k\\) is the unconditional class probability, \\(\\hat{\\mu}_k\\) is the mean feature value for class \\(k\\), and \\(\\hat{\\sigma}^2\\) is the common feature variance. When \\(p&gt;1\\) (e.g. there are multiple predictors), then we use \\(\\hat{\\Sigma}\\) to represent the common feature variance-covariance matrix, \\(\\hat{\\mu}_k\\) becomes a vector, and thus the LDA discriminant function becomes: \\[\\begin{equation}\n\\hat{\\delta}_k(x) = x^T\\hat{\\Sigma}^{-1}\\hat{\\mu}_k-\\frac{1}{2}\\hat{\\mu}_k^T\\hat{\\Sigma}^{-1}\\hat{\\mu}_k+\\log(\\hat{\\pi}_k)\n\\end{equation}\\] For QDA, the one feature discriminant function is: \\[\\begin{equation}\n\\hat{\\delta}_k(x) = x \\cdot \\frac{\\hat{\\mu}_k}{\\hat{\\sigma}_k^2}-\\frac{\\hat{\\mu}_k^2}{2\\hat{\\sigma}_k^2}+\\log(\\hat{\\pi}_k)\n\\end{equation}\\] Note that \\(\\hat{\\sigma}\\) now has a subscript to indicate that the variance is class-specific. For multiple predictors, the QDA discriminant function is again just like the LDA one but with a subscripted \\(\\Sigma\\): \\[\\begin{equation}\n\\hat{\\delta}_k(x) = x^T\\hat{\\Sigma}_k^{-1}\\hat{\\mu}_k-\\frac{1}{2}\\hat{\\mu}_k^T\\hat{\\Sigma}_k^{-1}\\hat{\\mu}_k+\\log(\\hat{\\pi}_k)\n\\end{equation}\\] In practice, we will use the lda() and qda() functions that are part of the MASS package in R."
+  },
+  {
+    "objectID": "api 222 files/section 4/section 4.1.html#implementation-and-considerations-1",
+    "href": "api 222 files/section 4/section 4.1.html#implementation-and-considerations-1",
+    "title": "Section 4.1 - Classification Notes",
+    "section": "Implementation and Considerations",
+    "text": "Implementation and Considerations\nLDA and QDA both generalize easily to settings where there are more than two classes. They are also parametric, which means they are computationally efficient with large data sets compared to non-parametric KNN. However, they both make the assumption that the features are normally distributed, so you should pay attention to your data. For example, binary variables will never be normally distributed nor well approximated by a normal distribution, and so the methods are not appropriate to use in the presence of binary features.\nQDA differs from LDA by assuming the variance or variance-covariance matrix of the feature(s) varies from class to class. This allows for more flexible and non-linear decision boundaries, but requires estimation of more parameters. As with all other models we’ve seen, estimating more parameters increases the likelihood of overfitting and so should only be used when the number of observations is large relative to the number of features and classes."
   }
 ]
