@@ -63,7 +63,7 @@ Mathematically, this involves calculating a score (the discriminant score) for e
 
 Now, let's see how this works in practice with our R example. We simulate two classes with distinct means but shared variances, plotting them to visualize the data. We will then fit an LDA model to the data and plot the decision boundary, which shows how LDA separates the two classes based on their features.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # Simulate the data
 
 library(MASS) # For lda() and mvrnorm()
