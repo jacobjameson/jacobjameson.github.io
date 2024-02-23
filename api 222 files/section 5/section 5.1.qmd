@@ -1,0 +1,50 @@
+---
+title: "Section 5.1 - Cross-Validation and Bootstrapping Notes"
+from: markdown+emoji
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+description: |
+author: Jacob Jameson
+
+---
+
+
+Note that the material in these notes draws on past TF’s notes (Ibou Dieye, Laura Morris, Emily Mower, Amy Wickett), and the more thorough treatment of these topics in *Introduction to Statistical Learning* by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani. 
+
+
+In the absence of a designated test data set, a number of methods can be used to estimate out-of-sample performance using the available training data. In this review session, we consider two popular types of resampling methods: Cross-validation and Bootstrap.
+	
+## Cross-validation
+
+Cross-validation is a method that works by holding out a subset of the training observations from the model fitting process, and then applying the model to those held out observations.
+	
+### The Validation Set Approach
+
+This is the type of cross-validation method we have been using in review sessions so far. It involves randomly dividing the available set of observations into two parts, a training set and a validation set. The model is fit on the training set, and the fitted model is used to predict the responses for the observations in the validation set. The validation error rate provides an estimate of the test error rate. 
+	
+The validation set approach is simple and is easy to implement, but it has a few drawbacks. First, it can yield estimates of the test error rate that are highly variable. In addition, since it trains the model using only a subset of the data, it may tend to overestimate the test error rate for the model fit on the entire data set. 
+	
+### Leave-one-out Cross-validation
+	
+Leave-one-out cross-validation (LOOCV)  attempts to address the drawbacks of the validation set method. Instead of creating two subsets, a single observation is used for the validation set, and the remaining ($n - 1$) observations constitute the training set. The statistical learning method is fit on the $n - 1$ training observations, and a prediction is made for the excluded observation to estimate a test error rate. The procedure is repeated $n$ times, by selecting each individual observation for the validation data, training the procedure on the $n - 1$ observations, and computing the test error. The LOOCV estimate for the test error is the average of these $n$ test error estimates.
+	
+Compared to the validation set approach, LOOCV is more expensive to implement. However, it has less bias since it uses almost all the training observations and yields estimates of the test error rate that are less variable through its averaging feature.
+	
+	
+### $k$-fold Cross-validation
+	
+$k$-fold Cross-validation is an alternative to LOOCV. For $j=1,...,k$, the model is fit on all folds *except* fold $j$. Then, the model's predictive performance on the data is assessed in fold $j$. Thus, for a given iteration, the "training" data is data from all the folds except for fold $j$, and the ``test'' data is data from fold $j$. This process is repeated for $j=1,...,k$ and a test error is estimated for each fold. The $k$-fold cross-validation estimate for the test error is the average of these $k$ test error estimates.
+	
+LOOCV can be thought of as a special type $k$-fold cross-validation, where $k$ equals the number of observations in the data. In practice, one typically performs $k$-fold CV using $k = 5$ or $k = 10$, which provides computational advantage over $k = n$. Beyond computational issues, LOOCV has lower bias but higher variance (why?), compared to $k$-fold CV with $k < n$. Overall, $k$-fold CV tends to win in terms of the bias-variance trade-off. 
+	
+
+## Bootstrapping
+
+Bootstrapping involves resampling a data set with replacement. It is a very useful statistical tool that allows one to quantify the uncertainty of an estimator, such as a coefficient. This is especially useful for models where there is not a convenient standard error formula. When the goal is to estimate the uncertainty of an estimate, one can bootstrap the data and generate the estimate many times (e.g. 1,000 times). Then, one can look at the distribution of the estimates and take the middle 95\% as the 95\% confidence interval. 
+
+Bootstrapping is also an important component of some very powerful machine learning models. We will learn about some of these models in the next few weeks. 
+
+

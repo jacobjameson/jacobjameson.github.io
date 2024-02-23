@@ -95,11 +95,13 @@ logistic_predict <-predict(logistic_default,
 ```
 
 Let's look at what we got from this prediction model. We will use the `head()` function, which prints the first few values of the object inside the parentheses. If you want to change the number of observations that are printed to 100, you can use `head(object, n = 100)`
+
 ```{r}
 head(logistic_predict)
 ```
 
 We see that the prediction outputs are probabilities, so in order to make predictions we have to decide on a decision rule. A common one is if the predicted probability is > 0.5, predict 1 otherwise 0. Let's see how we would do using this rule. Because it's a classification problem, accuracy is a good measure (% correct)
+
 ```{r}
 class_predictions <- as.numeric(logistic_predict > 0.5)
 logistic_accuracy <- mean(class_predictions == test_data$default)
@@ -198,7 +200,7 @@ matplot(x = threshold_values,
 
 We can also use other methods to predict default. For example, we can use linear discriminant analysis (LDA) and quadratic discriminant analysis (QDA). These methods are similar to logistic regression, but they make different assumptions about the data. LDA assumes that the data are normally distributed and that the variance is the same in each group. QDA assumes that the data are normally distributed, but it does not assume that the variance is the same in each group.
 
-Notw that we need to load the package MASS, because it contains the functions lda() and qda()
+Note that we need to load the package MASS, because it contains the functions lda() and qda()
 
 ```{r}
 library(MASS)
