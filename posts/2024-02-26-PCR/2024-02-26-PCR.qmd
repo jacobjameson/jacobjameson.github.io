@@ -2,8 +2,8 @@
 title: "Does it Spark Joy? Using PCA for Dimensionality Reduction in R"
 description: "Principal Component Analysis (PCA) is a powerful tool for dimensionality reduction. In this post, we provide an overview of PCA, explaining its purpose and how it works. We then walk through a hands-on application of PCA using R, demonstrating the step-by-step process of PCA and its application in predictive modeling."
 author: "Jacob Jameson"
-date: "2024-02-26"
-categories: [LDA]
+date: "2024-02-27"
+categories: [PCA]
 output:
   tufte::tufte_html: default
   tufte::tufte_handout:
