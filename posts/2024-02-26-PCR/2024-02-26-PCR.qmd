@@ -181,32 +181,45 @@ The summary and plot from PCA show us how much of the total variance is captured
 
 ## Predictive Modeling: Principal Component Regression (PCR)
 
-We split the dataset into training and testing sets, apply PCA to the training data, and use the resulting principal components for regression modeling. This method, known as Principal Component Regression (PCR), leverages simplified data to predict the outcome variable.
+In this section, we demonstrate the application of Principal Component Regression (PCR), a method that leverages dimensionality reduction through PCA for predictive modeling. The process involves training a regression model on a simplified version of the training data, where simplification is achieved by reducing the data's dimensions using PCA.
+
+**Process Overview**
+
+- Split the Data: We begin by dividing our dataset into training and testing sets to prepare for a robust evaluation of the model's predictive performance.
+
+- Apply PCA to the Training Data: PCA is performed on the training data to identify the principal components, which are the directions in the data that account for the most variance.
+
+- Transform Both Training and Testing Data: The principal components obtained from the training data are then used to transform both the training and testing sets into the PCA space. This ensures that the model is trained and evaluated on data represented in the same reduced-dimensionality space.
+
+- Train the Model on Transformed Training Data: A regression model is trained using the PCA-transformed training data. This model aims to predict the outcome variable based on the reduced set of features (principal components).
+
+- Evaluate the Model on Transformed Testing Data: The model's predictive performance is assessed using the PCA-transformed testing data, allowing us to understand how well the model generalizes to new, unseen data.
 
 ```{r}
-# Split data into training and testing sets
+# Splitting the dataset
 trainingIndex <- createDataPartition(data$y, p = .8, list = FALSE)
 trainingData <- data[trainingIndex, ]
 testingData <- data[-trainingIndex, ]
 
-# Perform PCA on training data
+# Performing PCA on training data
 pca_train <- prcomp(trainingData[,1:3], center = TRUE, scale. = TRUE)
 
-# Use PCA for predictions, keeping first two components
-predictors <- predict(pca_train, newdata = testingData[,1:3])[,1:2]
+# Transforming both training and testing data using the PCA model first 2 comps
+trainingData_transformed <- predict(pca_train, newdata = trainingData[,1:3])[,1:2]
+testingData_transformed <- predict(pca_train, newdata = testingData[,1:3])[,1:2]
 
 # Preparing data for modeling
-modelingData <- as.data.frame(predictors)
-modelingData$y <- testingData$y
+trainingModelData <- as.data.frame(trainingData_transformed)
+trainingModelData$y <- trainingData$y
 
-# Fit the linear model
-model <- lm(y ~ ., data = modelingData)
+# Fitting the linear model on transformed training data
+model <- lm(y ~ ., data = trainingModelData)
 
-# Model summary
+# Summary of the model trained on PCA-transformed training data
 summary(model)
 
-# Predict and calculate RMSE
-predictions <- predict(model, newdata = modelingData)
+# Predicting and calculating RMSE on transformed testing data
+predictions <- predict(model, newdata = as.data.frame(testingData_transformed))
 rmse <- sqrt(mean((predictions - testingData$y)^2))
 print(paste("RMSE:", rmse))
 ```

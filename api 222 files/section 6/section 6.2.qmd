@@ -91,6 +91,8 @@ Questions you should be able to answer  :
 - Which lambda in the sequence had the lowest CV error?
 ```{r}
 lasso_ins$lambda.min
+
+
 ```
 
 - What is the CV error of the "best" lambda?
@@ -108,7 +110,7 @@ lasso_ins$cvsd[lasso_ins$lambda == lasso_ins$lambda.min]
 lasso_ins$lambda.1se
 ```
 
-When you do ridge regression, the code is almost exactly the same as for lasso in R. You just need to change the alpha parameter from 0 to 1. I'll leave this to you as an exercise.
+When you do ridge regression, the code is almost exactly the same as for lasso in R. You just need to change the alpha parameter from 1 to 0. I'll leave this to you as an exercise.
 
 ## Principal Components Analysis (PCA) and Partial Least Squares (PLS)
 
