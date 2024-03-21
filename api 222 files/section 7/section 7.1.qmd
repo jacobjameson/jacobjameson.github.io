@@ -1,5 +1,5 @@
 ---
-title: "Section 6.1 - Regularization and Dimension Reduction Notes"
+title: "Section 7.1 -"
 from: markdown+emoji
 format:
   html:
