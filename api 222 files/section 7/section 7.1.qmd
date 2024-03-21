@@ -1,0 +1,127 @@
+---
+title: "Section 6.1 - Regularization and Dimension Reduction Notes"
+from: markdown+emoji
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+description: |
+author: Jacob Jameson
+
+---
+
+
+Note that the material in these notes draws on past TF’s notes (Ibou Dieye, Laura Morris, Emily Mower, Amy Wickett), and the more thorough treatment of these topics in *Introduction to Statistical Learning* by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani. 
+
+
+
+The goal of this session is to review concepts related to regularization methods (LASSO and Ridge Regression) and dimension reduction techniques (PCA and PLS). 	
+
+## LASSO and Ridge Regression
+
+### Concept
+
+Least Absolute Shrinkage and Selection Operator (LASSO) and Ridge Regression both fall under a broader class of models called shrinkage models. Shrinkage models regularize or penalize coefficient estimates, which means that they shrink the coefficients toward zero. Shrinking the coefficient estimates can reduce their variance, so these methods are particularly useful for models where we are concerned about high variance (i.e. over-fitting), such as models with a large number of predictors relative to the number of observations. 
+
+Both LASSO and Ridge regression operate by adding a penalty to the normal OLS (Ordinary Least Squares) minimization problem. These penalties can be thought of as a budget, and sometimes the minimization problem is explicitly formulated as minimizing the Residual Sum of Squares (RSS) subject to a budget constraint. The idea of the budget is if you have a small budget, you can only afford a little "total" $\beta$, where the definition of "total" $\beta$ varies between LASSO and Ridge, but as your budget increases, you get closer and closer to the OLS $\beta$s.
+
+LASSO and Ridge regression differ in exactly how they penalize the coefficients. In particular, LASSO penalizes the coefficients using an $L_1$ penalty:
+
+$$
+\sum_{i=1}^n \left(
+    y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij}
+    \right)^2 + \lambda \sum_{j=1}^p |\beta_j| = RSS + \lambda \sum_{j=1}^p |\beta_j|
+$$
+
+Ridge regression penalizes the coefficients using an $L_2$ penalty:
+
+$$
+    \sum_{i=1}^n \left(
+    y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij}
+    \right)^2 + \lambda \sum_{j=1}^p \beta_j^2 = RSS + \lambda \sum_{j=1}^p \beta_j^2
+$$
+You may notice that both the LASSO and Ridge Regression minimization problems feature a parameter $\lambda$. This is a tuning parameter that dictates how much we will penalize the "total" coefficients. Tuning parameters appear in many models and get their name from the fact that we tune (adjust / choose) them in order to improve our model's performance.
+
+Since LASSO and Ridge Regression are used when we are concerned about variance (over-fitting), it should come as no surprise that increasing $\lambda$ decreases variance. It can be helpful to contextualize the $\lambda$ size by realizing that $\lambda=0$ is OLS and $\lambda =\infty$ results in only $\beta_0$ being assigned a non-zero value.
+
+As we increase $\lambda$ from zero, we decrease variance but increase bias (the classic bias-variance tradeoff). To determine the best $\lambda$ (e.g. the $\lambda$ that will lead to the best out of sample predictive performance), it is common to use cross validation. A good function in `R` that trains LASSO and Ridge Regression models and uses cross-validation to select a good $\lambda$ is `cv.glmnet()`, which is part of the `glmnet` package.
+
+### Key difference between LASSO and Ridge
+
+As noted above, both LASSO and Ridge regression shrink the coefficients toward zero. However, the penalty in Ridge ($\lambda \beta_j^2$) will not set any of coefficients exactly to zero (unless $\lambda =\infty$). Increasing the value of $\lambda$ will tend to reduce the magnitudes of the coefficients (which helps reduce variance), but will not result in exclusion of any of the variables. While this may not impact prediction accuracy, it can create a challenge in model interpretation in settings where the number of features is large. This is an obvious disadvantage. 
+
+On the other hand, the $L_1$ penalty of LASSO forces some of the coefficient estimates to be exactly equal to zero when the tuning parameter $\lambda$ is sufficiently large. Therefore, LASSO performs variable selection, much like best subset selection.
+
+
+### Implementation and Considerations
+
+LASSO and Ridge Regression are useful models to use when dealing with a large number of predictors $p$ relative to the number of observations $n$. It is good to standardize your features so that coefficients are not selected because of their scale rather than their relative importance. 
+
+For example, suppose you were predicting salary, and suppose you had a standardized test score that was highly predictive of salary and you also had parents' income, which was only somewhat predictive of salary. Since standardized test scores are measured on a much smaller scale than the outcome and than parents' income, we would expect the coefficient on test scores to be large relative to the coefficient on parents' income. This means it would likely be shrunk by adding the penalty, even though it reflects a strong predictive relationship.
+
+
+
+### Interpreting Coefficients
+
+Coefficients produced by LASSO and Ridge Regression should not be interpreted causally. These methods are used for prediction, and as such, our focus is on $\hat{y}$. This is in contrast to an inference problem, where we would be interested in $\hat{\beta}$. 
+
+The intuition behind why we cannot interpret the coefficients causally is similar to the intuition underlying Omitted Variables Bias (OVB). In OVB, we said that if two variables $X_1$ and $X_2$ were correlated with each other and with the outcome $Y$, then the coefficient on $X_1$ in a regression of $Y$ on $X_1$ would differ from the coefficient on $X_1$ in a regression where $X_2$ was also included. This is because since $X_1$ and $X_2$ are correlated, when we omit $X_2$, the coefficient on $X_1$ picks up the effect of $X_1$ on $Y$ as well as some of the effect of $X_2$ on $Y$.
+
+
+## Principal Components Analysis and Regression
+
+### Principal Components Analysis
+
+Principal Components Analysis is a method of unsupervised learning. We have not yet covered unsupervised learning, though we will in the second half of the semester. The important thing to know at this point about unsupervised learning is that unsupervised learning methods do not use labels $Y$.
+
+Principal Components Analysis (PCA), therefore, does not use $Y$ in determining the principal components. Instead, the principal components are determined solely by looking at the predictors $X_1$,...,$X_p$. Each principal component is a weighted sum of the original predictors $X_1$,...,$X_p$. For clarity of notation, we will use $Z$ to represent principal components and $X$ to represent predictors.
+
+Principal components are created in an ordered way. The order can be described as follows: If you had to project all of the data onto only one line, the first principal component defines the line that would lead to points being as spread out as possible (e.g. having highest variance). If you had to project all of the data onto only one plane, the plane defined by the first two principal components (which are orthogonal by definition) would be the plane where the points were as spread out as possible (e.g. highest possible variance). 
+
+Since variance is greatly affected by measurement scale, it is common practice and a good idea to scale your variables, so that results are not driven by the scale on which the variables were measured.
+
+When estimating principal components, you will estimate $p$ components, where $p$ is the number of predictors $X$. However, you usually only pay attention to / use the first few components, since the last few components capture very little variance. Note that you can exactly recover your original data when using all $p$ components.
+
+### Principal Components Regression
+
+Principal Components Regression (PCR) regresses the outcome $Y$ on the principal components $Z_1$,...,$Z_M$, where $M<p$ and $p$ is the number of predictors $X_1$,...,$X_p$.
+
+Note that the principal components $Z_1$,...,$Z_M$ were defined by looking only at $X_1$,...,$X_p$ and not at $Y$. Putting the principal components into a regression is the first time we are introducing any interaction between the principal components and the outcome $Y$.
+
+The main idea of Principal Components Regression is that hopefully only a few components explain most of the variance in the predictors overall and as is relevant to the relationship between the predictors and the response. In other words, when we use PCR, we assume that the directions in which $X$ shows the most variance are also the directions most associated with $Y$. When this assumption is true, we are able to use $M<<p$ (e.g. $M$ much smaller than $p$) parameters while still getting similar in-sample performance and hopefully better out-of-sample performance (due to not overfitting) to a regression of $Y$ on all $p$ predictors. Although the assumption is not guaranteed to be true, it is often a good enough approximation to give good results.
+
+PCA is one example of dimensionality reduction, because it reduces the dimension of the problem from $p$ to $M$. Note, though, that dimensionality reduction is different from feature selection. We are still using all features; we have just aggregated them into principal components. 
+
+The exact number $M$ of principal components to use in PCR (the regression of $Y$ on the principal components) is usually determined by cross-validation. 
+
+
+
+### Implementation and Considerations
+
+When using PCR, there are a few things to pay attention to. First, be sure to standardize variables or else the first few principal components will favor features measured on larger scales. Second, the number of principal components to use in PCR is determined using cross-validation. If the number is high and close to the number of features in your data, the assumption that the directions in which the predictors vary most are also the directions that explain the relationship between the predictors and response is false. In such a case, other methods, such as ridge and lasso, are likely to perform better. 
+
+
+
+## Partial Least Squares
+
+Partial Least Squares is a supervised alternative to PCR. Recall that for PCR, the principal components $Z_1,...,Z_M$ were formed from the original features $X_1,...,X_p$ without looking at $Y$ (unsupervised). 
+
+Partial Least Squares (PLS) also generates a new set of features $Z_1,...,Z_M$ but it uses the correlation between the predictors $X_1,...,X_p$ and the outcome $Y$ to determine the weights on $X_1,...,X_p$ for each $Z_1,...,Z_M$. In this way, PLS attempts to find directions that explain both the response and the predictors.
+
+The first feature $Z_1$ is determined by weighting $X_1,...,X_p$ proportional to each feature's correlation with $Y$. It then residualizes the predictors $X_1,...,X_p$ by regressing them on $Z_1$ and repeats the weighting procedure using the orthogonalized predictors. The process then repeats until we have $M$ components, where $M$ is determined by cross validation.
+
+### Implementation and Considerations
+
+
+Just as with PCR, it's best practice to scale the predictors before running PLS.
+
+### Comparison with PCR
+
+PLS directly uses $Y$ in generating the features $Z_1,...,Z_M$. It then regresses $Y$ on these features. Therefore, PLS uses $Y$ twice in the process of estimating the model. 
+
+In contrast, PCR only looks at the outcome $Y$ when estimating the final regression. The components are estimated without ``peeking'' at $Y$.
+
+Because $Y$ is used twice in PLS and only once in PCR, in practice PLS exhibits lower bias (e.g. is better able to fit the training data) but higher variance (e.g. is more sensitive to the exact training data). Therefore, the two methods generally have similar out-of-sample predictive power in practice.
+
+

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jacob Jameson">
+
+<title>Jacob Jameson - Section 6.1 - Regularization and Dimension Reduction Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Jacob Jameson - Section 6.1 - Regularization and Dimension Reduction Notes">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://www.jacobjameson.com/api 222 files/section 7/images/profile.png">
+<meta name="twitter:creator" content="@JacobCJameson">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/sig.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson" rel="" target="_blank"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jacobjameson" rel="" target="_blank"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Teaching</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+        <li>
+    <a class="dropdown-item" href="../../teaching.html" rel="" target="">
+ <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../R files/Intro R.html" rel="" target="">
+ <span class="dropdown-text">Introduction to R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../git files/Intro Git.html" rel="" target="">
+ <span class="dropdown-text">Introduction to Git/GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../api 222 files/API222.html" rel="" target="">
+ <span class="dropdown-text">API 222 Section Material</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lasso-and-ridge-regression" id="toc-lasso-and-ridge-regression" class="nav-link active" data-scroll-target="#lasso-and-ridge-regression">LASSO and Ridge Regression</a>
+  <ul class="collapse">
+  <li><a href="#concept" id="toc-concept" class="nav-link" data-scroll-target="#concept">Concept</a></li>
+  <li><a href="#key-difference-between-lasso-and-ridge" id="toc-key-difference-between-lasso-and-ridge" class="nav-link" data-scroll-target="#key-difference-between-lasso-and-ridge">Key difference between LASSO and Ridge</a></li>
+  <li><a href="#implementation-and-considerations" id="toc-implementation-and-considerations" class="nav-link" data-scroll-target="#implementation-and-considerations">Implementation and Considerations</a></li>
+  <li><a href="#interpreting-coefficients" id="toc-interpreting-coefficients" class="nav-link" data-scroll-target="#interpreting-coefficients">Interpreting Coefficients</a></li>
+  </ul></li>
+  <li><a href="#principal-components-analysis-and-regression" id="toc-principal-components-analysis-and-regression" class="nav-link" data-scroll-target="#principal-components-analysis-and-regression">Principal Components Analysis and Regression</a>
+  <ul class="collapse">
+  <li><a href="#principal-components-analysis" id="toc-principal-components-analysis" class="nav-link" data-scroll-target="#principal-components-analysis">Principal Components Analysis</a></li>
+  <li><a href="#principal-components-regression" id="toc-principal-components-regression" class="nav-link" data-scroll-target="#principal-components-regression">Principal Components Regression</a></li>
+  <li><a href="#implementation-and-considerations-1" id="toc-implementation-and-considerations-1" class="nav-link" data-scroll-target="#implementation-and-considerations-1">Implementation and Considerations</a></li>
+  </ul></li>
+  <li><a href="#partial-least-squares" id="toc-partial-least-squares" class="nav-link" data-scroll-target="#partial-least-squares">Partial Least Squares</a>
+  <ul class="collapse">
+  <li><a href="#implementation-and-considerations-2" id="toc-implementation-and-considerations-2" class="nav-link" data-scroll-target="#implementation-and-considerations-2">Implementation and Considerations</a></li>
+  <li><a href="#comparison-with-pcr" id="toc-comparison-with-pcr" class="nav-link" data-scroll-target="#comparison-with-pcr">Comparison with PCR</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Section 6.1 - Regularization and Dimension Reduction Notes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jacob Jameson </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Note that the material in these notes draws on past TF’s notes (Ibou Dieye, Laura Morris, Emily Mower, Amy Wickett), and the more thorough treatment of these topics in <em>Introduction to Statistical Learning</em> by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.</p>
+<p>The goal of this session is to review concepts related to regularization methods (LASSO and Ridge Regression) and dimension reduction techniques (PCA and PLS).</p>
+<section id="lasso-and-ridge-regression" class="level2">
+<h2 class="anchored" data-anchor-id="lasso-and-ridge-regression">LASSO and Ridge Regression</h2>
+<section id="concept" class="level3">
+<h3 class="anchored" data-anchor-id="concept">Concept</h3>
+<p>Least Absolute Shrinkage and Selection Operator (LASSO) and Ridge Regression both fall under a broader class of models called shrinkage models. Shrinkage models regularize or penalize coefficient estimates, which means that they shrink the coefficients toward zero. Shrinking the coefficient estimates can reduce their variance, so these methods are particularly useful for models where we are concerned about high variance (i.e.&nbsp;over-fitting), such as models with a large number of predictors relative to the number of observations.</p>
+<p>Both LASSO and Ridge regression operate by adding a penalty to the normal OLS (Ordinary Least Squares) minimization problem. These penalties can be thought of as a budget, and sometimes the minimization problem is explicitly formulated as minimizing the Residual Sum of Squares (RSS) subject to a budget constraint. The idea of the budget is if you have a small budget, you can only afford a little “total” <span class="math inline">\(\beta\)</span>, where the definition of “total” <span class="math inline">\(\beta\)</span> varies between LASSO and Ridge, but as your budget increases, you get closer and closer to the OLS <span class="math inline">\(\beta\)</span>s.</p>
+<p>LASSO and Ridge regression differ in exactly how they penalize the coefficients. In particular, LASSO penalizes the coefficients using an <span class="math inline">\(L_1\)</span> penalty:</p>
+<p><span class="math display">\[
+\sum_{i=1}^n \left(
+    y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij}
+    \right)^2 + \lambda \sum_{j=1}^p |\beta_j| = RSS + \lambda \sum_{j=1}^p |\beta_j|
+\]</span></p>
+<p>Ridge regression penalizes the coefficients using an <span class="math inline">\(L_2\)</span> penalty:</p>
+<p><span class="math display">\[
+    \sum_{i=1}^n \left(
+    y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij}
+    \right)^2 + \lambda \sum_{j=1}^p \beta_j^2 = RSS + \lambda \sum_{j=1}^p \beta_j^2
+\]</span> You may notice that both the LASSO and Ridge Regression minimization problems feature a parameter <span class="math inline">\(\lambda\)</span>. This is a tuning parameter that dictates how much we will penalize the “total” coefficients. Tuning parameters appear in many models and get their name from the fact that we tune (adjust / choose) them in order to improve our model’s performance.</p>
+<p>Since LASSO and Ridge Regression are used when we are concerned about variance (over-fitting), it should come as no surprise that increasing <span class="math inline">\(\lambda\)</span> decreases variance. It can be helpful to contextualize the <span class="math inline">\(\lambda\)</span> size by realizing that <span class="math inline">\(\lambda=0\)</span> is OLS and <span class="math inline">\(\lambda =\infty\)</span> results in only <span class="math inline">\(\beta_0\)</span> being assigned a non-zero value.</p>
+<p>As we increase <span class="math inline">\(\lambda\)</span> from zero, we decrease variance but increase bias (the classic bias-variance tradeoff). To determine the best <span class="math inline">\(\lambda\)</span> (e.g.&nbsp;the <span class="math inline">\(\lambda\)</span> that will lead to the best out of sample predictive performance), it is common to use cross validation. A good function in <code>R</code> that trains LASSO and Ridge Regression models and uses cross-validation to select a good <span class="math inline">\(\lambda\)</span> is <code>cv.glmnet()</code>, which is part of the <code>glmnet</code> package.</p>
+</section>
+<section id="key-difference-between-lasso-and-ridge" class="level3">
+<h3 class="anchored" data-anchor-id="key-difference-between-lasso-and-ridge">Key difference between LASSO and Ridge</h3>
+<p>As noted above, both LASSO and Ridge regression shrink the coefficients toward zero. However, the penalty in Ridge (<span class="math inline">\(\lambda \beta_j^2\)</span>) will not set any of coefficients exactly to zero (unless <span class="math inline">\(\lambda =\infty\)</span>). Increasing the value of <span class="math inline">\(\lambda\)</span> will tend to reduce the magnitudes of the coefficients (which helps reduce variance), but will not result in exclusion of any of the variables. While this may not impact prediction accuracy, it can create a challenge in model interpretation in settings where the number of features is large. This is an obvious disadvantage.</p>
+<p>On the other hand, the <span class="math inline">\(L_1\)</span> penalty of LASSO forces some of the coefficient estimates to be exactly equal to zero when the tuning parameter <span class="math inline">\(\lambda\)</span> is sufficiently large. Therefore, LASSO performs variable selection, much like best subset selection.</p>
+</section>
+<section id="implementation-and-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-and-considerations">Implementation and Considerations</h3>
+<p>LASSO and Ridge Regression are useful models to use when dealing with a large number of predictors <span class="math inline">\(p\)</span> relative to the number of observations <span class="math inline">\(n\)</span>. It is good to standardize your features so that coefficients are not selected because of their scale rather than their relative importance.</p>
+<p>For example, suppose you were predicting salary, and suppose you had a standardized test score that was highly predictive of salary and you also had parents’ income, which was only somewhat predictive of salary. Since standardized test scores are measured on a much smaller scale than the outcome and than parents’ income, we would expect the coefficient on test scores to be large relative to the coefficient on parents’ income. This means it would likely be shrunk by adding the penalty, even though it reflects a strong predictive relationship.</p>
+</section>
+<section id="interpreting-coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-coefficients">Interpreting Coefficients</h3>
+<p>Coefficients produced by LASSO and Ridge Regression should not be interpreted causally. These methods are used for prediction, and as such, our focus is on <span class="math inline">\(\hat{y}\)</span>. This is in contrast to an inference problem, where we would be interested in <span class="math inline">\(\hat{\beta}\)</span>.</p>
+<p>The intuition behind why we cannot interpret the coefficients causally is similar to the intuition underlying Omitted Variables Bias (OVB). In OVB, we said that if two variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> were correlated with each other and with the outcome <span class="math inline">\(Y\)</span>, then the coefficient on <span class="math inline">\(X_1\)</span> in a regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X_1\)</span> would differ from the coefficient on <span class="math inline">\(X_1\)</span> in a regression where <span class="math inline">\(X_2\)</span> was also included. This is because since <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are correlated, when we omit <span class="math inline">\(X_2\)</span>, the coefficient on <span class="math inline">\(X_1\)</span> picks up the effect of <span class="math inline">\(X_1\)</span> on <span class="math inline">\(Y\)</span> as well as some of the effect of <span class="math inline">\(X_2\)</span> on <span class="math inline">\(Y\)</span>.</p>
+</section>
+</section>
+<section id="principal-components-analysis-and-regression" class="level2">
+<h2 class="anchored" data-anchor-id="principal-components-analysis-and-regression">Principal Components Analysis and Regression</h2>
+<section id="principal-components-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="principal-components-analysis">Principal Components Analysis</h3>
+<p>Principal Components Analysis is a method of unsupervised learning. We have not yet covered unsupervised learning, though we will in the second half of the semester. The important thing to know at this point about unsupervised learning is that unsupervised learning methods do not use labels <span class="math inline">\(Y\)</span>.</p>
+<p>Principal Components Analysis (PCA), therefore, does not use <span class="math inline">\(Y\)</span> in determining the principal components. Instead, the principal components are determined solely by looking at the predictors <span class="math inline">\(X_1\)</span>,…,<span class="math inline">\(X_p\)</span>. Each principal component is a weighted sum of the original predictors <span class="math inline">\(X_1\)</span>,…,<span class="math inline">\(X_p\)</span>. For clarity of notation, we will use <span class="math inline">\(Z\)</span> to represent principal components and <span class="math inline">\(X\)</span> to represent predictors.</p>
+<p>Principal components are created in an ordered way. The order can be described as follows: If you had to project all of the data onto only one line, the first principal component defines the line that would lead to points being as spread out as possible (e.g.&nbsp;having highest variance). If you had to project all of the data onto only one plane, the plane defined by the first two principal components (which are orthogonal by definition) would be the plane where the points were as spread out as possible (e.g.&nbsp;highest possible variance).</p>
+<p>Since variance is greatly affected by measurement scale, it is common practice and a good idea to scale your variables, so that results are not driven by the scale on which the variables were measured.</p>
+<p>When estimating principal components, you will estimate <span class="math inline">\(p\)</span> components, where <span class="math inline">\(p\)</span> is the number of predictors <span class="math inline">\(X\)</span>. However, you usually only pay attention to / use the first few components, since the last few components capture very little variance. Note that you can exactly recover your original data when using all <span class="math inline">\(p\)</span> components.</p>
+</section>
+<section id="principal-components-regression" class="level3">
+<h3 class="anchored" data-anchor-id="principal-components-regression">Principal Components Regression</h3>
+<p>Principal Components Regression (PCR) regresses the outcome <span class="math inline">\(Y\)</span> on the principal components <span class="math inline">\(Z_1\)</span>,…,<span class="math inline">\(Z_M\)</span>, where <span class="math inline">\(M&lt;p\)</span> and <span class="math inline">\(p\)</span> is the number of predictors <span class="math inline">\(X_1\)</span>,…,<span class="math inline">\(X_p\)</span>.</p>
+<p>Note that the principal components <span class="math inline">\(Z_1\)</span>,…,<span class="math inline">\(Z_M\)</span> were defined by looking only at <span class="math inline">\(X_1\)</span>,…,<span class="math inline">\(X_p\)</span> and not at <span class="math inline">\(Y\)</span>. Putting the principal components into a regression is the first time we are introducing any interaction between the principal components and the outcome <span class="math inline">\(Y\)</span>.</p>
+<p>The main idea of Principal Components Regression is that hopefully only a few components explain most of the variance in the predictors overall and as is relevant to the relationship between the predictors and the response. In other words, when we use PCR, we assume that the directions in which <span class="math inline">\(X\)</span> shows the most variance are also the directions most associated with <span class="math inline">\(Y\)</span>. When this assumption is true, we are able to use <span class="math inline">\(M&lt;&lt;p\)</span> (e.g.&nbsp;<span class="math inline">\(M\)</span> much smaller than <span class="math inline">\(p\)</span>) parameters while still getting similar in-sample performance and hopefully better out-of-sample performance (due to not overfitting) to a regression of <span class="math inline">\(Y\)</span> on all <span class="math inline">\(p\)</span> predictors. Although the assumption is not guaranteed to be true, it is often a good enough approximation to give good results.</p>
+<p>PCA is one example of dimensionality reduction, because it reduces the dimension of the problem from <span class="math inline">\(p\)</span> to <span class="math inline">\(M\)</span>. Note, though, that dimensionality reduction is different from feature selection. We are still using all features; we have just aggregated them into principal components.</p>
+<p>The exact number <span class="math inline">\(M\)</span> of principal components to use in PCR (the regression of <span class="math inline">\(Y\)</span> on the principal components) is usually determined by cross-validation.</p>
+</section>
+<section id="implementation-and-considerations-1" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-and-considerations-1">Implementation and Considerations</h3>
+<p>When using PCR, there are a few things to pay attention to. First, be sure to standardize variables or else the first few principal components will favor features measured on larger scales. Second, the number of principal components to use in PCR is determined using cross-validation. If the number is high and close to the number of features in your data, the assumption that the directions in which the predictors vary most are also the directions that explain the relationship between the predictors and response is false. In such a case, other methods, such as ridge and lasso, are likely to perform better.</p>
+</section>
+</section>
+<section id="partial-least-squares" class="level2">
+<h2 class="anchored" data-anchor-id="partial-least-squares">Partial Least Squares</h2>
+<p>Partial Least Squares is a supervised alternative to PCR. Recall that for PCR, the principal components <span class="math inline">\(Z_1,...,Z_M\)</span> were formed from the original features <span class="math inline">\(X_1,...,X_p\)</span> without looking at <span class="math inline">\(Y\)</span> (unsupervised).</p>
+<p>Partial Least Squares (PLS) also generates a new set of features <span class="math inline">\(Z_1,...,Z_M\)</span> but it uses the correlation between the predictors <span class="math inline">\(X_1,...,X_p\)</span> and the outcome <span class="math inline">\(Y\)</span> to determine the weights on <span class="math inline">\(X_1,...,X_p\)</span> for each <span class="math inline">\(Z_1,...,Z_M\)</span>. In this way, PLS attempts to find directions that explain both the response and the predictors.</p>
+<p>The first feature <span class="math inline">\(Z_1\)</span> is determined by weighting <span class="math inline">\(X_1,...,X_p\)</span> proportional to each feature’s correlation with <span class="math inline">\(Y\)</span>. It then residualizes the predictors <span class="math inline">\(X_1,...,X_p\)</span> by regressing them on <span class="math inline">\(Z_1\)</span> and repeats the weighting procedure using the orthogonalized predictors. The process then repeats until we have <span class="math inline">\(M\)</span> components, where <span class="math inline">\(M\)</span> is determined by cross validation.</p>
+<section id="implementation-and-considerations-2" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-and-considerations-2">Implementation and Considerations</h3>
+<p>Just as with PCR, it’s best practice to scale the predictors before running PLS.</p>
+</section>
+<section id="comparison-with-pcr" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-with-pcr">Comparison with PCR</h3>
+<p>PLS directly uses <span class="math inline">\(Y\)</span> in generating the features <span class="math inline">\(Z_1,...,Z_M\)</span>. It then regresses <span class="math inline">\(Y\)</span> on these features. Therefore, PLS uses <span class="math inline">\(Y\)</span> twice in the process of estimating the model.</p>
+<p>In contrast, PCR only looks at the outcome <span class="math inline">\(Y\)</span> when estimating the final regression. The components are estimated without ``peeking’’ at <span class="math inline">\(Y\)</span>.</p>
+<p>Because <span class="math inline">\(Y\)</span> is used twice in PLS and only once in PCR, in practice PLS exhibits lower bias (e.g.&nbsp;is better able to fit the training data) but higher variance (e.g.&nbsp;is more sensitive to the exact training data). Therefore, the two methods generally have similar out-of-sample predictive power in practice.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2024, Jacob Jameson</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,343 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.jacobjameson.github.io/index.html</loc>
-    <lastmod>2022-11-30T22:31:17.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/teaching.html</loc>
-    <lastmod>2022-11-30T22:30:32.360Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/posts/2022-11-01-SNA/2022-11-01-SNA.html</loc>
-    <lastmod>2022-11-30T22:30:56.755Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/code.html</loc>
-    <lastmod>2022-11-30T22:30:59.748Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/horror.html</loc>
-    <lastmod>2022-11-30T22:31:00.899Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/Data/horrorplots/ridgeplot/horror_movies.html</loc>
-    <lastmod>2022-11-30T22:31:10.295Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/Data/horrorplots/kill count/kill count.html</loc>
-    <lastmod>2022-11-30T22:31:15.421Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/Data/Intro_R_Course/Intro R.html</loc>
-    <lastmod>2022-11-30T22:31:15.886Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/blog.html</loc>
-    <lastmod>2022-11-30T22:31:16.388Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/index.html</loc>
-    <lastmod>2023-11-15T19:02:51.361Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/teaching.html</loc>
-    <lastmod>2023-11-15T19:02:24.401Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/code.html</loc>
-    <lastmod>2023-06-13T12:49:36.868Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/blog.html</loc>
-    <lastmod>2023-11-15T19:02:28.236Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/Intro_R_Course/Intro R.html</loc>
-    <lastmod>2022-12-29T17:30:39.624Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/horrorplots/haunted/haunted.html</loc>
-    <lastmod>2022-12-14T14:47:51.760Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/horror.html</loc>
-    <lastmod>2023-01-09T16:45:06.553Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/posts/2022-11-01-SNA/2022-11-01-SNA.html</loc>
-    <lastmod>2023-06-13T12:45:26.705Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/dataviz.html</loc>
-    <lastmod>2023-10-10T15:54:18.949Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/viz/healthcare area chart/healthcare_areachart.html</loc>
-    <lastmod>2023-02-03T20:57:00.368Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/viz/lollipop timeseries/multiple-line-chart.html</loc>
-    <lastmod>2022-12-20T03:00:36.125Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/posts/2022-12-24-ORs/2022-12-24-ORs.html</loc>
-    <lastmod>2023-01-09T16:45:05.364Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/Intro_R_Course/mod0.html</loc>
-    <lastmod>2022-12-29T17:26:50.585Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/mod0.html</loc>
-    <lastmod>2022-12-29T17:33:25.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Intro R.html</loc>
-    <lastmod>2023-10-10T15:53:17.804Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/0 Module/mod0.html</loc>
-    <lastmod>2023-04-19T15:34:16.702Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/0 Module/2022-11-01-SNA.html</loc>
-    <lastmod>2022-12-29T17:38:08.671Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/5 Module/mod5.html</loc>
-    <lastmod>2022-12-29T19:36:45.360Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/9 Module/mod9.html</loc>
-    <lastmod>2022-12-29T19:27:38.122Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/7 Module/mod0.html</loc>
-    <lastmod>2022-12-29T17:45:43.396Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/3 Module/mod3.html</loc>
-    <lastmod>2022-12-29T19:34:37.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/1 Module/mod1.html</loc>
-    <lastmod>2023-04-19T15:34:50.205Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/4 Module/mod4.html</loc>
-    <lastmod>2023-06-13T12:49:54.107Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/8 Module/mod8.html</loc>
-    <lastmod>2023-06-13T12:50:14.794Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/6 Module/mod7.html</loc>
-    <lastmod>2022-12-29T17:45:47.858Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/2 Module/mod2.html</loc>
-    <lastmod>2022-12-29T18:36:55.870Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/7 Module/mod7.html</loc>
-    <lastmod>2022-12-29T19:30:03.929Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/R files/6 Module/mod6.html</loc>
-    <lastmod>2022-12-29T19:16:03.413Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/viz/2023-01-03 Tidy Tuesday/TT_wk1.html</loc>
-    <lastmod>2023-01-29T21:40:27.215Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/viz/2023-01-10 Tidy Tuesday/TT_wk2.html</loc>
-    <lastmod>2023-01-29T21:50:35.333Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/viz/2023-01-17 Tidy Tuesday/TT_wk3.html</loc>
-    <lastmod>2023-01-29T21:51:01.071Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/viz/2023-01-24 Tidy Tuesday/TT_wk4.html</loc>
-    <lastmod>2023-01-29T21:51:37.568Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/viz/2023-01-31 Tidy Tuesday/TT_wk5.html</loc>
-    <lastmod>2023-02-14T14:45:31.068Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/viz/2023-02-07 Tidy Tuesday/TT_wk6.html</loc>
-    <lastmod>2023-02-14T14:45:30.452Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/Data/viz/2023-02-14 Tidy Tuesday/TT_wk7.html</loc>
-    <lastmod>2023-09-17T22:43:08.054Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/posts/2023-09-01-OR/2023-09-01-OR.html</loc>
-    <lastmod>2023-09-18T17:37:30.820Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/research.html</loc>
-    <lastmod>2023-11-15T19:02:43.368Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.github.io/docs/posts/2023-09-23-docker/2023-09-23-docker.html</loc>
-    <lastmod>2023-10-10T15:53:15.422Z</lastmod>
-  </url>
-  <url>
     <loc>https://www.jacobjameson.com/index.html</loc>
-    <lastmod>2024-03-03T14:32:41.264Z</lastmod>
+    <lastmod>2024-03-21T22:52:06.392Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/blog.html</loc>
-    <lastmod>2024-02-12T21:51:13.243Z</lastmod>
+    <loc>https://www.jacobjameson.com/Data/viz/2023-01-31 Tidy Tuesday/TT_wk5.html</loc>
+    <lastmod>2024-03-21T22:52:05.698Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/Intro R.html</loc>
-    <lastmod>2024-02-12T20:16:56.608Z</lastmod>
+    <loc>https://www.jacobjameson.com/Data/viz/healthcare area chart/healthcare_areachart.html</loc>
+    <lastmod>2024-03-21T22:52:05.212Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/posts/2022-11-01-SNA/2022-11-01-SNA.html</loc>
-    <lastmod>2024-02-12T20:02:13.567Z</lastmod>
+    <loc>https://www.jacobjameson.com/Data/viz/2023-02-07 Tidy Tuesday/TT_wk6.html</loc>
+    <lastmod>2024-03-21T22:52:04.739Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/teaching.html</loc>
-    <lastmod>2024-02-27T18:06:23.054Z</lastmod>
+    <loc>https://www.jacobjameson.com/Data/viz/2023-01-10 Tidy Tuesday/TT_wk2.html</loc>
+    <lastmod>2024-03-21T22:52:04.279Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/posts/2023-09-01-OR/2023-09-01-OR.html</loc>
-    <lastmod>2024-02-12T20:02:14.611Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/research.html</loc>
-    <lastmod>2024-02-27T18:06:19.195Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/R files/1 Module/mod1.html</loc>
-    <lastmod>2023-12-14T16:43:33.171Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/posts/2023-12-19-OLS/2023-12-19-OLS.html</loc>
-    <lastmod>2024-01-19T18:33:18.264Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 1/section1.html</loc>
-    <lastmod>2024-01-25T21:32:38.927Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/API222.html</loc>
-    <lastmod>2024-02-12T21:51:36.930Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 2/section2.html</loc>
-    <lastmod>2024-02-12T21:51:39.620Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 2/section1.html</loc>
-    <lastmod>2024-02-01T14:00:43.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 2/section2.1.html</loc>
-    <lastmod>2024-02-12T20:02:18.725Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/posts/2024-02-01-KNN/2024-02-01-KNN.html</loc>
-    <lastmod>2024-02-12T21:51:16.449Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 3/section3.html</loc>
-    <lastmod>2024-02-15T17:29:16.790Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/git files/section 1/section1.html</loc>
-    <lastmod>2024-02-12T20:54:45.001Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/Intro Git.html</loc>
-    <lastmod>2024-02-12T21:50:55.962Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/git files/section 2/section 2.html</loc>
-    <lastmod>2024-02-12T21:00:10.171Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/git files/section 3/section 3.html</loc>
-    <lastmod>2024-02-12T20:50:20.703Z</lastmod>
+    <loc>https://www.jacobjameson.com/R files/0 Module/mod0.html</loc>
+    <lastmod>2024-03-21T22:52:03.737Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/R files/6 Module/mod6.html</loc>
-    <lastmod>2024-02-12T20:16:59.683Z</lastmod>
+    <lastmod>2024-03-21T22:52:02.865Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/git files/section 4/section 4.html</loc>
-    <lastmod>2024-02-12T20:50:20.121Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/git files/section 5/section 5.html</loc>
-    <lastmod>2024-02-12T20:50:23.596Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/git files/section 6/section 6.html</loc>
-    <lastmod>2024-02-12T20:53:12.152Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/api 222 files/API222.html</loc>
-    <lastmod>2024-02-29T21:57:54.923Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/git files/Intro Git.html</loc>
-    <lastmod>2024-02-27T18:06:31.968Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/posts/blog.html</loc>
-    <lastmod>2024-02-27T18:14:00.428Z</lastmod>
+    <loc>https://www.jacobjameson.com/R files/4 Module/mod4.html</loc>
+    <lastmod>2024-03-21T22:52:01.912Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/R files/Intro R.html</loc>
-    <lastmod>2024-02-27T18:06:52.291Z</lastmod>
+    <lastmod>2024-03-21T22:52:00.885Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/git files/section 2/section 2 slides.html</loc>
-    <lastmod>2024-02-13T17:28:02.570Z</lastmod>
+    <loc>https://www.jacobjameson.com/R files/7 Module/mod7.html</loc>
+    <lastmod>2024-03-21T22:51:59.996Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.html</loc>
-    <lastmod>2024-02-15T17:25:54.203Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.1.html</loc>
-    <lastmod>2024-02-15T23:02:16.265Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.2.html</loc>
-    <lastmod>2024-02-23T03:37:40.546Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.jacobjameson.com/posts/2024-02-15-LDA/2024-02-15-LDA.html</loc>
-    <lastmod>2024-02-26T23:44:38.876Z</lastmod>
+    <loc>https://www.jacobjameson.com/R files/5 Module/mod5.html</loc>
+    <lastmod>2024-03-21T22:51:58.825Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 5/section 5.1.html</loc>
-    <lastmod>2024-02-23T03:39:09.406Z</lastmod>
+    <lastmod>2024-03-21T22:51:57.731Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 5/section 5.2.html</loc>
-    <lastmod>2024-02-26T23:43:28.030Z</lastmod>
+    <loc>https://www.jacobjameson.com/api 222 files/section 2/section2.html</loc>
+    <lastmod>2024-03-21T22:51:56.586Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/posts/2024-02-26-PCR/2024-02-26-PCR.html</loc>
-    <lastmod>2024-03-03T14:32:48.033Z</lastmod>
+    <loc>https://www.jacobjameson.com/api 222 files/section 3/section3.html</loc>
+    <lastmod>2024-03-21T22:51:55.801Z</lastmod>
   </url>
   <url>
-    <loc>https://www.jacobjameson.com/api 222 files/section 6/section 6.1.html</loc>
-    <lastmod>2024-03-03T14:32:42.804Z</lastmod>
+    <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.2.html</loc>
+    <lastmod>2024-03-21T22:51:54.933Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 6/section 6.2.html</loc>
-    <lastmod>2024-03-03T14:32:46.311Z</lastmod>
+    <lastmod>2024-03-21T22:51:53.727Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/api 222 files/section 7/section 7.1.html</loc>
+    <lastmod>2024-03-21T22:51:52.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/posts/2024-02-01-KNN/2024-02-01-KNN.html</loc>
+    <lastmod>2024-03-21T22:51:51.126Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/posts/2024-02-15-LDA/2024-02-15-LDA.html</loc>
+    <lastmod>2024-03-21T22:51:49.892Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/posts/2024-02-26-PCR/2024-02-26-PCR.html</loc>
+    <lastmod>2024-03-21T22:51:48.448Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/git files/section 5/section 5.html</loc>
+    <lastmod>2024-03-21T22:51:47.504Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/git files/section 3/section 3.html</loc>
+    <lastmod>2024-03-21T22:51:46.744Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/git files/section 1/section1.html</loc>
+    <lastmod>2024-03-21T22:51:46.184Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/research.html</loc>
+    <lastmod>2024-03-21T22:51:45.640Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/teaching.html</loc>
+    <lastmod>2024-03-21T22:51:45.410Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/git files/section 6/section 6.html</loc>
+    <lastmod>2024-03-21T22:51:45.898Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/git files/section 4/section 4.html</loc>
+    <lastmod>2024-03-21T22:51:46.431Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/git files/section 2/section 2.html</loc>
+    <lastmod>2024-03-21T22:51:47.266Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/git files/Intro Git.html</loc>
+    <lastmod>2024-03-21T22:51:47.830Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/posts/2022-11-01-SNA/2022-11-01-SNA.html</loc>
+    <lastmod>2024-03-21T22:51:49.434Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/posts/2023-09-01-OR/2023-09-01-OR.html</loc>
+    <lastmod>2024-03-21T22:51:50.458Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/posts/blog.html</loc>
+    <lastmod>2024-03-21T22:51:51.522Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/api 222 files/section 7/section 7.2.html</loc>
+    <lastmod>2024-03-21T22:51:52.332Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/api 222 files/section 6/section 6.1.html</loc>
+    <lastmod>2024-03-21T22:51:53.189Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/api 222 files/section 1/section1.html</loc>
+    <lastmod>2024-03-21T22:51:54.391Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.1.html</loc>
+    <lastmod>2024-03-21T22:51:55.282Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/api 222 files/API222.html</loc>
+    <lastmod>2024-03-21T22:51:56.101Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/api 222 files/section 2/section2.1.html</loc>
+    <lastmod>2024-03-21T22:51:57.461Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/api 222 files/section 5/section 5.2.html</loc>
+    <lastmod>2024-03-21T22:51:58.210Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/R files/9 Module/mod9.html</loc>
+    <lastmod>2024-03-21T22:51:59.478Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/R files/3 Module/mod3.html</loc>
+    <lastmod>2024-03-21T22:52:00.605Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/R files/1 Module/mod1.html</loc>
+    <lastmod>2024-03-21T22:52:01.375Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/R files/8 Module/mod8.html</loc>
+    <lastmod>2024-03-21T22:52:02.415Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/R files/2 Module/mod2.html</loc>
+    <lastmod>2024-03-21T22:52:03.492Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/Data/viz/2023-01-17 Tidy Tuesday/TT_wk3.html</loc>
+    <lastmod>2024-03-21T22:52:04.009Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/Data/viz/2023-01-03 Tidy Tuesday/TT_wk1.html</loc>
+    <lastmod>2024-03-21T22:52:04.510Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/Data/viz/2023-02-14 Tidy Tuesday/TT_wk7.html</loc>
+    <lastmod>2024-03-21T22:52:04.970Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/Data/viz/2023-01-24 Tidy Tuesday/TT_wk4.html</loc>
+    <lastmod>2024-03-21T22:52:05.461Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/dataviz.html</loc>
+    <lastmod>2024-03-21T22:52:06.173Z</lastmod>
   </url>
 </urlset>
