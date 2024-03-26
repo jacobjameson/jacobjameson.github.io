@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.jacobjameson.com/index.html</loc>
-    <lastmod>2024-03-21T23:06:50.238Z</lastmod>
+    <lastmod>2024-03-26T23:41:09.905Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/Data/viz/2023-01-31 Tidy Tuesday/TT_wk5.html</loc>
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/R files/Intro R.html</loc>
-    <lastmod>2024-03-21T22:52:00.885Z</lastmod>
+    <lastmod>2024-03-26T21:21:53.730Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/R files/7 Module/mod7.html</loc>
@@ -90,11 +90,11 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/git files/section 1/section1.html</loc>
-    <lastmod>2024-03-21T22:51:46.184Z</lastmod>
+    <lastmod>2024-03-26T21:22:01.683Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/research.html</loc>
-    <lastmod>2024-03-21T22:51:45.640Z</lastmod>
+    <lastmod>2024-03-26T21:21:51.256Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/teaching.html</loc>
@@ -114,7 +114,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/git files/Intro Git.html</loc>
-    <lastmod>2024-03-21T22:51:47.830Z</lastmod>
+    <lastmod>2024-03-26T21:22:00.267Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/posts/2022-11-01-SNA/2022-11-01-SNA.html</loc>
@@ -126,7 +126,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/posts/blog.html</loc>
-    <lastmod>2024-03-21T22:51:51.522Z</lastmod>
+    <lastmod>2024-03-26T23:41:11.150Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 7/section 7.2.html</loc>
@@ -195,5 +195,9 @@
   <url>
     <loc>https://www.jacobjameson.com/dataviz.html</loc>
     <lastmod>2024-03-21T22:52:06.173Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/posts/2024-03-26-DT/2024-03-26-DT.html</loc>
+    <lastmod>2024-03-26T23:40:03.311Z</lastmod>
   </url>
 </urlset>
