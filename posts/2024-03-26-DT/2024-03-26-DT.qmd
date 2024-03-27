@@ -105,11 +105,11 @@ plot(p, -p*log2(p)-(1-p)*log2(1-p), type='l', ylim=c(0,1),
 
 Entropy achieves its maximum at $p_H = 0.5$, where uncertainty—and the potential for error—is greatest. This resonates with the principle that the greatest entropy occurs where prediction is most challenging.
 
-Refining Our Approach with Information Gain
+## Refining Our Approach with Information Gain
 
 With our metrics in place to judge how well our dataset's predictions are doing, it's time to focus on improvement—how can we make our predictions even better? We're going to talk about something called 'Information Gain', a concept which is the difference we want to maximize when deciding how to split our data.
 
-Fine-tuning a Decision Tree for Classification
+### Fine-tuning a Decision Tree for Classification
 
 When we build a classifier—a kind of decision tree—our goal is to organize our data into groups that make our predictions as accurate as possible. The concept of 'Information Gain' is a bit like a treasure map; it helps us find these valuable groupings by measuring how much more ordered, or less chaotic, our data becomes after a split.
 
@@ -122,7 +122,7 @@ In these equations, $Gini\ Impurity_{before\ split}$ and $Entropy_{before\ split
 
 In essence, it tells us how much clearer our predictions become after we've sorted the data into separate buckets based on certain features.
 
-Balancing Decision Trees to Avoid Overfitting
+### Balancing Decision Trees to Avoid Overfitting
 
 A common pitfall with decision trees is that they can get a little too enthusiastic, creating very specific rules that work perfectly for the data they were trained on but not so well for new data. This is known as overfitting.
 
@@ -134,7 +134,8 @@ To avoid this, we can trim or 'prune' the tree after it's grown, or we can set s
 - A threshold below which we won't consider any new splits
 
 
-The Iris Dataset: Our Classification Playground
+## The Iris Dataset: Our Classification Playground
+
 We'll be using the well-loved Iris dataset for classification tasks. The Species attribute will be our target for prediction. Here's a peek at the dataset:
 
 ```{r}
@@ -174,7 +175,8 @@ information_gain <- function(y, mask, metric_func = entropy) {
 }
 ```
 
-Seeking the Best Split Across All Features
+## Seeking the Best Split Across All Features
+
 With our metric functions in hand, we'll comb through all the features to find the ultimate split:
 
 ```{r}

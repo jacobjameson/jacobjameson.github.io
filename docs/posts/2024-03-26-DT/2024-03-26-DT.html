@@ -190,6 +190,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#embarking-on-a-diy-journey-with-machine-learning-algorithms" id="toc-embarking-on-a-diy-journey-with-machine-learning-algorithms" class="nav-link" data-scroll-target="#embarking-on-a-diy-journey-with-machine-learning-algorithms">Embarking on a DIY Journey with Machine Learning Algorithms</a></li>
   <li><a href="#practical-benefits-of-a-hands-on-approach" id="toc-practical-benefits-of-a-hands-on-approach" class="nav-link" data-scroll-target="#practical-benefits-of-a-hands-on-approach">Practical Benefits of a Hands-On Approach</a></li>
   <li><a href="#metrics-the-compass-for-improvement" id="toc-metrics-the-compass-for-improvement" class="nav-link" data-scroll-target="#metrics-the-compass-for-improvement">Metrics: The Compass for Improvement</a></li>
+  <li><a href="#refining-our-approach-with-information-gain" id="toc-refining-our-approach-with-information-gain" class="nav-link" data-scroll-target="#refining-our-approach-with-information-gain">Refining Our Approach with Information Gain</a>
+  <ul class="collapse">
+  <li><a href="#fine-tuning-a-decision-tree-for-classification" id="toc-fine-tuning-a-decision-tree-for-classification" class="nav-link" data-scroll-target="#fine-tuning-a-decision-tree-for-classification">Fine-tuning a Decision Tree for Classification</a></li>
+  <li><a href="#balancing-decision-trees-to-avoid-overfitting" id="toc-balancing-decision-trees-to-avoid-overfitting" class="nav-link" data-scroll-target="#balancing-decision-trees-to-avoid-overfitting">Balancing Decision Trees to Avoid Overfitting</a></li>
+  </ul></li>
+  <li><a href="#the-iris-dataset-our-classification-playground" id="toc-the-iris-dataset-our-classification-playground" class="nav-link" data-scroll-target="#the-iris-dataset-our-classification-playground">The Iris Dataset: Our Classification Playground</a></li>
+  <li><a href="#seeking-the-best-split-across-all-features" id="toc-seeking-the-best-split-across-all-features" class="nav-link" data-scroll-target="#seeking-the-best-split-across-all-features">Seeking the Best Split Across All Features</a></li>
   </ul></li>
   <li><a href="#building-our-decision-tree" id="toc-building-our-decision-tree" class="nav-link" data-scroll-target="#building-our-decision-tree">Building our Decision Tree</a>
   <ul class="collapse">
@@ -308,15 +315,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Entropy achieves its maximum at <span class="math inline">\(p_H = 0.5\)</span>, where uncertainty—and the potential for error—is greatest. This resonates with the principle that the greatest entropy occurs where prediction is most challenging.</p>
-<p>Refining Our Approach with Information Gain</p>
+</section>
+</section>
+<section id="refining-our-approach-with-information-gain" class="level2">
+<h2 class="anchored" data-anchor-id="refining-our-approach-with-information-gain">Refining Our Approach with Information Gain</h2>
 <p>With our metrics in place to judge how well our dataset’s predictions are doing, it’s time to focus on improvement—how can we make our predictions even better? We’re going to talk about something called ‘Information Gain’, a concept which is the difference we want to maximize when deciding how to split our data.</p>
-<p>Fine-tuning a Decision Tree for Classification</p>
+<section id="fine-tuning-a-decision-tree-for-classification" class="level3">
+<h3 class="anchored" data-anchor-id="fine-tuning-a-decision-tree-for-classification">Fine-tuning a Decision Tree for Classification</h3>
 <p>When we build a classifier—a kind of decision tree—our goal is to organize our data into groups that make our predictions as accurate as possible. The concept of ‘Information Gain’ is a bit like a treasure map; it helps us find these valuable groupings by measuring how much more ordered, or less chaotic, our data becomes after a split.</p>
 <p><span class="math display">\[Information\ Gain = Gini\ Impurity_{before\ split} - \sum_{each\ split} \frac{|split\ group|}{|total\ data|} Gini\ Impurity_{split\ group}\]</span></p>
 <p><span class="math display">\[Information\ Gain = Entropy_{before\ split} - \sum_{each\ split} \frac{|split\ group|}{|total\ data|} Entropy_{split\ group}\]</span></p>
 <p>In these equations, <span class="math inline">\(Gini\ Impurity_{before\ split}\)</span> and <span class="math inline">\(Entropy_{before\ split}\)</span> represent the disorder in our data before any splits. The sum of the Gini Impurity or Entropy of each split group is weighted by the proportion of data in that group. The Information Gain is the difference between the disorder before the split and the weighted sum of disorder after the split.</p>
 <p>In essence, it tells us how much clearer our predictions become after we’ve sorted the data into separate buckets based on certain features.</p>
-<p>Balancing Decision Trees to Avoid Overfitting</p>
+</section>
+<section id="balancing-decision-trees-to-avoid-overfitting" class="level3">
+<h3 class="anchored" data-anchor-id="balancing-decision-trees-to-avoid-overfitting">Balancing Decision Trees to Avoid Overfitting</h3>
 <p>A common pitfall with decision trees is that they can get a little too enthusiastic, creating very specific rules that work perfectly for the data they were trained on but not so well for new data. This is known as overfitting.</p>
 <p>To avoid this, we can trim or ‘prune’ the tree after it’s grown, or we can set some ground rules that stop the tree from getting overly complicated in the first place. These rules can include limits like:</p>
 <ul>
@@ -325,7 +338,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Minimum improvement needed to make a new split</li>
 <li>A threshold below which we won’t consider any new splits</li>
 </ul>
-<p>The Iris Dataset: Our Classification Playground We’ll be using the well-loved Iris dataset for classification tasks. The Species attribute will be our target for prediction. Here’s a peek at the dataset:</p>
+</section>
+</section>
+<section id="the-iris-dataset-our-classification-playground" class="level2">
+<h2 class="anchored" data-anchor-id="the-iris-dataset-our-classification-playground">The Iris Dataset: Our Classification Playground</h2>
+<p>We’ll be using the well-loved Iris dataset for classification tasks. The Species attribute will be our target for prediction. Here’s a peek at the dataset:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasets)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
@@ -364,7 +381,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    (<span class="fu">sum</span>(<span class="sc">!</span>mask) <span class="sc">/</span> <span class="fu">length</span>(<span class="sc">!</span>mask)) <span class="sc">*</span> <span class="fu">metric_func</span>(y[<span class="sc">!</span>mask])</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Seeking the Best Split Across All Features With our metric functions in hand, we’ll comb through all the features to find the ultimate split:</p>
+</section>
+<section id="seeking-the-best-split-across-all-features" class="level2">
+<h2 class="anchored" data-anchor-id="seeking-the-best-split-across-all-features">Seeking the Best Split Across All Features</h2>
+<p>With our metric functions in hand, we’ll comb through all the features to find the ultimate split:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>max_information_gain_split <span class="ot">&lt;-</span> <span class="cf">function</span>(y, x, <span class="at">metric_func =</span> gini_impurity) {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize the best change and split value</span></span>
@@ -445,7 +465,6 @@ is_numeric  TRUE         TRUE        TRUE         TRUE       </code></pre>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>right_iris <span class="ot">&lt;-</span> iris[<span class="sc">!</span>best_iris_mask, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And just like that, with our data now split into ‘left’ and ‘right’, we’ve taken the first step in constructing our decision tree. This process will serve as the foundation for building a data structure that captures the essence of our tree, complete with branches that stem from each decision point.</p>
-</section>
 </section>
 </section>
 <section id="building-our-decision-tree" class="level1">
@@ -573,8 +592,8 @@ rpart(formula = Species ~ ., data = iris, method = "class")
   n= 150 
 
     CP nsplit rel error xerror       xstd
-1 0.50      0      1.00   1.23 0.04705316
-2 0.44      1      0.50   0.66 0.06079474
+1 0.50      0      1.00   1.24 0.04636090
+2 0.44      1      0.50   0.85 0.06069047
 3 0.01      2      0.06   0.09 0.02908608
 
 Variable importance
