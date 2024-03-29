@@ -39,7 +39,7 @@ I am a PhD student at Harvard University studying Health Policy and Decision Sci
 In my research I use tools from operations research, engineering, computer science, and economics to inform decisions being made under conditions of uncertainty. 
 
 <center>
-![](images/markov.gif){width=60%}
+![](images/markov.gif){width=50%}
 </center>
 
 
