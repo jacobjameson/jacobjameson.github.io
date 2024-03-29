@@ -1,0 +1,51 @@
+---
+output:
+  pdf_document:
+    latex_engine: xelatex
+header-includes:
+   - \usepackage{titling}
+   - \usepackage{graphicx}
+   - \usepackage{xcolor}
+   - \usepackage{multicol}
+   - \posttitle{\end{center}}
+   
+geometry: margin=1in
+---
+\definecolor{maroon}{RGB}{128,0,0}
+
+\begin{flushleft}
+\includegraphics[width=5cm]{harvard_logo.png}
+\end{flushleft}
+
+\thispagestyle{empty}
+
+\begin{center}
+\color{maroon}
+{\LARGE\textbf{Microeconomics and Public Policy}}\\
+\color{black}
+\vspace{10pt}
+{\large Course Syllabus}\\
+\vspace{10pt}
+{\large Junior Summer Institute 2024}\\
+\vspace{10pt}
+\end{center}
+
+\begin{flushleft}
+{\large Instructor: \textbf{Jacob Jameson, M.S.}}\\
+\vspace{5pt}
+jacobjameson@g.harvard.edu\\
+\vspace{10pt}
+\end{flushleft}
+
+
+\section*{Office Hours}
+Faculty: TBA\\
+Teaching Assistant: TBA
+
+\section*{Course Description}
+This course applies microeconomic reasoning to public policies. It considers economic incentives and organizations; models of economic behavior; the operation of markets; the price system and how it works; the consequences of market failure and interventions in markets; and policy objectives and instruments.
+
+\section*{Learning Objectives}
+Upon successful completion of this course, (...)
+
+\newpage

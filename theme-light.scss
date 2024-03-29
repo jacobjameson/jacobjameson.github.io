@@ -86,7 +86,23 @@ p>a {
 }
 
 .navbar {
-  background-color:  #12343b;
+  background-color:  maroon;
   color: white;
   font-family: 'Montserrat', sans-serif;
 }
+
+    #markovChain {
+        width: 800px;
+        height: 600px;
+        border: 1px solid black;
+        position: relative;
+    }
+    .node {
+        fill: #69b3a2;
+        stroke: #000;
+        stroke-width: 1.5px;
+    }
+    .link {
+        stroke: #999;
+        stroke-opacity: 0.6;
+    }

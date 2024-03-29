@@ -1,0 +1,44 @@
+---
+title: "Section 8.1 - Tree-Based Methods"
+from: markdown+emoji
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+description: |
+author: Jacob Jameson
+
+---
+
+Note that more thorough treatment of these topics in Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.
+
+## Tree-Based Methods
+
+Tree-based methods are non-parametric supervised learning methods that stratify or segment the predictor space into a number of simple regions. They can be used for both regression and clas- sification. After building a tree using the training data, a prediction can be made by using the training observations in the region to which the new observation belongs. For a regression tree, the predicted response for an observation is given by the mean response of the training observations that belong to the same terminal node. In contrast, for a classification tree, we predict that each observation belongs to the most commonly occurring class of training observations in the region to which it belongs. Decision trees are simple and useful for interpretation. However, they typically have lower predictive power than other supervised learning methods. Bagging, random forests, and boosting are approaches to improve decision trees by involving multiple trees, which are then combined to yield a single consensus prediction. These approaches can dramatically improve the prediction accuracy of decision trees, at the expense of interpretability.
+
+### Decision Trees
+
+To interpret a decision tree, suppose we have below tree from the Hitters data. The Figure represents a regression tree for predicting the log salary of a baseball player, based on the two predictors—the number of years that he has played in the major leagues and the number of hits that he made in the previous year. We can read the tree sequentially from top to bottom. At a given node (where the branches split), the label (of the form $X_j < t_k$) indicates the left-hand branch emanating from that split, and the right-hand branch corresponds to $X_j \geq t_k$. For instance, the split at the top of the tree results in two large branches. The left-hand branch corresponds to $Years < 4.5$ and the right-hand branch corresponds to $Years \geq 4.5$. The number in each leaf (terminal nodes) is the mean of the response (outcomes) for the observations (in the training data) that fall there.
+
+![Decision Tree Example](dt.png){width=30%}
+
+Decision trees are easier to interpret and have a nice graphical representation. Unfortunately, fitting a decision tree is not simple. It is computationally infeasible to consider every possible partition of the feature space into $J$ boxes. For this reason, we take a top-down, greedy approach that is known as recursive binary splitting. The approach is top-down because it begins at the top of the tree (at which point all observations belong to a single region) and then successively splits the predictor space; each split is indicated via two new branches further down on the tree. It is greedy because, at each step of the tree-building process, the best split is made at that particular step, rather than looking ahead and picking a split that will lead to a better tree in some future step. In order to perform recursive binary splitting, we first select the predictor $X_j$ and the cutpoint $s$ such that splitting the predictor space into the regions $\{X|X_j < s\}$ and $\{X|X_j \geq s\}$ leads to the greatest possible reduction in RSS. For building a classification tree, alternatives to RSS are the classification error rate, Gini index, and entropy. Instead of the error rate, either the Gini index or the entropy are typically used to evaluate the quality of a particular split, since these two approaches are more sensitive to node purity than is the classification error rate.
+
+Another problem with the decision tree is that the process described above may produce good predictions on the training set but is likely to overfit the data, leading to poor test set performance. A better strategy is to grow a very large tree and then prune it back in order to obtain a subtree. We can use the cross validation to prune the tree.
+
+The advantages of trees are the following: (1) trees are very easy to explain; (2) trees can be displayed graphically and are easily interpreted even by a non-expert; (3) trees can easily handle qualitative predictors without the need to create dummy variables. Disadvantages of trees are the following: (1) trees generally do not have the same level of predictive accuracy as some of the other regression and classification approaches; (2) trees can be very non-robust, i.e., a small change in the data can cause a large change in the final estimated tree.
+
+### Bagging
+
+Bagging, random forests, and boosting are approaches to improve decision trees by involving multiple trees, which are then combined to yield a single consensus prediction. To apply bagging to regression trees, we simply construct $B$ regression trees using $B$ bootstrapped training sets and average the resulting predictions. These trees are grown deep and are not pruned. Because the tree is not pruned, it means each tree is more flexible, hence high variance but low bias. Averaging these $B$ trees reduces the variance because in statistics, averaging a set of observations reduces variance. For bagging classification trees, we can record the class predicted by each of the $B$ trees, and take a majority vote (i.e., the most commonly occurring class among the $B$ predictions).
+
+We can also obtain an overall summary of the importance of each predictor using the RSS (for bagging regression trees) or the Gini index (for bagging classification trees). In the case of bagging regression trees, we can record the total amount that the RSS is decreased due to splits over a given predictor, averaged over all $B$ trees. A large value indicates an important predictor.
+
+### Random forests
+
+The main difference between bagging and random forests is the choice of predictor subset size m. When building decision trees in random forests, each time a split in a tree is considered, a random sample of m predictors is chosen as split candidates from the full set of p predictors. If a random forest is built using $m = p$, then this amounts simply to bagging. Random forests can provide an improvement over bagged trees by decorrelating the trees, i.e., forcing the tree to consider different splits and thus avoid the situation when all trees to have similar structures due to a small subset of strong predictors. In general, using a small value of m in building a random forest will typically be helpful when we have a large number of correlated predictors.
+
+###	Boosting
+
+In boosting, each tree is grown using information from previously grown trees. Boosting does not involve bootstrap sampling, but instead, each tree is fit on a modified version of the original data set. Unlike in bagging, the construction of each tree depends strongly on the trees that have already been grown. Boosting involves the parameters that we have to determine. The shrinkage parameter $\lambda$, a small positive number, controls the rate at which boosting learns. Very small $\lambda$ can require using a very large value of B and thus achieve good performance. We also need to determine the number $d$ of splits in each tree, which controls the complexity of the boosted ensemble. Similar to $\lambda$, a small $d$ can typically achieve a slower learn, which means better performance.

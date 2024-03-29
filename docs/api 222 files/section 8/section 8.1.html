@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jacob Jameson">
 
-<title>Jacob Jameson</title>
+<title>Jacob Jameson - Section 8.1 - Tree-Based Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +24,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -59,25 +61,25 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Jacob Jameson">
+<meta name="twitter:title" content="Jacob Jameson - Section 8.1 - Tree-Based Methods">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://www.jacobjameson.com/images/profile.png">
+<meta name="twitter:image" content="https://www.jacobjameson.com/api 222 files/section 8/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1104">
-<meta name="twitter:image-width" content="1004">
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/sig.png" alt="" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/sig.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -102,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts/blog.html" rel="" target="">
+    <a class="nav-link" href="../../posts/blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -111,25 +113,25 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
         <li>
-    <a class="dropdown-item" href="./teaching.html" rel="" target="">
+    <a class="dropdown-item" href="../../teaching.html" rel="" target="">
  <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./R files/Intro R.html" rel="" target="">
+    <a class="dropdown-item" href="../../R files/Intro R.html" rel="" target="">
  <span class="dropdown-text">Introduction to R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./git files/Intro Git.html" rel="" target="">
+    <a class="dropdown-item" href="../../git files/Intro Git.html" rel="" target="">
  <span class="dropdown-text">Introduction to Git/GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./api 222 files/API222.html" rel="" target="">
+    <a class="dropdown-item" href="../../api 222 files/API222.html" rel="" target="">
  <span class="dropdown-text">API 222 Section Material</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./research.html" rel="" target="">
+    <a class="nav-link" href="../../research.html" rel="" target="">
  <span class="menu-text">Research</span></a>
   </li>  
 </ul>
@@ -142,103 +144,86 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#tree-based-methods" id="toc-tree-based-methods" class="nav-link active" data-scroll-target="#tree-based-methods">Tree-Based Methods</a>
+  <ul class="collapse">
+  <li><a href="#decision-trees" id="toc-decision-trees" class="nav-link" data-scroll-target="#decision-trees">Decision Trees</a></li>
+  <li><a href="#bagging" id="toc-bagging" class="nav-link" data-scroll-target="#bagging">Bagging</a></li>
+  <li><a href="#random-forests" id="toc-random-forests" class="nav-link" data-scroll-target="#random-forests">Random forests</a></li>
+  <li><a href="#boosting" id="toc-boosting" class="nav-link" data-scroll-target="#boosting">Boosting</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<div class="quarto-about-trestles column-page">
-  <div class="about-entity">
-    <img src="../images/profile.png" class="about-image
-  round " style="height: 15em; width: 15em;">
+<main class="content column-page-right" id="quarto-document-content">
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Jacob Jameson</h1>
+<h1 class="title">Section 8.1 - Tree-Based Methods</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jacob Jameson </p>
+          </div>
   </div>
+    
+  
+    
+  </div>
+  
+
 </header>
-    <div class="about-links">
-  <a href="https://jacobjameson.com/posts/blog" class="about-link" rel="" target="">
-    <i class="bi bi-rss"></i>
-     <span class="about-link-text">Blog</span>
-  </a>
-  <a href="mailto:jacobjameson@g.harvard.edu" class="about-link" rel="" target="">
-    <i class="bi bi-envelope"></i>
-     <span class="about-link-text">Email</span>
-  </a>
-  <a href="https://github.com/jacobjameson" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-  <a href="https://twitter.com/JacobCJameson" class="about-link" rel="" target="">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">Twitter</span>
-  </a>
-  <a href="/Data/Jameson_vitae.pdf" class="about-link" rel="" target="">
-    <i class="bi bi-mortarboard"></i>
-     <span class="about-link-text">CV</span>
-  </a>
+
+<p>Note that more thorough treatment of these topics in Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.</p>
+<section id="tree-based-methods" class="level2">
+<h2 class="anchored" data-anchor-id="tree-based-methods">Tree-Based Methods</h2>
+<p>Tree-based methods are non-parametric supervised learning methods that stratify or segment the predictor space into a number of simple regions. They can be used for both regression and clas- sification. After building a tree using the training data, a prediction can be made by using the training observations in the region to which the new observation belongs. For a regression tree, the predicted response for an observation is given by the mean response of the training observations that belong to the same terminal node. In contrast, for a classification tree, we predict that each observation belongs to the most commonly occurring class of training observations in the region to which it belongs. Decision trees are simple and useful for interpretation. However, they typically have lower predictive power than other supervised learning methods. Bagging, random forests, and boosting are approaches to improve decision trees by involving multiple trees, which are then combined to yield a single consensus prediction. These approaches can dramatically improve the prediction accuracy of decision trees, at the expense of interpretability.</p>
+<section id="decision-trees" class="level3">
+<h3 class="anchored" data-anchor-id="decision-trees">Decision Trees</h3>
+<p>To interpret a decision tree, suppose we have below tree from the Hitters data. The Figure represents a regression tree for predicting the log salary of a baseball player, based on the two predictors—the number of years that he has played in the major leagues and the number of hits that he made in the previous year. We can read the tree sequentially from top to bottom. At a given node (where the branches split), the label (of the form <span class="math inline">\(X_j &lt; t_k\)</span>) indicates the left-hand branch emanating from that split, and the right-hand branch corresponds to <span class="math inline">\(X_j \geq t_k\)</span>. For instance, the split at the top of the tree results in two large branches. The left-hand branch corresponds to <span class="math inline">\(Years &lt; 4.5\)</span> and the right-hand branch corresponds to <span class="math inline">\(Years \geq 4.5\)</span>. The number in each leaf (terminal nodes) is the mean of the response (outcomes) for the observations (in the training data) that fall there.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dt.png" class="img-fluid figure-img" style="width:30.0%"></p>
+<figcaption class="figure-caption">Decision Tree Example</figcaption>
+</figure>
 </div>
-  </div>
-  <div class="about-contents"><main class="content column-page" id="quarto-document-content">
-<section id="about-me" class="level2">
-<h2 data-anchor-id="about-me">About Me</h2>
-<div class="flex">
-<p class="header-sub-title" id="word">
-</p>
-<p class="header-sub-title blink">
-|
-</p>
-</div>
-<p>I am a PhD student at Harvard University studying Health Policy and Decision Sciences. I am currently advised by Dr.&nbsp;Soroush Saghafian and work in <a href="https://scholar.harvard.edu/saghafian/public-impact-analytics-science-lab-pias-lab-harvard">The Public Impact Analytics Science Lab (PIAS-Lab)</a> at Harvard. I am also a <a href="https://vimeo.com/914922180/2e41db4ebc">Center for Health Decision Science Educational Innovation Scholar</a>, working with Dr.&nbsp;Sue Goldie on projects that support new instructional models and pedagogical approaches to teach decision science.</p>
-<p>In my research I use tools from operations research, engineering, computer science, and economics to inform decisions being made under conditions of uncertainty.</p>
-<center>
-<img src="images/markov.gif" class="img-fluid" style="width:60.0%">
-</center>
-<p>Aside from research, I am passionate about teaching. I have <a href="./teaching.html">extensive experience teaching</a> students in a variety of settings, including as a teaching fellow at Harvard, instructor at UChicago Medicine, and as a Teach For America corps member in New Haven Public Schools.</p>
-<script>
-const words = ["Data scientist", "Teacher", "Health policy researcher", "Decision scientist"];
-let i = 0;
-let timer;
-function typingEffect() {
-    let word = words[i].split("");
-    var loopTyping = function() {
-        if (word.length > 0) {
-            document.getElementById('word').innerHTML += word.shift();
-        } else {
-            deletingEffect();
-            return false;
-        };
-        timer = setTimeout(loopTyping, 200);
-    };
-    loopTyping();
-};
-function deletingEffect() {
-    let word = words[i].split("");
-    var loopDeleting = function() {
-        if (word.length > 0) {
-            word.pop();
-            document.getElementById('word').innerHTML = word.join("");
-        } else {
-            if (words.length > (i + 1)) {
-                i++;
-            } else {
-                i = 0;
-            };
-            typingEffect();
-            return false;
-        };
-        timer = setTimeout(loopDeleting, 120);
-    };
-    loopDeleting();
-};
-typingEffect();
-</script>
+<p>Decision trees are easier to interpret and have a nice graphical representation. Unfortunately, fitting a decision tree is not simple. It is computationally infeasible to consider every possible partition of the feature space into <span class="math inline">\(J\)</span> boxes. For this reason, we take a top-down, greedy approach that is known as recursive binary splitting. The approach is top-down because it begins at the top of the tree (at which point all observations belong to a single region) and then successively splits the predictor space; each split is indicated via two new branches further down on the tree. It is greedy because, at each step of the tree-building process, the best split is made at that particular step, rather than looking ahead and picking a split that will lead to a better tree in some future step. In order to perform recursive binary splitting, we first select the predictor <span class="math inline">\(X_j\)</span> and the cutpoint <span class="math inline">\(s\)</span> such that splitting the predictor space into the regions <span class="math inline">\(\{X|X_j &lt; s\}\)</span> and <span class="math inline">\(\{X|X_j \geq s\}\)</span> leads to the greatest possible reduction in RSS. For building a classification tree, alternatives to RSS are the classification error rate, Gini index, and entropy. Instead of the error rate, either the Gini index or the entropy are typically used to evaluate the quality of a particular split, since these two approaches are more sensitive to node purity than is the classification error rate.</p>
+<p>Another problem with the decision tree is that the process described above may produce good predictions on the training set but is likely to overfit the data, leading to poor test set performance. A better strategy is to grow a very large tree and then prune it back in order to obtain a subtree. We can use the cross validation to prune the tree.</p>
+<p>The advantages of trees are the following: (1) trees are very easy to explain; (2) trees can be displayed graphically and are easily interpreted even by a non-expert; (3) trees can easily handle qualitative predictors without the need to create dummy variables. Disadvantages of trees are the following: (1) trees generally do not have the same level of predictive accuracy as some of the other regression and classification approaches; (2) trees can be very non-robust, i.e., a small change in the data can cause a large change in the final estimated tree.</p>
+</section>
+<section id="bagging" class="level3">
+<h3 class="anchored" data-anchor-id="bagging">Bagging</h3>
+<p>Bagging, random forests, and boosting are approaches to improve decision trees by involving multiple trees, which are then combined to yield a single consensus prediction. To apply bagging to regression trees, we simply construct <span class="math inline">\(B\)</span> regression trees using <span class="math inline">\(B\)</span> bootstrapped training sets and average the resulting predictions. These trees are grown deep and are not pruned. Because the tree is not pruned, it means each tree is more flexible, hence high variance but low bias. Averaging these <span class="math inline">\(B\)</span> trees reduces the variance because in statistics, averaging a set of observations reduces variance. For bagging classification trees, we can record the class predicted by each of the <span class="math inline">\(B\)</span> trees, and take a majority vote (i.e., the most commonly occurring class among the <span class="math inline">\(B\)</span> predictions).</p>
+<p>We can also obtain an overall summary of the importance of each predictor using the RSS (for bagging regression trees) or the Gini index (for bagging classification trees). In the case of bagging regression trees, we can record the total amount that the RSS is decreased due to splits over a given predictor, averaged over all <span class="math inline">\(B\)</span> trees. A large value indicates an important predictor.</p>
+</section>
+<section id="random-forests" class="level3">
+<h3 class="anchored" data-anchor-id="random-forests">Random forests</h3>
+<p>The main difference between bagging and random forests is the choice of predictor subset size m. When building decision trees in random forests, each time a split in a tree is considered, a random sample of m predictors is chosen as split candidates from the full set of p predictors. If a random forest is built using <span class="math inline">\(m = p\)</span>, then this amounts simply to bagging. Random forests can provide an improvement over bagged trees by decorrelating the trees, i.e., forcing the tree to consider different splits and thus avoid the situation when all trees to have similar structures due to a small subset of strong predictors. In general, using a small value of m in building a random forest will typically be helpful when we have a large number of correlated predictors.</p>
+</section>
+<section id="boosting" class="level3">
+<h3 class="anchored" data-anchor-id="boosting">Boosting</h3>
+<p>In boosting, each tree is grown using information from previously grown trees. Boosting does not involve bootstrap sampling, but instead, each tree is fit on a modified version of the original data set. Unlike in bagging, the construction of each tree depends strongly on the trees that have already been grown. Boosting involves the parameters that we have to determine. The shrinkage parameter <span class="math inline">\(\lambda\)</span>, a small positive number, controls the rate at which boosting learns. Very small <span class="math inline">\(\lambda\)</span> can require using a very large value of B and thus achieve good performance. We also need to determine the number <span class="math inline">\(d\)</span> of splits in each tree, which controls the complexity of the boosted ensemble. Similar to <span class="math inline">\(\lambda\)</span>, a small <span class="math inline">\(d\)</span> can typically achieve a slower learn, which means better performance.</p>
 
 
 </section>
-</main></div>
-</div>
- <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -259,6 +244,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
