@@ -1,0 +1,111 @@
+---
+title: "Section 7 - Non-linear Models"
+from: markdown+emoji
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+description: |
+author: Jacob Jameson
+
+---
+
+
+Note: this section has several different types of models. We cannot cover all of them in 1.25 hours. We will go over a few examples but once you understand how the examples, you should be able to apply the logic to other types models. 
+
+
+This week, we will use the Wage data that is part of the ISLR package
+
+```{r}
+library(ISLR)
+```
+
+
+Load the Wage data and drop the "Wage" columns, as we did in Section 6
+
+```{r}
+wage_data <- Wage
+wage_data <- wage_data[, -10]
+```
+
+
+  
+To make life easier for later analyses, I will start by sorting the data on age. To do this, I will use a package called `dplyr`, which has a lot of great tools for data manipulation. 
+  
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+```
+  
+The first two functions we will use are:
+- `%>%` which means "and then do"
+- `arrange()` which sorts the data on the column inside the parentheses
+
+```{r}
+wage_data <- wage_data %>% arrange(age)
+```
+
+
+We will start by splitting the data into training and test sets
+
+```{r}
+set.seed(222)
+train <- sample(1:nrow(wage_data), round(nrow(wage_data) * 0.8))
+train <- sort(train)
+test <- which(!(seq(nrow(wage_data)) %in% train))
+```
+
+
+
+To quickly and easily measure MSEP, write our own function
+
+```{r}
+msep_func <- function(predictions, true_vals) {
+  MSEP <- mean((predictions - true_vals)^2)
+  return(MSEP)
+}
+```
+
+
+
+
+## Polynomial Regression 
+
+We can start by fitting a polynomial regression using only age
+
+```{r}
+age_poly <- lm(wage ~ poly(age, 4), data = wage_data[train,])
+```
+
+
+Extract the coefficients from the model
+
+```{r}
+coef(summary(age_poly))
+```
+
+When you use `poly()`, it returns a matrix of "orthogonal polynomials" so the columns of the matrix are linear combinations of age, age$^2$, age$^3$, age$^4$. Let's take a look!
+
+```{r}
+head(poly(wage_data$age, 4))
+head(wage_data$age)
+```
+
+If you want it to return the raw powers of age, you can add an argument to the function `poly()`
+
+```{r}
+head(poly(wage_data$age, 4, raw = TRUE))
+```
+
+Although the two forms give you different numbers, they result in the same predictions, because your model is still a linear combination of the original powers
+
+```{r}
+age_poly_TRUE <- lm(wage ~ poly(age, 4, raw = TRUE), 
+                    data = wage_data[train,])
+```
+
+Extract the coefficients from the model
+
+```{r}
+coef(summary(age_poly_TRUE))
+```

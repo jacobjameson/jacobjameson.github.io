@@ -1,0 +1,303 @@
+---
+title: "Section 5 - Cross-Validation, Ridge, Lasso, and Bootstrapping"
+from: markdown+emoji
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+description: |
+author: Jacob Jameson
+
+---
+
+# Notes
+
+Note that the material in these notes draws on past TF’s notes (Ibou Dieye, Laura Morris, Emily Mower, Amy Wickett), and the more thorough treatment of these topics in *Introduction to Statistical Learning* by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani. 
+
+
+In the absence of a designated test data set, a number of methods can be used to estimate out-of-sample performance using the available training data. In this review session, we consider two popular types of resampling methods: Cross-validation and Bootstrap.
+	
+## Cross-validation
+
+Cross-validation is a method that works by holding out a subset of the training observations from the model fitting process, and then applying the model to those held out observations.
+	
+### The Validation Set Approach
+
+This is the type of cross-validation method we have been using in review sessions so far. It involves randomly dividing the available set of observations into two parts, a training set and a validation set. The model is fit on the training set, and the fitted model is used to predict the responses for the observations in the validation set. The validation error rate provides an estimate of the test error rate. 
+	
+The validation set approach is simple and is easy to implement, but it has a few drawbacks. First, it can yield estimates of the test error rate that are highly variable. In addition, since it trains the model using only a subset of the data, it may tend to overestimate the test error rate for the model fit on the entire data set. 
+	
+### Leave-one-out Cross-validation
+	
+Leave-one-out cross-validation (LOOCV)  attempts to address the drawbacks of the validation set method. Instead of creating two subsets, a single observation is used for the validation set, and the remaining ($n - 1$) observations constitute the training set. The statistical learning method is fit on the $n - 1$ training observations, and a prediction is made for the excluded observation to estimate a test error rate. The procedure is repeated $n$ times, by selecting each individual observation for the validation data, training the procedure on the $n - 1$ observations, and computing the test error. The LOOCV estimate for the test error is the average of these $n$ test error estimates.
+	
+Compared to the validation set approach, LOOCV is more expensive to implement. However, it has less bias since it uses almost all the training observations and yields estimates of the test error rate that are less variable through its averaging feature.
+	
+	
+### $k$-fold Cross-validation
+	
+$k$-fold Cross-validation is an alternative to LOOCV. For $j=1,...,k$, the model is fit on all folds *except* fold $j$. Then, the model's predictive performance on the data is assessed in fold $j$. Thus, for a given iteration, the "training" data is data from all the folds except for fold $j$, and the ``test'' data is data from fold $j$. This process is repeated for $j=1,...,k$ and a test error is estimated for each fold. The $k$-fold cross-validation estimate for the test error is the average of these $k$ test error estimates.
+	
+LOOCV can be thought of as a special type $k$-fold cross-validation, where $k$ equals the number of observations in the data. In practice, one typically performs $k$-fold CV using $k = 5$ or $k = 10$, which provides computational advantage over $k = n$. Beyond computational issues, LOOCV has lower bias but higher variance (why?), compared to $k$-fold CV with $k < n$. Overall, $k$-fold CV tends to win in terms of the bias-variance trade-off. 
+	
+
+## Bootstrapping
+
+Bootstrapping involves resampling a data set with replacement. It is a very useful statistical tool that allows one to quantify the uncertainty of an estimator, such as a coefficient. This is especially useful for models where there is not a convenient standard error formula. When the goal is to estimate the uncertainty of an estimate, one can bootstrap the data and generate the estimate many times (e.g. 1,000 times). Then, one can look at the distribution of the estimates and take the middle 95\% as the 95\% confidence interval. 
+
+Bootstrapping is also an important component of some very powerful machine learning models. We will learn about some of these models in the next few weeks. 
+
+# Coding
+
+
+## About Dataset
+### Context
+
+This dataset is originally from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective of the dataset is to diagnostically predict whether or not a patient has diabetes, based on certain diagnostic measurements included in the dataset. Several constraints were placed on the selection of these instances from a larger database. In particular, all patients here are females at least 21 years old of Pima Indian heritage.
+
+### Content
+
+The datasets consists of several medical predictor variables and one target variable, Outcome. Predictor variables includes the number of pregnancies the patient has had, their BMI, insulin level, age, and so on.
+
+[Download the dataset here](https://github.com/jacobjameson/jacobjameson.github.io/blob/main/api%20222%20files/section%205/diabetes.csv):
+
+
+```{r}
+diabetes_data <- read.csv("diabetes.csv", header = TRUE)
+```
+
+Let's get to know our data. 
+
+```{r}
+dim(diabetes_data)
+summary(diabetes_data)
+```
+
+From the output, we see that we have one binary variable (Outcome) and eight continuous variables. We have 768 observations.
+
+Today, we will focus on predicting Outcome: (whether or not a patient has diabetes)
+
+Let's start with KNN for classification, so load the required package:
+
+```{r}
+library(class)
+```
+
+We are interested in using KNN on this dataset, but we aren't sure which k will give the best out-of-sample accuracy. We can use cross-validation to find the best k in this sense.
+
+### Brief intro to functions in R
+An R function is created by using the keyword function. The basic syntax of an R function definition is as follows −
+
+```{r, eval=F}
+function_name <- function(arg_1, arg_2, ...) {
+   Function body 
+}
+```
+
+The different parts of a function are:
+
+- Function Name: This is the actual name of the function. It is stored in R environment as an object with this name.
+
+- Arguments: An argument is a placeholder. When a function is invoked, you pass a value to the argument. Arguments are optional; that is, a function may contain no arguments. Also arguments can have default values.
+
+- Function Body: The function body contains a collection of statements that defines what the function does.
+
+- Return Value: The return value of a function is the last expression in the function body to be evaluated.
+
+
+```{r}
+## Example of a simple function
+add_fun <- function(a1, a2){
+  res = a1 + a2
+  return(res)
+}
+
+add_fun(3, 4)
+```
+
+### Function to perform cross-validation
+
+Let's write a function to do cross-validation. We will name the function cross_validation_KNN() and it will take 3 arguments:
+
+1. The feature columns of the data
+2. The outcome column of the data (Y)
+3. A vector of all k values to test
+4. The number of folds to use in k-fold cross validation
+
+
+```{r}
+cross_validation_KNN  <- function(data_x, data_y, k_seq, kfolds) {
+    
+  ## We will start by assigning each observation to one and 
+  ## only one fold for cross-validation. To do this, we use
+  ## an index vector. The vector's length equals the number
+  ## of observations in the data. The vector's entries are 
+  ## equal numbers of 1s, 2s, etc. up to the number of folds
+  ## being used for k-fold cross validation.
+  ## Recall seq(5) is a vector (1, 2, 3, 4, 5)
+  ## ceiling() rounds a number up to the nearest integer
+  ## rep(a, b) repeats a b times (e.g. rep(1, 3) => (1, 1, 1))
+  ## So this says repeat the sequence from 1:kfolds
+  ## enough times to fill a vector that is as long or 
+  ## slightly longer than the number of observations in
+  ## the data. Then, if the length of the vector exceeds
+  ## the number of observations, truncate it to the right
+  ## length
+  
+  fold_ids <- rep(seq(kfolds), ceiling(nrow(data_x) / kfolds))
+  fold_ids <- fold_ids[1:nrow(data_x)]
+  
+  ## To make the IDs random, randomly rearrange the vector
+  fold_ids <- sample(fold_ids, length(fold_ids))
+  
+  ## In order to store the prediction performance for each fold
+  ## for each k, we initialize a matrix.
+  CV_error_mtx  <- matrix(0, nrow = length(k_seq), ncol = kfolds)
+  
+  ## To run CV, we will loop over all values of k that we want to 
+  ## consider for KNN. For each value of k, we will loop over all
+  ## folds. For each fold, we will estimate KNN for the given k on 
+  ## all but one fold. We will then measure the model's accuracy 
+  ## on the hold out fold and save it. After we finish looping 
+  ## through all k's and all folds, we will find the average CV
+  ## error for each value of k and use that as a measure of the 
+  ## model's performance.
+  for (k in k_seq) {
+    for (fold in 1:kfolds) {
+      ## Train the KNN model (Note: if it throws a weird error, make sure
+      ## all features are numeric variables -- not factors)
+      ## Note: usually the features are normalized/re-scaled
+      ## Otherwise KNN will give more weight to variables at the larger scale
+      ## when calculating the distance metric.
+      ## See page 165 of the textbook for a useful example
+      knn_fold_model <- knn(train = scale(data_x[which(fold_ids != fold),]),
+                            test = scale(data_x[which(fold_ids == fold),]),
+                            cl = data_y[which(fold_ids != fold)],
+                            k = k)
+      
+      ## Measure and save error rate (% wrong)
+      CV_error_mtx[k, fold] <- mean(knn_fold_model != 
+                                      data_y[which(fold_ids == fold)])
+    }
+  }
+  
+  ## We want our function to return the accuracy matrix
+  return(CV_error_mtx)
+    
+}
+```
+
+### Applying the function
+
+We can now use the cross-validation function on real data. Note that the outcome is stored in the 9th column.
+
+```{r}
+set.seed(222)
+knn_cv_error5 <- cross_validation_KNN(data_x = diabetes_data[, -9],
+                                      data_y = diabetes_data$Outcome,
+                                      k_seq = seq(20),
+                                      kfolds = 5)
+print(knn_cv_error5)
+
+knn_cv_error10 <- cross_validation_KNN(data_x = diabetes_data[,-9],
+                                       data_y = diabetes_data$Outcome,
+                                       k_seq = seq(50),
+                                       kfolds = 10)
+print(knn_cv_error10)
+```
+
+We are usually interested in the mean CV error or accuracy for each parameter considered (value of k in this case). To find the mean for each row, we can use the function `rowMeans()`. Note that an equivalent function exists for taking the means of columns: `colMeans()`. There are also functions for `rowSums()` and `colSums()`.
+
+```{r}
+mean_cv_error5 <- rowMeans(knn_cv_error5)
+mean_cv_error10 <- rowMeans(knn_cv_error10)
+```
+
+To find the position of the smallest CV error, use `which.min()`.
+
+```{r}
+which.min(mean_cv_error5)
+which.min(mean_cv_error10)
+```
+
+To understand how perform changes across the K values, a plot would be helpful.
+
+```{r}
+plot(seq(20), mean_cv_error5, type = "l",
+     main = "Mean CV Error Rate as a Function of k",
+     ylab = "CV Error Rate", xlab = "k")
+```
+
+
+From this, we see that low k values have poor performance while large k values seem to have roughly equivalent performance.
+
+## BONUS MATERIAL
+
+### LDA/QDA/Logistic CV
+
+Given that our problem is a classification problem, we might be interested in seeing how well we could do with different methods, like logistic regression, LDA and QDA. Let's see! We can edit the function we used for CV for KNN and make it relevant for these models. Note that `logistic_formula = NULL` means the function can run even if this formula is not specified (which it won't be when we want to run LDA or QDA). Note also that we need to load the package `MASS`, because it contains the functions `lda()` and `qda()`.
+
+```{r}
+library(MASS)
+cross_validation <- function(full_data, model_type, kfolds,
+                             logistic_formula = NULL) {
+  
+  ## Define fold_ids in exactly the same way as before
+  fold_ids <- rep(seq(kfolds), 
+                       ceiling(nrow(full_data) / kfolds))
+  fold_ids <- fold_ids[1:nrow(full_data)]
+  fold_ids <- sample(fold_ids, length(fold_ids))
+  
+  ## Initialize a vector to store CV error
+  CV_error_vec  <- vector(length = kfolds, mode = "numeric")
+  
+  ## Loop through the folds
+  for (k in 1:kfolds){
+    if (model_type == "logistic") {
+      logistic_model <- glm(logistic_formula,
+                            data = full_data[which(fold_ids != k),],
+                            family = binomial)
+      logistic_pred <- predict(logistic_model,
+                               full_data[which(fold_ids == k),],
+                               type = "response")
+      class_pred <- as.numeric(logistic_pred > 0.5)
+      
+    } else if (model_type == "LDA") {
+      lda_model <- lda(full_data[which(fold_ids != k),-9], 
+                       full_data[which(fold_ids != k),9])
+      lda_pred <- predict(lda_model, full_data[which(fold_ids == k), -9])
+      class_pred <- lda_pred$class
+      
+    } else if (model_type == "QDA") {
+      qda_model <- qda(full_data[which(fold_ids != k), -9], 
+                       full_data[which(fold_ids != k), 9])
+      qda_pred <- predict(qda_model, 
+                          full_data[which(fold_ids == k), -9])
+      class_pred <- qda_pred$class
+    }
+    
+    CV_error_vec[k] <- mean(class_pred != full_data[which(fold_ids == k), 9])
+  }
+  return(CV_error_vec)
+}
+
+## Run CV for logistic regression:
+logistic_formula <- paste("Outcome", paste(colnames(diabetes_data)[1:8],
+                                           collapse = " + "), 
+                          sep = " ~ ")
+logistic_CV_error <- cross_validation(diabetes_data, "logistic", 5, 
+                                      as.formula(logistic_formula))
+
+## Run CV for LDA:
+lda_CV_error <- cross_validation(diabetes_data, "LDA", 5)
+
+## Run CV for QDA:
+qda_CV_error <- cross_validation(diabetes_data, "QDA", 5)
+
+## Determine the best model in terms of lowest average CV error
+print(paste("Logistic Error Rate:", round(mean(logistic_CV_error), 3)))
+print(paste("LDA Error Rate:", round(mean(lda_CV_error), 3)))
+print(paste("QDA Error Rate:", round(mean(qda_CV_error), 3)))
+```
+

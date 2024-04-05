@@ -1,5 +1,5 @@
 ---
-title: "Jacob Jameson"
+title: "Blog"
 listing:
   sort:
     - "date desc"

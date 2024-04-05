@@ -1,5 +1,5 @@
 ---
-title: "Section 3 - More on Linear Regression"
+title: "Section 3 - More on Linear Regression: Exercises"
 from: markdown+emoji
 format:
   html:
