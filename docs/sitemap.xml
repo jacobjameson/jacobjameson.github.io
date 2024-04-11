@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.jacobjameson.com/index.html</loc>
-    <lastmod>2024-04-05T01:37:52.800Z</lastmod>
+    <lastmod>2024-04-11T14:19:50.000Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/Data/viz/2023-01-31 Tidy Tuesday/TT_wk5.html</loc>
@@ -50,11 +50,11 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 2/section2.html</loc>
-    <lastmod>2024-04-05T02:15:36.792Z</lastmod>
+    <lastmod>2024-04-11T14:25:01.726Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 3/section3.html</loc>
-    <lastmod>2024-04-05T02:15:33.875Z</lastmod>
+    <lastmod>2024-04-11T14:24:53.677Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.2.html</loc>
@@ -78,7 +78,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/posts/2024-02-26-PCR/2024-02-26-PCR.html</loc>
-    <lastmod>2024-03-21T22:51:48.448Z</lastmod>
+    <lastmod>2024-04-11T14:26:19.940Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/git files/section 5/section 5.html</loc>
@@ -126,7 +126,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/posts/blog.html</loc>
-    <lastmod>2024-04-05T01:37:45.191Z</lastmod>
+    <lastmod>2024-04-11T14:26:10.323Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 7/section 7.2.html</loc>
@@ -138,7 +138,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 1/section1.html</loc>
-    <lastmod>2024-04-05T02:15:30.248Z</lastmod>
+    <lastmod>2024-04-11T14:25:06.408Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.1.html</loc>
@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/API222.html</loc>
-    <lastmod>2024-04-05T02:15:34.454Z</lastmod>
+    <lastmod>2024-04-11T14:25:53.471Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 2/section2.1.html</loc>
@@ -198,11 +198,11 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/posts/2024-03-26-DT/2024-03-26-DT.html</loc>
-    <lastmod>2024-03-29T00:08:26.077Z</lastmod>
+    <lastmod>2024-04-11T14:26:12.918Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/JSI@HKS/syllabus/syllabus.html</loc>
-    <lastmod>2024-03-28T17:10:27.082Z</lastmod>
+    <lastmod>2024-04-11T14:19:39.095Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 8/section 8.1.html</loc>
@@ -214,26 +214,34 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 9/section 9.html</loc>
-    <lastmod>2024-04-05T02:15:43.780Z</lastmod>
+    <lastmod>2024-04-11T14:20:45.913Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.html</loc>
-    <lastmod>2024-04-05T02:15:32.859Z</lastmod>
+    <lastmod>2024-04-11T14:24:46.940Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 5/section 5.html</loc>
-    <lastmod>2024-04-05T02:15:37.862Z</lastmod>
+    <lastmod>2024-04-11T14:24:27.227Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 6/section 6.html</loc>
-    <lastmod>2024-04-05T02:15:28.967Z</lastmod>
+    <lastmod>2024-04-11T14:24:03.368Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 7/section 7.html</loc>
-    <lastmod>2024-04-05T02:15:27.814Z</lastmod>
+    <lastmod>2024-04-11T14:20:55.000Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 8/section 8.html</loc>
-    <lastmod>2024-04-05T02:15:31.540Z</lastmod>
+    <lastmod>2024-04-11T14:21:29.447Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/JSI@HKS/Lectures/Lecture 2/L2.html</loc>
+    <lastmod>2024-04-08T02:12:40.734Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/JSI@HKS/Lectures/Lecture 1/L1.html</loc>
+    <lastmod>2024-04-11T14:19:39.323Z</lastmod>
   </url>
 </urlset>

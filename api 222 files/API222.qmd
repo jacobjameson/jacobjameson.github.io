@@ -13,18 +13,7 @@ page-layout: full
 ## Section Materials Introduction
 
 
-Welcome to the Section Materials for API-222! This course is a journey through the fascinating world of machine learning, tailored to provide you with a strong foundation in both the theoretical and practical aspects of the field. With a focus on policy-making and decision-making applications, you will gain not only an understanding of the statistical theories behind the algorithms but also the skills to apply them to solve real-world problems.
+Welcome to the Section Materials for API-222! This page contains all of the code and notes for the course. You can use the links below to navigate to the different sections of the course. If you have any questions or need help with anything, please don't hesitate to reach out to me.
 
-In this supplementary section, our primary goal is to enhance your coding abilities. While the main lectures of the course delve into the concepts and theories of machine learning, here we will put those theories into practice.
-
-The section materials are neatly segmented to mirror the course's structure, which is divided into two main units:
-
-- Supervised Learning: We start with a deep dive into algorithms designed to predict and analyze outcomes based on input data. You'll learn to navigate through regression, classification, cross-validation, and more, using R to bring these concepts to life.
-
-- Unsupervised Learning: The second half of the course explores the patterns and structures in data where outcomes aren't provided. Clustering, dimensionality reduction, and other techniques will be covered, giving you a comprehensive toolkit for data analysis.
-
-Whether you are running regressions, classifying data, or implementing advanced machine learning models, these section materials are crafted to provide you with hands-on experience. Through a series of code examples, exercises, and assignments, you will build the confidence to tackle complex datasets and extract meaningful insights.
-
-Remember, while mastering the syntax and functions of a programming language is essential, the real magic lies in applying these tools to real-world scenarios. Let's code our way to a deeper understanding of machine learning!
 
 

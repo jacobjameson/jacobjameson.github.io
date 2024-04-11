@@ -207,6 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#coding" id="toc-coding" class="nav-link" data-scroll-target="#coding">Coding</a>
   <ul class="collapse">
   <li><a href="#lasso-and-ridge-regression-1" id="toc-lasso-and-ridge-regression-1" class="nav-link" data-scroll-target="#lasso-and-ridge-regression-1">LASSO and Ridge Regression</a></li>
+  <li><a href="#principal-components-analysis-pca-and-partial-least-squares-pls" id="toc-principal-components-analysis-pca-and-partial-least-squares-pls" class="nav-link" data-scroll-target="#principal-components-analysis-pca-and-partial-least-squares-pls">Principal Components Analysis (PCA) and Partial Least Squares (PLS)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -392,6 +393,494 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso_ins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="section-6_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>You can also plot the CV-relevant outputs</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>LassoCV <span class="ot">&lt;-</span> lasso_ins<span class="sc">$</span>glmnet.fit</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(LassoCV, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">xvar =</span> <span class="st">"lambda"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">v =</span> <span class="fu">log</span>(<span class="fu">c</span>(lasso_ins<span class="sc">$</span>lambda.min, lasso_ins<span class="sc">$</span>lambda<span class="fl">.1</span>se))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="co"># Adds lines to mark the two key lambda values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-6_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>You can see the coefficients corresponding to the two key lambda values using the predict function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lasso_ins, <span class="at">type =</span> <span class="st">"coefficients"</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">s =</span> <span class="fu">c</span>(lasso_ins<span class="sc">$</span>lambda.min, lasso_ins<span class="sc">$</span>lambda<span class="fl">.1</span>se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>86 x 2 sparse Matrix of class "dgCMatrix"
+                       s1          s2
+(Intercept)  0.9896239538 1.053595130
+MOSTYPE      .            .          
+MAANTHUI     .            .          
+MGEMOMV      .            .          
+MGEMLEEF     .            .          
+MOSHOOFD     .            .          
+MGODRK       .            .          
+MGODPR       .            .          
+MGODOV       .            .          
+MGODGE       .            .          
+MRELGE       0.0018180263 .          
+MRELSA       .            .          
+MRELOV       .            .          
+MFALLEEN     .            .          
+MFGEKIND     .            .          
+MFWEKIND     .            .          
+MOPLHOOG     0.0022611683 .          
+MOPLMIDD     .            .          
+MOPLLAAG    -0.0024753875 .          
+MBERHOOG     .            .          
+MBERZELF     .            .          
+MBERBOER    -0.0030373898 .          
+MBERMIDD     .            .          
+MBERARBG     .            .          
+MBERARBO     .            .          
+MSKA         .            .          
+MSKB1        .            .          
+MSKB2        .            .          
+MSKC         .            .          
+MSKD         .            .          
+MHHUUR      -0.0007565131 .          
+MHKOOP       .            .          
+MAUT1        0.0013643467 .          
+MAUT2        .            .          
+MAUT0        .            .          
+MZFONDS      .            .          
+MZPART       .            .          
+MINKM30      .            .          
+MINK3045     .            .          
+MINK4575     .            .          
+MINK7512     .            .          
+MINK123M     .            .          
+MINKGEM      0.0028225067 .          
+MKOOPKLA     0.0025557889 .          
+PWAPART      0.0076586029 .          
+PWABEDR      .            .          
+PWALAND     -0.0008184860 .          
+PPERSAUT     0.0087316235 0.002079863
+PBESAUT      .            .          
+PMOTSCO      .            .          
+PVRAAUT      .            .          
+PAANHANG     .            .          
+PTRACTOR     .            .          
+PWERKT       .            .          
+PBROM        .            .          
+PLEVEN       .            .          
+PPERSONG     .            .          
+PGEZONG      .            .          
+PWAOREG      0.0010472132 .          
+PBRAND       0.0042630439 .          
+PZEILPL      .            .          
+PPLEZIER     .            .          
+PFIETS       .            .          
+PINBOED      .            .          
+PBYSTAND     .            .          
+AWAPART      .            .          
+AWABEDR      .            .          
+AWALAND      .            .          
+APERSAUT     0.0006293082 .          
+ABESAUT      .            .          
+AMOTSCO      .            .          
+AVRAAUT      .            .          
+AAANHANG     .            .          
+ATRACTOR     .            .          
+AWERKT       .            .          
+ABROM        .            .          
+ALEVEN       .            .          
+APERSONG     .            .          
+AGEZONG      .            .          
+AWAOREG      .            .          
+ABRAND       .            .          
+AZEILPL      .            .          
+APLEZIER     0.2083116609 .          
+AFIETS       0.0076146528 .          
+AINBOED      .            .          
+ABYSTAND     0.0361586998 .          </code></pre>
+</div>
+</div>
+<p>Questions you should be able to answer :</p>
+<ul>
+<li>Which lambda in the sequence had the lowest CV error?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lasso_ins<span class="sc">$</span>lambda.min</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.006703696</code></pre>
+</div>
+</div>
+<ul>
+<li>What is the CV error of the “best” lambda?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lasso_ins<span class="sc">$</span>cvm[lasso_ins<span class="sc">$</span>lambda <span class="sc">==</span> lasso_ins<span class="sc">$</span>lambda.min]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.05384566</code></pre>
+</div>
+</div>
+<ul>
+<li>What is the standard deviation of the CV error for the “best” lambda?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lasso_ins<span class="sc">$</span>cvsd[lasso_ins<span class="sc">$</span>lambda <span class="sc">==</span> lasso_ins<span class="sc">$</span>lambda.min]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.002099205</code></pre>
+</div>
+</div>
+<ul>
+<li>What is the largest lambda whose CV error was within 1 standard deviation of the lowest CV error?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lasso_ins<span class="sc">$</span>lambda<span class="fl">.1</span>se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02970154</code></pre>
+</div>
+</div>
+<p>When you do ridge regression, the code is almost exactly the same as for lasso in R. You just need to change the alpha parameter from 1 to 0. I’ll leave this to you as an exercise.</p>
+</section>
+<section id="principal-components-analysis-pca-and-partial-least-squares-pls" class="level2">
+<h2 class="anchored" data-anchor-id="principal-components-analysis-pca-and-partial-least-squares-pls">Principal Components Analysis (PCA) and Partial Least Squares (PLS)</h2>
+<p>We will use the Wage data set that is included in the package ISLR. This data set contains information on people’s wages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>wage_data <span class="ot">&lt;-</span> Wage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s learn a little more about the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wage_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The data set contains 3000 observations on 11 variables. The variables are:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wage_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   3000 obs. of  11 variables:
+ $ year      : int  2006 2004 2003 2003 2005 2008 2009 2008 2006 2004 ...
+ $ age       : int  18 24 45 43 50 54 44 30 41 52 ...
+ $ maritl    : Factor w/ 5 levels "1. Never Married",..: 1 1 2 2 4 2 2 1 1 2 ...
+ $ race      : Factor w/ 4 levels "1. White","2. Black",..: 1 1 1 3 1 1 4 3 2 1 ...
+ $ education : Factor w/ 5 levels "1. &lt; HS Grad",..: 1 4 3 4 2 4 3 3 3 2 ...
+ $ region    : Factor w/ 9 levels "1. New England",..: 2 2 2 2 2 2 2 2 2 2 ...
+ $ jobclass  : Factor w/ 2 levels "1. Industrial",..: 1 2 1 2 2 2 1 2 2 2 ...
+ $ health    : Factor w/ 2 levels "1. &lt;=Good","2. &gt;=Very Good": 1 2 1 2 1 2 2 1 2 2 ...
+ $ health_ins: Factor w/ 2 levels "1. Yes","2. No": 2 2 1 1 1 1 1 1 1 1 ...
+ $ logwage   : num  4.32 4.26 4.88 5.04 4.32 ...
+ $ wage      : num  75 70.5 131 154.7 75 ...</code></pre>
+</div>
+</div>
+<p>To the view the levels of a particular factor variable, we can use:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(wage_data<span class="sc">$</span>maritl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1. Never Married" "2. Married"       "3. Widowed"       "4. Divorced"     
+[5] "5. Separated"    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(wage_data<span class="sc">$</span>region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1. New England"        "2. Middle Atlantic"    "3. East North Central"
+[4] "4. West North Central" "5. South Atlantic"     "6. East South Central"
+[7] "7. West South Central" "8. Mountain"           "9. Pacific"           </code></pre>
+</div>
+</div>
+<p>Notice there is a variable called “wage” and a variable called “logwage”. We just need one of these two. Let’s drop “wage”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>wage_data <span class="ot">&lt;-</span> wage_data[, <span class="sc">-</span><span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Looking at the data, we see there are integer, factor, and numeric variable types. Let’s convert everything to numeric variables, which includes converting factor variables to a series of indicators.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>){</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.factor</span>(wage_data[, i])){</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(j <span class="cf">in</span> <span class="fu">unique</span>(wage_data[, i])){</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>      new_col <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(wage_data)[i], j, <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>      wage_data[, new_col] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(wage_data[, i] <span class="sc">==</span> j) </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    wage_data <span class="ot">&lt;-</span> wage_data[, <span class="sc">-</span>i]     </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(<span class="fu">typeof</span>(wage_data[, i]) <span class="sc">==</span> <span class="st">"integer"</span>) {</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    wage_data[, i] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(wage_data[, i]))</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  } </span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Check your code worked</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#View(wage_data)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wage_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      year           age           logwage      health_ins_2. No
+ Min.   :2003   Min.   :18.00   Min.   :3.000   Min.   :0.0000  
+ 1st Qu.:2004   1st Qu.:33.75   1st Qu.:4.447   1st Qu.:0.0000  
+ Median :2006   Median :42.00   Median :4.653   Median :0.0000  
+ Mean   :2006   Mean   :42.41   Mean   :4.654   Mean   :0.3057  
+ 3rd Qu.:2008   3rd Qu.:51.00   3rd Qu.:4.857   3rd Qu.:1.0000  
+ Max.   :2009   Max.   :80.00   Max.   :5.763   Max.   :1.0000  
+ health_ins_1. Yes health_1. &lt;=Good health_2. &gt;=Very Good
+ Min.   :0.0000    Min.   :0.000    Min.   :0.000        
+ 1st Qu.:0.0000    1st Qu.:0.000    1st Qu.:0.000        
+ Median :1.0000    Median :0.000    Median :1.000        
+ Mean   :0.6943    Mean   :0.286    Mean   :0.714        
+ 3rd Qu.:1.0000    3rd Qu.:1.000    3rd Qu.:1.000        
+ Max.   :1.0000    Max.   :1.000    Max.   :1.000        
+ jobclass_1. Industrial jobclass_2. Information region_2. Middle Atlantic
+ Min.   :0.0000         Min.   :0.0000          Min.   :1                
+ 1st Qu.:0.0000         1st Qu.:0.0000          1st Qu.:1                
+ Median :1.0000         Median :0.0000          Median :1                
+ Mean   :0.5147         Mean   :0.4853          Mean   :1                
+ 3rd Qu.:1.0000         3rd Qu.:1.0000          3rd Qu.:1                
+ Max.   :1.0000         Max.   :1.0000          Max.   :1                
+ education_1. &lt; HS Grad education_4. College Grad education_3. Some College
+ Min.   :0.00000        Min.   :0.0000            Min.   :0.0000           
+ 1st Qu.:0.00000        1st Qu.:0.0000            1st Qu.:0.0000           
+ Median :0.00000        Median :0.0000            Median :0.0000           
+ Mean   :0.08933        Mean   :0.2283            Mean   :0.2167           
+ 3rd Qu.:0.00000        3rd Qu.:0.0000            3rd Qu.:0.0000           
+ Max.   :1.00000        Max.   :1.0000            Max.   :1.0000           
+ education_2. HS Grad education_5. Advanced Degree race_1. White   
+ Min.   :0.0000       Min.   :0.000                Min.   :0.0000  
+ 1st Qu.:0.0000       1st Qu.:0.000                1st Qu.:1.0000  
+ Median :0.0000       Median :0.000                Median :1.0000  
+ Mean   :0.3237       Mean   :0.142                Mean   :0.8267  
+ 3rd Qu.:1.0000       3rd Qu.:0.000                3rd Qu.:1.0000  
+ Max.   :1.0000       Max.   :1.000                Max.   :1.0000  
+ race_3. Asian     race_4. Other     race_2. Black     maritl_1. Never Married
+ Min.   :0.00000   Min.   :0.00000   Min.   :0.00000   Min.   :0.000          
+ 1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.000          
+ Median :0.00000   Median :0.00000   Median :0.00000   Median :0.000          
+ Mean   :0.06333   Mean   :0.01233   Mean   :0.09767   Mean   :0.216          
+ 3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.000          
+ Max.   :1.00000   Max.   :1.00000   Max.   :1.00000   Max.   :1.000          
+ maritl_2. Married maritl_4. Divorced maritl_3. Widowed  maritl_5. Separated
+ Min.   :0.0000    Min.   :0.000      Min.   :0.000000   Min.   :0.00000    
+ 1st Qu.:0.0000    1st Qu.:0.000      1st Qu.:0.000000   1st Qu.:0.00000    
+ Median :1.0000    Median :0.000      Median :0.000000   Median :0.00000    
+ Mean   :0.6913    Mean   :0.068      Mean   :0.006333   Mean   :0.01833    
+ 3rd Qu.:1.0000    3rd Qu.:0.000      3rd Qu.:0.000000   3rd Qu.:0.00000    
+ Max.   :1.0000    Max.   :1.000      Max.   :1.000000   Max.   :1.00000    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wage_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   3000 obs. of  24 variables:
+ $ year                        : num  2006 2004 2003 2003 2005 ...
+ $ age                         : num  18 24 45 43 50 54 44 30 41 52 ...
+ $ logwage                     : num  4.32 4.26 4.88 5.04 4.32 ...
+ $ health_ins_2. No            : num  1 1 0 0 0 0 0 0 0 0 ...
+ $ health_ins_1. Yes           : num  0 0 1 1 1 1 1 1 1 1 ...
+ $ health_1. &lt;=Good            : num  1 0 1 0 1 0 0 1 0 0 ...
+ $ health_2. &gt;=Very Good       : num  0 1 0 1 0 1 1 0 1 1 ...
+ $ jobclass_1. Industrial      : num  1 0 1 0 0 0 1 0 0 0 ...
+ $ jobclass_2. Information     : num  0 1 0 1 1 1 0 1 1 1 ...
+ $ region_2. Middle Atlantic   : num  1 1 1 1 1 1 1 1 1 1 ...
+ $ education_1. &lt; HS Grad      : num  1 0 0 0 0 0 0 0 0 0 ...
+ $ education_4. College Grad   : num  0 1 0 1 0 1 0 0 0 0 ...
+ $ education_3. Some College   : num  0 0 1 0 0 0 1 1 1 0 ...
+ $ education_2. HS Grad        : num  0 0 0 0 1 0 0 0 0 1 ...
+ $ education_5. Advanced Degree: num  0 0 0 0 0 0 0 0 0 0 ...
+ $ race_1. White               : num  1 1 1 0 1 1 0 0 0 1 ...
+ $ race_3. Asian               : num  0 0 0 1 0 0 0 1 0 0 ...
+ $ race_4. Other               : num  0 0 0 0 0 0 1 0 0 0 ...
+ $ race_2. Black               : num  0 0 0 0 0 0 0 0 1 0 ...
+ $ maritl_1. Never Married     : num  1 1 0 0 0 0 0 1 1 0 ...
+ $ maritl_2. Married           : num  0 0 1 1 0 1 1 0 0 1 ...
+ $ maritl_4. Divorced          : num  0 0 0 0 1 0 0 0 0 0 ...
+ $ maritl_3. Widowed           : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ maritl_5. Separated         : num  0 0 0 0 0 0 0 0 0 0 ...</code></pre>
+</div>
+</div>
+<p>Let’s split our data into a training and a test set</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">222</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="fu">nrow</span>(wage_data)),</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">floor</span>(<span class="fu">nrow</span>(wage_data)<span class="sc">*</span><span class="fl">0.8</span>))</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sort</span>(train)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="sc">!</span>(<span class="fu">seq</span>(<span class="fu">nrow</span>(wage_data)) <span class="sc">%in%</span> train))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We are interested in predicting log wage. First, we will use principle components regression. Principle components regression does a linear regression but instead of using the X-variables as predictors, it uses principle components as predictors. The optimal number of principle components to use for PCR is usually found through cross-validation. To run PCR, we will use the package pls.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pls)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Try running PCR</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>pcr_fit  <span class="ot">&lt;-</span> <span class="fu">pcr</span>(logwage <span class="sc">~</span> ., <span class="at">data =</span> wage_data[train,],          </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">validation =</span> <span class="st">"CV"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>Error in La.svd(X) : infinite or missing values in 'x'</code></p>
+<p>Sometime you can get an error message. This error is because some of our variables have almost zero variance. Usually, variables with near-zero variance are indicator variables we generated for a rare event. Think about what happens to these predictors when the data are split into cross-validation/bootstrap sub-samples: if a few uncommon unique values are removed from one sample, the predictors could become zero-variance predictors which would cause many models to not run. We can figure out which variables have such low variance to determine how we want to handle them. The simplest approach to identify them is to set a manual threshold (which can be adjusted: 0.05 is a common choice). Our options are then to drop them from the analysis or not to scale the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="do">## to drop them from the analysis or not to scale the data. </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(col_num <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(wage_data)){</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">var</span>(wage_data[, col_num]) <span class="sc">&lt;</span> <span class="fl">0.05</span>){</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">colnames</span>(wage_data)[col_num])</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">var</span>(wage_data[, col_num]))</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "region_2. Middle Atlantic"
+[1] 0
+[1] "race_4. Other"
+[1] 0.01218528
+[1] "maritl_3. Widowed"
+[1] 0.006295321
+[1] "maritl_5. Separated"
+[1] 0.01800322</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Let's drop these low variance columns</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(col_num <span class="cf">in</span> <span class="fu">ncol</span>(wage_data)<span class="sc">:</span><span class="dv">1</span>){</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">var</span>(wage_data[, col_num]) <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    wage_data <span class="ot">&lt;-</span> wage_data[, <span class="sc">-</span>col_num]</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now try again to run PCR</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">222</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>pcr_fit <span class="ot">&lt;-</span> <span class="fu">pcr</span>(logwage <span class="sc">~</span> ., <span class="at">data =</span> wage_data[train,], </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">validation =</span> <span class="st">"CV"</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pcr_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data:   X dimension: 2400 19 
+    Y dimension: 2400 1
+Fit method: svdpc
+Number of components considered: 19
+
+VALIDATION: RMSEP
+Cross-validated using 10 random segments.
+       (Intercept)  1 comps  2 comps  3 comps  4 comps  5 comps  6 comps
+CV          0.3484   0.2979   0.2936   0.2926   0.2926   0.2921   0.2911
+adjCV       0.3484   0.2978   0.2936   0.2925   0.2925   0.2920   0.2909
+       7 comps  8 comps  9 comps  10 comps  11 comps  12 comps  13 comps
+CV      0.2913   0.2904   0.2898    0.2874    0.2863    0.2794    0.2794
+adjCV   0.2912   0.2901   0.2898    0.2873    0.2862    0.2793    0.2793
+       14 comps  15 comps  16 comps  17 comps  18 comps  19 comps
+CV       0.2794    0.2795    0.2795    0.2797    0.2801    0.2804
+adjCV    0.2793    0.2794    0.2794    0.2796    0.2797    0.2800
+
+TRAINING: % variance explained
+         1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps
+X          14.50    25.94    36.75    46.22    54.83    61.89    68.87    75.11
+logwage    27.05    29.19    29.67    29.73    30.11    30.62    30.62    31.24
+         9 comps  10 comps  11 comps  12 comps  13 comps  14 comps  15 comps
+X          81.28     86.91     92.14     96.43     99.52     99.79    100.00
+logwage    31.35     32.46     33.11     36.40     36.45     36.45     36.47
+         16 comps  17 comps  18 comps  19 comps
+X          100.00    100.00    100.00    100.00
+logwage     36.47     36.47     36.48     36.49</code></pre>
+</div>
+</div>
+<p>We are interested in finding which number of principle components should be included in the regression to lead to the lowest cross-validation error.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pcr_msep <span class="ot">&lt;-</span> <span class="fu">MSEP</span>(pcr_fit)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>pcr_min_indx <span class="ot">&lt;-</span> <span class="fu">which.min</span>(pcr_msep<span class="sc">$</span>val[<span class="dv">1</span>, <span class="dv">1</span>,])</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pcr_min_indx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>12 comps 
+      13 </code></pre>
+</div>
+</div>
+<p>How could you get the RMSEP?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pcr_msep<span class="sc">$</span>val[<span class="dv">1</span>, <span class="dv">1</span>, pcr_min_indx])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07803666</code></pre>
+</div>
+</div>
+<p>It can also be helpful to plot the RMSEP as a function of the number of components. The black line is the CV, the red dashed line is the adjusted CV.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">validationplot</span>(pcr_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-6_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Why does the plot look the way it does? Do you expect the PLS plot to look similar? Why or why not?</p>
+<p>Let’s predict <code>logwage</code> for our test observations</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>pcr_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(pcr_fit, wage_data[test, ], <span class="at">ncomp =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can measure test MSE</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>pcr_test_MSE <span class="ot">&lt;-</span> <span class="fu">mean</span>((pcr_pred <span class="sc">-</span> wage_data[test, <span class="st">"logwage"</span>])<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pcr_test_MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07887506</code></pre>
+</div>
+</div>
+<p>We can convert this to RMSE</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sqrt</span>(pcr_test_MSE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.280847</code></pre>
+</div>
+</div>
+<p>Let’s repeat this exercise for PLS. Use <code>plsr()</code> instead of <code>pcr()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Step 1: Fit the model</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>pls_fit <span class="ot">&lt;-</span> <span class="fu">plsr</span>(logwage <span class="sc">~</span> ., <span class="at">data =</span> wage_data[train, ], </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">validation =</span> <span class="st">"CV"</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pls_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data:   X dimension: 2400 19 
+    Y dimension: 2400 1
+Fit method: kernelpls
+Number of components considered: 19
+
+VALIDATION: RMSEP
+Cross-validated using 10 random segments.
+       (Intercept)  1 comps  2 comps  3 comps  4 comps  5 comps  6 comps
+CV          0.3484   0.2843   0.2795   0.2789   0.2789   0.2789   0.2790
+adjCV       0.3484   0.2843   0.2794   0.2789   0.2788   0.2788   0.2789
+       7 comps  8 comps  9 comps  10 comps  11 comps  12 comps  13 comps
+CV      0.2791   0.2791   0.2791    0.2791    0.2791    0.2791    0.2791
+adjCV   0.2790   0.2790   0.2790    0.2790    0.2790    0.2790    0.2790
+       14 comps  15 comps  16 comps  17 comps  18 comps  19 comps
+CV       0.2791    0.2791    0.2790    0.2790    0.2790    0.2790
+adjCV    0.2790    0.2790    0.2792    0.2792    0.2792    0.2792
+
+TRAINING: % variance explained
+         1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps
+X          14.05    20.93    30.07    37.01    44.43    50.26    55.58    60.76
+logwage    33.67    36.19    36.43    36.45    36.45    36.46    36.47    36.47
+         9 comps  10 comps  11 comps  12 comps  13 comps  14 comps  15 comps
+X          66.04     73.72     80.25     81.54     86.85     93.02    100.00
+logwage    36.47     36.47     36.47     36.47     36.47     36.47     36.47
+         16 comps  17 comps  18 comps  19 comps
+X          101.71    103.40    104.99    106.64
+logwage     36.34     36.34     36.34     36.34</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Step 2: Which ncomp value had the lowest CV MSE?</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>pls_msep <span class="ot">&lt;-</span> <span class="fu">MSEP</span>(pls_fit)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>pls_min_indx <span class="ot">&lt;-</span> <span class="fu">which.min</span>(pls_msep<span class="sc">$</span>val[<span class="dv">1</span>, <span class="dv">1</span>,])</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pls_min_indx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4 comps 
+      5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Step 3: Plot validation error as a function of # of components</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">validationplot</span>(pls_fit, <span class="at">val.type =</span> <span class="fu">c</span>(<span class="st">"RMSEP"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-6_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Step 4: Identify the CV RMSE for the number of components with</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="do">## the lowest CV RMSE</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>pls_rmsep <span class="ot">&lt;-</span> <span class="fu">RMSEP</span>(pls_fit)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pls_rmsep<span class="sc">$</span>val[<span class="dv">1</span>, <span class="dv">1</span>, <span class="fu">as.numeric</span>(pls_min_indx)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2788531</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Step 5: Predict test set logwage values</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>pls_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(pls_fit, wage_data[test,],</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ncomp =</span> (<span class="fu">as.numeric</span>(pls_min_indx) <span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Step 6: Measure test MSE and RMSE</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>pls_test_MSE <span class="ot">&lt;-</span> <span class="fu">mean</span>((pls_pred <span class="sc">-</span> wage_data[test, <span class="st">"logwage"</span>])<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pls_test_MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07881288</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">sqrt</span>(pls_test_MSE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2807363</code></pre>
 </div>
 </div>
 
