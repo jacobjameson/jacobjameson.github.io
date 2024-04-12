@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jacob Jameson">
+
+<title>Jacob Jameson - Section 10 - Support Vector Machines</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Jacob Jameson - Section 10 - Support Vector Machines">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://www.jacobjameson.com/api 222 files/section 10/images/profile.png">
+<meta name="twitter:creator" content="@JacobCJameson">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/sig.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson" rel="" target="_blank"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jacobjameson" rel="" target="_blank"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Teaching</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+        <li>
+    <a class="dropdown-item" href="../../teaching.html" rel="" target="">
+ <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../R files/Intro R.html" rel="" target="">
+ <span class="dropdown-text">Introduction to R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../git files/Intro Git.html" rel="" target="">
+ <span class="dropdown-text">Introduction to Git/GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../api 222 files/API222.html" rel="" target="">
+ <span class="dropdown-text">API 222 Section Material</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a>
+  <ul class="collapse">
+  <li><a href="#nns-and-dl" id="toc-nns-and-dl" class="nav-link" data-scroll-target="#nns-and-dl">NNs and DL</a>
+  <ul class="collapse">
+  <li><a href="#design-what-network-structure-to-choose" id="toc-design-what-network-structure-to-choose" class="nav-link" data-scroll-target="#design-what-network-structure-to-choose">Design: What network structure to choose?</a></li>
+  <li><a href="#training-how-to-train-the-network-obtain-the-weights-and-other-parameters" id="toc-training-how-to-train-the-network-obtain-the-weights-and-other-parameters" class="nav-link" data-scroll-target="#training-how-to-train-the-network-obtain-the-weights-and-other-parameters">Training: How to train the network (obtain the weights and other parameters)?</a></li>
+  <li><a href="#level-of-learning-deep-learning-or-shallow-learning" id="toc-level-of-learning-deep-learning-or-shallow-learning" class="nav-link" data-scroll-target="#level-of-learning-deep-learning-or-shallow-learning">Level of Learning: Deep Learning or Shallow Learning?</a></li>
+  </ul></li>
+  <li><a href="#rl" id="toc-rl" class="nav-link" data-scroll-target="#rl">RL</a></li>
+  </ul></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a>
+  <ul class="collapse">
+  <li><a href="#neural-networks-and-deep-learning" id="toc-neural-networks-and-deep-learning" class="nav-link" data-scroll-target="#neural-networks-and-deep-learning">Neural Networks and Deep Learning</a></li>
+  <li><a href="#reinforcement-learning" id="toc-reinforcement-learning" class="nav-link" data-scroll-target="#reinforcement-learning">Reinforcement Learning</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Section 10 - Support Vector Machines</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jacob Jameson </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="notes" class="level1">
+<h1>Notes</h1>
+<p>In this section we will briefly cover Neural Networks (NN), Deep Learning (DL), and Reinforcement Learning (RL). For a more in-depth treatment of these topics, please consult the syllabus for suggested readings. The material in these notes draws on past notes by TFs Laura Morris, Emily Mower, and Amy Wickett.</p>
+<section id="nns-and-dl" class="level2">
+<h2 class="anchored" data-anchor-id="nns-and-dl">NNs and DL</h2>
+<p>NNs are a subset of machine learning which is inspired by the human brain. They mimic how biological neurons communicate with one another to come up with a decision. The main idea behind neural networks is to extract linear combinations of features as new features and model the response variable as a nonlinear function of these new features.</p>
+<p>A NN consists of an input layer, a hidden layer, and an output layer. The first layer receives raw input, it is processed by multiple hidden layers, and the last layer produces the result.</p>
+<p>Deep learning algorithms or deep NNs consist of multiple hidden layers and nodes. The word “deep” refers the depth of neural networks. They are generally used for solving complex problems such as Image classification, Speech recognition, and Text generation.</p>
+<p>When developing a NN model, we need to decide upon design, training, and level of learning.</p>
+<section id="design-what-network-structure-to-choose" class="level3">
+<h3 class="anchored" data-anchor-id="design-what-network-structure-to-choose">Design: What network structure to choose?</h3>
+<p>Multiple types of NNs are used for advanced machine-learning applications. In this section, we will cover the 2 popular types of NNs.</p>
+<ul>
+<li><strong>Feedforward NNs</strong>:</li>
+</ul>
+<p>Feedforward NNs consist of an input layer, hidden layers, and an output layer. It is called feedforward because the data flow in the forward direction. It is mostly used in Classification, Face recognition, and Pattern recognition. Convolutional NNs are examples of feedforward NNs.</p>
+<ul>
+<li><strong>Recurrent NNs</strong>:</li>
+</ul>
+<p>Recurrent NNs are commonly used for sequential data such as texts, sequences of images, and time series. They are similar to feed-forward networks, except they get inputs from previous sequences using a feedback loop. Recurrent NNs are used in natural language processing (NLP), sales predictions, and weather forecasting. Hopfield NNs are examples of Recurrent NNs.</p>
+</section>
+<section id="training-how-to-train-the-network-obtain-the-weights-and-other-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="training-how-to-train-the-network-obtain-the-weights-and-other-parameters">Training: How to train the network (obtain the weights and other parameters)?</h3>
+<p>We use training data sets to train NNs. The rule of Thumb is that the number of training examples should be at least five to ten times the number of weights of the network. The most common training algorithm is called Backpropagation. The main steps of Backpropagation:</p>
+<ul>
+<li><strong>Randomization</strong>: Start with small random weights</li>
+<li><strong>Forward Pass</strong>: Calculate the output and measure the errors</li>
+<li><strong>Backward Pass</strong>: Use errors to adjust weights (supervised learning)</li>
+<li><strong>Loop</strong>: Repeat this process until a stopping criterion is met</li>
+</ul>
+<p>Using the example below, can you briefly explain how backpropagation works?</p>
+<p><img src="backprop.jpg" class="img-fluid"></p>
+</section>
+<section id="level-of-learning-deep-learning-or-shallow-learning" class="level3">
+<h3 class="anchored" data-anchor-id="level-of-learning-deep-learning-or-shallow-learning">Level of Learning: Deep Learning or Shallow Learning?</h3>
+<p>This step consists of deciding whether to use a NN with one hidden layer (shallow learning) or a NN with multiple hidden layers (deep learning).</p>
+</section>
+</section>
+<section id="rl" class="level2">
+<h2 class="anchored" data-anchor-id="rl">RL</h2>
+<p>For a more thorough treatment of reinforcement learning, I recommend <strong>Reinforcement Learning: An Introduction</strong> by Richard Sutton and Andrew Barto, which is on the syllabus. In their book, they describe reinforcement learning as follows:</p>
+<p><em>Reinforcement learning</em> is learning what to do—how to map situations to actions—so as to maximize a numerical reward signal. The learner is not told which actions to take, but instead must discover which actions yield the most reward by trying them. In the most interesting and challenging cases, actions may affect not only the immediate reward but also the next situation and, through that, all subsequent rewards. These two characteristics—trial-and-error search and delayed reward—are the two most important distinguishing features of reinforcement learning.}</p>
+<p>RL is a fascinating field, where agents learn policies (that is, rules regarding which <strong>action</strong> to take given the current <strong>state</strong> ) based on interacting with the <strong>environment</strong> and receiving <strong>rewards</strong> . Therefore, RL problems are often described by the tuple <span class="math inline">\(\{s, a, r\}\)</span>, which correspond to state, action, and reward. The idea is that the agent is in a current state <span class="math inline">\(s\)</span> and can take any number of actions. For each action, the agent will transition to a new state <span class="math inline">\(s'\)</span> and receive a reward <span class="math inline">\(r'\)</span>, which will both depend on which action the agent takes. Often, the reward will be zero for a very long time before a non-zero reward is achieved. Throughout the learning process, the agent faces a tradeoff between exploitation and exploration.</p>
+<p>There are many forms of RL. Some are based on statistical models. These often involve updating the models using new observations and then sampling subsequent actions based on their estimated probability of being optimal.</p>
+<p>In this class, we focused on examples of Markov Decision Processes (MDPs). MDPs assume the Markov property holds. The Markov Property says that if I know the agent’s current state, then learning about the agent’s previous actions and states gives me no relevant information. In other words, I can ignore the agent’s history, since everything important from the past is captured in the agent’s present state and our current estimates of the environment. This is not always a reasonable assumption, but it is reasonable in the gridworld example that is commonly used to introduce people to MDPs.</p>
+<p>Below is an example of gridworld. In gridworld, we assume that the agent is free to move between all the white boxes and will receive a reward of zero whenever he/she is in a white box. The agent cannot leave the grid or enter the black box. Any effort to move out of the grid or into the black box will result in the agent staying put. If the agent makes it to one of the boxes with +1 or -1, then the agent will receive the corresponding reward and will remain put forever (but will only collect the reward once – not each period). Often, the agent discounts future rewards using a discount factor <span class="math inline">\(\gamma\)</span>, and sometimes the agent’s intended actions are perturbed by noise so that they only go in the intended direction with some probability <span class="math inline">\(p\)</span>.</p>
+<p>Suppose we want to figure out what the agent’s optimal policy would be, that is, for each white box, which action should the agent take? One way to figure this out is value iteration. Value iteration calculates the value of each action for each cell and then selects the action with the highest value. It repeats this process, updating its estimates of the values of the actions as it gets more information. Assume the discounting factor (<span class="math inline">\(\gamma\)</span>) is 0.8. In the gridworld example below, under the optimal policy, what is the value of being in each square?</p>
+<p><img src="gridworld.png" class="img-fluid"></p>
+<p><strong>Hint 1</strong> : start from the square that is adjacent to the one with a reward of +1.</p>
+<p><strong>Hint 2</strong>: note that the value at each state is given by the equation:</p>
+<p><span class="math display">\[
+    V^{*}(s) = \max_{a}[r(s, a) + \gamma V^{*}(\delta (s, a))]
+\]</span></p>
+<p>As the example shows, value iteration is straightforward when you have information about your environment, such as the transition probabilities and rewards. There is an extension called <strong>Q-learning</strong> that can be used when you don’t have information about your environment, or at least don’t have full information about your environment, but you are still operating in a finite MDP. In Q-learning the agent follows a policy with some <strong>randomness</strong> to explore the space and updates its beliefs about optimal actions based on realized rewards. We will see an example of this problem in R.</p>
+</section>
+</section>
+<section id="code" class="level1">
+<h1>Code</h1>
+<section id="neural-networks-and-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="neural-networks-and-deep-learning">Neural Networks and Deep Learning</h2>
+<p>This section draws heavily from DataCamp’s tutorial on neural networks. The tutorial can be found <a href="https://www.datacamp.com/tutorial/neural-network-models-r">here</a>.</p>
+<p>In this session, we will learn to create a simple neural network (NN) with the R packages neuralnet. The required packages are:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("neuralnet")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(neuralnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will also use the tidyverse for data manipulation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will use the built-in R data set “iris” and use NNs to classify observations to different species. The “Species” variable is thus our outcome.</p>
+<p>You can access data by typing <code>iris</code> and running it in the R console. We start by converting character column types into factors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">mutate_if</span>(is.character, as.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the <code>summary</code> function to assess data distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+ Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+ 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+ Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+ Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+ 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+ Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+       Species  
+ setosa    :50  
+ versicolor:50  
+ virginica :50  
+                
+                
+                </code></pre>
+</div>
+</div>
+<p>As we can see, we have balanced data. All three target classes have 50 samples.</p>
+<p><strong>Train and Test Split</strong></p>
+<p>We will split the data into train and test datasets for model training and evaluation. We will be splitting it into 80:20.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">222</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data_rows <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fl">0.80</span> <span class="sc">*</span> <span class="fu">nrow</span>(iris))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>train_indices <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(iris)), data_rows)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> iris[train_indices,]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> iris[<span class="sc">-</span>train_indices,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The neuralnet package allows a simple implementation of NNs. For packages that allow for more sophisticated implementation, check out “keras” and “tensorflow”.</p>
+<p>Here is an example NN with two hidden layers: the first layer with four neurons and the second with two neurons.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">neuralnet</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  Species <span class="sc">~</span> Sepal.Length <span class="sc">+</span> Sepal.Width <span class="sc">+</span> Petal.Length <span class="sc">+</span> Petal.Width,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> train_data,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">hidden =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">linear.output =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To view our model architecture, we will use the <code>plot</code> function. It requires a model object and <code>rep</code> argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model, <span class="at">rep =</span> <span class="st">"best"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-10_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>To predict the outcome, we will use the <code>predict</code> function. We will use the test data to predict the outcome.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test_data, <span class="at">response =</span> <span class="st">"Species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Model evaluation can be done using confusion matrices. We will convert the predicted values into labels and calculate the error rate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">levels</span>(train_data<span class="sc">$</span>Species)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>prediction_label <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">max.col</span>(pred)) <span class="sc">%&gt;%</span>     </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred =</span> labels[max.col.pred.]) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>errors <span class="ot">=</span> <span class="fu">as.numeric</span>(test_data<span class="sc">$</span>Species) <span class="sc">!=</span> <span class="fu">max.col</span>(pred)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>error_rate <span class="ot">=</span> (<span class="fu">sum</span>(errors)<span class="sc">/</span><span class="fu">nrow</span>(test_data))<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Error Rate: "</span>, <span class="fu">round</span>(error_rate,<span class="dv">2</span>), <span class="st">"%"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Error Rate:  3.33 %"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(test_data<span class="sc">$</span>Species, prediction_label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            prediction_label
+             setosa versicolor virginica
+  setosa          9          0         0
+  versicolor      0         10         0
+  virginica       0          1        10</code></pre>
+</div>
+</div>
+<p>The error rate is 3.33%, which is quite good. The confusion matrix shows that the model is performing well.</p>
+</section>
+<section id="reinforcement-learning" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning">Reinforcement Learning</h2>
+<p>This part draws heavily from the “ReinforcementLearning” package vignette. The package can be found <a href="https://cran.r-project.org/web/packages/ReinforcementLearning/vignettes/ReinforcementLearning.html">here</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ReinforcementLearning")</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ReinforcementLearning)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This section demonstrates the capabilities of the ReinforcementLearning package with the help of a practical example, a Gridworld. The goal is to teach optimal movements to a robot in a grid-shaped maze (adapted from Sutton (1998)). Here the agent must navigate from a random starting position to a final position on a simulated 2×2 grid (see figure below). The reward structures are as follows: each movement leads to a negative reward of -1 to penalize routes that are not the shortest path. If the agent reaches the goal position, it earns a reward of 10.</p>
+<p>s1 | s4 |<br>
+s2 | s3 |</p>
+<p>Define the state and action sets, and load the built-in environment function for the 2×2 gridworld.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"s1"</span>, <span class="st">"s2"</span>, <span class="st">"s3"</span>, <span class="st">"s4"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>actions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"up"</span>, <span class="st">"down"</span>, <span class="st">"left"</span>, <span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Load built-in environment function for 2x2 gridworld</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>env <span class="ot">&lt;-</span> gridworldEnvironment</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(env)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (state, action) 
+{
+    next_state &lt;- state
+    if (state == state("s1") &amp;&amp; action == "down") 
+        next_state &lt;- state("s2")
+    if (state == state("s2") &amp;&amp; action == "up") 
+        next_state &lt;- state("s1")
+    if (state == state("s2") &amp;&amp; action == "right") 
+        next_state &lt;- state("s3")
+    if (state == state("s3") &amp;&amp; action == "left") 
+        next_state &lt;- state("s2")
+    if (state == state("s3") &amp;&amp; action == "up") 
+        next_state &lt;- state("s4")
+    if (next_state == state("s4") &amp;&amp; state != state("s4")) {
+        reward &lt;- 10
+    }
+    else {
+        reward &lt;- -1
+    }
+    out &lt;- list(NextState = next_state, Reward = reward)
+    return(out)
+}
+&lt;bytecode: 0x123f773b0&gt;
+&lt;environment: namespace:ReinforcementLearning&gt;</code></pre>
+</div>
+</div>
+<p>After having specified the environment function, we can use the built-in <code>sampleExperience()</code> function to sample observation sequences from the environment. The following code snippet generates a data frame <code>data</code> containing 1000 random state-transition tuples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>?sampleExperience</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">sampleExperience</span>(<span class="at">N =</span> <span class="dv">1000</span>, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">env =</span> env, </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">states =</span> states, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">actions =</span> actions)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  State Action Reward NextState
+1    s1  right     -1        s1
+2    s4  right     -1        s4
+3    s3     up     10        s4
+4    s1     up     -1        s1
+5    s4  right     -1        s4
+6    s2   left     -1        s2</code></pre>
+</div>
+</div>
+<p>We can now use the observation sequence in data in order to learn the optimal behavior of the agent. For this purpose, we first customize the learning behavior of the agent by defining a control object. We follow the default parameter choices and set the learning rate alpha to 0.1, the discount factor gamma to 0.5, and the exploration greediness epsilon to 0.1. Subsequently, we use the <code>ReinforcementLearning()</code> function to learn the best possible policy for the input data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define reinforcement learning parameters</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">gamma =</span> <span class="fl">0.5</span>, <span class="at">epsilon =</span> <span class="fl">0.1</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform reinforcement learning</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>?ReinforcementLearning</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">ReinforcementLearning</span>(data, </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">s =</span> <span class="st">"State"</span>, </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                               <span class="at">a =</span> <span class="st">"Action"</span>, </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                               <span class="at">r =</span> <span class="st">"Reward"</span>, </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                               <span class="at">s_new =</span> <span class="st">"NextState"</span>, </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                               <span class="at">control =</span> control)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Evaluating policy learning</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print policy</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">computePolicy</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     s1      s2      s3      s4 
+ "down" "right"    "up"  "left" </code></pre>
+</div>
+</div>
+<p>Print state-action function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>State-Action function Q
+        right        up       down       left
+s1 -0.6769943 -0.727481  0.7211750 -0.6641956
+s2  3.5459967 -0.711599  0.7227171  0.7305628
+s3  3.5167406  9.112867  3.5403134  0.7324369
+s4 -1.9264142 -1.906775 -1.9032334 -1.8981189
+
+Policy
+     s1      s2      s3      s4 
+ "down" "right"    "up"  "left" 
+
+Reward (last iteration)
+[1] -494</code></pre>
+</div>
+</div>
+<p>Print summary statistics</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Model details
+Learning rule:           experienceReplay
+Learning iterations:     1
+Number of states:        4
+Number of actions:       4
+Total Reward:            -494
+
+Reward details (per iteration)
+Min:                     -494
+Max:                     -494
+Average:                 -494
+Median:                  -494
+Standard deviation:      NA</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2024, Jacob Jameson</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
