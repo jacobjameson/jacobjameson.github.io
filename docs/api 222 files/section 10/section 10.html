@@ -360,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">levels</span>(train_data<span class="sc">$</span>Species)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>prediction_label <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">max.col</span>(pred)) <span class="sc">%&gt;%</span>     </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>prediction_label <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">max.col</span>(pred)) <span class="sc">%&gt;%</span> </span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred =</span> labels[max.col.pred.]) <span class="sc">%&gt;%</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span>
@@ -425,7 +425,7 @@ s2 | s3 |</p>
     out &lt;- list(NextState = next_state, Reward = reward)
     return(out)
 }
-&lt;bytecode: 0x13558cbb0&gt;
+&lt;bytecode: 0x1551d6f08&gt;
 &lt;environment: namespace:ReinforcementLearning&gt;</code></pre>
 </div>
 </div>

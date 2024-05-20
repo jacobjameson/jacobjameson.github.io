@@ -187,7 +187,7 @@ Model evaluation can be done using confusion matrices. We will convert the predi
 ```{r}
 labels <- levels(train_data$Species)
 
-prediction_label <- data.frame(max.col(pred)) %>%     
+prediction_label <- data.frame(max.col(pred)) %>% 
   mutate(pred = labels[max.col.pred.]) %>%
   select(2) %>%
   unlist()
