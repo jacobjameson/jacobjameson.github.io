@@ -184,6 +184,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#polynomial-regression" id="toc-polynomial-regression" class="nav-link active" data-scroll-target="#polynomial-regression">Polynomial Regression</a></li>
+  <li><a href="#regression-splines" id="toc-regression-splines" class="nav-link" data-scroll-target="#regression-splines">Regression Splines</a>
+  <ul class="collapse">
+  <li><a href="#splines" id="toc-splines" class="nav-link" data-scroll-target="#splines">Splines</a></li>
+  <li><a href="#natural-splines" id="toc-natural-splines" class="nav-link" data-scroll-target="#natural-splines">Natural Splines</a></li>
+  <li><a href="#smoothing-splines" id="toc-smoothing-splines" class="nav-link" data-scroll-target="#smoothing-splines">Smoothing Splines</a></li>
+  <li><a href="#local-regression" id="toc-local-regression" class="nav-link" data-scroll-target="#local-regression">Local Regression</a></li>
+  <li><a href="#gams" id="toc-gams" class="nav-link" data-scroll-target="#gams">GAMs</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -314,8 +322,284 @@ poly(age, 4, raw = TRUE)3  8.403840e-03 3.362741e-03  2.499105 0.0125172334
 poly(age, 4, raw = TRUE)4 -4.098605e-05 1.802141e-05 -2.274297 0.0230362203</code></pre>
 </div>
 </div>
+<p>We can see from the coefficient outputs of the two models that they have different coefficients. We will now check that they make the same predictions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>age_poly_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(age_poly, <span class="at">newdata =</span> wage_data[test,])</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>age_poly_TRUE_pred  <span class="ot">&lt;-</span> <span class="fu">predict</span>(age_poly_TRUE, <span class="at">newdata =</span> wage_data[test,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Explore the predictions</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(age_poly_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       5       19       26       32       37       41 
+51.23518 58.14597 64.50781 64.50781 64.50781 64.50781 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(age_poly_TRUE_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       5       19       26       32       37       41 
+51.23518 58.14597 64.50781 64.50781 64.50781 64.50781 </code></pre>
+</div>
+</div>
+<p>Calculate and print the MSEP</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">msep_func</span>(age_poly_pred, wage_data[test, <span class="st">"wage"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1689.522</code></pre>
+</div>
+</div>
+<p><code>cbind()</code> is a function that joins columns together by binding them next to each other. There is also a function <code>rbind()</code> that joins by binding new rows to the bottom of old ones. Let’s try using <code>cbind()</code> to look at both sets of predictions at the same time:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pred_comparison <span class="ot">&lt;-</span> <span class="fu">cbind</span>(age_poly_pred, age_poly_TRUE_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The column names default to the variable names, but ifwe want to change them, we can use the <code>colnames()</code> function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(pred_comparison) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pred1"</span>, <span class="st">"pred2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can then generate a variable that flags any instances where the predictions do not line up. To do this, I will introduce you another function in <code>dplyr</code>: <code>mutate()</code> which means create a new variable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>pred_comparison <span class="ot">&lt;-</span> pred_comparison <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">check_same =</span> <span class="fu">as.numeric</span>(pred1 <span class="sc">==</span> pred2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>Error in UseMethod("mutate") : no applicable method for 'mutate' applied to an object of class "c('matrix', 'array', 'double', 'numeric')"</code></p>
+<p>The previous line errored because <code>pred_comparison</code> is a matrix and dplyr was designed to work on data frames.</p>
+<p>Make <code>pred_comparison</code> a data frame</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pred_comparison <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pred_comparison)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now try running the code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pred_comparison <span class="ot">&lt;-</span> pred_comparison <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">check_same =</span> <span class="fu">as.numeric</span>(pred1 <span class="sc">==</span> pred2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>View the results</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(pred_comparison)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="regression-splines" class="level2">
+<h2 class="anchored" data-anchor-id="regression-splines">Regression Splines</h2>
+<section id="splines" class="level3">
+<h3 class="anchored" data-anchor-id="splines">Splines</h3>
+<p>We’re going to start by making an age grid, so that we test our predictions on a grid of evenly spaced ages so that you capture the functional form well.</p>
+<p>A quick aside, na.rm = TRUE means exlucde missing observations. Then we are going to run a spline with knots at ages 25, 40, and 60.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create the age grids</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>age_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(wage_data<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">to =</span> <span class="fu">max</span>(wage_data<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we use a basis function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>spline_age <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> <span class="fu">bs</span>(age, <span class="at">knots =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">40</span>, <span class="dv">60</span>)), </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> wage_data[train,])</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>?bs <span class="co"># to check what the basis function does</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Get the predictions at the grid points we defined earlier</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>spline_age_grid_pred  <span class="ot">&lt;-</span> <span class="fu">predict</span>(spline_age, </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">age =</span> age_grid), </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">se =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Plot age on the x-axis and wage on the y-axis for the test data. Then add the predictions and the confidence intervals</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wage_data[test, <span class="st">"age"</span>], wage_data[test, <span class="st">"wage"</span>],</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">"darkgrey"</span>,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="at">xlab =</span> <span class="st">"age"</span>, <span class="at">ylab =</span> <span class="st">"wage"</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(age_grid, spline_age_grid_pred<span class="sc">$</span>fit, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(age_grid, spline_age_grid_pred<span class="sc">$</span>fit <span class="sc">+</span> </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span> <span class="sc">*</span> spline_age_grid_pred<span class="sc">$</span>se, <span class="at">lty =</span><span class="st">"dashed"</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(age_grid, spline_age_grid_pred<span class="sc">$</span>fit <span class="sc">-</span> </span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span> <span class="sc">*</span> spline_age_grid_pred<span class="sc">$</span>se, <span class="at">lty =</span><span class="st">"dashed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="natural-splines" class="level3">
+<h3 class="anchored" data-anchor-id="natural-splines">Natural Splines</h3>
+<p>If we instead wanted to fit a natural spline, we use <code>ns()</code> instead of knots, we can specify degrees of freedom. In this case we are going to use 4 degrees of freedom.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>ns_age_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> <span class="fu">ns</span>(age, <span class="at">df =</span> <span class="dv">4</span>), <span class="at">data =</span> wage_data[train,])</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>ns_age_grid_poly_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(ns_age_poly,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">age =</span> age_grid),</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">se =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wage_data[test, <span class="st">"age"</span>], wage_data[test, <span class="st">"wage"</span>], </span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">"darkgrey"</span>,</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"age"</span>, <span class="at">ylab =</span> <span class="st">"wage"</span>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(age_grid, ns_age_grid_poly_pred<span class="sc">$</span>fit, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(age_grid, ns_age_grid_poly_pred<span class="sc">$</span>fit <span class="sc">+</span> </span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span> <span class="sc">*</span> ns_age_grid_poly_pred<span class="sc">$</span>se, <span class="at">lty =</span> <span class="st">"dashed"</span>)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(age_grid, ns_age_grid_poly_pred<span class="sc">$</span>fit <span class="sc">-</span> </span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span> <span class="sc">*</span> ns_age_grid_poly_pred<span class="sc">$</span>se, <span class="at">lty =</span> <span class="st">"dashed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="smoothing-splines" class="level3">
+<h3 class="anchored" data-anchor-id="smoothing-splines">Smoothing Splines</h3>
+<p>To fit a smoothing spline, we use <code>smooth.spline()</code>. We can specify our own <code>df</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>smooth_age <span class="ot">&lt;-</span> <span class="fu">smooth.spline</span>(wage_data[train,<span class="st">"age"</span>], </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                            wage_data[train, <span class="st">"wage"</span>], </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">df =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Or we can use cross Validation to get optimal df and penalty</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>smoothCV_age <span class="ot">&lt;-</span> <span class="fu">smooth.spline</span>(wage_data[train, <span class="st">"age"</span>], </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                              wage_data[train, <span class="st">"wage"</span>], </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">cv =</span> <span class="cn">TRUE</span>) <span class="co"># specify we want to use CV</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>smoothCV_age<span class="sc">$</span>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.786486</code></pre>
+</div>
+</div>
+<p>Plot the results as before</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wage_data[test, <span class="st">"age"</span>], wage_data[test, <span class="st">"wage"</span>],</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span>.<span class="dv">5</span>, <span class="at">col =</span> <span class="st">"darkgrey"</span>,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"age"</span>, <span class="at">ylab =</span> <span class="st">"wage"</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">" Smoothing Spline "</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(smooth_age, <span class="at">col =</span><span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(smoothCV_age, <span class="at">col =</span><span class="st">"blue"</span>, <span class="at">lwd =</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="local-regression" class="level3">
+<h3 class="anchored" data-anchor-id="local-regression">Local Regression</h3>
+<p>Local Regression use loess()</p>
+<p>Note: span = 0.2 makes neighborhoods with 20% of observations. Span = 0.5 creates neighborhoods with 50% of observations. So the larger the span, the smoother the fit</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>local2_age <span class="ot">&lt;-</span> <span class="fu">loess</span>(wage <span class="sc">~</span> age, <span class="at">span =</span> <span class="fl">0.2</span>, <span class="at">data =</span> wage_data)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>local5_age <span class="ot">&lt;-</span> <span class="fu">loess</span>(wage <span class="sc">~</span> age, <span class="at">span =</span> <span class="fl">0.5</span>, <span class="at">data =</span> wage_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Get the predictions</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>pred_local2_age <span class="ot">&lt;-</span> <span class="fu">predict</span>(local2_age, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age =</span> age_grid))</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>pred_local5_age <span class="ot">&lt;-</span> <span class="fu">predict</span>(local5_age, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age =</span> age_grid))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Plot the results</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wage_data[test, <span class="st">"age"</span>], wage_data[test, <span class="st">"wage"</span>],</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span>.<span class="dv">5</span>, <span class="at">col =</span> <span class="st">"darkgrey"</span>,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"age"</span>, <span class="at">ylab =</span> <span class="st">"wage"</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(age_grid, pred_local2_age, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(age_grid, pred_local5_age, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="gams" class="level3">
+<h3 class="anchored" data-anchor-id="gams">GAMs</h3>
+<p>Generalized Additive Models (GAMs)</p>
+<p>Start with using natural spline functions of year and age and treating education as a qualitative variable does not require any special packages</p>
+<ul>
+<li>Example 1: GAMs with splines</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>gam_yae <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> <span class="fu">ns</span>(year, <span class="dv">4</span>) <span class="sc">+</span> <span class="fu">ns</span>(age, <span class="dv">4</span>) <span class="sc">+</span> education, </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> wage_data[train,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Example 2: GAMs with smoothing splines</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the gam library s() indicates that we want to use a smoothing spline</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>gam_smooth <span class="ot">&lt;-</span> <span class="fu">gam</span>(wage <span class="sc">~</span> <span class="fu">s</span>(year, <span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(age, <span class="dv">5</span>) <span class="sc">+</span> education,</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> wage_data[train,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Plot the model results</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gam_smooth, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">col =</span><span class="st">"blue "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>To plot the GAM we created just using <code>lm()</code>, we can use <code>plot.Gam()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.Gam</span>(gam_yae, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># Note the capitalization</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-38-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-38-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Make predictions</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>gam_yae_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(gam_yae, <span class="at">newdata =</span> wage_data[test,])</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>gam_smooth_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(gam_smooth, <span class="at">newdata =</span> wage_data[test,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Print out the MSEP for these two GAMs using the function we created at the start of class</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">msep_func</span>(gam_yae_pred, wage_data[test, <span class="st">"wage"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1304.807</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">msep_func</span>(gam_smooth_pred, wage_data[test, <span class="st">"wage"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1300.582</code></pre>
+</div>
+</div>
+<ul>
+<li>Example 3: GAMs with local regression</li>
+</ul>
+<p>To use local regression in GAMs, use <code>lo()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>gam_lo <span class="ot">&lt;-</span> <span class="fu">gam</span>(wage <span class="sc">~</span> <span class="fu">s</span>(year, <span class="at">df =</span> <span class="dv">4</span>) <span class="sc">+</span> <span class="fu">lo</span>(age, <span class="at">span =</span> <span class="fl">0.7</span>) <span class="sc">+</span> education, </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> wage_data[train,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Plot the results</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.Gam</span>(gam_lo, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-42-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="section-7_files/figure-html/unnamed-chunk-42-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>If you want to do a local regression in two variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>gam_2lo <span class="ot">&lt;-</span> <span class="fu">gam</span>(wage <span class="sc">~</span> <span class="fu">lo</span>(year, age, <span class="at">span =</span><span class="fl">0.5</span>) <span class="sc">+</span> education,</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> wage_data[train,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in lo.wam(x, z, wz, fit$smooth, which, fit$smooth.frame, bf.maxit, :
+liv too small.  (Discovered by lowesd)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in lo.wam(x, z, wz, fit$smooth, which, fit$smooth.frame, bf.maxit, : lv
+too small.  (Discovered by lowesd)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in lo.wam(x, z, wz, fit$smooth, which, fit$smooth.frame, bf.maxit, :
+liv too small.  (Discovered by lowesd)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in lo.wam(x, z, wz, fit$smooth, which, fit$smooth.frame, bf.maxit, : lv
+too small.  (Discovered by lowesd)</code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

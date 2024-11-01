@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="function-to-perform-cross-validation" class="level3">
 <h3 class="anchored" data-anchor-id="function-to-perform-cross-validation">Function to perform cross-validation</h3>
-<p>Let’s write a function to do cross-validation. We will name the function cross_validation_KNN() and it will take 3 arguments:</p>
+<p>Let’s write a function to do cross-validation. We will name the function cross_validation_KNN() and it will take arguments:</p>
 <ol type="1">
 <li>The feature columns of the data</li>
 <li>The outcome column of the data (Y)</li>
@@ -584,7 +584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>To understand how perform changes across the K values, a plot would be helpful.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">seq</span>(<span class="dv">20</span>), mean_cv_error5, <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">seq</span>(<span class="dv">50</span>), mean_cv_error10, <span class="at">type =</span> <span class="st">"l"</span>,</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Mean CV Error Rate as a Function of k"</span>,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"CV Error Rate"</span>, <span class="at">xlab =</span> <span class="st">"k"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -605,48 +605,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">logistic_formula =</span> <span class="cn">NULL</span>) {</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Define fold_ids in exactly the same way as before</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  fold_ids <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">seq</span>(kfolds), </span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">ceiling</span>(<span class="fu">nrow</span>(full_data) <span class="sc">/</span> kfolds))</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  fold_ids <span class="ot">&lt;-</span> fold_ids[<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(full_data)]</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  fold_ids <span class="ot">&lt;-</span> <span class="fu">sample</span>(fold_ids, <span class="fu">length</span>(fold_ids))</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Initialize a vector to store CV error</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  CV_error_vec  <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> kfolds, <span class="at">mode =</span> <span class="st">"numeric"</span>)</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Loop through the folds</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>kfolds){</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (model_type <span class="sc">==</span> <span class="st">"logistic"</span>) {</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>      logistic_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(logistic_formula,</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k),],</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>                            <span class="at">family =</span> binomial)</span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>      logistic_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(logistic_model,</span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>                               full_data[<span class="fu">which</span>(fold_ids <span class="sc">==</span> k),],</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>                               <span class="at">type =</span> <span class="st">"response"</span>)</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>      class_pred <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(logistic_pred <span class="sc">&gt;</span> <span class="fl">0.5</span>)</span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (model_type <span class="sc">==</span> <span class="st">"LDA"</span>) {</span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>      lda_model <span class="ot">&lt;-</span> <span class="fu">lda</span>(full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k),<span class="sc">-</span><span class="dv">9</span>], </span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>                       full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k),<span class="dv">9</span>])</span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>      lda_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(lda_model, full_data[<span class="fu">which</span>(fold_ids <span class="sc">==</span> k), <span class="sc">-</span><span class="dv">9</span>])</span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>      class_pred <span class="ot">&lt;-</span> lda_pred<span class="sc">$</span>class</span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (model_type <span class="sc">==</span> <span class="st">"QDA"</span>) {</span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>      qda_model <span class="ot">&lt;-</span> <span class="fu">qda</span>(full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k), <span class="sc">-</span><span class="dv">9</span>], </span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>                       full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k), <span class="dv">9</span>])</span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>      qda_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(qda_model, </span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>                          full_data[<span class="fu">which</span>(fold_ids <span class="sc">==</span> k), <span class="sc">-</span><span class="dv">9</span>])</span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>      class_pred <span class="ot">&lt;-</span> qda_pred<span class="sc">$</span>class</span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>    CV_error_vec[k] <span class="ot">&lt;-</span> <span class="fu">mean</span>(class_pred <span class="sc">!=</span> full_data[<span class="fu">which</span>(fold_ids <span class="sc">==</span> k), <span class="dv">9</span>])</span>
-<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(CV_error_vec)</span>
-<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a><span class="do">## Run CV for logistic regression:</span></span>
-<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>logistic_formula <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Outcome"</span>, <span class="fu">paste</span>(<span class="fu">colnames</span>(diabetes_data)[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>],</span>
-<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">collapse =</span> <span class="st">" + "</span>), </span>
-<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sep =</span> <span class="st">" ~ "</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  fold_ids <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">seq</span>(kfolds), <span class="fu">ceiling</span>(<span class="fu">nrow</span>(full_data) <span class="sc">/</span> kfolds))</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  fold_ids <span class="ot">&lt;-</span> fold_ids[<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(full_data)]</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  fold_ids <span class="ot">&lt;-</span> <span class="fu">sample</span>(fold_ids, <span class="fu">length</span>(fold_ids))</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Initialize a vector to store CV error</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  CV_error_vec  <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> kfolds, <span class="at">mode =</span> <span class="st">"numeric"</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Loop through the folds</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>kfolds){</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (model_type <span class="sc">==</span> <span class="st">"logistic"</span>) {</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>      logistic_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(logistic_formula,</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k),],</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>                            <span class="at">family =</span> binomial)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>      logistic_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(logistic_model,</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>                               full_data[<span class="fu">which</span>(fold_ids <span class="sc">==</span> k),],</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>                               <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>      class_pred <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(logistic_pred <span class="sc">&gt;</span> <span class="fl">0.5</span>)</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (model_type <span class="sc">==</span> <span class="st">"LDA"</span>) {</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>      lda_model <span class="ot">&lt;-</span> <span class="fu">lda</span>(full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k),<span class="sc">-</span><span class="dv">9</span>], </span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>                       full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k),<span class="dv">9</span>])</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>      lda_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(lda_model, full_data[<span class="fu">which</span>(fold_ids <span class="sc">==</span> k), <span class="sc">-</span><span class="dv">9</span>])</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>      class_pred <span class="ot">&lt;-</span> lda_pred<span class="sc">$</span>class</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (model_type <span class="sc">==</span> <span class="st">"QDA"</span>) {</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>      qda_model <span class="ot">&lt;-</span> <span class="fu">qda</span>(full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k), <span class="sc">-</span><span class="dv">9</span>], </span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>                       full_data[<span class="fu">which</span>(fold_ids <span class="sc">!=</span> k), <span class="dv">9</span>])</span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>      qda_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(qda_model, </span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>                          full_data[<span class="fu">which</span>(fold_ids <span class="sc">==</span> k), <span class="sc">-</span><span class="dv">9</span>])</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>      class_pred <span class="ot">&lt;-</span> qda_pred<span class="sc">$</span>class</span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>    CV_error_vec[k] <span class="ot">&lt;-</span> <span class="fu">mean</span>(class_pred <span class="sc">!=</span> full_data[<span class="fu">which</span>(fold_ids <span class="sc">==</span> k), <span class="dv">9</span>])</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(CV_error_vec)</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Run CV for logistic regression:</span></span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>logistic_formula <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Outcome"</span>, <span class="fu">paste</span>(<span class="fu">colnames</span>(diabetes_data)[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>],</span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">collapse =</span> <span class="st">" + "</span>), </span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sep =</span> <span class="st">" ~ "</span>)</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>logistic_CV_error <span class="ot">&lt;-</span> <span class="fu">cross_validation</span>(diabetes_data, <span class="st">"logistic"</span>, <span class="dv">5</span>, </span>
 <span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">as.formula</span>(logistic_formula))</span>
 <span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a></span>

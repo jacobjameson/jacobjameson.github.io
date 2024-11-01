@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.jacobjameson.com/index.html</loc>
-    <lastmod>2024-05-20T21:54:43.842Z</lastmod>
+    <lastmod>2024-10-08T21:46:27.828Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/Data/viz/2023-01-31 Tidy Tuesday/TT_wk5.html</loc>
@@ -54,7 +54,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 3/section3.html</loc>
-    <lastmod>2024-04-11T14:24:53.677Z</lastmod>
+    <lastmod>2024-10-08T21:21:22.785Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.2.html</loc>
@@ -94,7 +94,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/research.html</loc>
-    <lastmod>2024-04-05T01:54:37.046Z</lastmod>
+    <lastmod>2024-10-08T21:21:25.510Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/teaching.html</loc>
@@ -126,7 +126,7 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/posts/blog.html</loc>
-    <lastmod>2024-05-20T21:08:46.046Z</lastmod>
+    <lastmod>2024-10-08T21:35:59.254Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 7/section 7.2.html</loc>
@@ -218,19 +218,19 @@
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 4/section 4.html</loc>
-    <lastmod>2024-04-11T14:24:46.940Z</lastmod>
+    <lastmod>2024-10-08T21:21:19.994Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 5/section 5.html</loc>
-    <lastmod>2024-04-11T14:24:27.227Z</lastmod>
+    <lastmod>2024-11-01T13:50:51.821Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 6/section 6.html</loc>
-    <lastmod>2024-04-11T14:24:03.368Z</lastmod>
+    <lastmod>2024-11-01T13:50:48.752Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 7/section 7.html</loc>
-    <lastmod>2024-04-11T14:20:55.000Z</lastmod>
+    <lastmod>2024-11-01T13:50:54.821Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 8/section 8.html</loc>
@@ -247,5 +247,21 @@
   <url>
     <loc>https://www.jacobjameson.com/api 222 files/section 10/section 10.html</loc>
     <lastmod>2024-05-20T21:08:14.816Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/Math Camp/section 1/section1.html</loc>
+    <lastmod>2024-09-13T04:55:49.452Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/Math Camp/mathcamp.html</loc>
+    <lastmod>2024-08-15T19:17:20.695Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/posts/2024-10-08 Batching/2024-10-08 Batching.html</loc>
+    <lastmod>2024-10-08T21:46:31.278Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/git files/section 1/Instructions.html</loc>
+    <lastmod>2024-11-01T13:50:44.917Z</lastmod>
   </url>
 </urlset>

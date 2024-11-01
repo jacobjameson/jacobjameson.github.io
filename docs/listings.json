@@ -28,6 +28,7 @@
   {
     "listing": "/posts/blog.html",
     "items": [
+      "/posts/2024-10-08 Batching/2024-10-08 Batching.html",
       "/posts/2024-03-26-DT/2024-03-26-DT.html",
       "/posts/2024-02-26-PCR/2024-02-26-PCR.html",
       "/posts/2024-02-15-LDA/2024-02-15-LDA.html",
@@ -62,6 +63,12 @@
       "/Data/viz/2023-01-10 Tidy Tuesday/TT_wk2.html",
       "/Data/viz/2023-01-03 Tidy Tuesday/TT_wk1.html",
       "/Data/viz/healthcare area chart/healthcare_areachart.html"
+    ]
+  },
+  {
+    "listing": "/Math Camp/mathcamp.html",
+    "items": [
+      "/Math Camp/section 1/section1.html"
     ]
   }
 ]

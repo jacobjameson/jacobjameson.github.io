@@ -118,7 +118,7 @@ add_fun(3, 4)
 
 ### Function to perform cross-validation
 
-Let's write a function to do cross-validation. We will name the function cross_validation_KNN() and it will take 3 arguments:
+Let's write a function to do cross-validation. We will name the function cross_validation_KNN() and it will take  arguments:
 
 1. The feature columns of the data
 2. The outcome column of the data (Y)
@@ -224,7 +224,7 @@ which.min(mean_cv_error10)
 To understand how perform changes across the K values, a plot would be helpful.
 
 ```{r}
-plot(seq(20), mean_cv_error5, type = "l",
+plot(seq(50), mean_cv_error10, type = "l",
      main = "Mean CV Error Rate as a Function of k",
      ylab = "CV Error Rate", xlab = "k")
 ```
@@ -244,8 +244,7 @@ cross_validation <- function(full_data, model_type, kfolds,
                              logistic_formula = NULL) {
   
   ## Define fold_ids in exactly the same way as before
-  fold_ids <- rep(seq(kfolds), 
-                       ceiling(nrow(full_data) / kfolds))
+  fold_ids <- rep(seq(kfolds), ceiling(nrow(full_data) / kfolds))
   fold_ids <- fold_ids[1:nrow(full_data)]
   fold_ids <- sample(fold_ids, length(fold_ids))
   
@@ -286,6 +285,7 @@ cross_validation <- function(full_data, model_type, kfolds,
 logistic_formula <- paste("Outcome", paste(colnames(diabetes_data)[1:8],
                                            collapse = " + "), 
                           sep = " ~ ")
+
 logistic_CV_error <- cross_validation(diabetes_data, "logistic", 5, 
                                       as.formula(logistic_formula))
 

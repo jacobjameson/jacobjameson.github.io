@@ -68,7 +68,6 @@ msep_func <- function(predictions, true_vals) {
 
 
 
-
 ## Polynomial Regression 
 
 We can start by fitting a polynomial regression using only age
@@ -109,3 +108,273 @@ Extract the coefficients from the model
 ```{r}
 coef(summary(age_poly_TRUE))
 ```
+
+We can see from the coefficient outputs of the two models that they have different coefficients. We will now check that they make the same predictions.
+
+```{r}
+age_poly_pred <- predict(age_poly, newdata = wage_data[test,])
+age_poly_TRUE_pred  <- predict(age_poly_TRUE, newdata = wage_data[test,])
+```
+
+Explore the predictions
+
+```{r}
+head(age_poly_pred)
+head(age_poly_TRUE_pred)
+```
+
+Calculate and print the MSEP
+
+```{r}
+print(msep_func(age_poly_pred, wage_data[test, "wage"]))
+```
+
+
+`cbind()` is a function that joins columns together by binding them next to each other. There is also a function `rbind()` that joins by binding new rows to the bottom of old ones. Let's try using `cbind()` to look at both sets of predictions at the same time:
+
+```{r}
+pred_comparison <- cbind(age_poly_pred, age_poly_TRUE_pred)
+```
+
+
+The column names default to the variable names, but ifwe want to change them, we can use the `colnames()` function
+
+```{r}
+colnames(pred_comparison) <- c("pred1", "pred2")
+```
+
+We can then generate a variable that flags any instances where the predictions do not line up. To do this, I will introduce you another function in `dplyr`: `mutate()` which means create a new variable
+
+```{r, eval=FALSE}
+pred_comparison <- pred_comparison %>% 
+  mutate(check_same = as.numeric(pred1 == pred2))
+```
+`Error in UseMethod("mutate") : no applicable method for 'mutate' applied to an object of class "c('matrix', 'array', 'double', 'numeric')"`
+
+The previous line errored because `pred_comparison` is a matrix and dplyr was designed to work on data frames.
+
+Make `pred_comparison` a data frame
+
+```{r}
+pred_comparison <- data.frame(pred_comparison)
+```
+
+Now try running the code:
+
+```{r}
+pred_comparison <- pred_comparison %>%
+  mutate(check_same = as.numeric(pred1 == pred2))
+```
+
+View the results
+
+```{r, eval=F}
+View(pred_comparison)
+```
+
+## Regression Splines
+
+### Splines
+
+We're going to start by making an age grid, so that we test our predictions on a grid of evenly spaced ages so that you capture the functional form well. 
+
+A quick aside, na.rm = TRUE means exlucde missing observations. Then we are going to run a spline with knots at ages 25, 40, and 60. 
+
+```{r}
+library(splines)
+```
+
+
+Create the age grids
+
+```{r}
+age_grid <- seq(from = min(wage_data$age, na.rm = TRUE),
+                to = max(wage_data$age, na.rm = TRUE))
+```
+
+Now we use a basis function
+
+```{r}
+spline_age <- lm(wage ~ bs(age, knots = c(25, 40, 60)), 
+                 data = wage_data[train,])
+
+?bs # to check what the basis function does
+```
+
+
+Get the predictions at the grid points we defined earlier
+
+```{r}
+spline_age_grid_pred  <- predict(spline_age, 
+                                 newdata = list(age = age_grid), 
+                                 se = TRUE)
+```
+
+Plot age on the x-axis and wage on the y-axis for the test data. Then add the predictions and the confidence intervals
+
+```{r}
+plot(wage_data[test, "age"], wage_data[test, "wage"],
+cex = 0.5, col = "darkgrey",
+xlab = "age", ylab = "wage")
+lines(age_grid, spline_age_grid_pred$fit, lwd = 2)
+lines(age_grid, spline_age_grid_pred$fit + 
+        2 * spline_age_grid_pred$se, lty ="dashed")
+lines(age_grid, spline_age_grid_pred$fit - 
+        2 * spline_age_grid_pred$se, lty ="dashed")
+```
+
+### Natural Splines 
+
+If we instead wanted to fit a natural spline, we use `ns()` instead of knots, we can specify degrees of freedom. In this case we are going to use 4 degrees of freedom. 
+
+```{r}
+ns_age_poly <- lm(wage ~ ns(age, df = 4), data = wage_data[train,])
+ns_age_grid_poly_pred <- predict(ns_age_poly,
+                                 newdata = list(age = age_grid),
+                                 se = TRUE)
+
+plot(wage_data[test, "age"], wage_data[test, "wage"], 
+     cex = 0.5, col = "darkgrey",
+     xlab = "age", ylab = "wage")
+lines(age_grid, ns_age_grid_poly_pred$fit, lwd = 2)
+lines(age_grid, ns_age_grid_poly_pred$fit + 
+        2 * ns_age_grid_poly_pred$se, lty = "dashed")
+lines(age_grid, ns_age_grid_poly_pred$fit - 
+        2 * ns_age_grid_poly_pred$se, lty = "dashed")
+```
+
+### Smoothing Splines 
+
+To fit a smoothing spline, we use `smooth.spline()`. We can specify our own `df`   
+
+```{r}
+smooth_age <- smooth.spline(wage_data[train,"age"], 
+                            wage_data[train, "wage"], 
+                            df = 16)
+```
+
+Or we can use cross Validation to get optimal df and penalty   
+
+```{r, warning=FALSE}
+smoothCV_age <- smooth.spline(wage_data[train, "age"], 
+                              wage_data[train, "wage"], 
+                              cv = TRUE) # specify we want to use CV
+smoothCV_age$df
+```
+
+Plot the results as before  
+
+```{r}
+plot(wage_data[test, "age"], wage_data[test, "wage"],
+     cex =.5, col = "darkgrey",
+     xlab = "age", ylab = "wage")
+title(" Smoothing Spline ")
+lines(smooth_age, col ="red", lwd = 2)
+lines(smoothCV_age, col ="blue", lwd =2)
+```
+
+### Local Regression 
+
+Local Regression use loess()
+
+Note: span = 0.2 makes neighborhoods with 20% of observations. Span = 0.5 creates neighborhoods with 50% of observations. So the larger the span, the smoother the fit
+
+```{r}
+local2_age <- loess(wage ~ age, span = 0.2, data = wage_data)
+local5_age <- loess(wage ~ age, span = 0.5, data = wage_data)
+```
+
+Get the predictions
+
+```{r}
+pred_local2_age <- predict(local2_age, newdata = data.frame(age = age_grid))
+pred_local5_age <- predict(local5_age, newdata = data.frame(age = age_grid))
+```
+
+Plot the results
+
+```{r}
+plot(wage_data[test, "age"], wage_data[test, "wage"],
+     cex =.5, col = "darkgrey",
+     xlab = "age", ylab = "wage")
+lines(age_grid, pred_local2_age, col = "red", lwd = 2)
+lines(age_grid, pred_local5_age, col = "blue", lwd = 2)
+```
+
+### GAMs 
+
+Generalized Additive Models (GAMs)
+
+Start with using natural spline functions of year and age and treating education as a qualitative variable does not require any special packages
+
+- Example 1: GAMs with splines
+
+```{r}
+gam_yae <- lm(wage ~ ns(year, 4) + ns(age, 4) + education, 
+              data = wage_data[train,])
+```
+
+- Example 2: GAMs with smoothing splines
+
+```{r, message=FALSE}
+library(gam)
+```
+
+In the gam library s() indicates that we want to use a smoothing spline
+
+```{r}
+gam_smooth <- gam(wage ~ s(year, 4) + s(age, 5) + education,
+                  data = wage_data[train,])
+```
+
+Plot the model results
+
+```{r}
+par(mfrow = c(1, 3))
+plot(gam_smooth, se = TRUE, col ="blue ")
+```
+
+To plot the GAM we created just using `lm()`, we can use `plot.Gam()`
+```{r}
+plot.Gam(gam_yae, se = TRUE, col = "red") # Note the capitalization
+```
+
+Make predictions
+
+```{r}
+gam_yae_pred <- predict(gam_yae, newdata = wage_data[test,])
+gam_smooth_pred <- predict(gam_smooth, newdata = wage_data[test,])
+```
+
+Print out the MSEP for these two GAMs using the function we created at the start of class
+
+```{r}
+print(msep_func(gam_yae_pred, wage_data[test, "wage"]))
+print(msep_func(gam_smooth_pred, wage_data[test, "wage"]))
+```
+
+- Example 3: GAMs with local regression
+
+To use local regression in GAMs, use `lo()`
+
+```{r}
+gam_lo <- gam(wage ~ s(year, df = 4) + lo(age, span = 0.7) + education, 
+              data = wage_data[train,])
+```
+
+Plot the results
+
+```{r}
+plot.Gam(gam_lo, se = TRUE, col = "green")
+```
+
+If you want to do a local regression in two variables:
+
+```{r}
+gam_2lo <- gam(wage ~ lo(year, age, span =0.5) + education,
+               data = wage_data[train,])
+```
+
+
+
+  

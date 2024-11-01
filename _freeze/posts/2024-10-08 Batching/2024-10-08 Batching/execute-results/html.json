@@ -1,0 +1,14 @@
+{
+  "hash": "844d28f44142236e992a8fbad2e518f6",
+  "result": {
+    "markdown": "---\ntitle: \"My Paper Summary: A Scrollytelling Experience\"\nformat: \n  html:\n    css: scrolly.css\n    include-in-header:\n      - text: |\n          <script src=\"https://unpkg.com/scrollama\"></script>\n---\n\n\n\n\n<div class=\"scroll-container\">\n<div class=\"scroll-text\">\n<section id=\"intro\">\n<h2>Introduction</h2>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>\n</section>\n<section id=\"method\">\n<h2>Methodology</h2>\n<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n</section>\n<section id=\"results\">\n<h2>Results</h2>\n<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>\n</section>\n<section id=\"conclusion\">\n<h2>Conclusion</h2>\n<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>\n</section>\n</div>\n<div class=\"scroll-graphic\">\n<div id=\"plot\"></div>\n</div>\n</div>\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stderr}\n```\n`geom_smooth()` using formula = 'y ~ x'\n```\n:::\n:::\n\n\n<script>\n// Initialize scrollama\nvar scroller = scrollama();\n\n// Setup the scroller\nscroller\n.setup({\nstep: '.scroll-text section',\noffset: 0.5,\ndebug: false\n})\n.onStepEnter(response => {\n// Update visualization based on current step\nvar plotDiv = document.getElementById('plot');\nswitch(response.index) {\ncase 0:\nplotDiv.innerHTML = '<img src=\"images/plot_intro.png\" alt=\"Introduction Plot\">';\nbreak;\ncase 1:\nplotDiv.innerHTML = '<img src=\"images/plot_method.png\" alt=\"Methodology Plot\">';\nbreak;\ncase 2:\nplotDiv.innerHTML = '<img src=\"images/plot_results.png\" alt=\"Results Plot\">';\nbreak;\ncase 3:\nplotDiv.innerHTML = '<img src=\"images/plot_conclusion.png\" alt=\"Conclusion Plot\">';\nbreak;\n}\n});\n\n// Resize event\nwindow.addEventListener('resize', scroller.resize);\n</script>\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

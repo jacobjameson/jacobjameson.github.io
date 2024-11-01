@@ -178,6 +178,15 @@ To predict outcomes on the test_data using logistic regression, use:
 logistic_predict <-predict(logistic_default,
                            test_data,
                            type = "response")
+
+hist(logistic_predict)
+
+# plot auc curves
+library(ROCR)
+
+pred <- prediction(logistic_predict, test_data$default)
+perf <- performance(pred, "tpr", "fpr")
+plot(perf)
 ```
 
 Let's look at what we got from this prediction model. We will use the `head()` function, which prints the first few values of the object inside the parentheses. If you want to change the number of observations that are printed to 100, you can use `head(object, n = 100)`
@@ -265,7 +274,7 @@ for(threshold in threshold_values) {
   ## Now we can add the results to our matrix 
   error_rates[indx,] <- c(true_pos_accuracy, true_neg_accuracy)
 }
-
+error_rates
 ```
 
 Let's plot each of these as a function of the threshold

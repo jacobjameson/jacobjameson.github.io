@@ -16,8 +16,6 @@ As Professor Saghafian noted on Slide 14 of lecture 6, there are certain skills 
 
 
 
-
-
 ```{r, include=FALSE}
 # We need the ISLR library for the dataset
 library(ISLR)

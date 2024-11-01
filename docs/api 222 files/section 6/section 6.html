@@ -532,7 +532,7 @@ ABYSTAND     0.0361586998 .          </code></pre>
 </div>
 </div>
 <ul>
-<li>What is the largest lambda whose CV error was within 1 standard deviation of the lowest CV error?</li>
+<li>What is the largest lambda whose CV error was within 1 standard error of the lowest CV error?</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lasso_ins<span class="sc">$</span>lambda<span class="fl">.1</span>se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -754,8 +754,8 @@ adjCV       0.3484   0.2978   0.2936   0.2925   0.2925   0.2920   0.2909
 CV      0.2913   0.2904   0.2898    0.2874    0.2863    0.2794    0.2794
 adjCV   0.2912   0.2901   0.2898    0.2873    0.2862    0.2793    0.2793
        14 comps  15 comps  16 comps  17 comps  18 comps  19 comps
-CV       0.2794    0.2795    0.2795    0.2797    0.2801    0.2804
-adjCV    0.2793    0.2794    0.2794    0.2796    0.2797    0.2800
+CV       0.2794    0.2795    0.2795    0.2796    0.2796    0.2797
+adjCV    0.2793    0.2794    0.2794    0.2794    0.2795    0.2795
 
 TRAINING: % variance explained
          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps
@@ -766,7 +766,7 @@ X          81.28     86.91     92.14     96.43     99.52     99.79    100.00
 logwage    31.35     32.46     33.11     36.40     36.45     36.45     36.47
          16 comps  17 comps  18 comps  19 comps
 X          100.00    100.00    100.00    100.00
-logwage     36.47     36.47     36.48     36.49</code></pre>
+logwage     36.47     36.47     36.47     36.48</code></pre>
 </div>
 </div>
 <p>We are interested in finding which number of principle components should be included in the regression to lead to the lowest cross-validation error.</p>
@@ -834,8 +834,8 @@ adjCV       0.3484   0.2843   0.2794   0.2789   0.2788   0.2788   0.2789
 CV      0.2791   0.2791   0.2791    0.2791    0.2791    0.2791    0.2791
 adjCV   0.2790   0.2790   0.2790    0.2790    0.2790    0.2790    0.2790
        14 comps  15 comps  16 comps  17 comps  18 comps  19 comps
-CV       0.2791    0.2791    0.2790    0.2790    0.2790    0.2790
-adjCV    0.2790    0.2790    0.2792    0.2792    0.2792    0.2792
+CV       0.2791    0.2791    0.2792    0.2792    0.2792    0.2792
+adjCV    0.2790    0.2790    0.2807    0.2807    0.2807    0.2806
 
 TRAINING: % variance explained
          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps
@@ -845,8 +845,8 @@ logwage    33.67    36.19    36.43    36.45    36.45    36.46    36.47    36.47
 X          66.04     73.72     80.25     81.54     86.85     93.02    100.00
 logwage    36.47     36.47     36.47     36.47     36.47     36.47     36.47
          16 comps  17 comps  18 comps  19 comps
-X          101.71    103.40    104.99    106.64
-logwage     36.34     36.34     36.34     36.34</code></pre>
+X          104.22    108.64    113.19    117.49
+logwage     35.69     35.68     35.68     35.72</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Step 2: Which ncomp value had the lowest CV MSE?</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>pls_msep <span class="ot">&lt;-</span> <span class="fu">MSEP</span>(pls_fit)</span>
