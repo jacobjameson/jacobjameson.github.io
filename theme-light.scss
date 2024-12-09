@@ -108,16 +108,33 @@ p>a {
         stroke-opacity: 0.6;
     }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Publication Cards */
 .publication-card {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 16px;
-  margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
   gap: 16px;
+  max-width: 600px;
+  flex: 1 1 calc(50% - 20px); /* Adjusts to fit two cards per row */
+  transition: transform 0.2s ease-in-out;
+}
+
+.publication-card:hover {
+  transform: scale(1.02);
 }
 
 .publication-card img {
@@ -129,19 +146,42 @@ p>a {
 }
 
 .publication-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex-grow: 1;
+}
+
+.publication-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.25em;
+  color: #0056b3;
+}
+
+.publication-card p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Buttons */
+.card-buttons {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .card-buttons a,
 .card-buttons button {
   text-decoration: none;
-  margin-right: 10px;
   padding: 8px 12px;
   font-size: 0.85em;
   font-weight: bold;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .card-buttons a.view-article {
@@ -149,9 +189,17 @@ p>a {
   color: #fff;
 }
 
+.card-buttons a.view-article:hover {
+  background-color: #0056b3;
+}
+
 .card-buttons a.view-data {
   background-color: #28a745;
   color: #fff;
+}
+
+.card-buttons a.view-data:hover {
+  background-color: #218838;
 }
 
 .card-buttons button.more-info {
@@ -159,6 +207,11 @@ p>a {
   color: #212529;
 }
 
+.card-buttons button.more-info:hover {
+  background-color: #e0a800;
+}
+
+/* Modal Styling */
 .modal {
   display: none;
   position: fixed;
@@ -181,20 +234,176 @@ p>a {
   text-align: left;
 }
 
-.modal-content .close {
-  float: right;
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
 .modal-content p {
   margin: 10px 0;
   font-size: 0.9em;
   line-height: 1.5;
 }
 
-.modal-content p strong {
-  font-weight: bold;
+.modal-content .close {
+  color: #aaa;
+  float: right;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.modal-content .close:hover {
+  color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .publication-card {
+    flex: 1 1 calc(100% - 20px); /* Stacks cards vertically */
+  }
+
+  .publication-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .publication-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .publication-card img {
+    margin-bottom: 10px;
+  }
+
+  .card-buttons {
+    justify-content: center;
+  }
+
+  .card-buttons a,
+  .card-buttons button {
+    width: 100%; /* Buttons span full width on mobile */
+    text-align: center;
+  }
+}
+
+
+/* General Container for Teaching Cards */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* Teaching Cards */
+.teaching-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 400px;
+  flex: 1 1 calc(33.333% - 20px); /* Three cards per row */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.teaching-card:hover {
+  transform: scale(1.02);
+}
+
+.teaching-card h3 {
+  margin-top: 0;
+  font-size: 1.25em;
   color: #0056b3;
 }
 
+.teaching-card p,
+.teaching-card ul {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.teaching-card ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .teaching-card {
+    flex: 1 1 calc(50% - 20px); /* Two cards per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .teaching-card {
+    flex: 1 1 100%; /* One card per row */
+  }
+
+}
+
+/* Container for Bubbles */
+.bubbles-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 50px auto;
+}
+
+/* Individual Bubble */
+.bubble {
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Default vibrant gradient */
+  color: white;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bubble a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bubble:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific Bubble Colors */
+.research-bubble {
+  background: linear-gradient(135deg, #ff512f, #dd2476); /* Vibrant red-pink */
+}
+
+.teaching-bubble {
+  background: linear-gradient(135deg, #24c6dc, #514a9d); /* Vibrant blue-purple */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bubble {
+    width: 120px;
+    height: 120px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .bubble {
+    width: 100px;
+    height: 100px;
+    font-size: 0.9em;
+  }
+}

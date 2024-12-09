@@ -9,6 +9,47 @@ page-layout: full
 ---
 <div class="container">
 
+
+<div class="publication-card">
+<img src="images/jameson 2024.png" alt="Batch Ordering Icon">
+<div class="publication-card-content">
+<h3>Variation in Batch Ordering of Imaging Tests in the Emergency Department and the Impact on Care Delivery</h3>
+<p><strong>Authors:</strong> Jameson JC, Saghafian S, Huckman RS, Hodgson N</p>
+<p><strong>Journal:</strong> Health Services Research, 2024, Epub ahead of print</p>
+<p><strong>DOI:</strong> <a href="https://doi.org/10.1111/1475-6773.14406" target="_blank">10.1111/1475-6773.14406</a></p>
+<div class="card-buttons">
+<a href="https://doi.org/10.1111/1475-6773.14406" class="view-article" target="_blank">View Article</a>
+<a href="https://github.com/jacobjameson/batch-vs-sequence/" class="view-data" target="_blank">View Statistical Code</a>
+<button class="more-info" onclick="showAbstract('abstract-4')">More Info</button>
+</div>
+</div>
+</div>
+
+<!-- Abstract Modal 4 -->
+<div id="abstract-4" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeAbstract('abstract-4')">&times;</span>
+<h3>Abstract</h3>
+<p><strong>Objectives:</strong> To examine heterogeneity in physician batch ordering practices and measure associations between a physician's batch ordering tendency and patient outcomes and resource utilization.</p>
+<p><strong>Study Setting and Design:</strong> Retrospective study using EMR data from 50,836 ED visits to the Mayo Clinic of Arizona (2018–2019). Outcomes include patient length of stay (LOS), the number of imaging tests ordered, and 72-hour return with admission. Associations were measured with multivariable linear regression, controlling for covariates.</p>
+<p><strong>Principal Findings:</strong> Physicians with a batch tendency 1SD higher than average had:
+<ul>
+<li>4.5% longer ED LOS (p &lt; 0.001).</li>
+<li>14.8% lower probability of 72-hour return with admission (p &lt; 0.001).</li>
+<li>8 additional imaging tests per 100 patient encounters (p &lt; 0.001).</li>
+</ul>
+These results suggest batching can lead to more comprehensive evaluations and reduce short-term revisits but may increase unnecessary imaging.
+</p>
+<p><strong>Conclusions:</strong> Physician diagnostic test ordering strategies significantly impact ED efficiency and patient care. Guidelines are needed to optimize ED test ordering practices.</p>
+</div>
+</div>
+
+
+
+
+
+
+
 <!-- Publication 1 -->
 <div class="publication-card">
 <img src="images/tarantino 2024.png">
@@ -35,16 +76,16 @@ page-layout: full
 
 <!-- Publication 2 -->
 <div class="publication-card">
-<img src="images/glasser 2024.png" alt="Male Health Icon">
+<img src="images/glasser 2024.png">
 <div class="publication-card-content">
 <h3>Male Gender Expressivity and Diagnosis and Treatment of Cardiovascular Disease Risks in Men</h3>
 <p><strong>Authors:</strong> Glasser NJ, Jameson JC, Huang ES, et al.</p>
 <p><strong>Journal:</strong> JAMA Network Open, 2024, 7(10):e2441281</p>
 <p><strong>DOI:</strong> <a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" target="_blank">10.1001/jamanetworkopen.2024.41281</a></p>
 <div class="card-buttons">
+<a href="https://github.com/jacobjameson/MGE-CVD" class="view-data" target="_blank">View Statistical Code</a>
 <a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" class="view-article" target="_blank">View Article</a>
 <button class="more-info" onclick="showAbstract('abstract-2')">More Info</button>
-<a href="https://github.com/jacobjameson/MGE-CVD" class="view-data" target="_blank">View Statistical Code</a>
 </div>
 </div>
 </div>
@@ -61,6 +102,63 @@ page-layout: full
 <p><strong>Conclusions:</strong> Elevated MGE in youth may reduce adult CVD risk and treatment, highlighting the need for tailored public health strategies to address distinctive risks in males with high MGE.</p>
 </div>
 </div>
+
+
+<div class="publication-card">
+<img src="images/network.png">
+<div class="publication-card-content">
+<h3>Associations of Adolescent School Social Networks, Gender Norms, and Adolescent-to-Young Adult Changes in Male Gender Expression With Young Adult Substance Use</h3>
+<p><strong>Authors:</strong> Glasser NJ, Jameson JC, Tung EL, Lindau ST, Pollack HA</p>
+<p><strong>Journal:</strong> Journal of Adolescent Health, 2024, 74(4):755-763</p>
+<p><strong>DOI:</strong> <a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" target="_blank">10.1016/j.jadohealth.2023.11.018</a></p>
+<div class="card-buttons">
+<a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" class="view-article" target="_blank">View Article</a>
+<a href="https://github.com/jacobjameson/MGE-and-Substance-Use" class="view-data" target="_blank">View Statistical Code</a>
+<button class="more-info" onclick="showAbstract('abstract-3')">More Info</button>
+</div>
+</div>
+</div>
+
+<!-- Abstract Modal 3 -->
+<div id="abstract-3" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeAbstract('abstract-3')">&times;</span>
+<h3>Abstract</h3>
+<p><strong>Purpose:</strong> Male gender expression (MGE), shaped by sociocultural pressures, has been associated with health. This study examines links between adolescent school social networks, gender norms, changes in MGE, and young adult substance use.</p>
+<p><strong>Methods:</strong> Using data from 4,776 males in a nationally representative longitudinal cohort, adolescent-to-young adult MGE changes were analyzed in relation to adolescent social networks, school norms, and young adult substance use behaviors (e.g., cigarette, marijuana, heavy alcohol, and recreational drug use).</p>
+<p><strong>Results:</strong> MGE changes were associated with school gender norms, with greater shifts toward school averages (β = -0.83, p < .01) observed among adolescents whose MGE initially diverged from school norms. Increases in MGE were linked to higher odds of substance use, except prescription drug misuse.</p>
+<p><strong>Discussion:</strong> Adolescent gender norms influence MGE shifts, which may predict substance use in young adulthood. School-based gender norms offer a potential target for interventions to reduce substance misuse.</p>
+</div>
+</div>
+
+
+
+<div class="publication-card">
+<img src="images/meltzer 2023.png" alt="Doctor-Patient Relationship Icon">
+<div class="publication-card-content">
+<h3>Does the Doctor-Patient Relationship Affect Enrollment in Clinical Research?</h3>
+<p><strong>Authors:</strong> Soo J, Jameson J, Flores A, Dubin L, Perish E, Afzal A, Berry G, DiMaggio V, Krishnamoorthi VR, Porter J, Tang J, Meltzer D</p>
+<p><strong>Journal:</strong> Academic Medicine, 2023, 98(6S):S17-S24</p>
+<p><strong>DOI:</strong> <a href="https://doi.org/10.1097/ACM.0000000000005195" target="_blank">10.1097/ACM.0000000000005195</a></p>
+<div class="card-buttons">
+<a href="https://doi.org/10.1097/ACM.0000000000005195" class="view-article" target="_blank">View Article</a>
+<button class="more-info" onclick="showAbstract('abstract-5')">More Info</button>
+</div>
+</div>
+</div>
+
+<!-- Abstract Modal 5 -->
+<div id="abstract-5" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeAbstract('abstract-5')">&times;</span>
+<h3>Abstract</h3>
+<p><strong>Purpose:</strong> Recruiting patients for clinical research is challenging, especially for underrepresented populations, and may be influenced by patients' relationships with their physicians, care experiences, and engagement with care. This study examines predictors of research enrollment in care models promoting continuity in the doctor-patient relationship.</p>
+<p><strong>Method:</strong> Conducted within 2 care model studies at the University of Chicago from 2020-2022, this study assessed predictors of enrollment in a vitamin D research study. Predictors included patient-reported care experiences, clinic engagement, and parent study follow-up survey completion, analyzed using univariate tests and multivariable logistic regression.</p>
+<p><strong>Results:</strong> Of 773 eligible participants, 63% of intervention arm participants enrolled in the vitamin D study versus 17% of control arm participants. Enrollment was not associated with reported quality of communication or trust in the doctor but was linked to timely care, more completed clinic visits, and higher parent study follow-up survey completion.</p>
+<p><strong>Conclusions:</strong> Study enrollment may be influenced more by continuity of care, timely access, and patient engagement than by the quality of the doctor-patient relationship. These findings can inform strategies for improving research recruitment.</p>
+</div>
+</div>
+
 
 </div>
 
