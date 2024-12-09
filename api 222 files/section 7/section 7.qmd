@@ -279,6 +279,17 @@ Local Regression use loess()
 
 Note: span = 0.2 makes neighborhoods with 20% of observations. Span = 0.5 creates neighborhoods with 50% of observations. So the larger the span, the smoother the fit
 
+
+```{r, warning=F, message=F}
+# plot age and wage and add geom_smooth
+library(ggplot2)
+ggplot(wage_data[test,], aes(x = age, y = wage, color = education)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "loess", span = 0.2) +
+  geom_smooth(method = "loess", span = 0.5) 
+```
+
+
 ```{r}
 local2_age <- loess(wage ~ age, span = 0.2, data = wage_data)
 local5_age <- loess(wage ~ age, span = 0.5, data = wage_data)
@@ -323,7 +334,7 @@ library(gam)
 In the gam library s() indicates that we want to use a smoothing spline
 
 ```{r}
-gam_smooth <- gam(wage ~ s(year, 4) + s(age, 5) + education,
+gam_smooth <- gam(wage ~ s(year, 4, spar = 0.5) + s(age, 5) + education,
                   data = wage_data[train,])
 ```
 
@@ -373,6 +384,7 @@ If you want to do a local regression in two variables:
 ```{r}
 gam_2lo <- gam(wage ~ lo(year, age, span =0.5) + education,
                data = wage_data[train,])
+?s
 ```
 
 

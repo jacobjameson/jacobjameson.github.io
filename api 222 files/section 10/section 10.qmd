@@ -216,8 +216,13 @@ library(ReinforcementLearning)
 
 This section demonstrates the capabilities of the ReinforcementLearning package with the help of a practical example, a Gridworld. The goal is to teach optimal movements to a robot in a grid-shaped maze (adapted from Sutton (1998)). Here the agent must navigate from a random starting position to a final position on a simulated 2×2 grid (see figure below). The reward structures are as follows: each movement leads to a negative reward of -1 to penalize routes that are not the shortest path. If the agent reaches the goal position, it earns a reward of 10.
 
+The gridworld is defined as follows:
+
+|———–|
 | s1 | s4 |
-| s2 |  s3 |
+| s2   s3 |
+|———–|
+
 
 Define the state and action sets, and load the built-in environment function for the 2×2 gridworld.
 

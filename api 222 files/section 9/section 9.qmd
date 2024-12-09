@@ -371,6 +371,7 @@ svm_poly3 <- svm(Private ~ Outstate + accept_rate,
                  kernel = "polynomial",
                  degree = 3,
                  cost = 1)
+
 plot(svm_poly3, small_data)
 ```
 
@@ -389,6 +390,7 @@ To plot the decision boundary, we first use the predict() function with an addit
 ```{r}
 predicted_grid <- predict(svm_poly3, xgrid, 
                           decision.values = TRUE)
+
 predicted_grid <- attributes(predicted_grid)$decision
 ```
 
@@ -471,7 +473,6 @@ full_radial <- tune(svm,
                                   gamma = c(0.0001, 0.001, 0.01, 0.1, 1)))
 
 summary(full_radial)
-
 summary(tune_radial)
 ```
 

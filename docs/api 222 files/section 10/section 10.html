@@ -391,8 +391,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ReinforcementLearning)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This section demonstrates the capabilities of the ReinforcementLearning package with the help of a practical example, a Gridworld. The goal is to teach optimal movements to a robot in a grid-shaped maze (adapted from Sutton (1998)). Here the agent must navigate from a random starting position to a final position on a simulated 2×2 grid (see figure below). The reward structures are as follows: each movement leads to a negative reward of -1 to penalize routes that are not the shortest path. If the agent reaches the goal position, it earns a reward of 10.</p>
-<p>s1 | s4 |<br>
-s2 | s3 |</p>
+<p>The gridworld is defined as follows:</p>
+<p>|———–| | s1 | s4 | | s2 s3 | |———–|</p>
 <p>Define the state and action sets, and load the built-in environment function for the 2×2 gridworld.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"s1"</span>, <span class="st">"s2"</span>, <span class="st">"s3"</span>, <span class="st">"s4"</span>)</span>
@@ -425,7 +425,7 @@ s2 | s3 |</p>
     out &lt;- list(NextState = next_state, Reward = reward)
     return(out)
 }
-&lt;bytecode: 0x1551d6f08&gt;
+&lt;bytecode: 0x116f617e8&gt;
 &lt;environment: namespace:ReinforcementLearning&gt;</code></pre>
 </div>
 </div>
