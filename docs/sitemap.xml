@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.jacobjameson.com/index.html</loc>
-    <lastmod>2025-02-09T20:23:08.250Z</lastmod>
+    <lastmod>2025-02-23T19:16:30.884Z</lastmod>
   </url>
   <url>
     <loc>https://www.jacobjameson.com/Data/viz/2023-01-31 Tidy Tuesday/TT_wk5.html</loc>
@@ -271,5 +271,9 @@
   <url>
     <loc>https://www.jacobjameson.com/posts/2025-02-09-BL/2025-02-09-BL.html</loc>
     <lastmod>2025-02-09T20:23:16.924Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jacobjameson.com/posts/2025-02-23-Sankey/2025-02-23-Sankey.html</loc>
+    <lastmod>2025-02-23T19:16:30.486Z</lastmod>
   </url>
 </urlset>

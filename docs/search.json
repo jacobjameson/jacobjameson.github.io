@@ -2119,5 +2119,12 @@
     "title": "A Gentle Introduction to Bayesian Linear Regression in R",
     "section": "Key Takeaways: Why This Matters",
     "text": "Key Takeaways: Why This Matters\nUnlike traditional frequentist regression, Bayesian posterior predictive distributions allow us to answer probabilistic questions about new data points:\n\nPoint Estimate + Full Uncertainty: Instead of a single predicted \\(y_*\\), we get a distribution over plausible values.\nProbability-Based Decisions: We can compute the probability that an outcome exceeds (or falls below) a critical threshold.\nMore Robust Uncertainty Quantification: Since we account for both parameter uncertainty and residual variance, our predictions are more realistic.\n\nFurther Reading:\n\nIntroduction to Bayesian Statistics by William Bolstad.\nBayesian Data Analysis by Gelman et al. \nThe rstanarm, brms, or bayesplot packages in R for specifying, fitting, and visualizing Bayesian models."
+  },
+  {
+    "objectID": "posts/2025-02-23-Sankey/2025-02-23-Sankey.html",
+    "href": "posts/2025-02-23-Sankey/2025-02-23-Sankey.html",
+    "title": "A nice Sankey diagram",
+    "section": "",
+    "text": "The Gender Paradox: Depression, Treatment, and Suicide in America\n\n\n\n\n\n\n\n\nGender, Depression, and Suicide in America\n\n\nBy Jacob Jameson — February 1, 2025\n\n\nWhile women report higher rates of depression and are more likely to seek mental health care, men die by suicide at significantly higher rates — particularly in states with permissive gun laws.\n\n\n\n\n\nThe Depression Gender Gap\n\n\nDepression affects Americans differently across gender lines. A nine‑item depression screening questionnaire, called the Patient Health Questionnaire (PHQ‑9), was administered to determine the frequency of depression symptoms over the past 2 weeks.\n\n\n\nAmong 2021-2023 NHANES adult survey respondents, women were more than two times as likely as men to have PHQ-9 scores indicating severe depression."
   }
 ]
