@@ -19,15 +19,15 @@ page-layout: full
 <p><strong>DOI:</strong> <a href="https://doi.org/10.1002/cpt.3617" target="_blank">10.1002/cpt.3617</a></p>
 <div class="card-buttons">
 <a href="https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.3617?af=R" class="view-article" target="_blank">View Article</a>
-<button class="more-info" onclick="showAbstract('abstract-4')">More Info</button>
+<button class="more-info" onclick="showAbstract('abstract-5')">More Info</button>
 </div>
 </div>
 </div>
 
-<!-- Abstract Modal 4 -->
-<div id="abstract-4" class="modal">
+<!-- Abstract Modal 5 -->
+<div id="abstract-5" class="modal">
 <div class="modal-content">
-<span class="close" onclick="closeAbstract('abstract-4')">&times;</span>
+<span class="close" onclick="closeAbstract('abstract-5')">&times;</span>
 <h3>Abstract</h3>
 <p>
 Tailoring pharmacogenomic (PGx) implementation to diverse populations is vital to promoting health equity. We assessed prescriptions for medications with potentially actionable PGx information to identify patient characteristics associated with differential PGx medication exposure. We analyzed the nationally-representative MEPS dataset of adults who reported receiving prescriptions between 2014 and 2021. PGx medications include those the FDA and CPIC designate as having drug-gene associations supported by scientific evidence. With the primary outcome being PGx prescriptions, we performed Poisson regression adjusted for all other relevant covariates. In our final population (N = 119,722, 72% White/20% Black/4% Asian/8% Hispanic), 61% were prescribed a PGx medication, 56% were female, and 97% held health insurance coverage. Adults with private health insurance (65%) or public Medicaid/Medicare coverage (32%) were more likely to have PGx prescriptions than the uninsured (3%). Individuals with cardiovascular conditions [adjusted IRR (aIRR) = 1.45, 95% CI 1.41, 1.48], high cholesterol [aIRR = 1.37, 95% CI 1.35, 1.40], high blood pressure [aIRR = 1.14, 95% CI 1.12, 1.16], and cancer [aIRR = 1.02, 95% CI 1.00, 1.04] were more likely to receive PGx prescriptions. Self-reported Blacks were less likely than Whites to receive PGx medications [aIRR = 0.92, 95% CI 0.90, 0.94], and among those with health conditions, the likelihood of PGx medication exposure for underrepresented groups (Blacks, Hispanics, and Asians) was lower than for Whites. Our study using a comprehensive list of PGx medications in a nationally representative dataset indicates that certain populations are differentially exposed to genomically informed medications. This may suggest that if implementing a pharmacogenomics program based on reactive testing initiated by a prescription, a small underrepresentation of the Black population could be expected because of an underlying prescription disparity. Secondly, if implementing a pharmacogenomics program based on targeted preemptive testing, using clinical indication/comorbidity may be a reasonable way to enrich the population for prescriptions that would benefit from genotype tailoring.
