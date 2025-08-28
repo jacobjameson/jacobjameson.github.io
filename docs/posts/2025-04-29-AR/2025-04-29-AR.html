@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jacob Jameson">
+<meta name="dcterms.date" content="2025-04-29">
+<meta name="description" content="This post demonstrates how autoregressive models can overcome the limitations of difference-in-differences analysis when evaluating health policies with non-parallel pre-treatment trends, providing researchers with practical tools to improve causal inference in observational studies.">
+
+<title>Jacob Jameson - Beyond DiD: Autoregressive Models for Policy Evaluation When Parallel Trends Fail</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Jacob Jameson - Beyond DiD: Autoregressive Models for Policy Evaluation When Parallel Trends Fail">
+<meta name="twitter:description" content="This post demonstrates how autoregressive models can overcome the limitations of difference-in-differences analysis when evaluating health policies with non-parallel pre-treatment trends, providing researchers with practical tools to improve causal inference in observational studies.">
+<meta name="twitter:image" content="https://www.jacobjameson.com/posts/2025-04-29-AR/images/profile.png">
+<meta name="twitter:creator" content="@JacobCJameson">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/sig.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson" rel="" target="_blank"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jacobjameson" rel="" target="_blank"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Teaching</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+        <li>
+    <a class="dropdown-item" href="../../teaching.html" rel="" target="">
+ <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../R files/Intro R.html" rel="" target="">
+ <span class="dropdown-text">Introduction to R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../git files/Intro Git.html" rel="" target="">
+ <span class="dropdown-text">Introduction to Git/GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../api 222 files/API222.html" rel="" target="">
+ <span class="dropdown-text">API 222 Section Material</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-problem-with-parallel-trends" id="toc-the-problem-with-parallel-trends" class="nav-link" data-scroll-target="#the-problem-with-parallel-trends">The Problem with Parallel Trends</a></li>
+  <li><a href="#autoregressive-models-as-an-alternative" id="toc-autoregressive-models-as-an-alternative" class="nav-link" data-scroll-target="#autoregressive-models-as-an-alternative">Autoregressive Models as an Alternative</a></li>
+  <li><a href="#simulation-did-vs.-autoregressive-models" id="toc-simulation-did-vs.-autoregressive-models" class="nav-link" data-scroll-target="#simulation-did-vs.-autoregressive-models">Simulation: DiD vs.&nbsp;Autoregressive Models</a></li>
+  <li><a href="#why-autoregressive-models-work" id="toc-why-autoregressive-models-work" class="nav-link" data-scroll-target="#why-autoregressive-models-work">Why Autoregressive Models Work</a></li>
+  <li><a href="#model-assumptions-and-limitations" id="toc-model-assumptions-and-limitations" class="nav-link" data-scroll-target="#model-assumptions-and-limitations">Model Assumptions and Limitations</a></li>
+  <li><a href="#application-to-health-policy-research" id="toc-application-to-health-policy-research" class="nav-link" data-scroll-target="#application-to-health-policy-research">Application to Health Policy Research</a></li>
+  <li><a href="#practical-implementation" id="toc-practical-implementation" class="nav-link" data-scroll-target="#practical-implementation">Practical Implementation</a></li>
+  <li><a href="#testing-model-suitability" id="toc-testing-model-suitability" class="nav-link" data-scroll-target="#testing-model-suitability">Testing Model Suitability</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Beyond DiD: Autoregressive Models for Policy Evaluation When Parallel Trends Fail</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">causal inference</div>
+    <div class="quarto-category">policy evaluation</div>
+    <div class="quarto-category">methodology</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    This post demonstrates how autoregressive models can overcome the limitations of difference-in-differences analysis when evaluating health policies with non-parallel pre-treatment trends, providing researchers with practical tools to improve causal inference in observational studies.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jacob Jameson </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 29, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The difference-in-differences (DiD) framework has become a cornerstone of policy evaluation in health services research and beyond. When a policy change affects some regions or groups but not others, DiD offers a compelling approach to estimate causal effects. However, the validity of DiD hinges critically on the parallel trends assumption: that treatment and control groups would have followed parallel trajectories in the absence of intervention.</p>
+<p>What happens when this assumption fails? In this post, we explore autoregressive models as a robust alternative for policy evaluation when parallel trends are violated. We’ll walk through:</p>
+<ol type="1">
+<li>Why parallel trends matter for DiD</li>
+<li>When and how they fail in real-world applications</li>
+<li>How autoregressive models can help</li>
+<li>A simulation comparing both approaches</li>
+<li>Practical implementation in R</li>
+</ol>
+</section>
+<section id="the-problem-with-parallel-trends" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-with-parallel-trends">The Problem with Parallel Trends</h2>
+<p>The parallel trends assumption is the lynchpin of DiD methodology. It states that in the absence of treatment, the difference between treatment and control groups would have remained constant over time. This allows us to attribute any deviation from this pattern to the causal effect of the intervention.</p>
+<p>However, in health policy research, this assumption often fails for several reasons:</p>
+<ul>
+<li>Health outcomes frequently have complex, non-linear trajectories</li>
+<li>Treatment assignment may be related to pre-existing trends (e.g., policies targeting areas with worsening health metrics)</li>
+<li>Anticipation effects may cause behavior changes before policy implementation</li>
+<li>Differential shocks to treatment and control groups before the policy</li>
+</ul>
+<p>When parallel trends are violated, traditional DiD estimates become biased, potentially leading to incorrect policy conclusions.</p>
+</section>
+<section id="autoregressive-models-as-an-alternative" class="level2">
+<h2 class="anchored" data-anchor-id="autoregressive-models-as-an-alternative">Autoregressive Models as an Alternative</h2>
+<p>Autoregressive models offer a compelling alternative by explicitly modeling the relationship between past and current outcomes. Rather than assuming parallel trends, they directly account for the dynamic evolution of the outcome variable over time.</p>
+<p>The basic form of an autoregressive model for policy evaluation can be expressed as:</p>
+<p><span class="math display">\[Y_{it} = \alpha + \rho Y_{i,t-1} + \beta D_{it} + \gamma X_{it} + \delta_i + \lambda_t + \epsilon_{it}\]</span></p>
+<p>Where: - <span class="math inline">\(Y_{it}\)</span> is the outcome for unit <span class="math inline">\(i\)</span> at time <span class="math inline">\(t\)</span> - <span class="math inline">\(Y_{i,t-1}\)</span> is the lagged outcome (the autoregressive component) - <span class="math inline">\(D_{it}\)</span> is the treatment indicator - <span class="math inline">\(X_{it}\)</span> represents time-varying controls - <span class="math inline">\(\delta_i\)</span> are unit fixed effects - <span class="math inline">\(\lambda_t\)</span> are time fixed effects - <span class="math inline">\(\epsilon_{it}\)</span> is the error term</p>
+<p>The coefficient <span class="math inline">\(\beta\)</span> represents the treatment effect.</p>
+<p>By including the lagged dependent variable, these models can accommodate different pre-treatment trajectories, making them particularly valuable when parallel trends are suspect.</p>
+</section>
+<section id="simulation-did-vs.-autoregressive-models" class="level2">
+<h2 class="anchored" data-anchor-id="simulation-did-vs.-autoregressive-models">Simulation: DiD vs.&nbsp;Autoregressive Models</h2>
+<p>Let’s compare these approaches through simulation. We’ll generate data where the parallel trends assumption is violated and compare the performance of DiD and autoregressive models.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lfe)       <span class="co"># For fixed effects models</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation parameters</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>n_states <span class="ot">&lt;-</span> <span class="dv">50</span>        <span class="co"># 25 treatment, 25 control</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>n_periods <span class="ot">&lt;-</span> <span class="dv">20</span>       <span class="co"># 10 pre-treatment, 10 post-treatment</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>treatment_period <span class="ot">&lt;-</span> <span class="dv">11</span>  <span class="co"># Treatment starts at period 11</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>true_effect <span class="ot">&lt;-</span> <span class="dv">2</span>      <span class="co"># True policy effect</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate panel data</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>simulate_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create empty dataframe</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">state =</span> <span class="dv">1</span><span class="sc">:</span>n_states,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">time =</span> <span class="dv">1</span><span class="sc">:</span>n_periods</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assign treatment (first half of states)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>treated <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>state <span class="sc">&lt;=</span> n_states<span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate treatment indicator (post-treatment for treated states)</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>treatment <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>treated <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> df<span class="sc">$</span>time <span class="sc">&gt;=</span> treatment_period, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Different trends for treatment and control groups</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>state_trend <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>treated <span class="sc">==</span> <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>)  <span class="co"># Non-parallel trends</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate outcomes</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># First, create a starting value for each state</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  state_initial <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">state =</span> <span class="dv">1</span><span class="sc">:</span>n_states,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">initial_value =</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fu">rnorm</span>(n_states, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df, state_initial, <span class="at">by =</span> <span class="st">"state"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate outcomes with AR(1) process and non-parallel trends</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This requires multiple passes</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>outcome <span class="ot">&lt;-</span> df<span class="sc">$</span>initial_value  <span class="co"># Initialize</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n_periods) {</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get previous period data</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    prev_data <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(time <span class="sc">==</span> t<span class="dv">-1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(state, <span class="at">prev_outcome =</span> outcome)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Update current period</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      <span class="fu">left_join</span>(prev_data, <span class="at">by =</span> <span class="st">"state"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        <span class="at">outcome =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>          time <span class="sc">==</span> t,</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>          <span class="fl">0.7</span> <span class="sc">*</span> prev_outcome <span class="sc">+</span> state_trend <span class="sc">*</span> time <span class="sc">+</span> treatment <span class="sc">*</span> true_effect <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">n</span>(), <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>          outcome</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="sc">-</span>prev_outcome)</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate data</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>policy_data <span class="ot">&lt;-</span> <span class="fu">simulate_data</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s visualize the data to confirm we have non-parallel trends:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate group means by time</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>group_means <span class="ot">&lt;-</span> policy_data <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(time, treated) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_outcome =</span> <span class="fu">mean</span>(outcome), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">ifelse</span>(treated <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Treatment Group"</span>, <span class="st">"Control Group"</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot trends with intervention line</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(group_means, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> mean_outcome, <span class="at">color =</span> group, <span class="at">group =</span> group)) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> treatment_period, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> treatment_period <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fu">max</span>(group_means<span class="sc">$</span>mean_outcome), </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Policy Implementation"</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Outcome Trends by Group"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Note the non-parallel pre-treatment trends"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Time Period"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Outcome"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">""</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="2025-04-29-AR_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>As we can see, the treatment and control groups follow different trajectories even before the policy implementation (vertical dashed line), violating the parallel trends assumption.</p>
+<p>Now let’s estimate the treatment effect using both methods:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Standard DiD model</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>did_model <span class="ot">&lt;-</span> <span class="fu">felm</span>(outcome <span class="sc">~</span> treated <span class="sc">+</span> time <span class="sc">+</span> treatment <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> state, <span class="at">data =</span> policy_data)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Autoregressive model</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># First, create lagged outcome</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>policy_data_lagged <span class="ot">&lt;-</span> policy_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(state, time) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lag_outcome =</span> <span class="fu">lag</span>(outcome)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lag_outcome))  <span class="co"># Drop first period for each state</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Run autoregressive model</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ar_model <span class="ot">&lt;-</span> <span class="fu">felm</span>(outcome <span class="sc">~</span> lag_outcome <span class="sc">+</span> treated <span class="sc">+</span> time <span class="sc">+</span> treatment <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> state, </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> policy_data_lagged)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare results</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>results_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">c</span>(<span class="st">"True Effect"</span>, <span class="st">"DiD Estimate"</span>, <span class="st">"Autoregressive"</span>),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">Estimate =</span> <span class="fu">c</span>(true_effect, <span class="fu">coef</span>(did_model)[<span class="st">"treatment"</span>], <span class="fu">coef</span>(ar_model)[<span class="st">"treatment"</span>]),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">Bias =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">coef</span>(did_model)[<span class="st">"treatment"</span>] <span class="sc">-</span> true_effect, </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(ar_model)[<span class="st">"treatment"</span>] <span class="sc">-</span> true_effect)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Format table</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>results_df <span class="sc">%&gt;%</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">Estimate =</span> <span class="fu">round</span>(Estimate, <span class="dv">3</span>),</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">Bias =</span> <span class="fu">round</span>(Bias, <span class="dv">3</span>),</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Percent Bias</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">ifelse</span>(Model <span class="sc">==</span> <span class="st">"True Effect"</span>, <span class="st">"-"</span>, </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">paste0</span>(<span class="fu">round</span>(Bias <span class="sc">/</span> true_effect <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>), <span class="st">"%"</span>))</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"lrrr"</span>, <span class="at">caption =</span> <span class="st">"Comparison of Model Estimates"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>), <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-sm small" data-quarto-postprocess="true">
+<caption>Comparison of Model Estimates</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Model</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Bias</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Percent Bias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">True Effect</td>
+<td style="text-align: right;">2.000</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DiD Estimate</td>
+<td style="text-align: right;">13.371</td>
+<td style="text-align: right;">11.371</td>
+<td style="text-align: right;">568.6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Autoregressive</td>
+<td style="text-align: right;">3.070</td>
+<td style="text-align: right;">1.070</td>
+<td style="text-align: right;">53.5%</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="why-autoregressive-models-work" class="level2">
+<h2 class="anchored" data-anchor-id="why-autoregressive-models-work">Why Autoregressive Models Work</h2>
+<p>The results demonstrate why autoregressive models often outperform DiD when parallel trends are violated. Here are the key advantages:</p>
+<ol type="1">
+<li><p><strong>Dynamic relationships</strong>: By including the lagged dependent variable, autoregressive models directly account for the relationship between past and current outcomes, capturing pre-existing dynamics.</p></li>
+<li><p><strong>Different pre-treatment trajectories</strong>: Instead of assuming parallel trends, autoregressive models can accommodate different trajectories between treatment and control groups.</p></li>
+<li><p><strong>Controlling for omitted variables</strong>: The lagged outcome can serve as a proxy for unobserved time-varying confounders that affect the trajectory of the outcome.</p></li>
+<li><p><strong>Anticipation effects</strong>: These models can better handle situations where units change behavior in anticipation of policy changes.</p></li>
+</ol>
+</section>
+<section id="model-assumptions-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="model-assumptions-and-limitations">Model Assumptions and Limitations</h2>
+<p>While autoregressive models address the parallel trends issue, they come with their own assumptions:</p>
+<ol type="1">
+<li><p><strong>No contemporaneous reverse causality</strong>: The policy implementation cannot be simultaneously determined by current outcomes.</p></li>
+<li><p><strong>Dynamic completeness</strong>: The model must include sufficient lags to capture the full dynamics of the process.</p></li>
+<li><p><strong>Correct functional form</strong>: The relationship between past and current values must be correctly specified.</p></li>
+<li><p><strong>Exogeneity of treatment</strong>: The policy implementation should be exogenous after controlling for lagged outcomes.</p></li>
+<li><p><strong>Nickell bias</strong>: In short panels with unit fixed effects, coefficients on the lagged dependent variable can be biased. This may require specialized estimators like Arellano-Bond for correction.</p></li>
+</ol>
+</section>
+<section id="application-to-health-policy-research" class="level2">
+<h2 class="anchored" data-anchor-id="application-to-health-policy-research">Application to Health Policy Research</h2>
+<p>The flexibility of autoregressive models makes them particularly valuable for health policy research, where outcomes often have complex dynamics:</p>
+<ul>
+<li><strong>Hospital readmission policies</strong>: When evaluating policies to reduce readmissions, hospitals often have different pre-existing trends</li>
+<li><strong>Medicaid expansion</strong>: States that expanded Medicaid may have had different health trajectories before expansion</li>
+<li><strong>Prescription drug monitoring programs</strong>: States implementing these programs often do so in response to worsening opioid trends</li>
+</ul>
+</section>
+<section id="practical-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="practical-implementation">Practical Implementation</h2>
+<p>To implement autoregressive models for policy evaluation in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic autoregressive model</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ar_basic <span class="ot">&lt;-</span> <span class="fu">lm</span>(outcome <span class="sc">~</span> lag_outcome <span class="sc">+</span> treatment, <span class="at">data =</span> policy_data_lagged)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># With fixed effects and time trends</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ar_fe <span class="ot">&lt;-</span> <span class="fu">felm</span>(outcome <span class="sc">~</span> lag_outcome <span class="sc">+</span> treatment <span class="sc">|</span> state <span class="sc">+</span> time <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> state, </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> policy_data_lagged)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># With clustered standard errors</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ar_cluster <span class="ot">&lt;-</span> <span class="fu">felm</span>(outcome <span class="sc">~</span> lag_outcome <span class="sc">+</span> treatment <span class="sc">|</span> state <span class="sc">+</span> time <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> state, </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> policy_data_lagged)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom function to create leads and lags</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>create_leads_lags <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">id_var =</span> <span class="st">"state"</span>, <span class="at">time_var =</span> <span class="st">"time"</span>, </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">treatment_var =</span> <span class="st">"treatment"</span>, <span class="at">leads =</span> <span class="dv">3</span>, <span class="at">lags =</span> <span class="dv">5</span>) {</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure data is arranged correctly</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(.data[[id_var]], .data[[time_var]])</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create lag variables</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>lags) {</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    lag_name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"lag"</span>, i, <span class="st">"_"</span>, treatment_var)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(.data[[id_var]]) <span class="sc">%&gt;%</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="sc">!!</span><span class="at">lag_name :=</span> <span class="fu">lag</span>(.data[[treatment_var]], <span class="at">n =</span> i)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ungroup</span>()</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create lead variables</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>leads) {</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    lead_name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"lead"</span>, i, <span class="st">"_"</span>, treatment_var)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(.data[[id_var]]) <span class="sc">%&gt;%</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="sc">!!</span><span class="at">lead_name :=</span> <span class="fu">lead</span>(.data[[treatment_var]], <span class="at">n =</span> i)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ungroup</span>()</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create lagged outcome variable for autoregressive component</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(.data[[id_var]]) <span class="sc">%&gt;%</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lag_outcome =</span> <span class="fu">lag</span>(.data[[<span class="st">"outcome"</span>]], <span class="at">n =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="testing-model-suitability" class="level2">
+<h2 class="anchored" data-anchor-id="testing-model-suitability">Testing Model Suitability</h2>
+<p>Before choosing an autoregressive approach, it’s important to assess whether parallel trends are indeed violated:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># When evaluating policy interventions with dynamic effects, we need to look at both</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pre-treatment effects (to check for anticipation) and post-treatment effects</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (to assess how impacts evolve over time).</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This creates both the leads/lags AND the required lag_outcome variable</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>policy_data_dynamic <span class="ot">&lt;-</span> <span class="fu">create_leads_lags</span>(policy_data_lagged, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">id_var =</span> <span class="st">"state"</span>, </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">time_var =</span> <span class="st">"time"</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">treatment_var =</span> <span class="st">"treatment"</span>, </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">leads =</span> <span class="dv">3</span>, </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">lags =</span> <span class="dv">3</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only complete cases for this analysis</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>policy_data_dynamic <span class="ot">&lt;-</span> policy_data_dynamic <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lag_outcome))</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># For dynamic effects (leads and lags of treatment)</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>ar_dynamic <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>({</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">felm</span>(outcome <span class="sc">~</span> lag_outcome <span class="sc">+</span> lag1_treatment <span class="sc">+</span> lag2_treatment <span class="sc">+</span> lag3_treatment <span class="sc">+</span> </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      treatment <span class="sc">+</span> lead1_treatment <span class="sc">+</span> lead2_treatment <span class="sc">+</span> lead3_treatment <span class="sc">|</span> </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      state <span class="sc">+</span> time <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> state, <span class="at">data =</span> policy_data_dynamic)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>}, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Error in dynamic model: "</span>, e<span class="sc">$</span>message)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Simpler fallback model</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">felm</span>(outcome <span class="sc">~</span> lag_outcome <span class="sc">+</span> treatment <span class="sc">|</span> state <span class="sc">+</span> time <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> state, </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> policy_data_dynamic)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ar_dynamic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+   felm(formula = outcome ~ lag_outcome + lag1_treatment + lag2_treatment +      lag3_treatment + treatment + lead1_treatment + lead2_treatment +      lead3_treatment | state + time | 0 | state, data = policy_data_dynamic) 
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.93016 -0.65451  0.01728  0.62855  3.12924 
+
+Coefficients:
+                Estimate Cluster s.e. t value Pr(&gt;|t|)    
+lag_outcome      0.58767      0.03071  19.136  &lt; 2e-16 ***
+lag1_treatment   0.62796      0.34698   1.810 0.076466 .  
+lag2_treatment   0.34763      0.44517   0.781 0.438612    
+lag3_treatment   1.37402      0.32756   4.195 0.000114 ***
+treatment        1.94893      0.37674   5.173 4.26e-06 ***
+lead1_treatment  1.18728      0.41469   2.863 0.006158 ** 
+lead2_treatment  0.39214      0.35710   1.098 0.277510    
+lead3_treatment  0.56319      0.37265   1.511 0.137134    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.015 on 580 degrees of freedom
+  (250 observations deleted due to missingness)
+Multiple R-squared(full model): 0.9867   Adjusted R-squared: 0.9851 
+Multiple R-squared(proj model): 0.9152   Adjusted R-squared: 0.9051 
+F-statistic(full model, *iid*):624.1 on 69 and 580 DF, p-value: &lt; 2.2e-16 
+F-statistic(proj model): 625.9 on 8 and 49 DF, p-value: &lt; 2.2e-16 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary packages</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)  <span class="co"># For event study plots</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Visual inspection with leads and lags plot</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create relative time variable (time to treatment)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>policy_data <span class="ot">&lt;-</span> policy_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_time =</span> <span class="fu">ifelse</span>(treated <span class="sc">==</span> <span class="dv">1</span>, time <span class="sc">-</span> treatment_period, <span class="cn">NA</span>))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Use fixest for event study</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>event_study <span class="ot">&lt;-</span> <span class="fu">feols</span>(outcome <span class="sc">~</span> <span class="fu">i</span>(rel_time, <span class="at">ref =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">i</span>(time) <span class="sc">|</span> state, </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> policy_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(treated <span class="sc">==</span> <span class="dv">1</span>, <span class="sc">!</span><span class="fu">is.na</span>(rel_time)))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the event study coefficients</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">iplot</span>(event_study, <span class="at">main =</span> <span class="st">"Event Study: Effect Relative to Treatment Time"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Time Relative to Treatment"</span>, <span class="at">ylab =</span> <span class="st">"Estimated Effect"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="2025-04-29-AR_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot coefficients for visual inspection of pre-trends</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Statistical test for pre-trends</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>pre_data <span class="ot">&lt;-</span> policy_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">&lt;</span> treatment_period)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">felm</span>(outcome <span class="sc">~</span> treated <span class="sc">*</span> time <span class="sc">|</span> state <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> state, <span class="at">data =</span> pre_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+   felm(formula = outcome ~ treated * time | state | 0 | state,      data = pre_data) 
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7575 -1.3608 -0.2419  1.1661  6.3767 
+
+Coefficients:
+             Estimate Cluster s.e. t value Pr(&gt;|t|)    
+treated           NaN      0.00000     NaN      NaN    
+time         -0.43327      0.05084  -8.523 3.06e-11 ***
+treated:time  0.95150      0.06717  14.167  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.91 on 448 degrees of freedom
+Multiple R-squared(full model): 0.6632   Adjusted R-squared: 0.6249 
+Multiple R-squared(proj model): 0.3654   Adjusted R-squared: 0.2932 
+F-statistic(full model, *iid*): 17.3 on 51 and 448 DF, p-value: &lt; 2.2e-16 
+F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If interaction is significant, parallel trends is likely violated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>When evaluating policy interventions, the reliability of our estimates hinges on the validity of model assumptions. While DiD remains a powerful tool when its assumptions hold, autoregressive models offer a valuable alternative when parallel trends are violated.</p>
+<p>By explicitly modeling the dynamic relationship between past and current outcomes, these models can deliver more accurate causal estimates in complex policy environments. Rather than viewing them as competitors, researchers should understand the strengths and limitations of both approaches, selecting the appropriate method based on the specific context and data characteristics.</p>
+<p>In health policy research, where outcomes often follow complex trajectories and policy implementations are frequently endogenous to pre-existing trends, the autoregressive approach offers a flexible framework that can accommodate these realities while still enabling credible causal inference.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="jacobjameson/jacobjameson.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2024, Jacob Jameson</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

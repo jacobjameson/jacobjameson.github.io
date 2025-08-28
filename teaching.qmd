@@ -14,19 +14,21 @@ My teaching experiences are quite diverse. The summer after completing my underg
 <!-- Harvard T.H. Chan School of Public Health -->
 <div class="teaching-card">
 <h3>Harvard T.H. Chan School of Public Health</h3>
-<p><strong>Decision Science for Public Health</strong></p>
-<p><em>Teaching Fellow (2023, 2024)</em></p>
+<ul>
+<li><strong>Decision Science for Public Health</strong> — <em>Teaching Fellow (2023-2025)</em></li>
+</ul>
 </div>
 
 <!-- Harvard Kennedy School -->
 <div class="teaching-card">
 <h3>Harvard Kennedy School</h3>
 <ul>
-<li><strong>Math Camp</strong> — <em>Instructor (2023)</em></li>
-<li><strong>Big Data and Machine Learning</strong> — <em>Teaching Fellow (2024)</em></li>
-<li><strong>Game Theory</strong> — <em>Teaching Fellow (2023, 2024)</em></li>
+<li><strong>Economics for Public Policy</strong> — <em>Instructor (2024,2025)</em></li>
+<li><strong>Math Camp</strong> — <em>Instructor (2023-2025)</em></li>
+<li><strong>Big Data and Machine Learning</strong> — <em>Teaching Fellow (2023-2025)</em></li>
+<li><strong>Game Theory</strong> — <em>Teaching Fellow (2023,2024)</em></li>
 <li><strong>Data and Programming for Policymakers</strong> — <em>Course Assistant (2023)</em></li>
-<li><strong>Resources, Incentives, and Choices I: Markets and Market Failures</strong> — <em>Teaching Fellow (2022, 2023)</em></li>
+<li><strong>Resources, Incentives, and Choices I: Markets and Market Failures</strong> — <em>Teaching Fellow (2022-2025)</em></li>
 </ul>
 </div>
 

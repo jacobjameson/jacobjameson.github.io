@@ -1,0 +1,530 @@
+---
+title: "Beyond DiD: Autoregressive Models for Policy Evaluation When Parallel Trends Fail"
+description: "This post demonstrates how autoregressive models can overcome the limitations of difference-in-differences analysis when evaluating health policies with non-parallel pre-treatment trends, providing researchers with practical tools to improve causal inference in observational studies."
+author: "Jacob Jameson"
+date: "2025-04-29"
+categories: [causal inference, policy evaluation, methodology]
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+link-citations: true
+reference-location: margin
+comments:
+  utterances:
+    repo: jacobjameson/jacobjameson.github.io
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+---
+
+
+
+## Introduction
+
+Difference-in-differences (DiD) is a popular approach for policy evaluation, but its validity depends on the parallel trends assumption - that treatment and control groups would have followed parallel trajectories in the absence of intervention. When this assumption fails, alternative methods are needed.
+
+This post explores autoregressive models with proper debiasing as an alternative to DiD when parallel trends are violated. We'll:
+
+1. Explain why parallel trends matter and how they commonly fail
+2. Implement autoregressive models with correct debiasing
+3. Use a Bayesian approach with JAGS to compare methods
+4. Interpret the results in the context of policy evaluation
+
+## The Problem: Non-Parallel Trends
+
+DiD's core assumption is that without intervention, the difference between treatment and control groups would remain constant over time. When groups follow different trajectories before treatment, this assumption fails.
+
+Let's load necessary packages and simulate data to demonstrate:
+
+```{r}
+# Load necessary packages
+library(tidyverse)
+library(ggplot2)
+library(rjags)
+library(coda)
+library(knitr)
+library(kableExtra)
+library(lme4)
+library(lfe)
+```
+
+Now let's simulate data with non-parallel trends:
+
+```{r}
+# Set seed for reproducibility
+set.seed(123)
+
+# Simulation parameters
+n_states <- 50        # 25 treatment, 25 control
+n_periods <- 20       # 10 pre-treatment, 10 post-treatment
+treatment_period <- 11  # Treatment starts at period 11
+true_effect <- 2      # True policy effect
+ar_coefficient <- 0.7 # Autoregressive coefficient
+
+# Generate panel data
+simulate_data <- function() {
+  # Create empty dataframe
+  df <- expand.grid(
+    state = 1:n_states,
+    time = 1:n_periods
+  )
+  
+  # Assign treatment (first half of states)
+  df$treated <- ifelse(df$state <= n_states/2, 1, 0)
+  
+  # Generate treatment indicator (post-treatment for treated states)
+  df$treatment <- ifelse(df$treated == 1 & df$time >= treatment_period, 1, 0)
+  
+  # Different trends for treatment and control groups
+  df$state_trend <- ifelse(df$treated == 1, 0.5, 0.2)  # Non-parallel trends
+  
+  # Generate outcomes
+  # First, create a starting value for each state
+  state_initial <- tibble(
+    state = 1:n_states,
+    initial_value = 10 + rnorm(n_states, 0, 2)
+  )
+  
+  df <- left_join(df, state_initial, by = "state")
+  
+  # Generate outcomes with AR(1) process and non-parallel trends
+  df$outcome <- df$initial_value  # Initialize
+  
+  for (t in 2:n_periods) {
+    # Get previous period data
+    prev_data <- df %>% 
+      filter(time == t-1) %>% 
+      select(state, prev_outcome = outcome)
+    
+    # Update current period
+    df <- df %>%
+      left_join(prev_data, by = "state") %>%
+      mutate(
+        outcome = ifelse(
+          time == t,
+          ar_coefficient * prev_outcome + state_trend * time + treatment * true_effect + rnorm(n(), 0, 1),
+          outcome
+        )
+      ) %>%
+      select(-prev_outcome)
+  }
+  
+  return(df)
+}
+
+# Generate data
+policy_data <- simulate_data()
+```
+
+Let's visualize the data to confirm non-parallel trends:
+
+```{r}
+# Calculate group means by time
+group_means <- policy_data %>%
+  group_by(time, treated) %>%
+  summarize(mean_outcome = mean(outcome), .groups = "drop") %>%
+  mutate(group = ifelse(treated == 1, "Treatment Group", "Control Group"))
+
+# Plot trends with intervention line
+ggplot(group_means, aes(x = time, y = mean_outcome, color = group, group = group)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 3) +
+  geom_vline(xintercept = treatment_period, linetype = "dashed", color = "red") +
+  annotate("text", x = treatment_period + 0.5, y = max(group_means$mean_outcome), 
+           label = "Policy Implementation", hjust = 0, color = "red") +
+  labs(
+    title = "Outcome Trends by Group",
+    subtitle = "Note the non-parallel pre-treatment trends",
+    x = "Time Period",
+    y = "Outcome",
+    color = ""
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    text = element_text(size = 12),
+    plot.title = element_text(face = "bold")
+  )
+```
+
+## Implementing the Models
+
+Let's implement three approaches:
+
+1. Standard DiD
+2. Autoregressive model with proper debiasing
+3. Bayesian model using JAGS
+
+### 1. Standard DiD Model
+
+```{r}
+# 1. Standard DiD model
+did_model <- felm(outcome ~ treated + time + treatment | 0 | 0 | state, data = policy_data)
+summary(did_model)$coefficients["treatment", ]
+```
+
+### 2. Autoregressive Model with Proper Debiasing
+
+The key insight for properly debiasing an autoregressive model is understanding that when we include a lagged dependent variable, we need to account for how treatment affects that lagged value.
+
+The true data generating process is:
+
+$$Y_{it} = \alpha + \rho Y_{i,t-1} + \beta D_{it} + \gamma X_{it} + \delta_i + \lambda_t + \epsilon_{it}$$
+
+But $Y_{i,t-1}$ itself contains treatment effects when $D_{i,t-1} = 1$. This creates a problem: the treatment effect is double-counted because it enters both directly through $\beta D_{it}$ and indirectly through $\rho Y_{i,t-1}$.
+
+To properly debias, we need to explicitly subtract the component of $Y_{i,t-1}$ that was caused by treatment. Let's implement this:
+
+```{r}
+# Create lagged variables
+policy_data_lagged <- policy_data %>%
+  arrange(state, time) %>%
+  group_by(state) %>%
+  mutate(
+    lag_outcome = lag(outcome),
+    lag_treatment = lag(treatment)
+  ) %>%
+  ungroup() %>%
+  filter(!is.na(lag_outcome))  # Drop first period for each state
+
+# Estimate the autoregressive component
+ar_model <- felm(outcome ~ lag_outcome + treated + time + treatment | 0 | 0 | state, 
+                data = policy_data_lagged)
+
+# Extract key coefficients
+rho_hat <- coef(ar_model)["lag_outcome"]
+beta_hat <- coef(ar_model)["treatment"]
+
+# Create debiased outcome: subtract treatment effect component from lagged outcome
+policy_data_debiased <- policy_data_lagged %>%
+  mutate(
+    # Subtract estimated effect of treatment on lag_outcome
+    debiased_lag_outcome = lag_outcome - beta_hat * lag_treatment
+  )
+
+# Run debiased model with corrected lagged outcome
+ar_debiased_model <- felm(outcome ~ debiased_lag_outcome + treated + time + treatment | 
+                         0 | 0 | state, data = policy_data_debiased)
+
+# Compare coefficients
+cat("Autoregressive model coefficient:", beta_hat, "\n")
+cat("Debiased AR model coefficient:", coef(ar_debiased_model)["treatment"], "\n")
+```
+
+### 3. Bayesian Model using JAGS
+
+Now let's implement a Bayesian approach using JAGS. This gives us more flexibility in modeling and naturally handles uncertainty:
+
+```{r}
+# Prepare data for JAGS
+jags_data <- policy_data_lagged %>%
+  select(state, time, treated, treatment, outcome, lag_outcome, lag_treatment) %>%
+  mutate(
+    state_idx = as.numeric(factor(state)),
+    time_idx = as.numeric(factor(time))
+  )
+
+# Create data for JAGS
+jags_data_list <- list(
+  N = nrow(jags_data),
+  S = length(unique(jags_data$state)),
+  T = length(unique(jags_data$time)),
+  state = jags_data$state_idx,
+  time = jags_data$time_idx,
+  treatment = jags_data$treatment,
+  treated = jags_data$treated,
+  lag_treatment = jags_data$lag_treatment,
+  lag_y = jags_data$lag_outcome,
+  y = jags_data$outcome
+)
+
+# Define JAGS model for DiD
+did_model_string <- "
+model {
+  # Priors
+  alpha ~ dnorm(0, 0.001)
+  beta_treated ~ dnorm(0, 0.001)
+  beta_treatment ~ dnorm(0, 0.001)
+  sigma ~ dunif(0, 100)
+  tau <- 1 / (sigma * sigma)
+  
+  # Random effects for states and time
+  for (s in 1:S) {
+    state_effect[s] ~ dnorm(0, 0.001)
+  }
+  
+  for (t in 1:T) {
+    time_effect[t] ~ dnorm(0, 0.001)
+  }
+  
+  # Likelihood
+  for (i in 1:N) {
+    mu[i] <- alpha + beta_treated * treated[i] + beta_treatment * treatment[i] + 
+             state_effect[state[i]] + time_effect[time[i]]
+    y[i] ~ dnorm(mu[i], tau)
+  }
+}
+"
+
+# Define JAGS model for AR with debiasing
+ar_model_string <- "
+model {
+  # Priors
+  alpha ~ dnorm(0, 0.001)
+  beta_treated ~ dnorm(0, 0.001)
+  beta_treatment ~ dnorm(0, 0.001)
+  rho ~ dunif(0, 1)         # Autoregressive coefficient
+  sigma ~ dunif(0, 100)
+  tau <- 1 / (sigma * sigma)
+  
+  # Random effects for states and time
+  for (s in 1:S) {
+    state_effect[s] ~ dnorm(0, 0.001)
+  }
+  
+  for (t in 1:T) {
+    time_effect[t] ~ dnorm(0, 0.001)
+  }
+  
+  # Likelihood
+  for (i in 1:N) {
+    # Debiased autoregressive term
+    debiased_lag_y[i] <- lag_y[i] - beta_treatment * lag_treatment[i]
+    
+    mu[i] <- alpha + rho * debiased_lag_y[i] + beta_treated * treated[i] + 
+             beta_treatment * treatment[i] + state_effect[state[i]] + time_effect[time[i]]
+    y[i] ~ dnorm(mu[i], tau)
+  }
+}
+"
+
+# Initialize JAGS models
+did_jags <- jags.model(textConnection(did_model_string), data = jags_data_list, 
+                      n.chains = 3, n.adapt = 1000)
+ar_jags <- jags.model(textConnection(ar_model_string), data = jags_data_list, 
+                     n.chains = 3, n.adapt = 1000)
+
+# Burn-in
+update(did_jags, 1000)
+update(ar_jags, 1000)
+
+# Sample from posterior
+did_samples <- coda.samples(did_jags, variable.names = c("beta_treatment"), n.iter = 2000)
+ar_samples <- coda.samples(ar_jags, variable.names = c("beta_treatment", "rho"), n.iter = 2000)
+
+# Summarize results
+did_summary <- summary(did_samples)
+ar_summary <- summary(ar_samples)
+
+# Extract key parameters
+did_treatment_effect <- did_summary$statistics["beta_treatment", "Mean"]
+ar_treatment_effect <- ar_summary$statistics["beta_treatment", "Mean"]
+ar_rho <- ar_summary$statistics["rho", "Mean"]
+
+# Create comparison table
+results_df <- data.frame(
+  Model = c("True Effect", "Standard DiD", "Freq. AR Debiased", "Bayesian AR Debiased"),
+  Estimate = c(
+    true_effect,
+    coef(did_model)["treatment"],
+    coef(ar_debiased_model)["treatment"],
+    ar_treatment_effect
+  ),
+  Bias = c(
+    0,
+    coef(did_model)["treatment"] - true_effect,
+    coef(ar_debiased_model)["treatment"] - true_effect,
+    ar_treatment_effect - true_effect
+  )
+)
+
+# Format and print table
+results_df %>%
+  mutate(across(where(is.numeric), ~round(., 3))) %>%
+  mutate(
+    `Percent Bias` = ifelse(Model == "True Effect", "-", 
+                           paste0(round(Bias / true_effect * 100, 1), "%"))
+  ) %>%
+  kable(align = c("l", "r", "r", "r"), 
+        caption = "Comparison of Treatment Effect Estimates") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE)
+```
+
+## Understanding Proper Debiasing
+
+The key concept behind proper debiasing is to remove the component of the lagged outcome that was caused by the previous period's treatment. This avoids double-counting the treatment effect.
+
+When we include a lagged dependent variable, the following happens:
+
+1. The current treatment directly affects the current outcome
+2. The previous treatment affected the previous outcome
+3. The previous outcome affects the current outcome through the autoregressive term
+
+Without debiasing, we're counting the effect of treatment twice: once directly through the current treatment term, and once indirectly through the lagged outcome. Proper debiasing adjusts the lagged outcome by subtracting the estimated effect of treatment on it.
+
+Let's visualize this process:
+
+```{r}
+# Create predicted values from each model
+policy_data_pred <- policy_data %>%
+  mutate(
+    did_pred = predict(did_model, newdata = .),
+    # Need to handle autoregressive predictions differently
+    # Will do for treated group 1 and control group 26 only for clarity
+    group = ifelse(state <= n_states/2, "Treated", "Control"),
+    group_label = case_when(
+      state == 1 ~ "Treated Unit Example",
+      state == n_states/2 + 1 ~ "Control Unit Example",
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  filter(!is.na(group_label))
+
+# Add AR model predictions - need to do sequentially
+policy_data_pred <- policy_data_pred %>%
+  arrange(state, time) %>%
+  group_by(state) %>%
+  mutate(
+    ar_pred = NA_real_,
+    ar_debiased_pred = NA_real_
+  )
+
+# Parameter estimates
+beta_treatment <- coef(ar_debiased_model)["treatment"]
+rho_est <- coef(ar_debiased_model)["debiased_lag_outcome"]
+
+# Sequential prediction
+for (s in unique(policy_data_pred$state)) {
+  for (t in 2:n_periods) {
+    prev_idx <- which(policy_data_pred$state == s & policy_data_pred$time == t-1)
+    curr_idx <- which(policy_data_pred$state == s & policy_data_pred$time == t)
+    
+    # Previous treatment
+    prev_treatment <- ifelse(
+      policy_data_pred$state[prev_idx] <= n_states/2 & 
+      policy_data_pred$time[prev_idx] >= treatment_period, 
+      1, 0
+    )
+    
+    # Standard AR prediction
+    if (t == 2) {
+      # First period use actual value
+      policy_data_pred$ar_pred[curr_idx] <- 
+        rho_est * policy_data_pred$outcome[prev_idx] +
+        beta_treatment * policy_data_pred$treatment[curr_idx]
+      
+      # Debiased AR - for first period there's no previous treatment to debias
+      policy_data_pred$ar_debiased_pred[curr_idx] <- 
+        rho_est * policy_data_pred$outcome[prev_idx] +
+        beta_treatment * policy_data_pred$treatment[curr_idx]
+    } else {
+      # Standard AR uses predicted values recursively
+      policy_data_pred$ar_pred[curr_idx] <- 
+        rho_est * policy_data_pred$ar_pred[prev_idx] +
+        beta_treatment * policy_data_pred$treatment[curr_idx]
+      
+      # Debiased AR: subtract treatment effect from lagged outcome
+      debiased_lag <- policy_data_pred$ar_debiased_pred[prev_idx] - 
+                      beta_treatment * prev_treatment
+      
+      policy_data_pred$ar_debiased_pred[curr_idx] <- 
+        rho_est * debiased_lag +
+        beta_treatment * policy_data_pred$treatment[curr_idx]
+    }
+  }
+}
+
+# Plot predictions
+policy_data_pred %>%
+  pivot_longer(
+    cols = c(outcome, did_pred, ar_pred, ar_debiased_pred),
+    names_to = "model",
+    values_to = "value"
+  ) %>%
+  mutate(
+    model = factor(
+      model,
+      levels = c("outcome", "did_pred", "ar_pred", "ar_debiased_pred"),
+      labels = c("Actual", "DiD", "Standard AR", "Debiased AR")
+    )
+  ) %>%
+  ggplot(aes(x = time, y = value, color = model)) +
+  geom_line(size = 1.2) +
+  geom_vline(xintercept = treatment_period, linetype = "dashed", color = "black") +
+  facet_wrap(~ group_label) +
+  labs(
+    title = "Model Predictions vs. Actual Outcomes",
+    subtitle = "Comparing DiD, Standard AR, and Debiased AR Models",
+    x = "Time Period",
+    y = "Outcome",
+    color = "Model"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    text = element_text(size = 12),
+    plot.title = element_text(face = "bold")
+  )
+```
+
+## Interpreting Model Results
+
+Let's examine what these results tell us:
+
+1. **Standard DiD (Estimate: ~`r round(coef(did_model)["treatment"],2)`)**: Severely overestimates the treatment effect due to non-parallel trends. DiD attributes the entire differential change to treatment, including the pre-existing trend differences.
+
+2. **Frequentist Debiased AR (Estimate: ~`r round(coef(ar_debiased_model)["treatment"],2)`)**: Much closer to the true effect of `r true_effect` by accounting for:
+   - Different pre-treatment trajectories through the autoregressive term
+   - Proper debiasing to avoid double-counting treatment effects
+
+3. **Bayesian Debiased AR (Estimate: ~`r round(ar_treatment_effect,2)`)**: Similar to the frequentist approach but with a fully Bayesian treatment of uncertainty. The Bayesian approach also allows:
+   - Incorporation of prior information when available
+   - Full posterior distributions for all parameters
+   - Naturally modeling the hierarchical structure of the data
+
+The key insight is that properly debiased autoregressive models provide much more accurate estimates when the parallel trends assumption is violated. Both frequentist and Bayesian implementations perform well, with the Bayesian approach offering additional flexibility in modeling.
+
+## Practical Considerations for Implementation
+
+When implementing debiased autoregressive models, consider these guidelines:
+
+1. **Two-stage approach**: First estimate the autoregressive model to get the treatment effect, then use it to debias the lagged outcome before re-estimating.
+
+2. **Dynamic effects**: For policies with effects that evolve over time, include additional lags of the treatment variable.
+
+3. **Initial condition handling**: The first period after treatment requires special consideration since there's no lagged value to debias.
+
+4. **Uncertainty propagation**: In frequentist approaches, consider bootstrapping to account for uncertainty in the debiasing step. The Bayesian approach naturally handles this.
+
+5. **Sensitivity analysis**: Compare results across multiple specifications, including different lag structures and debiasing approaches.
+
+## Conclusion
+
+When evaluating policies where parallel trends are violated, debiased autoregressive models offer a robust alternative to standard DiD. By properly accounting for the dynamic relationship between past and current outcomes, and explicitly addressing the double-counting problem through debiasing, these models provide more credible causal estimates.
+
+The Bayesian implementation using JAGS offers additional flexibility and naturally handles uncertainty in the estimation process. Both frequentist and Bayesian approaches substantially outperform standard DiD when the parallel trends assumption is violated.
+
+Key takeaways:
+
+1. Always check the parallel trends assumption before applying DiD
+2. When parallel trends fail, consider autoregressive alternatives
+3. Properly debias the lagged outcome to avoid double-counting treatment effects
+4. Consider Bayesian approaches for more flexible modeling and uncertainty quantification
+
+This methodology provides a powerful tool for policy evaluation in complex, dynamic environments where the standard DiD assumptions are too restrictive.
+
+## References
+
+- Angrist, J. D., & Pischke, J. S. (2008). Mostly harmless econometrics: An empiricist's companion. Princeton University Press.
+- Keele, L., & Kelly, N. J. (2006). Dynamic models for dynamic theories: The ins and outs of lagged dependent variables. Political Analysis, 14(2), 186-205.
+- Nickell, S. (1981). Biases in dynamic models with fixed effects. Econometrica, 49(6), 1417-1426.
+- Plummer, M. (2003). JAGS: A program for analysis of Bayesian graphical models using Gibbs sampling.
+
+
