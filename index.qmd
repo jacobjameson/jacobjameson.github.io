@@ -49,7 +49,7 @@ Aside from research, I am passionate about teaching. I have [extensive experienc
 </div>
 
 <script>
-const words = ["Data scientist", "Teacher", "Health policy researcher", "Decision scientist"];
+const words = ["Data scientist  ", "Teacher  ", "Health policy researcher  ", "Decision scientist  "];
 let i = 0;
 let timer;
 
@@ -62,7 +62,7 @@ document.getElementById('word').innerHTML += word.shift();
 deletingEffect();
 return false;
 };
-timer = setTimeout(loopTyping, 200);
+timer = setTimeout(loopTyping, 100);
 };
 loopTyping();
 };
@@ -82,7 +82,7 @@ i = 0;
 typingEffect();
 return false;
 };
-timer = setTimeout(loopDeleting, 120);
+timer = setTimeout(loopDeleting, 80);
 };
 loopDeleting();
 };
