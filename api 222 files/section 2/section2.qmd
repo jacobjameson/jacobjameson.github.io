@@ -255,12 +255,12 @@ college_data <- College
 In order to make this interesting, let's split our data into a training set and a test set. To do this, we will use `set.seed()`, which will allow us to draw the same pseudorandom numbers the next time we run this code, and we will use the `sample()` function. 
 
 
-
 ```{r}
 set.seed(222)
 ```
 
 The `sample()` function takes two arguments: The first is a vector of numbers from which to draw a random sample. The second is the number of random numbers to draw. The default is to sample without replacement, but you can sample with replacement by adding "`, replace = TRUE`" inside the function. Now, let's generate a list of indices from the original dataset that will be designated part of the test set using `sample()`
+
 
 ```{r}
 test_ids <- sample(1:(nrow(college_data)), round(0.2 * nrow(college_data)))
@@ -285,6 +285,7 @@ training_data <- college_data[training_ids,]
 Let's develop a KNN model to try to predict whether it's a private college using all available features.
 
 To use KNN for classification, we need to install and load the library "class"
+
 ```{r}
 library(class)
 ```
@@ -301,14 +302,15 @@ For two-class classification problems, k should be odd (avoids tied votes). Let'
 ```{r}
 knn_model1 <- knn(train = training_data[, -1],
                   test = test_data[, -1],
-                  cl = training_data[, 1],
+                  cl = training_data$Private,
                   k = 1)
 
 knn_model9 <- knn(train = training_data[, -1],
                   test = test_data[, -1],
-                  cl = training_data[, 1],
+                  cl = training_data$Private,
                   k = 9)
 ```
+
 
 
 We are trying to predict Private Yes/No. `knn()` output predicted values for our test data, so we can compare actual v. predicted values. "prediction == actual" gives a vector with the same number of elements as there are observations in the test set. Each element will either be TRUE (the prediction was correct) or FALSE (the prediction was wrong). Applying which() to this vector will yield the index numbers for all the elements equal to TRUE. Applying length() to that vector tells us how many are TRUE (e.g. for how many observations prediction == actual). We can then divide by the number of observations in the test data to obtain the accuracy rate
@@ -446,6 +448,9 @@ knn_reg5 <- knn.reg(training_data[, -c(1, 4)],
                     k = 5)
 ```
 
+```{r}
+knn_reg1$pred
+```
 
 
 MSE is an appropriate loss function for regression whereas accuracy is only relevant for classification
@@ -464,8 +469,14 @@ We will now do linear regression. To run a linear regression in R, we use the fu
 
 ```{r}
 enroll_reg <- lm(Enroll ~ ., training_data)
-
 ```
+
+```{r}
+library(stargazer)
+
+stargazer(enroll_reg, type = "text", single.row = TRUE)
+```
+
 
 lm() returns a list, which includes among other things coefficients, residuals, and fitted values for the training data. You can look at the elements in RStudio by using the blue arrow next to enroll_reg in the environment tab. In order to call one element of a list, you can use $
 

@@ -407,3 +407,18 @@ p>a {
     font-size: 0.9em;
   }
 }
+
+.news-block {
+  background-color: #f9f9f9;
+  border-left: 4px solid #333;
+  padding: 0.8em 1em;
+  margin-bottom: 1em;
+  border-radius: 4px;
+}
+.news-block a {
+  color: #0056b3;
+  text-decoration: none;
+}
+.news-block a:hover {
+  text-decoration: underline;
+}

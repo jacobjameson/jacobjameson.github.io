@@ -508,12 +508,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>knn_model1 <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train =</span> training_data[, <span class="sc">-</span><span class="dv">1</span>],</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">test =</span> test_data[, <span class="sc">-</span><span class="dv">1</span>],</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cl =</span> training_data[, <span class="dv">1</span>],</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cl =</span> training_data<span class="sc">$</span>Private,</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">k =</span> <span class="dv">1</span>)</span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>knn_model9 <span class="ot">&lt;-</span> <span class="fu">knn</span>(<span class="at">train =</span> training_data[, <span class="sc">-</span><span class="dv">1</span>],</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">test =</span> test_data[, <span class="sc">-</span><span class="dv">1</span>],</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cl =</span> training_data[, <span class="dv">1</span>],</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cl =</span> training_data<span class="sc">$</span>Private,</span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">k =</span> <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We are trying to predict Private Yes/No.&nbsp;<code>knn()</code> output predicted values for our test data, so we can compare actual v. predicted values. “prediction == actual” gives a vector with the same number of elements as there are observations in the test set. Each element will either be TRUE (the prediction was correct) or FALSE (the prediction was wrong). Applying which() to this vector will yield the index numbers for all the elements equal to TRUE. Applying length() to that vector tells us how many are TRUE (e.g.&nbsp;for how many observations prediction == actual). We can then divide by the number of observations in the test data to obtain the accuracy rate</p>
@@ -655,16 +655,32 @@ Determination of Risk Scores, November 2016</code></pre>
 <span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>                    training_data<span class="sc">$</span>Enroll,</span>
 <span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">k =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>knn_reg1<span class="sc">$</span>pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 1492  185  302 2529 1464 1408 1930  177 1547 1652  278  363  452  572  176
+ [16]  276 1973  323  137  197  200  489  456  108 1025  208  172 1194 1685  419
+ [31]  156  361  432  502  659 1561  220  157  210 5873  144  753 1499  294  452
+ [46]  951  375  306  437  217  380  543  695 1561  383  481  146  910  443  456
+ [61]  185  235  151  228  363 1492 2367  350  452 1030  819  326 2678  265 1697
+ [76]  465  337  575 1071  176  514  575  510  366  579  210  361 2408 1016  352
+ [91]   91  276  806  314 1515  215  276 2133  227  306 1191   96 2408  688 1436
+[106]  177  298  691  376  500 4893  363  484  560  985  246  695 2408  691  504
+[121]  157  167   55 1036 1368 1515  177  244  456  306 2940  363  361  557  910
+[136]  125  167  137  298  248 3147  266 6180 1627  167  334  300  354 3087  217
+[151]  383  776  328  477  458</code></pre>
+</div>
+</div>
 <p>MSE is an appropriate loss function for regression whereas accuracy is only relevant for classification</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>mse_knn1 <span class="ot">&lt;-</span> <span class="fu">mean</span>((knn_reg1<span class="sc">$</span>pred <span class="sc">-</span> test_data<span class="sc">$</span>Enroll)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>mse_knn5 <span class="ot">&lt;-</span> <span class="fu">mean</span>((knn_reg5<span class="sc">$</span>pred <span class="sc">-</span> test_data<span class="sc">$</span>Enroll)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mse_knn1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mse_knn1 <span class="ot">&lt;-</span> <span class="fu">mean</span>((knn_reg1<span class="sc">$</span>pred <span class="sc">-</span> test_data<span class="sc">$</span>Enroll)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>mse_knn5 <span class="ot">&lt;-</span> <span class="fu">mean</span>((knn_reg5<span class="sc">$</span>pred <span class="sc">-</span> test_data<span class="sc">$</span>Enroll)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mse_knn1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 124500.9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mse_knn5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mse_knn5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 73296.56</code></pre>
 </div>
@@ -674,11 +690,59 @@ Determination of Risk Scores, November 2016</code></pre>
 <h2 class="anchored" data-anchor-id="standard-linear-regression">Standard Linear Regression</h2>
 <p>We will now do linear regression. To run a linear regression in R, we use the function <code>lm()</code>, which stands for linear model. <code>lm()</code> takes two main arguments. The first is the formula, which should be of the form Dependent Variable ~ Feature1 + Feature2 + … The second is the training data – including both features and the outcome. Note that “<code>~.</code>” means regress this variable on all other variables</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>enroll_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(Enroll <span class="sc">~</span> ., training_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>enroll_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(Enroll <span class="sc">~</span> ., training_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Please cite as: </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> R package version 5.2.3. https://CRAN.R-project.org/package=stargazer </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(enroll_reg, <span class="at">type =</span> <span class="st">"text"</span>, <span class="at">single.row =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+===============================================
+                        Dependent variable:    
+                    ---------------------------
+                              Enroll           
+-----------------------------------------------
+PrivateYes                7.807 (30.036)       
+Apps                     -0.028*** (0.008)     
+Accept                   0.147*** (0.015)      
+Top10perc                4.016*** (1.283)      
+Top25perc                -2.269** (0.997)      
+F.Undergrad              0.144*** (0.004)      
+P.Undergrad               -0.012* (0.007)      
+Outstate                  -0.003 (0.004)       
+Room.Board               -0.024** (0.011)      
+Books                     -0.027 (0.049)       
+Personal                   0.008 (0.014)       
+PhD                       -0.431 (1.002)       
+Terminal                  -0.540 (1.094)       
+S.F.Ratio                 -0.253 (2.843)       
+perc.alumni              2.319*** (0.879)      
+Expend                     0.003 (0.003)       
+Grad.Rate                  0.136 (0.648)       
+Constant                187.938** (89.615)     
+-----------------------------------------------
+Observations                    622            
+R2                             0.956           
+Adjusted R2                    0.955           
+Residual Std. Error     202.349 (df = 604)     
+F Statistic          768.822*** (df = 17; 604) 
+===============================================
+Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
 </div>
 <p>lm() returns a list, which includes among other things coefficients, residuals, and fitted values for the training data. You can look at the elements in RStudio by using the blue arrow next to enroll_reg in the environment tab. In order to call one element of a list, you can use $</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>enroll_reg<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>enroll_reg<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  (Intercept)    PrivateYes          Apps        Accept     Top10perc 
 187.938169332   7.806939217  -0.027759639   0.146504112   4.016271367 
@@ -692,7 +756,7 @@ Determination of Risk Scores, November 2016</code></pre>
 </div>
 <p>In order to see a more traditional regression output, use <code>summary()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(enroll_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(enroll_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -732,42 +796,42 @@ F-statistic: 768.8 on 17 and 604 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>If you want to use the coefficients from enroll_reg to predict enrollment values in the test data, you can use the function <code>predict()</code>. The first argument is the lm object (the whole thing – not just the coefficients) and the second argument is the test data frame without the outcome column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>predicted_enroll <span class="ot">&lt;-</span> <span class="fu">predict</span>(enroll_reg, test_data[, <span class="sc">-</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>predicted_enroll <span class="ot">&lt;-</span> <span class="fu">predict</span>(enroll_reg, test_data[, <span class="sc">-</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s see how well we did in terms of MSE</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>MSE_lm_enroll <span class="ot">&lt;-</span> <span class="fu">mean</span>((predicted_enroll <span class="sc">-</span> test_data<span class="sc">$</span>Enroll)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MSE_lm_enroll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>MSE_lm_enroll <span class="ot">&lt;-</span> <span class="fu">mean</span>((predicted_enroll <span class="sc">-</span> test_data<span class="sc">$</span>Enroll)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MSE_lm_enroll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 39312.19</code></pre>
 </div>
 </div>
 <p>We can see how this compared to our training MSE</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>((enroll_reg<span class="sc">$</span>residuals)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>((enroll_reg<span class="sc">$</span>residuals)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 39760.39</code></pre>
 </div>
 </div>
 <p>Training MSE as % of Test MSE:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>((enroll_reg<span class="sc">$</span>residuals)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> MSE_lm_enroll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>((enroll_reg<span class="sc">$</span>residuals)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> MSE_lm_enroll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.011401</code></pre>
 </div>
 </div>
 <p>We know that the coefficients might change if we exclude some variables. Let’s pretend we only had Apps and Accept (columns 2 and 3) as features</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>small_enroll_reg  <span class="ot">&lt;-</span> <span class="fu">lm</span>(Enroll <span class="sc">~</span> Apps <span class="sc">+</span> Accept, training_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>small_enroll_reg  <span class="ot">&lt;-</span> <span class="fu">lm</span>(Enroll <span class="sc">~</span> Apps <span class="sc">+</span> Accept, training_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can compare coefficients from the small regression and the full regression. If the coefficients in the small regression are different from the coefficients in the full regression, then the small regression suffers from Omitted Variables Bias (OVB).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>small_enroll_reg<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>small_enroll_reg<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)        Apps      Accept 
 86.88115150 -0.05243254  0.42420181 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>enroll_reg<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>enroll_reg<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  (Intercept)    PrivateYes          Apps        Accept     Top10perc 
 187.938169332   7.806939217  -0.027759639   0.146504112   4.016271367 
@@ -784,11 +848,11 @@ F-statistic: 768.8 on 17 and 604 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2 class="anchored" data-anchor-id="stargazer-for-regression-output">Stargazer for Regression Output</h2>
 <p>If you want to compare the coefficients from different regressions, you can use the <code>stargazer</code> package. This package is not installed by default, so you will need to install it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("stargazer")</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(small_enroll_reg, enroll_reg, </span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"text"</span>, <span class="at">column.labels =</span> <span class="fu">c</span>(<span class="st">"Small Model"</span>, <span class="st">"Full Model"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("stargazer")</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(small_enroll_reg, enroll_reg, </span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"text"</span>, <span class="at">column.labels =</span> <span class="fu">c</span>(<span class="st">"Small Model"</span>, <span class="st">"Full Model"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ========================================================================
@@ -864,9 +928,9 @@ Note:                                        *p&lt;0.1; **p&lt;0.05; ***p&lt;0.0
 </div>
 <p>You can also also use stargazer to get the latex code for a table. This is useful if you want to include the table in a paper or a presentation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(small_enroll_reg, enroll_reg, </span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"latex"</span>, </span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">column.labels =</span> <span class="fu">c</span>(<span class="st">"Small Model"</span>, <span class="st">"Full Model"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(small_enroll_reg, enroll_reg, </span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"latex"</span>, </span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">column.labels =</span> <span class="fu">c</span>(<span class="st">"Small Model"</span>, <span class="st">"Full Model"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <table style="text-align:center">
@@ -1725,7 +1789,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2024, Jacob Jameson</div>   
+    <div class="nav-footer-left">Copyright 2025, Jacob Jameson</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
