@@ -345,6 +345,9 @@ pcr_min_indx <- which.min(pcr_msep$val[1, 1,])
 print(pcr_min_indx)
 ```
 
+
+
+
 How could you get the RMSEP?
 
 ```{r}
