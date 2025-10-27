@@ -124,18 +124,15 @@ default_data <- Default
 Let's get to know our data
 ```{r}
 summary(default_data)
-
-
 as.numeric(default_data$default)
 ```
 
 It looks like we have two categorical variables. We can convert them both to numeric
 ```{r}
-default_data$default <- as.numeric(default_data$default == "Yes"
+default_data$default <- as.numeric(default_data$default == "Yes")
 default_data$student <- as.numeric(default_data$student == "Yes")
 
 summary(default_data)
-
 ```
 
 Let's again split our data into test and training data sets with a 20/80 split. We use `set.seed()` to ensure replicability.
