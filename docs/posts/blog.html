@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jacob Jameson - Blog</title>
+<title>Blog – Jacob Jameson</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,22 +32,29 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-listing/list.min.js"></script>
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ecdef6fb79a2f3ae1eaf2491d0de3409.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +63,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -91,83 +99,110 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Jacob Jameson - Blog">
-<meta name="twitter:description" content="">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="twitter:title" content="Blog – Jacob Jameson">
+<meta name="twitter:description" content="Jacob Jameson’s personal website">
 <meta name="twitter:image" content="https://www.jacobjameson.com/posts/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="floating nav-fixed">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../images/sig.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/JacobCJameson" rel="" target="_blank"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/JacobCJameson" target="_blank"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jacobjameson" rel="" target="_blank"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jacobjameson" target="_blank"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../posts/blog.html" rel="" target="" aria-current="page">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link active" href="../posts/blog.html" aria-current="page"> 
+<span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Teaching</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
         <li>
-    <a class="dropdown-item" href="../teaching.html" rel="" target="">
+    <a class="dropdown-item" href="../teaching.html">
  <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../R files/Intro R.html" rel="" target="">
+    <a class="dropdown-item" href="../R files/Intro R.html">
  <span class="dropdown-text">Introduction to R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../git files/Intro Git.html" rel="" target="">
+    <a class="dropdown-item" href="../git files/Intro Git.html">
  <span class="dropdown-text">Introduction to Git/GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../api 222 files/API222.html" rel="" target="">
+    <a class="dropdown-item" href="../api 222 files/API222.html">
  <span class="dropdown-text">API 222 Section Material</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../research.html" rel="" target="">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -175,10 +210,10 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
   
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="LDA">LDA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="PCA">PCA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bayesian">bayesian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="causal inference">causal inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="centrality">centrality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="decison trees">decison trees <span class="quarto-category-count">(1)</span></div><div class="category" data-category="knn">knn <span class="quarto-category-count">(1)</span></div><div class="category" data-category="machine learning">machine learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="marginal effects">marginal effects <span class="quarto-category-count">(1)</span></div><div class="category" data-category="methodology">methodology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="networks">networks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="policy evaluation">policy evaluation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="regression">regression <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="YmF5ZXNpYW4=">bayesian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2F1c2FsJTIwaW5mZXJlbmNl">causal inference <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y2VudHJhbGl0eQ==">centrality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVjaXNvbiUyMHRyZWVz">decison trees <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5zdHJ1bWVudGFsJTIwdmFyaWFibGVz">instrumental variables <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a25u">knn <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TERB">LDA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjaGluZSUyMGxlYXJuaW5n">machine learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFyZ2luYWwlMjBlZmZlY3Rz">marginal effects <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWV0aG9kb2xvZ3k=">methodology <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bmV0d29ya3M=">networks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UENB">PCA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cG9saWN5JTIwZXZhbHVhdGlvbg==">policy evaluation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVncmVzc2lvbg==">regression <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -189,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -197,7 +232,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <p>Welcome to my blog!</p>
 
@@ -206,38 +243,65 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="causal inference,policy evaluation,methodology" data-listing-date-sort="1745899200000" data-listing-file-modified-sort="1746022955194" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15">
-<div class="thumbnail">
-<p><a href="../posts/2025-04-29-AR/2025-04-29-AR.html"> <p class="card-img-top"><img src="2025-04-29-AR/2025-04-29-AR_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="0" data-categories="Y2F1c2FsJTIwaW5mZXJlbmNlJTJDaW5zdHJ1bWVudGFsJTIwdmFyaWFibGVzJTJDbWV0aG9kb2xvZ3k=" data-listing-date-sort="1763614800000" data-listing-file-modified-sort="1763690636698" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="58" data-listing-word-count-sort="11544">
+<div class="thumbnail"><a href="../posts/2025-11-20-IV/2025-11-20-IV.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
-<a href="../posts/2025-04-29-AR/2025-04-29-AR.html">
 <h3 class="no-anchor listing-title">
-Beyond DiD: Autoregressive Models for Policy Evaluation When Parallel Trends Fail
+<a href="../posts/2025-11-20-IV/2025-11-20-IV.html" class="no-external">Understanding Leniency Designs: Why Your Examiner Matters (And How to Estimate It Right)</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2F1c2FsJTIwaW5mZXJlbmNl'); return false;">causal inference</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW5zdHJ1bWVudGFsJTIwdmFyaWFibGVz'); return false;">instrumental variables</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWV0aG9kb2xvZ3k='); return false;">methodology</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('causal inference'); return false;">
-causal inference
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('policy evaluation'); return false;">
-policy evaluation
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('methodology'); return false;">
-methodology
-</div>
-</div>
-<a href="../posts/2025-04-29-AR/2025-04-29-AR.html">
-<div class="listing-description">
-<p>This post demonstrates how autoregressive models can overcome the limitations of difference-in-differences analysis when evaluating health policies with non-parallel pre-treatment trends, providing researchers with practical tools to improve causal inference in observational studies.</p>
-</div>
-</a>
+<div class="delink listing-description"><a href="../posts/2025-11-20-IV/2025-11-20-IV.html" class="no-external">
+<p>A breakdown of Goldsmith-Pinkham, Hull, and Kolesár (2025), showing why standard 2SLS fails in judge IV designs with many instruments and how UJIVE solves the problem. Interactive simulations reveal the bias.</p>
+</a></div>
 </div>
 <div class="metadata">
-<a href="../posts/2025-04-29-AR/2025-04-29-AR.html">
+<a href="../posts/2025-11-20-IV/2025-11-20-IV.html" class="no-external">
+<div class="listing-date">
+Nov 20, 2025
+</div>
+<div class="listing-author">
+Jacob Jameson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Y2F1c2FsJTIwaW5mZXJlbmNlJTJDcG9saWN5JTIwZXZhbHVhdGlvbiUyQ21ldGhvZG9sb2d5" data-listing-date-sort="1745899200000" data-listing-file-modified-sort="1746022955194" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2959">
+<div class="thumbnail"><a href="../posts/2025-04-29-AR/2025-04-29-AR.html" class="no-external">
+
+<p class="card-img-top"><img src="2025-04-29-AR/2025-04-29-AR_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../posts/2025-04-29-AR/2025-04-29-AR.html" class="no-external">Beyond DiD: Autoregressive Models for Policy Evaluation When Parallel Trends Fail</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2F1c2FsJTIwaW5mZXJlbmNl'); return false;">causal inference</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cG9saWN5JTIwZXZhbHVhdGlvbg=='); return false;">policy evaluation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWV0aG9kb2xvZ3k='); return false;">methodology</div>
+
+</div>
+<div class="delink listing-description"><a href="../posts/2025-04-29-AR/2025-04-29-AR.html" class="no-external">
+<p>This post demonstrates how autoregressive models can overcome the limitations of difference-in-differences analysis when evaluating health policies with non-parallel pre-treatment trends, providing researchers with practical tools to improve causal inference in observational studies.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../posts/2025-04-29-AR/2025-04-29-AR.html" class="no-external">
 <div class="listing-date">
 Apr 29, 2025
 </div>
@@ -247,35 +311,29 @@ Jacob Jameson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="bayesian,regression" data-listing-date-sort="1739077200000" data-listing-file-modified-sort="1739132531181" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
-<div class="thumbnail">
-<p><a href="../posts/2025-02-09-BL/2025-02-09-BL.html"> <p class="card-img-top"><img src="2025-02-09-BL/2025-02-09-BL_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="2" data-categories="YmF5ZXNpYW4lMkNyZWdyZXNzaW9u" data-listing-date-sort="1739077200000" data-listing-file-modified-sort="1739132531181" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1860">
+<div class="thumbnail"><a href="../posts/2025-02-09-BL/2025-02-09-BL.html" class="no-external">
+
+<p class="card-img-top"><img src="2025-02-09-BL/2025-02-09-BL_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="../posts/2025-02-09-BL/2025-02-09-BL.html">
 <h3 class="no-anchor listing-title">
-A Gentle Introduction to Bayesian Linear Regression in R
+<a href="../posts/2025-02-09-BL/2025-02-09-BL.html" class="no-external">A Gentle Introduction to Bayesian Linear Regression in R</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmF5ZXNpYW4='); return false;">bayesian</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVncmVzc2lvbg=='); return false;">regression</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('bayesian'); return false;">
-bayesian
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('regression'); return false;">
-regression
-</div>
-</div>
-<a href="../posts/2025-02-09-BL/2025-02-09-BL.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="../posts/2025-02-09-BL/2025-02-09-BL.html" class="no-external">
 <p>This guide walks you through Bayesian linear regression in R and Stan, explaining how priors, likelihoods, and posteriors work in an intuitive and hands-on way.</p>
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="../posts/2025-02-09-BL/2025-02-09-BL.html">
+<a href="../posts/2025-02-09-BL/2025-02-09-BL.html" class="no-external">
 <div class="listing-date">
 Feb 9, 2025
 </div>
@@ -285,35 +343,29 @@ Jacob Jameson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="decison trees,machine learning" data-listing-date-sort="1711425600000" data-listing-file-modified-sort="1711497751015" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13">
-<div class="thumbnail">
-<p><a href="../posts/2024-03-26-DT/2024-03-26-DT.html"> <p class="card-img-top"><img src="2024-03-26-DT/2024-03-26-DT_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="3" data-categories="ZGVjaXNvbiUyMHRyZWVzJTJDbWFjaGluZSUyMGxlYXJuaW5n" data-listing-date-sort="1711425600000" data-listing-file-modified-sort="1711497751015" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2522">
+<div class="thumbnail"><a href="../posts/2024-03-26-DT/2024-03-26-DT.html" class="no-external">
+
+<p class="card-img-top"><img src="2024-03-26-DT/2024-03-26-DT_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="../posts/2024-03-26-DT/2024-03-26-DT.html">
 <h3 class="no-anchor listing-title">
-DIY Decision Trees
+<a href="../posts/2024-03-26-DT/2024-03-26-DT.html" class="no-external">DIY Decision Trees</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVjaXNvbiUyMHRyZWVz'); return false;">decison trees</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('decison trees'); return false;">
-decison trees
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('machine learning'); return false;">
-machine learning
-</div>
-</div>
-<a href="../posts/2024-03-26-DT/2024-03-26-DT.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="../posts/2024-03-26-DT/2024-03-26-DT.html" class="no-external">
 <p>Embarking on a DIY Journey with Machine Learning Algorithms.</p>
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="../posts/2024-03-26-DT/2024-03-26-DT.html">
+<a href="../posts/2024-03-26-DT/2024-03-26-DT.html" class="no-external">
 <div class="listing-date">
 Mar 26, 2024
 </div>
@@ -323,32 +375,27 @@ Jacob Jameson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="PCA" data-listing-date-sort="1709010000000" data-listing-file-modified-sort="1709476351014" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
-<div class="thumbnail">
-<p><a href="../posts/2024-02-26-PCR/2024-02-26-PCR.html"> <p class="card-img-top"><img src="2024-02-26-PCR/2024-02-26-PCR_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="4" data-categories="UENB" data-listing-date-sort="1709010000000" data-listing-file-modified-sort="1709476351014" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1514">
+<div class="thumbnail"><a href="../posts/2024-02-26-PCR/2024-02-26-PCR.html" class="no-external">
+
+<p class="card-img-top"><img src="2024-02-26-PCR/2024-02-26-PCR_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="../posts/2024-02-26-PCR/2024-02-26-PCR.html">
 <h3 class="no-anchor listing-title">
-Does it Spark Joy? Using PCA for Dimensionality Reduction in R
+<a href="../posts/2024-02-26-PCR/2024-02-26-PCR.html" class="no-external">Does it Spark Joy? Using PCA for Dimensionality Reduction in R</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('UENB'); return false;">PCA</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('PCA'); return false;">
-PCA
-</div>
-</div>
-<a href="../posts/2024-02-26-PCR/2024-02-26-PCR.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="../posts/2024-02-26-PCR/2024-02-26-PCR.html" class="no-external">
 <p>Principal Component Analysis (PCA) is a powerful tool for dimensionality reduction. In this post, we provide an overview of PCA, explaining its purpose and how it works. We then walk through a hands-on application of PCA using R, demonstrating the step-by-step process of PCA and its application in predictive modeling.</p>
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="../posts/2024-02-26-PCR/2024-02-26-PCR.html">
+<a href="../posts/2024-02-26-PCR/2024-02-26-PCR.html" class="no-external">
 <div class="listing-date">
 Feb 27, 2024
 </div>
@@ -358,32 +405,27 @@ Jacob Jameson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="LDA" data-listing-date-sort="1707973200000" data-listing-file-modified-sort="1708038811941" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="thumbnail">
-<p><a href="../posts/2024-02-15-LDA/2024-02-15-LDA.html"> <p class="card-img-top"><img src="2024-02-15-LDA/2024-02-15-LDA_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="5" data-categories="TERB" data-listing-date-sort="1707973200000" data-listing-file-modified-sort="1708038811941" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="939">
+<div class="thumbnail"><a href="../posts/2024-02-15-LDA/2024-02-15-LDA.html" class="no-external">
+
+<p class="card-img-top"><img src="2024-02-15-LDA/2024-02-15-LDA_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="../posts/2024-02-15-LDA/2024-02-15-LDA.html">
 <h3 class="no-anchor listing-title">
-What is Linear Discriminant Analysis (LDA)?
+<a href="../posts/2024-02-15-LDA/2024-02-15-LDA.html" class="no-external">What is Linear Discriminant Analysis (LDA)?</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TERB'); return false;">LDA</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('LDA'); return false;">
-LDA
-</div>
-</div>
-<a href="../posts/2024-02-15-LDA/2024-02-15-LDA.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="../posts/2024-02-15-LDA/2024-02-15-LDA.html" class="no-external">
 <p>A brief overview of Linear Discriminant Analysis (LDA) and how it can be used to classify data.</p>
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="../posts/2024-02-15-LDA/2024-02-15-LDA.html">
+<a href="../posts/2024-02-15-LDA/2024-02-15-LDA.html" class="no-external">
 <div class="listing-date">
 Feb 15, 2024
 </div>
@@ -393,32 +435,27 @@ Jacob Jameson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="knn" data-listing-date-sort="1706763600000" data-listing-file-modified-sort="1707767637609" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14">
-<div class="thumbnail">
-<p><a href="../posts/2024-02-01-KNN/2024-02-01-KNN.html"> <p class="card-img-top"><img src="2024-02-01-KNN/2024-02-01-KNN_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="6" data-categories="a25u" data-listing-date-sort="1706763600000" data-listing-file-modified-sort="1707767637609" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2736">
+<div class="thumbnail"><a href="../posts/2024-02-01-KNN/2024-02-01-KNN.html" class="no-external">
+
+<p class="card-img-top"><img src="2024-02-01-KNN/2024-02-01-KNN_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="../posts/2024-02-01-KNN/2024-02-01-KNN.html">
 <h3 class="no-anchor listing-title">
-Demystifying KNN
+<a href="../posts/2024-02-01-KNN/2024-02-01-KNN.html" class="no-external">Demystifying KNN</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('a25u'); return false;">knn</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('knn'); return false;">
-knn
-</div>
-</div>
-<a href="../posts/2024-02-01-KNN/2024-02-01-KNN.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="../posts/2024-02-01-KNN/2024-02-01-KNN.html" class="no-external">
 <p>A deep dive into the K-Nearest Neighbors (KNN) algorithm, exploring its mathematical foundations and practical applications.</p>
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="../posts/2024-02-01-KNN/2024-02-01-KNN.html">
+<a href="../posts/2024-02-01-KNN/2024-02-01-KNN.html" class="no-external">
 <div class="listing-date">
 Feb 1, 2024
 </div>
@@ -428,32 +465,27 @@ Jacob Jameson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="marginal effects" data-listing-date-sort="1693540800000" data-listing-file-modified-sort="1707767624113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
-<div class="thumbnail">
-<p><a href="../posts/2023-09-01-OR/2023-09-01-OR.html"> <p class="card-img-top"><img src="2023-09-01-OR/2023-09-01-OR_files/figure-html/unnamed-chunk-8-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="7" data-categories="bWFyZ2luYWwlMjBlZmZlY3Rz" data-listing-date-sort="1693540800000" data-listing-file-modified-sort="1707767624113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1592">
+<div class="thumbnail"><a href="../posts/2023-09-01-OR/2023-09-01-OR.html" class="no-external">
+
+<p class="card-img-top"><img src="2023-09-01-OR/2023-09-01-OR_files/figure-html/unnamed-chunk-8-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="../posts/2023-09-01-OR/2023-09-01-OR.html">
 <h3 class="no-anchor listing-title">
-The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research
+<a href="../posts/2023-09-01-OR/2023-09-01-OR.html" class="no-external">The ‘Odd’ Obsession with Odds Ratios: Making a Case for Marginal Effects in Health Research</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFyZ2luYWwlMjBlZmZlY3Rz'); return false;">marginal effects</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('marginal effects'); return false;">
-marginal effects
-</div>
-</div>
-<a href="../posts/2023-09-01-OR/2023-09-01-OR.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="../posts/2023-09-01-OR/2023-09-01-OR.html" class="no-external">
 <p>Marginal Effects &gt;&gt;&gt; Odds Ratios</p>
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="../posts/2023-09-01-OR/2023-09-01-OR.html">
+<a href="../posts/2023-09-01-OR/2023-09-01-OR.html" class="no-external">
 <div class="listing-date">
 Sep 1, 2023
 </div>
@@ -463,35 +495,29 @@ Jacob Jameson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="networks,centrality" data-listing-date-sort="1667275200000" data-listing-file-modified-sort="1707767661543" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16">
-<div class="thumbnail">
-<p><a href="../posts/2022-11-01-SNA/2022-11-01-SNA.html"> <p class="card-img-top"><img src="2022-11-01-SNA/2022-11-01-SNA_files/figure-html/unnamed-chunk-10-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="8" data-categories="bmV0d29ya3MlMkNjZW50cmFsaXR5" data-listing-date-sort="1667275200000" data-listing-file-modified-sort="1707767661543" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3048">
+<div class="thumbnail"><a href="../posts/2022-11-01-SNA/2022-11-01-SNA.html" class="no-external">
+
+<p class="card-img-top"><img src="2022-11-01-SNA/2022-11-01-SNA_files/figure-html/unnamed-chunk-10-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="../posts/2022-11-01-SNA/2022-11-01-SNA.html">
 <h3 class="no-anchor listing-title">
-Basic Network Analysis and Visualization for Directed Graphs in R
+<a href="../posts/2022-11-01-SNA/2022-11-01-SNA.html" class="no-external">Basic Network Analysis and Visualization for Directed Graphs in R</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV0d29ya3M='); return false;">networks</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2VudHJhbGl0eQ=='); return false;">centrality</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('networks'); return false;">
-networks
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('centrality'); return false;">
-centrality
-</div>
-</div>
-<a href="../posts/2022-11-01-SNA/2022-11-01-SNA.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="../posts/2022-11-01-SNA/2022-11-01-SNA.html" class="no-external">
 <p>Choosing the Right Centrality Measure.</p>
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="../posts/2022-11-01-SNA/2022-11-01-SNA.html">
+<a href="../posts/2022-11-01-SNA/2022-11-01-SNA.html" class="no-external">
 <div class="listing-date">
 Nov 1, 2022
 </div>
@@ -502,247 +528,415 @@ Jacob Jameson
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
+<div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
       }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
+      return false;
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.jacobjameson\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
       });
     }
-  }
-});
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<script src="https://utteranc.es/client.js" repo="jacobjameson/jacobjameson.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2025, Jacob Jameson</div>   
+    <div class="nav-footer-left">
+<p>Copyright 2025, Jacob Jameson</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -751,6 +945,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

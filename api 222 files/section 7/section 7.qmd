@@ -55,8 +55,6 @@ train <- sort(train)
 test <- which(!(seq(nrow(wage_data)) %in% train))
 ```
 
-
-
 To quickly and easily measure MSEP, write our own function
 
 ```{r}
@@ -65,7 +63,6 @@ msep_func <- function(predictions, true_vals) {
   return(MSEP)
 }
 ```
-
 
 
 ## Polynomial Regression 
@@ -178,7 +175,7 @@ View(pred_comparison)
 
 We're going to start by making an age grid, so that we test our predictions on a grid of evenly spaced ages so that you capture the functional form well. 
 
-A quick aside, na.rm = TRUE means exlucde missing observations. Then we are going to run a spline with knots at ages 25, 40, and 60. 
+A quick aside, na.rm = TRUE means exclude missing observations. Then we are going to run a spline with knots at ages 25, 40, and 60. 
 
 ```{r}
 library(splines)
@@ -221,6 +218,8 @@ lines(age_grid, spline_age_grid_pred$fit +
         2 * spline_age_grid_pred$se, lty ="dashed")
 lines(age_grid, spline_age_grid_pred$fit - 
         2 * spline_age_grid_pred$se, lty ="dashed")
+# add vlines for knots
+abline(v = c(25, 40, 60), lty = "dotted")
 ```
 
 ### Natural Splines 
@@ -241,6 +240,8 @@ lines(age_grid, ns_age_grid_poly_pred$fit +
         2 * ns_age_grid_poly_pred$se, lty = "dashed")
 lines(age_grid, ns_age_grid_poly_pred$fit - 
         2 * ns_age_grid_poly_pred$se, lty = "dashed")
+abline(v = quantile(wage_data[train,]$age, 
+                    probs = c(0.25, 0.5, 0.75)), lty = "dotted")
 ```
 
 ### Smoothing Splines 
@@ -279,14 +280,15 @@ Local Regression use loess()
 
 Note: span = 0.2 makes neighborhoods with 20% of observations. Span = 0.5 creates neighborhoods with 50% of observations. So the larger the span, the smoother the fit
 
-
 ```{r, warning=F, message=F}
 # plot age and wage and add geom_smooth
 library(ggplot2)
 ggplot(wage_data[test,], aes(x = age, y = wage, color = education)) +
   geom_point(alpha = 0.5) +
-  geom_smooth(method = "loess", span = 0.2) +
-  geom_smooth(method = "loess", span = 0.5) 
+  geom_smooth(method = "lm", se = T, color = "black") +
+  #geom_smooth(method = "loess", span = 0.2) +
+  geom_smooth(method = "loess", span = 0.5) +
+  facet_wrap(~education) 
 ```
 
 
@@ -382,9 +384,8 @@ plot.Gam(gam_lo, se = TRUE, col = "green")
 If you want to do a local regression in two variables:
 
 ```{r}
-gam_2lo <- gam(wage ~ lo(year, age, span =0.5) + education,
+gam_2lo <- gam(wage ~ lo(year, age, span =0.2) + education,
                data = wage_data[train,])
-?s
 ```
 
 

@@ -80,12 +80,12 @@ test <- which(!(seq(nrow(carseat_data)) %in% train))
 ```
 
 
-
 We can now train a decision tree using the function `tree()`
 
 ```{r}
 ?tree
-carseats_tree <- tree(high_sales ~ ., data = carseat_data[train,])
+carseats_tree <- tree(high_sales ~ ., 
+                      data = carseat_data[train,])
 ```
 
 
@@ -361,6 +361,21 @@ ggplot(plot, aes(x = reorder(var, -rel.inf), y = rel.inf)) +
   ylab("Relative Importance") +
   ggtitle("Relative Importance of Variables in Boosting Model") +
   theme_minimal()
+```
+
+
+```{r}
+# create a shap plot of the boosting model
+library(iml)
+predictor <- Predictor$new(
+  model = boost.boston,
+  data = boston_data[-train, -which(names(boston_data) == "medv")],
+  y = boston_data[-train, "medv"]
+)
+
+shap <- Shapley$new(predictor, x.interest = boston_data[train[1], -which(names(boston_data) == "medv")])
+
+plot(shap)
 ```
 
 Now let's make some predictions 

@@ -8,12 +8,23 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+link-citations: true
+reference-location: margin
+comments:
+  utterances:
+    repo: jacobjameson/jacobjameson.github.io
 format:
   html:
     toc: true
     toc-location: left
-    theme: spacelab
-    from: markdown+emoji
 page-layout: full
 ---
 

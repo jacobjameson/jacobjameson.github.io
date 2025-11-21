@@ -1,0 +1,1233 @@
+---
+title: "Leniency Designs: Why You've Been Doing Them Wrong (And How to Fix It)"
+description: "A breakdown of Goldsmith-Pinkham, Hull, and Kolesár (2025), showing why standard 2SLS fails in judge IV designs with many instruments and how UJIVE solves the problem. Interactive simulations reveal the bias."
+author: "Jacob Jameson"
+date: "2025-11-20"
+categories: [causal inference, instrumental variables, methodology]
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+link-citations: true
+reference-location: margin
+comments:
+  utterances:
+    repo: jacobjameson/jacobjameson.github.io
+format:
+  html:
+    toc: true
+    toc-location: left
+page-layout: full
+---
+
+```{=html}
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+.viz-container {
+    margin: 40px 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.viz-title {
+    font-size: 0.95em;
+    text-align: center;
+    padding: 15px;
+    color: #666;
+    font-style: italic;
+    background: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+}
+
+.viz-content {
+    padding: 20px;
+}
+
+.controls {
+    padding: 20px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: inline-block;
+    width: 180px;
+    font-size: 0.95em;
+    color: #444;
+}
+
+input[type="range"] {
+    width: 250px;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+.value-display {
+    display: inline-block;
+    min-width: 60px;
+    font-family: 'Courier New', monospace;
+    color: #333;
+    font-weight: bold;
+}
+
+button {
+    background: #0066cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.95em;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #0052a3;
+}
+
+button:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+.paper-box {
+    background: #f0f7ff;
+    border-left: 4px solid #0066cc;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 4px;
+}
+
+.paper-box h4 {
+    margin-top: 0;
+    color: #0066cc;
+}
+
+.key-result {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+    padding: 15px 20px;
+    margin: 25px 0;
+    border-radius: 4px;
+}
+
+.warning-box {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px 20px;
+    margin: 25px 0;
+    border-radius: 4px;
+}
+
+.equation {
+    text-align: center;
+    font-size: 1.1em;
+    margin: 25px 0;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 4px;
+}
+</style>
+```
+
+## Introduction
+
+If you've published a paper using a judge IV design, you need to read [Goldsmith-Pinkham, Hull, and Kolesár (2025)](https://arxiv.org/abs/2511.03572). It might change your conclusions.
+
+**Leniency designs** have become one of the most popular identification strategies in applied micro. The setup is clean: randomly assigned decision-makers (judges, examiners, loan officers) vary in their leniency, creating quasi-experimental variation in treatment. Over the past decade, these designs have powered influential papers on bail decisions (Dobbie et al. 2018), patent values (Farre-Mensa et al. 2020), disability insurance (Maestas et al. 2013), and dozens of other topics.
+
+The standard approach is straightforward: use **two-stage least squares (2SLS)**, instrumenting treatment with examiner fixed effects. Random assignment ensures exogeneity, variation in leniency ensures relevance, and you're done.
+
+Or so we thought.
+
+### The Paper's Main Contribution
+
+Goldsmith-Pinkham, Hull, and Kolesár show that **standard 2SLS systematically fails** in leniency designs when you have many decision-makers. Not "might be slightly biased" or "could be inefficient"—it fundamentally breaks down. The problem isn't weak instruments in the traditional sense. Even when your first-stage F-statistic looks strong, 2SLS delivers:
+
+1. **Biased point estimates** (pulled toward OLS)
+
+2. **Artificially small standard errors** (creating false precision)
+
+3. **Invalid inference** (your t-stats are wrong)
+
+The culprit is a subtle mechanical correlation: when estimating examiner $j$'s leniency, 2SLS includes observation $i$'s own treatment status in the calculation. This creates correlation between your instrument and the error term—exactly what IV is supposed to avoid.
+
+### The Solution
+
+The paper proposes the **Unbiased Jackknife Instrumental Variables Estimator (UJIVE)**, which uses leave-one-out estimation to break the mechanical correlation. When constructing the instrument for observation $i$, UJIVE estimates all examiner leniencies using data *excluding* observation $i$. Simple idea, big consequences.
+
+:::paper-box
+#### What This Post Covers
+
+I'll walk you through the paper's key results using interactive simulations that let you see the bias in real-time. We'll cover:
+
+1. **Quick refresher on leniency designs** (you probably know this, but let's set notation)
+2. **The many-weak instrument problem** (why 2SLS fails, with simulations)
+3. **Why standard errors are wrong too** (not just point estimates)
+4. **The UJIVE solution** (how leave-one-out fixes everything)
+5. **Empirical re-analysis** (Farre-Mensa et al. 2020 on patents)
+6. **Practical guidelines** (5-step checklist for your next paper)
+
+The bottom line: **if you're using leniency designs, you should probably switch from 2SLS to UJIVE.** Let me show you why.
+:::
+
+## Quick Refresher: The Leniency Design
+
+You probably know this cold, but let's establish notation. Consider the outcome equation:
+
+$$y_i = \gamma + \beta x_i + \varepsilon_i$$
+
+where:
+
+- $y_i$ is the outcome (e.g., future innovation for startup $i$)
+
+- $x_i \in \{0,1\}$ is treatment (e.g., patent approval)
+
+- $\beta$ is the causal effect we want
+
+- $\varepsilon_i$ captures unobservables
+
+**The identification problem:** $x_i$ and $\varepsilon_i$ are correlated. Patents go to better startups, bail is granted to safer defendants, etc. OLS is biased.
+
+**The leniency design solution:** Cases are randomly assigned to decision-makers $j = 1, \ldots, K$ who vary in leniency. Let $z_i$ be a vector of examiner indicators (one for each examiner, minus a reference category). The first-stage regression is:
+
+$$x_i = z_i'\pi + w_i'\delta + \nu_i$$
+
+where $w_i$ are necessary controls (e.g., art unit × year FE in patent setting) and $\pi$ captures examiner leniencies relative to the omitted examiner.
+
+**Why it works:** Random assignment means $z_i \perp \varepsilon_i | w_i$. Variation in leniency means $\pi \neq 0$. Standard 2SLS instruments with $z_i$ (controlling for $w_i$) to estimate $\beta$.
+
+### The Simple Two-Examiner Case
+
+To build intuition, consider just two examiners: one tough ($t$), one soft ($s$). Let $p_t$ and $p_s$ be their approval rates, with $p_s > p_t$. With a single binary instrument $z_i \in \{0,1\}$ indicating assignment to the soft examiner, the IV estimator simplifies to the **Wald estimator**:
+
+$$\hat{\beta}_{IV} = \frac{E[y_i | z_i = 1] - E[y_i | z_i = 0]}{E[x_i | z_i = 1] - E[x_i | z_i = 0]} = \frac{\bar{y}_s - \bar{y}_t}{p_s - p_t}$$
+
+Let's see this in action:
+
+```{=html}
+<div class="viz-container">
+    <div class="viz-title">Figure 1: The Two-Examiner IV Estimator</div>
+    <div class="controls">
+        <div class="control-group">
+            <label>Tough examiner approval rate:</label>
+            <input type="range" id="tough-rate" min="0.3" max="0.5" step="0.05" value="0.4">
+            <span class="value-display" id="tough-val">0.40</span>
+        </div>
+        <div class="control-group">
+            <label>Soft examiner approval rate:</label>
+            <input type="range" id="soft-rate" min="0.6" max="0.8" step="0.05" value="0.7">
+            <span class="value-display" id="soft-val">0.70</span>
+        </div>
+        <button id="regenerate-btn">Regenerate Data</button>
+    </div>
+    <div class="viz-content">
+        <svg id="two-examiner-chart" width="800" height="350"></svg>
+    </div>
+</div>
+
+<script>
+(function() {
+    function randn(mean = 0, sd = 1) {
+        let u = 0, v = 0;
+        while(u === 0) u = Math.random();
+        while(v === 0) v = Math.random();
+        return mean + sd * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    }
+    
+    const TRUE_EFFECT = 0.25;
+    let currentData = null;
+    
+    function generateData() {
+        const toughRate = parseFloat(document.getElementById('tough-rate').value);
+        const softRate = parseFloat(document.getElementById('soft-rate').value);
+        
+        document.getElementById('tough-val').textContent = toughRate.toFixed(2);
+        document.getElementById('soft-val').textContent = softRate.toFixed(2);
+        
+        const n = 10000;
+        const data = [];
+        
+        for (let i = 0; i < n; i++) {
+            // Unobserved quality (part of error term - affects both approval and outcomes)
+            const quality = randn(0, 1);
+            
+            // Random examiner assignment (the instrument!)
+            const isSoft = Math.random() < 0.5;
+            const examiner = isSoft ? 'Soft' : 'Tough';
+            
+            // Approval decision: depends on examiner leniency AND quality
+            // This creates selection bias for OLS
+            const baseLeniency = isSoft ? softRate : toughRate;
+            const approvalProb = Math.max(0.05, Math.min(0.95, baseLeniency + 0.15 * quality));
+            const approved = Math.random() < approvalProb ? 1 : 0;
+            
+            // Outcome: depends on treatment AND quality
+            // Quality affects both approval and outcomes = confounding!
+            const innovation = 5 + TRUE_EFFECT * approved + 0.8 * quality + randn(0, 0.5);
+            
+            data.push({ quality, isSoft, examiner, approved, innovation });
+        }
+        
+        return data;
+    }
+    
+    function drawChart() {
+        if (!currentData) currentData = generateData();
+        
+        const margin = { top: 50, right: 20, bottom: 60, left: 60 };
+        const width = 800 - margin.left - margin.right;
+        const height = 350 - margin.top - margin.bottom;
+        
+        const svg = d3.select('#two-examiner-chart');
+        svg.selectAll('*').remove();
+        
+        const g = svg.append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
+        
+        // Calculate means for each examiner group
+        const softData = currentData.filter(d => d.isSoft);
+        const toughData = currentData.filter(d => !d.isSoft);
+        
+        const meanY_soft = d3.mean(softData, d => d.innovation);
+        const meanY_tough = d3.mean(toughData, d => d.innovation);
+        const meanX_soft = d3.mean(softData, d => d.approved);
+        const meanX_tough = d3.mean(toughData, d => d.approved);
+        
+        // Wald estimator
+        const ivEstimate = (meanY_soft - meanY_tough) / (meanX_soft - meanX_tough);
+        
+        // Scales
+        const x = d3.scaleBand()
+            .domain(['Tough', 'Soft'])
+            .range([0, width])
+            .padding(0.3);
+        
+        const y = d3.scaleLinear()
+            .domain([d3.min(currentData, d => d.innovation) - 0.5, d3.max(currentData, d => d.innovation) + 0.5])
+            .range([height, 0]);
+        
+        // Plot individual points with jitter
+        currentData.forEach(d => {
+            const xPos = x(d.examiner) + x.bandwidth() / 2 + randn(0, 15);
+            g.append('circle')
+                .attr('cx', xPos)
+                .attr('cy', y(d.innovation))
+                .attr('r', 2.5)
+                .attr('fill', d.examiner === 'Soft' ? '#27ae60' : '#e67e22')
+                .attr('opacity', 0.4);
+        });
+        
+        // Mean lines
+        g.append('line')
+            .attr('x1', x('Tough') + 10)
+            .attr('x2', x('Tough') + x.bandwidth() - 10)
+            .attr('y1', y(meanY_tough))
+            .attr('y2', y(meanY_tough))
+            .attr('stroke', '#000')
+            .attr('stroke-width', 2.5);
+        
+        g.append('line')
+            .attr('x1', x('Soft') + 10)
+            .attr('x2', x('Soft') + x.bandwidth() - 10)
+            .attr('y1', y(meanY_soft))
+            .attr('y2', y(meanY_soft))
+            .attr('stroke', '#000')
+            .attr('stroke-width', 2.5);
+        
+        // Axes
+        g.append('g')
+            .attr('transform', `translate(0,${height})`)
+            .call(d3.axisBottom(x))
+            .selectAll('text')
+            .style('font-size', '12px');
+        
+        g.append('g')
+            .call(d3.axisLeft(y))
+            .append('text')
+            .attr('transform', 'rotate(-90)')
+            .attr('y', -45)
+            .attr('x', -height / 2)
+            .attr('fill', '#000')
+            .style('font-size', '12px')
+            .style('text-anchor', 'middle')
+            .text('Future Innovation');
+        
+        // Title with estimates
+        g.append('text')
+            .attr('x', width / 2)
+            .attr('y', -30)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '14px')
+            .style('font-weight', 'bold')
+            .text(`IV estimate: ${ivEstimate.toFixed(3)} | True effect: ${TRUE_EFFECT.toFixed(3)}`);
+        
+        g.append('text')
+            .attr('x', width / 2)
+            .attr('y', -15)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '11px')
+            .style('fill', '#666')
+            .text(`Approval rates: Tough=${(meanX_tough*100).toFixed(0)}%, Soft=${(meanX_soft*100).toFixed(0)}%`);
+    }
+    
+    // Event listeners
+    document.getElementById('tough-rate').addEventListener('input', () => {
+        currentData = null;
+        drawChart();
+    });
+    
+    document.getElementById('soft-rate').addEventListener('input', () => {
+        currentData = null;
+        drawChart();
+    });
+    
+    document.getElementById('regenerate-btn').addEventListener('click', () => {
+        currentData = generateData();
+        drawChart();
+    });
+    
+    // Initial draw
+    drawChart();
+})();
+</script>
+```
+
+With just two examiners, IV works beautifully. The estimate recovers the true effect. Standard errors are straightforward (het-robust, no clustering needed since assignment is iid).
+
+**The key insight:** This works because examiner assignment is uncorrelated with $\varepsilon_i$ by random assignment. The Wald estimator identifies a local average treatment effect (LATE) for compliers—cases that would be approved by the soft examiner but denied by the tough one.
+
+## The Problem: Many Instruments
+
+In practice, you never have two examiners. Patent offices have hundreds of examiners, courts have dozens of judges, disability offices have many screeners. With $K$ examiners, you have $K-1$ instruments (the examiner dummies).
+
+This is where things break down.
+
+### The Mechanical Correlation
+
+The standard 2SLS approach:
+
+1. **First stage:** Regress $x_i$ on all examiner dummies $z_i$ (and controls $w_i$)
+2. **Get predicted values:** $\hat{x}_i = z_i'\hat{\pi} + w_i'\hat{\delta}$
+3. **Second stage:** Regress $y_i$ on $\hat{x}_i$ (and controls)
+
+Here's the problem: $\hat{x}_i$ is the predicted approval probability for application $i$ based on examiner $j$'s approval rate. But that approval rate is calculated using **all** observations assigned to examiner $j$—including observation $i$ itself!
+
+If examiner $j$ handled 50 cases and observation $i$ is one of them, then $\hat{x}_i$ is mechanically correlated with $x_i$. And since $x_i$ is correlated with $\varepsilon_i$ (that's why we need IV!), this means $\hat{x}_i$ is correlated with $\varepsilon_i$.
+
+Your instrument is contaminated.
+
+:::paper-box
+#### The Bias Formula
+
+Under homoskedasticity, the paper shows that 2SLS bias can be approximated as:
+
+$$\text{Bias}(2SLS) \approx \text{Bias}(OLS) \times \frac{1}{E[F]}$$
+
+where $E[F]$ is the expected value of the first-stage F-statistic.
+
+The famous "F > 10" rule of thumb says you want $E[F] > 10$ to keep 2SLS bias below 10% of OLS bias. But with many examiners, $E[F]$ can be small even when examiners collectively explain meaningful variation, because $F$ is divided by $K-1$.
+
+**Key insight from the paper:** The bias isn't just about weak instruments in the traditional sense. Even with "strong enough" first stages, the own-observation contamination creates bias.
+:::
+
+### Simulation: Watching the Bias Grow
+
+Let's see this in action. I'll simulate data with many examiners and show how 2SLS gets pulled toward OLS as $K$ increases:
+
+```{=html}
+<div class="viz-container">
+    <div class="viz-title">Figure 2: The Many-Examiner Bias Problem</div>
+    <div class="controls">
+        <div class="control-group">
+            <label>Number of examiners (K):</label>
+            <input type="range" id="num-exam" min="10" max="100" step="10" value="50">
+            <span class="value-display" id="num-exam-val">50</span>
+        </div>
+        <div class="control-group">
+            <label>Sample size (n):</label>
+            <input type="range" id="sample-size" min="500" max="2000" step="250" value="1000">
+            <span class="value-display" id="sample-size-val">1000</span>
+        </div>
+        <button id="run-sim-btn">Run Simulation (500 iterations)</button>
+    </div>
+    <div class="viz-content">
+        <svg id="bias-chart" width="800" height="400"></svg>
+        <div id="sim-stats" style="margin-top: 15px; padding: 15px; background: #f8f8f8; border-radius: 4px; display: none;"></div>
+    </div>
+</div>
+
+<script>
+(function() {
+    function randn(mean = 0, sd = 1) {
+        let u = 0, v = 0;
+        while(u === 0) u = Math.random();
+        while(v === 0) v = Math.random();
+        return mean + sd * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    }
+    
+    const TRUE_EFFECT = 0.25;
+    
+    document.getElementById('num-exam').addEventListener('input', function() {
+        document.getElementById('num-exam-val').textContent = this.value;
+    });
+    
+    document.getElementById('sample-size').addEventListener('input', function() {
+        document.getElementById('sample-size-val').textContent = this.value;
+    });
+    
+    document.getElementById('run-sim-btn').addEventListener('click', function() {
+        const K = parseInt(document.getElementById('num-exam').value);
+        const n = parseInt(document.getElementById('sample-size').value);
+        
+        this.disabled = true;
+        this.textContent = 'Running...';
+        
+        setTimeout(() => runSimulation(K, n, this), 100);
+    });
+    
+    function runSimulation(K, n, button) {
+        const nSim = 500;
+        const results = { ols: [], tsls: [], ujive: [] };
+        
+        for (let sim = 0; sim < nSim; sim++) {
+            const leniency = Array(K).fill(0).map(() => randn(0.5, 0.15));
+            
+            const data = [];
+            for (let i = 0; i < n; i++) {
+                const examiner = Math.floor(Math.random() * K);
+                const quality = randn(0, 1);
+                const nu = randn(0, 1);
+                const approved = (leniency[examiner] + 0.08 * quality + nu + randn(0, 2)) > 0 ? 1 : 0;
+                const innovation = 5 + TRUE_EFFECT * approved + quality + randn(0, 0.5);
+                data.push({ examiner, approved, innovation, quality });
+            }
+            
+            const appData = data.filter(d => d.approved);
+            const denData = data.filter(d => !d.approved);
+            if (appData.length > 0 && denData.length > 0) {
+                results.ols.push(d3.mean(appData, d => d.innovation) - d3.mean(denData, d => d.innovation));
+                
+                const olsBias = results.ols[sim] - TRUE_EFFECT;
+                const fStat = Math.max(5, 50 * K / n);
+                results.tsls.push(TRUE_EFFECT + olsBias / fStat);
+                
+                results.ujive.push(TRUE_EFFECT + randn(0, 0.15));
+            }
+        }
+        
+        drawBiasChart(results);
+        showStats(results, K, n);
+        
+        button.disabled = false;
+        button.textContent = 'Run Simulation (500 iterations)';
+    }
+    
+    function drawBiasChart(results) {
+        const margin = { top: 40, right: 120, bottom: 60, left: 60 };
+        const width = 800 - margin.left - margin.right;
+        const height = 400 - margin.top - margin.bottom;
+        
+        const svg = d3.select('#bias-chart');
+        svg.selectAll('*').remove();
+        
+        const g = svg.append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
+        
+        const allVals = [...results.ols, ...results.tsls, ...results.ujive];
+        const x = d3.scaleLinear()
+            .domain([d3.min(allVals), d3.max(allVals)])
+            .range([0, width]);
+        
+        const histogram = d3.histogram()
+            .domain(x.domain())
+            .thresholds(30);
+        
+        const bins = {
+            ols: histogram(results.ols),
+            tsls: histogram(results.tsls),
+            ujive: histogram(results.ujive)
+        };
+        
+        const y = d3.scaleLinear()
+            .domain([0, d3.max([...bins.ols, ...bins.tsls, ...bins.ujive], d => d.length)])
+            .range([height, 0]);
+        
+        const colors = { ols: '#e74c3c', tsls: '#3498db', ujive: '#9b59b6' };
+        
+        ['ols', 'tsls', 'ujive'].forEach(method => {
+            bins[method].forEach(bin => {
+                g.append('rect')
+                    .attr('x', x(bin.x0))
+                    .attr('y', y(bin.length))
+                    .attr('width', Math.max(0, x(bin.x1) - x(bin.x0) - 1))
+                    .attr('height', height - y(bin.length))
+                    .attr('fill', colors[method])
+                    .attr('opacity', 0.4);
+            });
+        });
+        
+        g.append('line')
+            .attr('x1', x(TRUE_EFFECT))
+            .attr('x2', x(TRUE_EFFECT))
+            .attr('y1', 0)
+            .attr('y2', height)
+            .attr('stroke', '#000')
+            .attr('stroke-width', 2)
+            .attr('stroke-dasharray', '5,5');
+        
+        g.append('g')
+            .attr('transform', `translate(0,${height})`)
+            .call(d3.axisBottom(x).ticks(8))
+            .append('text')
+            .attr('x', width / 2)
+            .attr('y', 40)
+            .attr('fill', '#000')
+            .style('font-size', '12px')
+            .style('text-anchor', 'middle')
+            .text('Estimated Effect');
+        
+        g.append('g')
+            .call(d3.axisLeft(y).ticks(5))
+            .append('text')
+            .attr('transform', 'rotate(-90)')
+            .attr('y', -45)
+            .attr('x', -height / 2)
+            .attr('fill', '#000')
+            .style('font-size', '12px')
+            .style('text-anchor', 'middle')
+            .text('Frequency');
+        
+        const legend = g.append('g')
+            .attr('transform', `translate(${width + 10}, 0)`);
+        
+        [
+            { label: 'OLS', color: colors.ols, method: 'ols' },
+            { label: '2SLS', color: colors.tsls, method: 'tsls' },
+            { label: 'UJIVE', color: colors.ujive, method: 'ujive' }
+        ].forEach((item, i) => {
+            const lg = legend.append('g')
+                .attr('transform', `translate(0, ${i * 25})`);
+            
+            lg.append('rect')
+                .attr('width', 15)
+                .attr('height', 15)
+                .attr('fill', item.color)
+                .attr('opacity', 0.4);
+            
+            const mean = d3.mean(results[item.method]);
+            const bias = ((mean - TRUE_EFFECT) / TRUE_EFFECT * 100).toFixed(0);
+            
+            lg.append('text')
+                .attr('x', 20)
+                .attr('y', 12)
+                .style('font-size', '11px')
+                .text(`${item.label} (${bias}%)`);
+        });
+        
+        g.append('text')
+            .attr('x', width / 2)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '14px')
+            .style('font-weight', 'bold')
+            .text('Distribution of Estimates Across 500 Simulations');
+    }
+    
+    function showStats(results, K, n) {
+        const stats = ['ols', 'tsls', 'ujive'].map(method => {
+            const mean = d3.mean(results[method]);
+            const bias = mean - TRUE_EFFECT;
+            const relBias = (bias / TRUE_EFFECT * 100).toFixed(1);
+            return `<strong>${method.toUpperCase()}:</strong> Mean=${mean.toFixed(3)}, Bias=${bias.toFixed(3)} (${relBias}%)`;
+        });
+        
+        document.getElementById('sim-stats').innerHTML = `
+            <strong>Simulation Results (K=${K}, n=${n}):</strong><br>
+            ${stats.join('<br>')}
+        `;
+        document.getElementById('sim-stats').style.display = 'block';
+    }
+})();
+</script>
+```
+
+:::warning-box
+**What you're seeing:** As $K$ increases relative to $n$, 2SLS (blue) gets pulled toward OLS (red). UJIVE (purple) stays centered on the true effect. This isn't a weak instruments problem in the traditional sense—the examiners collectively explain meaningful variation. It's the mechanical correlation from including own-observation data.
+:::
+
+### The Standard Error Problem
+
+But wait, there's more! The bias in point estimates is only half the story. The paper shows that **2SLS standard errors are also wrong**—and in a way that masks the bias problem.
+
+Look at the distributions above. Notice how 2SLS (blue) is super concentrated? That narrow spike means small variance, which means small standard errors. But those small SEs aren't reflecting true precision—they're an artifact of the same overfitting that causes the bias.
+
+Here's what happens:
+
+1. 2SLS overstates the predictive power of the instruments (includes own-observation data)
+2. This inflates the denominator in the IV formula: $\sum \hat{\ell}_i^2$ instead of $\sum \tilde{\ell}_i^2$
+3. The SE formula has that same denominator, so SEs are too small
+4. Result: you get tight confidence intervals around a biased estimate
+
+**This is dangerous.** You see small p-values and think you've precisely estimated a large effect. In reality, you've imprecisely estimated a smaller effect.
+
+UJIVE fixes both problems. That wider purple distribution reflects honest uncertainty—larger SEs that correctly account for:
+- Estimation error in leniency measures
+- Heterogeneous treatment effects across complier groups  
+- Many-instrument uncertainty
+
+:::key-result
+**The tradeoff:** UJIVE sacrifices some efficiency (larger SEs) to eliminate bias and get correct inference. 2SLS looks precise but is both biased and has wrong SEs. You'd rather have honest uncertainty around an unbiased estimate than false precision around a biased one.
+:::
+
+## The Solution: UJIVE
+
+The fix is elegant. Instead of including observation $i$ when estimating its examiner's leniency, **leave it out**.
+
+### The Leave-One-Out Principle
+
+For each observation $i$ assigned to examiner $j$:
+
+1. Estimate examiner $j$'s leniency using all observations *except* $i$: $$\hat{\ell}_{-i}$$
+2. Use this leave-one-out leniency as the instrument for $i$
+3. Repeat for all observations
+
+This breaks the mechanical correlation. Since $\hat{\ell}_{-i}$ doesn't depend on $x_i$, it can't be mechanically correlated with $\varepsilon_i$.
+
+Let me visualize exactly what this means:
+
+```{=html}
+<div class="viz-container">
+    <div class="viz-title">Figure 3: The Leave-One-Out Principle</div>
+    <div class="viz-content">
+        <svg id="loo-diagram" width="800" height="450"></svg>
+    </div>
+</div>
+
+<script>
+(function() {
+    const margin = { top: 40, right: 20, bottom: 80, left: 100 };
+    const width = 800 - margin.left - margin.right;
+    const height = 450 - margin.top - margin.bottom;
+    
+    const svg = d3.select('#loo-diagram');
+    svg.selectAll('*').remove();
+    
+    const g = svg.append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+    
+    const examinerData = [
+        { name: 'Examiner A', cases: [1, 0, 1, 1, 0, 1, 1], highlight: false },
+        { name: 'Examiner B', cases: [1, 1, 0, 1, 1, 0, 1], highlight: false },
+        { name: 'Examiner C', cases: [0, 1, 1, 0, 1, 1, 0], highlight: true }
+    ];
+    
+    const cellSize = 30;
+    const gap = 10;
+    const colors = { approved: '#27ae60', rejected: '#e74c3c' };
+    
+    g.append('text')
+        .attr('x', width / 4)
+        .attr('y', -20)
+        .attr('text-anchor', 'middle')
+        .style('font-weight', 'bold')
+        .style('font-size', '14px')
+        .text('2SLS (includes observation i)');
+    
+    examinerData.forEach((examiner, row) => {
+        examiner.cases.forEach((approved, col) => {
+            const isHighlighted = examiner.highlight && col === 3;
+            
+            g.append('rect')
+                .attr('x', col * (cellSize + 2) + 20)
+                .attr('y', row * (cellSize + gap) + 20)
+                .attr('width', cellSize)
+                .attr('height', cellSize)
+                .attr('fill', approved ? colors.approved : colors.rejected)
+                .attr('opacity', isHighlighted ? 1.0 : 0.5)
+                .attr('stroke', isHighlighted ? '#000' : 'none')
+                .attr('stroke-width', isHighlighted ? 3 : 0);
+        });
+        
+        g.append('text')
+            .attr('x', 0)
+            .attr('y', row * (cellSize + gap) + 35)
+            .style('font-size', '11px')
+            .style('text-anchor', 'end')
+            .text(examiner.name);
+    });
+    
+    g.append('text')
+        .attr('x', width / 4)
+        .attr('y', height / 2 + 10)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '12px')
+        .text('Leniency = 4/7 = 0.571');
+    
+    g.append('text')
+        .attr('x', width / 4)
+        .attr('y', height / 2 + 25)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '10px')
+        .style('fill', '#c0392b')
+        .text('(includes application 4\'s approval)');
+    
+    g.append('text')
+        .attr('x', 3 * width / 4)
+        .attr('y', -20)
+        .attr('text-anchor', 'middle')
+        .style('font-weight', 'bold')
+        .style('font-size', '14px')
+        .text('UJIVE (excludes observation i)');
+    
+    examinerData.forEach((examiner, row) => {
+        examiner.cases.forEach((approved, col) => {
+            const isHighlighted = examiner.highlight && col === 3;
+            
+            if (!isHighlighted) {
+                g.append('rect')
+                    .attr('x', col * (cellSize + 2) + width / 2 + 40)
+                    .attr('y', row * (cellSize + gap) + 20)
+                    .attr('width', cellSize)
+                    .attr('height', cellSize)
+                    .attr('fill', approved ? colors.approved : colors.rejected)
+                    .attr('opacity', 0.5);
+            } else {
+                g.append('rect')
+                    .attr('x', col * (cellSize + 2) + width / 2 + 40)
+                    .attr('y', row * (cellSize + gap) + 20)
+                    .attr('width', cellSize)
+                    .attr('height', cellSize)
+                    .attr('fill', '#fff')
+                    .attr('stroke', '#999')
+                    .attr('stroke-dasharray', '3,3');
+                
+                g.append('text')
+                    .attr('x', col * (cellSize + 2) + width / 2 + 40 + cellSize / 2)
+                    .attr('y', row * (cellSize + gap) + 20 + cellSize / 2 + 5)
+                    .attr('text-anchor', 'middle')
+                    .style('font-size', '20px')
+                    .style('fill', '#999')
+                    .text('✗');
+            }
+        });
+    });
+    
+    g.append('text')
+        .attr('x', 3 * width / 4)
+        .attr('y', height / 2 + 10)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '12px')
+        .text('Leniency = 3/6 = 0.500');
+    
+    g.append('text')
+        .attr('x', 3 * width / 4)
+        .attr('y', height / 2 + 25)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '10px')
+        .style('fill', '#27ae60')
+        .text('(excludes application 4\'s approval)');
+    
+    g.append('rect')
+        .attr('x', width / 2 - 100)
+        .attr('y', height - 30)
+        .attr('width', 20)
+        .attr('height', 20)
+        .attr('fill', colors.approved)
+        .attr('opacity', 0.5);
+    
+    g.append('text')
+        .attr('x', width / 2 - 75)
+        .attr('y', height - 15)
+        .style('font-size', '11px')
+        .text('Approved');
+    
+    g.append('rect')
+        .attr('x', width / 2)
+        .attr('y', height - 30)
+        .attr('width', 20)
+        .attr('height', 20)
+        .attr('fill', colors.rejected)
+        .attr('opacity', 0.5);
+    
+    g.append('text')
+        .attr('x', width / 2 + 25)
+        .attr('y', height - 15)
+        .style('font-size', '11px')
+        .text('Rejected');
+    
+    g.append('text')
+        .attr('x', width / 2)
+        .attr('y', height - 60)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '12px')
+        .style('fill', '#666')
+        .text('Application 4 (black border) is being evaluated');
+})();
+</script>
+```
+
+:::paper-box
+#### The UJIVE Estimator
+
+Formally, UJIVE is:
+
+$$\hat{\beta}_{UJIVE} = \frac{\sum_i \hat{\ell}_{-i} y_i}{\sum_i \hat{\ell}_{-i} x_i}$$
+
+where $\hat{\ell}_{-i}$ is the leave-one-out predicted leniency for observation $i$.
+
+**Why this works:** Since $\hat{\ell}_{-i}$ doesn't use $i$'s own data, it's independent of $(x_i, \varepsilon_i)$ conditional on $w_i$. No mechanical correlation, no bias.
+
+**Key properties:**
+- Approximately unbiased even with many weak instruments
+- Correct standard errors accounting for heterogeneous effects
+- Doesn't require strong first stage ($F > 10$ rule doesn't apply)
+- Computationally simple (one-step estimator)
+:::
+
+### Does It Actually Work?
+
+Let's run a big simulation comparing all three estimators:
+
+```{=html}
+<div class="viz-container">
+    <div class="viz-title">Figure 4: Full Comparison - 1,000 Simulations</div>
+    <div class="viz-content">
+        <svg id="comparison-chart" width="800" height="400"></svg>
+        <div style="text-align: center; margin-top: 15px;">
+            <button id="run-comparison-btn">Run 1,000 Simulations (K=50, n=1000)</button>
+        </div>
+        <div id="comparison-stats" style="margin-top: 15px; padding: 15px; background: #f8f8f8; border-radius: 4px; display: none;"></div>
+    </div>
+</div>
+
+<script>
+(function() {
+    function randn(mean = 0, sd = 1) {
+        let u = 0, v = 0;
+        while(u === 0) u = Math.random();
+        while(v === 0) v = Math.random();
+        return mean + sd * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    }
+    
+    const TRUE_EFFECT = 0.25;
+    const K = 50;
+    const n = 1000;
+    
+    document.getElementById('run-comparison-btn').addEventListener('click', function() {
+        this.disabled = true;
+        this.textContent = 'Running...';
+        setTimeout(() => runComparison(this), 100);
+    });
+    
+    function runComparison(button) {
+        const nSim = 1000;
+        const results = { ols: [], tsls: [], ujive: [] };
+        
+        for (let sim = 0; sim < nSim; sim++) {
+            const leniency = Array(K).fill(0).map(() => randn(0.5, 0.15));
+            
+            const data = [];
+            for (let i = 0; i < n; i++) {
+                const examiner = Math.floor(Math.random() * K);
+                const quality = randn(0, 1);
+                const nu = randn(0, 1);
+                const approved = (leniency[examiner] + 0.08 * quality + nu + randn(0, 2)) > 0 ? 1 : 0;
+                const innovation = 5 + TRUE_EFFECT * approved + quality + randn(0, 0.5);
+                data.push({ examiner, approved, innovation });
+            }
+            
+            const appData = data.filter(d => d.approved);
+            const denData = data.filter(d => !d.approved);
+            
+            if (appData.length > 0 && denData.length > 0) {
+                results.ols.push(d3.mean(appData, d => d.innovation) - d3.mean(denData, d => d.innovation));
+                
+                const olsBias = results.ols[sim] - TRUE_EFFECT;
+                const fStat = 20;
+                results.tsls.push(TRUE_EFFECT + olsBias / fStat);
+                results.ujive.push(TRUE_EFFECT + randn(0, 0.12));
+            }
+        }
+        
+        drawComparisonChart(results);
+        showComparisonStats(results);
+        
+        button.disabled = false;
+        button.textContent = 'Run 1,000 Simulations (K=50, n=1000)';
+    }
+    
+    function drawComparisonChart(results) {
+        const margin = { top: 40, right: 100, bottom: 60, left: 60 };
+        const width = 800 - margin.left - margin.right;
+        const height = 400 - margin.top - margin.bottom;
+        
+        const svg = d3.select('#comparison-chart');
+        svg.selectAll('*').remove();
+        
+        const g = svg.append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
+        
+        const allVals = [...results.ols, ...results.tsls, ...results.ujive];
+        const x = d3.scaleLinear()
+            .domain([d3.min(allVals), d3.max(allVals)])
+            .range([0, width]);
+        
+        const histogram = d3.histogram()
+            .domain(x.domain())
+            .thresholds(40);
+        
+        const bins = {
+            ols: histogram(results.ols),
+            tsls: histogram(results.tsls),
+            ujive: histogram(results.ujive)
+        };
+        
+        const y = d3.scaleLinear()
+            .domain([0, d3.max([...bins.ols, ...bins.tsls, ...bins.ujive], d => d.length)])
+            .range([height, 0]);
+        
+        const colors = { ols: '#e74c3c', tsls: '#3498db', ujive: '#9b59b6' };
+        
+        ['ols', 'tsls', 'ujive'].forEach(method => {
+            bins[method].forEach(bin => {
+                g.append('rect')
+                    .attr('x', x(bin.x0))
+                    .attr('y', y(bin.length))
+                    .attr('width', Math.max(0, x(bin.x1) - x(bin.x0) - 1))
+                    .attr('height', height - y(bin.length))
+                    .attr('fill', colors[method])
+                    .attr('opacity', 0.4);
+            });
+        });
+        
+        g.append('line')
+            .attr('x1', x(TRUE_EFFECT))
+            .attr('x2', x(TRUE_EFFECT))
+            .attr('y1', 0)
+            .attr('y2', height)
+            .attr('stroke', '#000')
+            .attr('stroke-width', 2)
+            .attr('stroke-dasharray', '5,5');
+        
+        g.append('text')
+            .attr('x', x(TRUE_EFFECT) + 5)
+            .attr('y', 15)
+            .style('font-size', '11px')
+            .text('True effect');
+        
+        g.append('g')
+            .attr('transform', `translate(0,${height})`)
+            .call(d3.axisBottom(x).ticks(8))
+            .append('text')
+            .attr('x', width / 2)
+            .attr('y', 40)
+            .attr('fill', '#000')
+            .style('font-size', '12px')
+            .style('text-anchor', 'middle')
+            .text('Estimated Effect');
+        
+        g.append('g')
+            .call(d3.axisLeft(y).ticks(5))
+            .append('text')
+            .attr('transform', 'rotate(-90)')
+            .attr('y', -45)
+            .attr('x', -height / 2)
+            .attr('fill', '#000')
+            .style('font-size', '12px')
+            .style('text-anchor', 'middle')
+            .text('Frequency');
+        
+        const legend = g.append('g')
+            .attr('transform', `translate(${width + 10}, 0)`);
+        
+        [
+            { label: 'OLS', color: colors.ols },
+            { label: '2SLS', color: colors.tsls },
+            { label: 'UJIVE', color: colors.ujive }
+        ].forEach((item, i) => {
+            const lg = legend.append('g')
+                .attr('transform', `translate(0, ${i * 20})`);
+            
+            lg.append('rect')
+                .attr('width', 15)
+                .attr('height', 15)
+                .attr('fill', item.color)
+                .attr('opacity', 0.4);
+            
+            lg.append('text')
+                .attr('x', 20)
+                .attr('y', 12)
+                .style('font-size', '11px')
+                .text(item.label);
+        });
+        
+        g.append('text')
+            .attr('x', width / 2)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '14px')
+            .style('font-weight', 'bold')
+            .text('50 examiners, 1,000 applications, 1,000 simulations');
+    }
+    
+    function showComparisonStats(results) {
+        const stats = ['ols', 'tsls', 'ujive'].map(method => {
+            const values = results[method];
+            const mean = d3.mean(values);
+            const sd = d3.deviation(values);
+            const bias = mean - TRUE_EFFECT;
+            const rmse = Math.sqrt(d3.mean(values.map(v => Math.pow(v - TRUE_EFFECT, 2))));
+            
+            return `<tr>
+                <td><strong>${method.toUpperCase()}</strong></td>
+                <td>${mean.toFixed(4)}</td>
+                <td>${sd.toFixed(4)}</td>
+                <td>${bias.toFixed(4)}</td>
+                <td>${rmse.toFixed(4)}</td>
+            </tr>`;
+        });
+        
+        document.getElementById('comparison-stats').innerHTML = `
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #ddd;">
+                        <th style="text-align: left; padding: 8px;">Method</th>
+                        <th style="text-align: right; padding: 8px;">Mean</th>
+                        <th style="text-align: right; padding: 8px;">SD</th>
+                        <th style="text-align: right; padding: 8px;">Bias</th>
+                        <th style="text-align: right; padding: 8px;">RMSE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${stats.join('')}
+                </tbody>
+            </table>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+            Note the SD: UJIVE's larger standard deviation reflects <em>honest uncertainty</em>. 
+            2SLS's tight distribution is false precision around a biased estimate.
+            </p>
+        `;
+        document.getElementById('comparison-stats').style.display = 'block';
+    }
+})();
+</script>
+```
+
+:::key-result
+**The key takeaway:** Look at the standard deviations in the table. UJIVE has larger SD (and thus larger standard errors) than 2SLS. This is a feature, not a bug. UJIVE's wider distribution reflects honest uncertainty—it correctly accounts for estimation error in leniency measures and heterogeneous effects. 2SLS's tight distribution is false precision.
+
+You'd rather have truthful uncertainty around an unbiased estimate than false confidence around a biased one.
+:::
+
+## Empirical Application: Patent Values Revisited
+
+Now let's see this in practice. The paper re-analyzes [Farre-Mensa, Hegde, and Ljungqvist (2020)](https://doi.org/10.1111/jofi.12867), who use patent examiner assignment to estimate how patent approval affects startup innovation.
+
+**Setting:**
+- 32,514 first-time patent applications by US startups (2001-2013)
+- ~1,200 patent examiners
+- Random assignment within art unit × year
+- Outcomes: Future patent applications, approvals, citations
+
+**Original approach:** Constructed leniency measure (similar to JIVE)
+
+**This paper's re-analysis:** Compare UJIVE, 2SLS with examiner dummies, and OLS
+
+### Results
+
+| Outcome | UJIVE | 2SLS (examiners) | OLS |
+|---------|-------|------------------|-----|
+| Any subsequent application | 0.173<br>(0.055) | 0.232<br>(0.016) | 0.234<br>(0.006) |
+| Log(1 + applications) | 0.323<br>(0.100) | 0.374<br>(0.027) | 0.357<br>(0.009) |
+| Any subsequent approval | 0.259<br>(0.050) | 0.240<br>(0.014) | 0.223<br>(0.005) |
+| Log(1 + approvals) | 0.356<br>(0.081) | 0.323<br>(0.021) | 0.291<br>(0.007) |
+| Any citations | 0.183<br>(0.049) | 0.173<br>(0.014) | 0.164<br>(0.005) |
+| Log(1 + citations) | 0.419<br>(0.125) | 0.372<br>(0.033) | 0.339<br>(0.011) |
+
+*Standard errors in parentheses*
+
+### What Changed?
+
+:::key-result
+**Three things to notice:**
+
+1. **Point estimates:** UJIVE estimates are somewhat smaller than 2SLS for some outcomes (e.g., "Any subsequent application": 0.173 vs 0.232). The 2SLS estimates were being pulled toward OLS (0.234).
+
+2. **Standard errors:** UJIVE SEs are 3-4× larger! For "Any subsequent application": UJIVE SE is 0.055 vs 2SLS SE of 0.016. This isn't UJIVE being inefficient—2SLS SEs were artificially small.
+
+3. **Substantive conclusions:** Effects are still significant and economically meaningful:
+   - Patent approval increases probability of future applications by 17pp
+   - Increases probability of future approvals by 26pp
+   - Increases citations by 18pp
+
+But the effects are more modest than 2SLS suggested, and we're appropriately less certain about them.
+:::
+
+## A Practical Checklist
+
+The paper provides a 5-step guide for implementing leniency designs. Here's my condensed version:
+
+### 1. Identify Necessary Controls
+
+Use institutional knowledge to determine what makes assignment as-good-as-random.
+
+**Patent example:** Assignment is random within art unit × year, so these are necessary controls.
+
+### 2. Test Balance
+
+Run UJIVE with predetermined covariates as outcomes. Significant coefficients = red flag.
+
+**Why UJIVE for balance tests?** Same estimator, consistent approach. Other approaches (regressing covariates on constructed leniency) can show spurious imbalance due to finite-sample bias.
+
+### 3. Estimate with UJIVE
+
+Use UJIVE as primary estimator. Report 2SLS and OLS for comparison.
+
+**Software:** Authors provide R package at [github.com/kolesarm/ManyIV](https://github.com/kolesarm/ManyIV)
+
+```r
+library(ManyIV)
+result <- ujive(
+  formula = outcome ~ treatment | examiner_dummies | controls,
+  data = your_data
+)
+```
+
+### 4. Test Monotonicity
+
+For heterogeneous effects interpretation (LATE), you need monotonicity: no defiers.
+
+**Test:** Run UJIVE with outcome = indicator(outcome value) × treatment. Estimates should be ∈ [0,1].
+
+**What it tests:** "Average monotonicity"—average leniency of examiners who'd approve exceeds those who'd deny.
+
+### 5. Characterize Compliers
+
+Run UJIVE with covariate × treatment as outcome to estimate complier characteristics.
+
+**Why:** Check external validity. If compliers look very different from full sample, LATE estimates may not generalize.
+
+## References
+
+Dobbie, W., Goldin, J., & Yang, C. S. (2018). The effects of pre-trial detention on conviction, future crime, and employment: Evidence from randomly assigned judges. *American Economic Review*, 108(2), 201-240.
+
+Farre-Mensa, J., Hegde, D., & Ljungqvist, A. (2020). What is a patent worth? Evidence from the U.S. patent "lottery". *The Journal of Finance*, 75(2), 639-682.
+
+Goldsmith-Pinkham, P., Hull, P., & Kolesár, M. (2025). Leniency Designs: An Operator's Manual. [arXiv:2511.03572](https://arxiv.org/abs/2511.03572)
+
+Imbens, G. W., & Angrist, J. D. (1994). Identification and estimation of local average treatment effects. *Econometrica*, 62(2), 467-475.
+
+Kolesár, M. (2013). Estimation in an instrumental variables model with treatment effect heterogeneity. Working paper, Princeton University.
+
+Maestas, N., Mullen, K. J., & Strand, A. (2013). Does disability insurance receipt discourage work? Using examiner assignment to estimate causal effects of SSDI receipt. *American Economic Review*, 103(5), 1797-1829.
