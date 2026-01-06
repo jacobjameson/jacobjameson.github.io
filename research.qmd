@@ -18,230 +18,561 @@ page-layout: full
 ---
 
 
-<div class="container">
+<style>
+/* ============================================
+RESEARCH PAGE STYLES
+============================================ */
 
-<div class="publication-card">
-<img src="images/Glasser 2025.jpeg" alt="Suicide Policy Icon">
-<div class="publication-card-content">
-<h3>Sex Differences in Life-Course Suicide Rates by State Firearm Policy Environment</h3>
-<p><strong>Authors:</strong> Glasser NJ, <mark>Jameson JC</mark>, Abou Baker N, Pollack HA, Tung EL</p>
-<p><strong>Journal:</strong> American Journal of Preventive Medicine, 2025</p>
-<p><strong>DOI:</strong> <a href="https://doi.org/10.1016/j.amepre.2025.107961" target="_blank">10.1016/j.amepre.2025.107961</a></p>
-<div class="card-buttons">
-<a href="https://doi.org/10.1016/j.amepre.2025.107961" class="view-article" target="_blank">View Article</a>
-<button class="more-info" onclick="showAbstract('abstract-6')">More Info</button>
-</div>
-</div>
-</div>
-
-<!-- Abstract Modal 6 -->
-<div id="abstract-6" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeAbstract('abstract-6')">&times;</span>
-<h3>Abstract</h3>
-<p>
-Male sex and permissive state firearm policy environments have been independently associated with suicide mortality. Few recent studies quantify how these factors interact, or how interactions vary across the life course. This study investigates how state firearm policy environments moderate sex differences in firearm, nonfirearm, and overall suicide rates across the life course.
-</p>
-<p>
-<strong>Methods:</strong> Using CDC data, linear regression was employed to model sex differences in firearm, nonfirearm, and total suicide mortality rates per 100,000 across the life course, with interactions by state firearm policy environments (permissive vs strict, based on Giffords Gun Law Scorecard). Data were collected in 2018–2022 and analyzed in 2024–2025.
-</p>
-<p>
-<strong>Results:</strong> Across all ages and policy environments, males had higher firearm (18.95; 95% CI=16.97–20.92), nonfirearm (7.07; 95% CI=6.63–7.14), and total (26.02; 95% CI=23.94–28.10) suicide rates. Permissive environments were associated with increased firearm (5.84; 95% CI=3.84–7.84) and total suicide rates (5.96; 95% CI=3.32–8.60). Interaction models showed permissive environments amplified male sex associations with firearm (9.02; 95% CI=5.75–12.29) and total (9.24; 95% CI=5.96–12.52) suicide rates. Sex also moderated age associations with suicide.
-</p>
-<p>
-<strong>Conclusions:</strong> Males die by suicide at higher rates than females across the life course, particularly in permissive firearm policy states. At older ages, male suicide rates remain dramatically higher regardless of policy environment, underscoring unique challenges of aging requiring focused clinical attention.
-</p>
-</div>
-</div>
-
-<div class="publication-card">
-<img src="images/saulsberry 2025.png" alt="PGx Icon">
-<div class="publication-card-content">
-<h3>A National Study Among Diverse US Populations of Exposure to Prescription Medications with Evidence-Based Pharmacogenomic Information</h3>
-<p><strong>Authors:</strong> Saulsberry L, <mark>Jameson JC</mark>, Gibbons RD, Dolan ME, Olopade OI, O'Donnell PH</p>
-<p><strong>Journal:</strong> Clinical Pharmacology & Therapeutics, 2025</p>
-<p><strong>DOI:</strong> <a href="https://doi.org/10.1002/cpt.3617" target="_blank">10.1002/cpt.3617</a></p>
-<div class="card-buttons">
-<a href="https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.3617?af=R" class="view-article" target="_blank">View Article</a>
-<button class="more-info" onclick="showAbstract('abstract-5')">More Info</button>
-</div>
-</div>
-</div>
-
-<!-- Abstract Modal 5 -->
-<div id="abstract-5" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeAbstract('abstract-5')">&times;</span>
-<h3>Abstract</h3>
-<p>
-Tailoring pharmacogenomic (PGx) implementation to diverse populations is vital to promoting health equity. We assessed prescriptions for medications with potentially actionable PGx information to identify patient characteristics associated with differential PGx medication exposure. We analyzed the nationally-representative MEPS dataset of adults who reported receiving prescriptions between 2014 and 2021. PGx medications include those the FDA and CPIC designate as having drug-gene associations supported by scientific evidence. With the primary outcome being PGx prescriptions, we performed Poisson regression adjusted for all other relevant covariates. In our final population (N = 119,722, 72% White/20% Black/4% Asian/8% Hispanic), 61% were prescribed a PGx medication, 56% were female, and 97% held health insurance coverage. Adults with private health insurance (65%) or public Medicaid/Medicare coverage (32%) were more likely to have PGx prescriptions than the uninsured (3%). Individuals with cardiovascular conditions [adjusted IRR (aIRR) = 1.45, 95% CI 1.41, 1.48], high cholesterol [aIRR = 1.37, 95% CI 1.35, 1.40], high blood pressure [aIRR = 1.14, 95% CI 1.12, 1.16], and cancer [aIRR = 1.02, 95% CI 1.00, 1.04] were more likely to receive PGx prescriptions. Self-reported Blacks were less likely than Whites to receive PGx medications [aIRR = 0.92, 95% CI 0.90, 0.94], and among those with health conditions, the likelihood of PGx medication exposure for underrepresented groups (Blacks, Hispanics, and Asians) was lower than for Whites. Our study using a comprehensive list of PGx medications in a nationally representative dataset indicates that certain populations are differentially exposed to genomically informed medications. This may suggest that if implementing a pharmacogenomics program based on reactive testing initiated by a prescription, a small underrepresentation of the Black population could be expected because of an underlying prescription disparity. Secondly, if implementing a pharmacogenomics program based on targeted preemptive testing, using clinical indication/comorbidity may be a reasonable way to enrich the population for prescriptions that would benefit from genotype tailoring.
-</p>
-</div>
-</div>
-
-
-
-<div class="publication-card">
-<img src="images/jameson 2024.png" alt="Batch Ordering Icon">
-<div class="publication-card-content">
-<h3>Variation in Batch Ordering of Imaging Tests in the Emergency Department and the Impact on Care Delivery</h3>
-<p><strong>Authors:</strong> <mark>Jameson JC</mark>, Saghafian S, Huckman RS, Hodgson N</p>
-<p><strong>Journal:</strong> Health Services Research, 2025, 60(1):e14406.</p>
-<p><strong>DOI:</strong> <a href="https://doi.org/10.1111/1475-6773.14406" target="_blank">10.1111/1475-6773.14406</a></p>
-<div class="card-buttons">
-<a href="https://doi.org/10.1111/1475-6773.14406" class="view-article" target="_blank">View Article</a>
-<a href="https://github.com/jacobjameson/batch-vs-sequence/" class="view-data" target="_blank">View Statistical Code</a>
-<button class="more-info" onclick="showAbstract('abstract-4')">More Info</button>
-</div>
-</div>
-</div>
-
-<!-- Abstract Modal 4 -->
-<div id="abstract-4" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeAbstract('abstract-4')">&times;</span>
-<h3>Abstract</h3>
-<p><strong>Objectives:</strong> To examine heterogeneity in physician batch ordering practices and measure associations between a physician's batch ordering tendency and patient outcomes and resource utilization.</p>
-<p><strong>Study Setting and Design:</strong> Retrospective study using EMR data from 50,836 ED visits to the Mayo Clinic of Arizona (2018–2019). Outcomes include patient length of stay (LOS), the number of imaging tests ordered, and 72-hour return with admission. Associations were measured with multivariable linear regression, controlling for covariates.</p>
-<p><strong>Principal Findings:</strong> Physicians with a batch tendency 1SD higher than average had:
-<ul>
-<li>4.5% longer ED LOS (p &lt; 0.001).</li>
-<li>14.8% lower probability of 72-hour return with admission (p &lt; 0.001).</li>
-<li>8 additional imaging tests per 100 patient encounters (p &lt; 0.001).</li>
-</ul>
-These results suggest batching can lead to more comprehensive evaluations and reduce short-term revisits but may increase unnecessary imaging.
-</p>
-<p><strong>Conclusions:</strong> Physician diagnostic test ordering strategies significantly impact ED efficiency and patient care. Guidelines are needed to optimize ED test ordering practices.</p>
-</div>
-</div>
-
-
-
-<!-- Publication 1 -->
-<div class="publication-card">
-<img src="images/tarantino 2024.png">
-<div class="publication-card-content">
-<h3>Genomic Heterogeneity and Ploidy Identify Patients with Intrinsic Resistance to PD-1 Blockade in Metastatic Melanoma</h3>
-<p><strong>Authors:</strong> Tarantino G, Ricker CA, Wang A, Ge W, et al., <mark>Jacob Jameson</mark>, et al.</p>
-<p><strong>Journal:</strong> Science Advances, 2024, 10(48):eadp4670</p>
-<p><strong>DOI:</strong> <a href="https://doi.org/10.1126/sciadv.adp4670" target="_blank">10.1126/sciadv.adp4670</a></p>
-<div class="card-buttons">
-<a href="https://doi.org/10.1126/sciadv.adp4670" class="view-article" target="_blank">View Article</a>
-<button class="more-info" onclick="showAbstract('abstract-1')">More Info</button>
-</div>
-</div>
-</div>
-
-<!-- Abstract Modal 1 -->
-<div id="abstract-1" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeAbstract('abstract-1')">&times;</span>
-<h3>Abstract</h3>
-<p>The introduction of immune checkpoint blockade (ICB) has markedly improved outcomes for advanced melanoma. However, many patients develop resistance through unknown mechanisms. While combination ICB has improved response rate and progression-free survival, it substantially increases toxicity. Biomarkers to distinguish patients who would benefit from combination therapy versus aPD-1 remain elusive. We analyzed whole-exome sequencing of pretreatment tumors from four cohorts (n = 140) of ICB-naïve patients treated with aPD-1. High genomic heterogeneity and low ploidy robustly identified patients intrinsically resistant to aPD-1. To establish clinically actionable predictions, we optimized and validated a predictive model using ploidy and heterogeneity to confidently identify (90% PPV) patients with intrinsic resistance to and worse survival on aPD-1. We further observed that three of seven (43%) patients predicted to be intrinsically resistant to single-agent PD-1 ICB responded to combination ICB, suggesting that these patients may benefit disproportionately from combination ICB. These findings highlight the importance of heterogeneity and ploidy, nominating an approach toward clinical actionability.</p>
-</div>
-</div>
-
-<!-- Publication 2 -->
-<div class="publication-card">
-<img src="images/glasser 2024.png">
-<div class="publication-card-content">
-<h3>Male Gender Expressivity and Diagnosis and Treatment of Cardiovascular Disease Risks in Men</h3>
-<p><strong>Authors:</strong> Glasser NJ, <mark>Jameson JC</mark>, Huang ES, et al.</p>
-<p><strong>Journal:</strong> JAMA Network Open, 2024, 7(10):e2441281</p>
-<p><strong>DOI:</strong> <a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" target="_blank">10.1001/jamanetworkopen.2024.41281</a></p>
-<div class="card-buttons">
-<a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" class="view-article" target="_blank">View Article</a>
-<a href="https://github.com/jacobjameson/MGE-CVD" class="view-data" target="_blank">View Statistical Code</a>
-<button class="more-info" onclick="showAbstract('abstract-2')">More Info</button>
-</div>
-</div>
-</div>
-
-<!-- Abstract Modal 2 -->
-<div id="abstract-2" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeAbstract('abstract-2')">&times;</span>
-<h3>Abstract</h3>
-<p><strong>Importance:</strong> Male gender expressivity (MGE), reflecting sociocultural masculinity norms, may influence cardiovascular disease (CVD) risks.</p>
-<p><strong>Objective:</strong> To examine associations between adolescent and young adult MGE and CVD risk diagnoses and treatment in men.</p>
-<p><strong>Design:</strong> A cohort study of 4,230 U.S. males (aged 12-18 years in adolescence, followed into adulthood) from the National Longitudinal Study of Adolescent to Adult Health (Add Health).</p>
-<p><strong>Results:</strong> Higher MGE in adolescence and young adulthood was linked to lower rates of hypertension, diabetes, and hyperlipidemia diagnoses, as well as less hypertension and diabetes treatment in adulthood.</p>
-<p><strong>Conclusions:</strong> Elevated MGE in youth may reduce adult CVD risk and treatment, highlighting the need for tailored public health strategies to address distinctive risks in males with high MGE.</p>
-</div>
-</div>
-
-
-<div class="publication-card">
-<img src="images/network.png">
-<div class="publication-card-content">
-<h3>Associations of Adolescent School Social Networks, Gender Norms, and Adolescent-to-Young Adult Changes in Male Gender Expression With Young Adult Substance Use</h3>
-<p><strong>Authors:</strong> Glasser NJ, <mark>Jameson JC</mark>, Tung EL, Lindau ST, Pollack HA</p>
-<p><strong>Journal:</strong> Journal of Adolescent Health, 2024, 74(4):755-763</p>
-<p><strong>DOI:</strong> <a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" target="_blank">10.1016/j.jadohealth.2023.11.018</a></p>
-<div class="card-buttons">
-<a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" class="view-article" target="_blank">View Article</a>
-<a href="https://github.com/jacobjameson/MGE-and-Substance-Use" class="view-data" target="_blank">View Statistical Code</a>
-<button class="more-info" onclick="showAbstract('abstract-3')">More Info</button>
-</div>
-</div>
-</div>
-
-<!-- Abstract Modal 3 -->
-<div id="abstract-3" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeAbstract('abstract-3')">&times;</span>
-<h3>Abstract</h3>
-<p><strong>Purpose:</strong> Male gender expression (MGE), shaped by sociocultural pressures, has been associated with health. This study examines links between adolescent school social networks, gender norms, changes in MGE, and young adult substance use.</p>
-<p><strong>Methods:</strong> Using data from 4,776 males in a nationally representative longitudinal cohort, adolescent-to-young adult MGE changes were analyzed in relation to adolescent social networks, school norms, and young adult substance use behaviors (e.g., cigarette, marijuana, heavy alcohol, and recreational drug use).</p>
-<p><strong>Results:</strong> MGE changes were associated with school gender norms, with greater shifts toward school averages (β = -0.83, p < .01) observed among adolescents whose MGE initially diverged from school norms. Increases in MGE were linked to higher odds of substance use, except prescription drug misuse.</p>
-<p><strong>Discussion:</strong> Adolescent gender norms influence MGE shifts, which may predict substance use in young adulthood. School-based gender norms offer a potential target for interventions to reduce substance misuse.</p>
-</div>
-</div>
-
-
-
-<div class="publication-card">
-<img src="images/meltzer 2023.png" alt="Doctor-Patient Relationship Icon">
-<div class="publication-card-content">
-<h3>Does the Doctor-Patient Relationship Affect Enrollment in Clinical Research?</h3>
-<p><strong>Authors:</strong> Soo J, <mark>Jameson J</mark>, Flores A, Dubin L, Perish E, Afzal A, Berry G, DiMaggio V, Krishnamoorthi VR, Porter J, Tang J, Meltzer D</p>
-<p><strong>Journal:</strong> Academic Medicine, 2023, 98(6S):S17-S24</p>
-<p><strong>DOI:</strong> <a href="https://doi.org/10.1097/ACM.0000000000005195" target="_blank">10.1097/ACM.0000000000005195</a></p>
-<div class="card-buttons">
-<a href="https://doi.org/10.1097/ACM.0000000000005195" class="view-article" target="_blank">View Article</a>
-<button class="more-info" onclick="showAbstract('abstract-5')">More Info</button>
-</div>
-</div>
-</div>
-
-<!-- Abstract Modal 5 -->
-<div id="abstract-5" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeAbstract('abstract-5')">&times;</span>
-<h3>Abstract</h3>
-<p><strong>Purpose:</strong> Recruiting patients for clinical research is challenging, especially for underrepresented populations, and may be influenced by patients' relationships with their physicians, care experiences, and engagement with care. This study examines predictors of research enrollment in care models promoting continuity in the doctor-patient relationship.</p>
-<p><strong>Method:</strong> Conducted within 2 care model studies at the University of Chicago from 2020-2022, this study assessed predictors of enrollment in a vitamin D research study. Predictors included patient-reported care experiences, clinic engagement, and parent study follow-up survey completion, analyzed using univariate tests and multivariable logistic regression.</p>
-<p><strong>Results:</strong> Of 773 eligible participants, 63% of intervention arm participants enrolled in the vitamin D study versus 17% of control arm participants. Enrollment was not associated with reported quality of communication or trust in the doctor but was linked to timely care, more completed clinic visits, and higher parent study follow-up survey completion.</p>
-<p><strong>Conclusions:</strong> Study enrollment may be influenced more by continuity of care, timely access, and patient engagement than by the quality of the doctor-patient relationship. These findings can inform strategies for improving research recruitment.</p>
-</div>
-</div>
-
-
-</div>
-
-
-<script>
-function showAbstract(modalId) {
-const modal = document.getElementById(modalId);
-modal.style.display = 'flex';
+/* JMP Hero Section */
+.jmp-hero {
+background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+border-radius: 20px;
+padding: 2.5rem;
+margin: 1.5rem 0 2.5rem;
+position: relative;
+overflow: hidden;
+border: 1px solid #334155;
 }
 
-function closeAbstract(modalId) {
-const modal = document.getElementById(modalId);
-modal.style.display = 'none';
+.jmp-hero::before {
+content: '';
+position: absolute;
+top: -100px;
+right: -100px;
+width: 400px;
+height: 400px;
+background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+pointer-events: none;
 }
 
-</script>
+.jmp-hero::after {
+content: '';
+position: absolute;
+bottom: -150px;
+left: -100px;
+width: 350px;
+height: 350px;
+background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+pointer-events: none;
+}
+
+.jmp-top {
+display: flex;
+align-items: center;
+gap: 1rem;
+margin-bottom: 1.25rem;
+flex-wrap: wrap;
+}
+
+.jmp-badge {
+display: inline-block;
+background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+color: white;
+font-size: 0.7rem;
+font-weight: 700;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+padding: 0.5rem 1.1rem;
+border-radius: 100px;
+box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.jmp-award {
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+background: rgba(251, 191, 36, 0.15);
+border: 1px solid rgba(251, 191, 36, 0.3);
+color: #fbbf24;
+font-size: 0.75rem;
+font-weight: 600;
+padding: 0.4rem 0.9rem;
+border-radius: 100px;
+}
+
+.jmp-hero h3 {
+font-size: 1.65rem;
+color: white;
+margin: 0 0 1rem;
+line-height: 1.35;
+position: relative;
+}
+
+.jmp-hero h3 a {
+color: white;
+text-decoration: none;
+transition: color 0.2s ease;
+}
+
+.jmp-hero h3 a:hover {
+color: #93c5fd;
+}
+
+.jmp-authors {
+color: #94a3b8;
+font-size: 0.95rem;
+margin-bottom: 1.25rem;
+line-height: 1.5;
+}
+
+.jmp-authors mark {
+background: rgba(59, 130, 246, 0.25);
+color: #e2e8f0;
+padding: 0.15em 0.4em;
+border-radius: 4px;
+font-weight: 500;
+}
+
+.jmp-summary {
+color: #cbd5e1;
+font-size: 1rem;
+line-height: 1.75;
+margin-bottom: 1.75rem;
+max-width: 800px;
+}
+
+.jmp-summary strong {
+color: #f1f5f9;
+}
+
+.jmp-links {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+}
+
+.jmp-links a {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.7rem 1.4rem;
+border-radius: 10px;
+font-weight: 600;
+font-size: 0.9rem;
+text-decoration: none;
+transition: all 0.2s ease;
+}
+
+.jmp-links a.primary {
+background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+color: white;
+box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.jmp-links a.primary:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
+}
+
+.jmp-links a.secondary {
+background: rgba(255,255,255,0.08);
+color: #e2e8f0;
+border: 1px solid rgba(255,255,255,0.15);
+}
+
+.jmp-links a.secondary:hover {
+background: rgba(255,255,255,0.15);
+transform: translateY(-2px);
+}
+
+/* Section Headers */
+.section-header {
+display: flex;
+align-items: center;
+gap: 1rem;
+margin: 3rem 0 1.5rem;
+}
+
+.section-header h2 {
+margin: 0;
+border: none;
+padding: 0;
+white-space: nowrap;
+font-size: 1.5rem;
+}
+
+.section-header::after {
+content: '';
+flex: 1;
+height: 2px;
+background: linear-gradient(90deg, #cbd5e1 0%, transparent 100%);
+}
+
+/* Publication Cards */
+.pub-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+gap: 1.5rem;
+margin: 1.5rem 0;
+}
+
+.pub-card {
+background: white;
+border: 1px solid #e2e8f0;
+border-radius: 12px;
+padding: 1.25rem;
+display: flex;
+gap: 1rem;
+transition: all 0.2s ease;
+box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.pub-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+border-color: #cbd5e1;
+}
+
+.pub-card img {
+width: 80px;
+height: 80px;
+object-fit: cover;
+border-radius: 8px;
+flex-shrink: 0;
+}
+
+.pub-card-content {
+flex: 1;
+min-width: 0;
+display: flex;
+flex-direction: column;
+}
+
+.pub-card h4 {
+font-size: 0.95rem;
+color: #1e293b;
+margin: 0 0 0.4rem;
+line-height: 1.4;
+font-weight: 600;
+}
+
+.pub-card h4 a {
+color: #1e293b;
+text-decoration: none;
+}
+
+.pub-card h4 a:hover {
+color: #3b82f6;
+}
+
+.pub-card .authors {
+font-size: 0.8rem;
+color: #64748b;
+margin-bottom: 0.25rem;
+line-height: 1.4;
+}
+
+.pub-card .authors mark {
+background: linear-gradient(120deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+color: #1e293b;
+padding: 0.1em 0.25em;
+border-radius: 3px;
+font-weight: 500;
+}
+
+.pub-card .venue {
+font-size: 0.8rem;
+color: #3b82f6;
+font-weight: 500;
+margin-bottom: 0.6rem;
+}
+
+/* Tags - NO WRAP */
+.tags {
+display: flex;
+flex-wrap: wrap;
+gap: 0.35rem;
+margin-bottom: 0.6rem;
+}
+
+.tag {
+font-size: 0.65rem;
+font-weight: 600;
+letter-spacing: 0.02em;
+padding: 0.2rem 0.5rem;
+border-radius: 4px;
+text-transform: uppercase;
+white-space: nowrap;
+}
+
+.tag.causal { background: #dbeafe; color: #1d4ed8; }
+.tag.ml { background: #fce7f3; color: #be185d; }
+.tag.ops { background: #d1fae5; color: #047857; }
+.tag.policy { background: #ede9fe; color: #6d28d9; }
+.tag.equity { background: #fef3c7; color: #b45309; }
+.tag.tic { background: #e0e7ff; color: #4338ca; }
+.tag.genomics { background: #ccfbf1; color: #0f766e; }
+.tag.social { background: #fee2e2; color: #b91c1c; }
+.tag.bayes { background: #fae8ff; color: #a21caf; }
+
+/* Card Buttons */
+.pub-links {
+display: flex;
+flex-wrap: wrap;
+gap: 0.4rem;
+margin-top: auto;
+}
+
+.pub-links a {
+font-size: 0.75rem;
+padding: 0.35rem 0.7rem;
+border-radius: 6px;
+font-weight: 600;
+text-decoration: none;
+transition: all 0.2s ease;
+white-space: nowrap;
+}
+
+.pub-links a.paper {
+background: #3b82f6;
+color: white;
+}
+
+.pub-links a.paper:hover {
+background: #2563eb;
+}
+
+.pub-links a.code {
+background: #1e293b;
+color: white;
+}
+
+.pub-links a.code:hover {
+background: #0f172a;
+}
+
+/* ============================================
+MOBILE RESPONSIVE
+============================================ */
+
+@media (max-width: 768px) {
+.jmp-hero {
+padding: 1.75rem;
+}
+
+.jmp-hero h3 {
+font-size: 1.35rem;
+}
+
+.jmp-top {
+flex-direction: column;
+align-items: flex-start;
+gap: 0.6rem;
+}
+
+.jmp-links {
+flex-direction: column;
+}
+
+.jmp-links a {
+width: 100%;
+justify-content: center;
+}
+
+.pub-grid {
+grid-template-columns: 1fr;
+}
+
+.pub-card {
+flex-direction: column;
+text-align: center;
+}
+
+.pub-card img {
+width: 100%;
+max-width: 100px;
+height: auto;
+margin: 0 auto;
+}
+
+.tags, .pub-links {
+justify-content: center;
+}
+
+.section-header h2 {
+font-size: 1.25rem;
+}
+}
+</style>
+
+My research develops and applies methods in causal inference, Bayesian statistics, and reinforcement learning to improve decision-making in health and public policy. I work at the intersection of statistics, computer science, and health policy, with applications to problems in suicide prevention, emergency department operations, and precision medicine. Methodologically, I focus on causal estimation in complex settings and sequential decision-making under uncertainty, but I am broadly interested in statistical computing, machine learning, and reproducible research.
+
+---
 
 
+<div class="section-header">
+<h2>Working Papers</h2>
+</div>
 
+<div class="pub-grid">
+
+<div class="pub-card">
+<img src="images/Hospital.gif" alt="ED Operations">
+<div class="pub-card-content">
+<h4><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193207" target="_blank">The Impact of Batching Advanced Imaging Tests in Emergency Departments</a></h4>
+<p class="authors"><mark>Jameson JC</mark>, Saghafian S, Huckman RS, Hodgson N, Baugh J</p>
+<p class="venue">Under Revision</p>
+<div class="tags">
+<span class="tag ops">Operations</span>
+<span class="tag causal">Causal</span>
+</div>
+<div class="pub-links">
+</div>
+</div>
+</div>
+
+<div class="pub-card">
+<img src="images/ML-therapy.png" alt="ML Therapy">
+<div class="pub-card-content">
+<h4>Machine Learning to Personalize Psychotherapy Selection for Patients at Elevated Suicide Risk in a Large National Cohort</h4>
+<p class="authors"><mark>Jameson JC</mark>, Gibbons JB, Wood R, Ruble M, Peloquin J, Sung M, Hathaway DB, Straub L, Aldis R, Lyndon S, Wang PS</p>
+<p class="venue">Under Review</p>
+<div class="tags">
+<span class="tag ops">Machine Learning</span>
+<span class="tag causal">Causal</span>
+<span class="tag ml">Optimization</span>
+</div>
+<div class="pub-links">
+</div>
+</div>
+</div>
+
+<div class="pub-card">
+<img src="images/redflag.png" alt="ERPO">
+<div class="pub-card-content">
+<h4>Effectiveness of Extreme Risk Protection Orders in Reducing Firearm Deaths: A Bayesian Analysis of State-Level Implementation, 1999–2023</h4>
+<p class="authors"><mark>Jameson JC</mark>, Glasser NJ, Pollack HA</p>
+<p class="venue">Under Revision</p>
+<div class="tags">
+<span class="tag policy">Policy</span>
+<span class="tag tic">Bayesian</span>
+<span class="tag causal">Causal</span>
+</div>
+<div class="pub-links">
+</div>
+</div>
+</div>
+</div>
+
+---
+
+<div class="section-header">
+<h2>Publications</h2>
+</div>
+
+<div class="pub-grid">
+
+<div class="pub-card">
+<img src="images/Glasser 2025.jpeg" alt="Suicide Policy">
+<div class="pub-card-content">
+<h4><a href="https://doi.org/10.1016/j.amepre.2025.107961" target="_blank">Sex Differences in Life-Course Suicide Rates by State Firearm Policy Environment</a></h4>
+<p class="authors">Glasser NJ, <mark>Jameson JC</mark>, Abou Baker N, Pollack HA, Tung EL</p>
+<p class="venue">American Journal of Preventive Medicine, 2025</p>
+<div class="tags">
+<span class="tag policy">Policy</span>
+<span class="tag tic">Men's Health</span>
+</div>
+<div class="pub-links">
+<a href="https://doi.org/10.1016/j.amepre.2025.107961" class="paper" target="_blank">Paper</a>
+</div>
+</div>
+</div>
+
+<div class="pub-card">
+<img src="images/saulsberry 2025.png" alt="Pharmacogenomics">
+<div class="pub-card-content">
+<h4><a href="https://doi.org/10.1002/cpt.3617" target="_blank">A National Study of Exposure to Prescription Medications with Evidence-Based Pharmacogenomic Information</a></h4>
+<p class="authors">Saulsberry L, <mark>Jameson JC</mark>, Gibbons RD, Dolan ME, Olopade OI, O'Donnell PH</p>
+<p class="venue">Clinical Pharmacology & Therapeutics, 2025</p>
+<div class="tags">
+<span class="tag genomics">Genomics</span>
+<span class="tag equity">Health Equity</span>
+</div>
+<div class="pub-links">
+<a href="https://doi.org/10.1002/cpt.3617" class="paper" target="_blank">Paper</a>
+</div>
+</div>
+</div>
+
+<div class="pub-card">
+<img src="images/jameson 2024.png" alt="Batch Ordering">
+<div class="pub-card-content">
+<h4><a href="https://doi.org/10.1111/1475-6773.14406" target="_blank">Variation in Batch Ordering of Imaging Tests in the Emergency Department and the Impact on Care Delivery</a></h4>
+<p class="authors"><mark>Jameson JC</mark>, Saghafian S, Huckman RS, Hodgson N</p>
+<p class="venue">Health Services Research, 2025</p>
+<div class="tags">
+<span class="tag ops">Operations</span>
+<span class="tag causal">Causal</span>
+</div>
+<div class="pub-links">
+<a href="https://doi.org/10.1111/1475-6773.14406" class="paper" target="_blank">Paper</a>
+<a href="https://github.com/jacobjameson/batch-vs-sequence/" class="code" target="_blank">Code</a>
+</div>
+</div>
+</div>
+
+<div class="pub-card">
+<img src="images/tarantino 2024.png" alt="Melanoma">
+<div class="pub-card-content">
+<h4><a href="https://doi.org/10.1126/sciadv.adp4670" target="_blank">Genomic Heterogeneity and Ploidy Identify Patients with Intrinsic Resistance to PD-1 Blockade in Metastatic Melanoma</a></h4>
+<p class="authors">Tarantino G, Ricker CA, ... <mark>Jacob Jameson</mark>, et al.</p>
+<p class="venue">Science Advances, 2024</p>
+<div class="tags">
+<span class="tag genomics">Genomics</span>
+<span class="tag ml">Machine Learning</span>
+</div>
+<div class="pub-links">
+<a href="https://doi.org/10.1126/sciadv.adp4670" class="paper" target="_blank">Paper</a>
+</div>
+</div>
+</div>
+
+<div class="pub-card">
+<img src="images/glasser 2024.png" alt="MGE CVD">
+<div class="pub-card-content">
+<h4><a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" target="_blank">Male Gender Expressivity and Diagnosis and Treatment of Cardiovascular Disease Risks in Men</a></h4>
+<p class="authors">Glasser NJ, <mark>Jameson JC</mark>, Huang ES, et al.</p>
+<p class="venue">JAMA Network Open, 2024</p>
+<div class="tags">
+<span class="tag tic">Men's Health</span>
+</div>
+<div class="pub-links">
+<a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" class="paper" target="_blank">Paper</a>
+<a href="https://github.com/jacobjameson/MGE-CVD" class="code" target="_blank">Code</a>
+</div>
+</div>
+</div>
+
+<div class="pub-card">
+<img src="images/network.png" alt="Social Networks">
+<div class="pub-card-content">
+<h4><a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" target="_blank">Adolescent School Social Networks, Gender Norms, and Changes in Male Gender Expression With Young Adult Substance Use</a></h4>
+<p class="authors">Glasser NJ, <mark>Jameson JC</mark>, Tung EL, Lindau ST, Pollack HA</p>
+<p class="venue">Journal of Adolescent Health, 2024</p>
+<div class="tags">
+<span class="tag social">Networks</span>
+<span class="tag tic">Men's Health</span>
+</div>
+<div class="pub-links">
+<a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" class="paper" target="_blank">Paper</a>
+<a href="https://github.com/jacobjameson/MGE-and-Substance-Use" class="code" target="_blank">Code</a>
+</div>
+</div>
+</div>
+
+<div class="pub-card">
+<img src="images/meltzer 2023.png" alt="Doctor-Patient">
+<div class="pub-card-content">
+<h4><a href="https://doi.org/10.1097/ACM.0000000000005195" target="_blank">Does the Doctor-Patient Relationship Affect Enrollment in Clinical Research?</a></h4>
+<p class="authors">Soo J, <mark>Jameson J</mark>, Flores A, et al., Meltzer D</p>
+<p class="venue">Academic Medicine, 2023</p>
+<div class="tags">
+<span class="tag equity">Health Equity</span>
+</div>
+<div class="pub-links">
+<a href="https://doi.org/10.1097/ACM.0000000000005195" class="paper" target="_blank">Paper</a>
+</div>
+</div>
+</div>
+
+</div>
