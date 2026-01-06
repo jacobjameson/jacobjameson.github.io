@@ -1,7 +1,19 @@
 project:
   type: website
   output-dir: docs
+
 website:
+  # Open Graph / Social Sharing
+
+  open-graph:
+
+    locale: en_US
+
+    site-name: Jacob Jameson
+
+    description: "PhD Candidate at Harvard studying health policy and decision sciences. NIMH Fellow researching suicide prevention, ED operations, and precision medicine."
+
+    image: images/profile.png
   title: "Jacob Jameson"
   site-url: https://www.jacobjameson.com
   description: "Jacob Jameson's personal website"
@@ -10,7 +22,30 @@ website:
     card-style: summary_large_image
     creator: "@JacobCJameson"
   page-footer:
-    left: "Copyright 2025, Jacob Jameson"
+
+    left: "© 2025 Jacob Jameson"
+
+    right:
+
+      - icon: envelope
+
+        href: mailto:jacobjameson@g.harvard.edu
+
+      - icon: github
+
+        href: https://github.com/jacobjameson
+
+      - icon: twitter
+
+        href: https://twitter.com/JacobCJameson
+
+    # Google Analytics (replace with your ID)
+
+  google-analytics:
+
+    tracking-id: "G-C0KP7Y1ZRW"
+
+    anonymize-ip: true
   navbar:
     logo: "images/sig.png"
     align: center

@@ -107,8 +107,6 @@ Awarded the [2023 Howard Raiffa Award](https://chds.hsph.harvard.edu/jameson-rec
 
 </details>
 
-
-
 <script>
 const words = ["Data scientist  ", "Teacher  ", "Health policy researcher  ", "Decision scientist  "];
 let i = 0;
