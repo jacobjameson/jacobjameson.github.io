@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jacob Jameson">
-<meta name="description" content="A reference guide for git commands">
 
-<title>Part 4: Reference – Jacob Jameson</title>
+<title>claude – Jacob Jameson</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,26 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ecdef6fb79a2f3ae1eaf2491d0de3409.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ecdef6fb79a2f3ae1eaf2491d0de3409.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,27 +113,31 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="Part 4: Reference – Jacob Jameson">
+<meta property="og:title" content="Jacob Jameson">
 <meta property="og:description" content="PhD Candidate at Harvard studying health policy and decision sciences. NIMH Fellow researching suicide prevention, ED operations, and precision medicine.">
-<meta property="og:image" content="https://www.jacobjameson.com/git files/section 4/images/profile.png">
+<meta property="og:image" content="https://www.jacobjameson.com/images/profile.png">
 <meta property="og:site_name" content="Jacob Jameson">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="Part 4: Reference – Jacob Jameson">
-<meta name="twitter:description" content="A reference guide for git commands">
-<meta name="twitter:image" content="https://www.jacobjameson.com/git files/section 4/images/profile.png">
+<meta property="og:image:height" content="1104">
+<meta property="og:image:width" content="1004">
+<meta name="twitter:title" content="Jacob Jameson">
+<meta name="twitter:description" content="Jacob Jameson’s personal website">
+<meta name="twitter:image" content="https://www.jacobjameson.com/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="1104">
+<meta name="twitter:image-width" content="1004">
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/sig.png" alt="" class="navbar-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/sig.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -125,7 +162,7 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/blog.html"> 
+    <a class="nav-link" href="./posts/blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -134,25 +171,25 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
         <li>
-    <a class="dropdown-item" href="../../teaching.html">
+    <a class="dropdown-item" href="./teaching.html">
  <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../R files/Intro R.html">
+    <a class="dropdown-item" href="./R files/Intro R.html">
  <span class="dropdown-text">Introduction to R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../git files/Intro Git.html">
+    <a class="dropdown-item" href="./git files/Intro Git.html">
  <span class="dropdown-text">Introduction to Git/GitHub</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../api 222 files/API222.html">
+    <a class="dropdown-item" href="./api 222 files/API222.html">
  <span class="dropdown-text">API 222 Section Material</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html"> 
+    <a class="nav-link" href="./research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
 </ul>
@@ -163,135 +200,120 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#git-reference" id="toc-git-reference" class="nav-link active" data-scroll-target="#git-reference">Git: Reference</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
-  <li><a href="#linear-workflow" id="toc-linear-workflow" class="nav-link" data-scroll-target="#linear-workflow">Linear Workflow</a></li>
-  <li><a href="#non-linear-branching-workflow" id="toc-non-linear-branching-workflow" class="nav-link" data-scroll-target="#non-linear-branching-workflow">Non-linear branching workflow</a></li>
-  </ul>
-</nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-    </div>
+    
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Part 4: Reference</h1>
-</div>
-
-<div>
-  <div class="description">
-    A reference guide for git commands
-  </div>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
-<div class="quarto-title-meta column-page-right">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jacob Jameson </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="git-reference" class="level1">
-<h1>Git: Reference</h1>
+<section id="claude.md" class="level1">
+<h1>CLAUDE.md</h1>
+<p>This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.</p>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
+<p>This is a personal academic website built with <a href="https://quarto.org/">Quarto</a> and hosted via GitHub Pages at https://jacobjameson.com. The site showcases research, teaching materials, and blog posts for a PhD candidate at Harvard University.</p>
 </section>
-<section id="getting-started" class="level1">
-<h1>Getting Started</h1>
-<ol type="1">
-<li><p>Create a new repository on GitHub</p></li>
-<li><p><strong>Clone</strong> that repository locally onto your computer</p>
-<pre><code>git clone git@github.com:jacobjameson/simples_script.git</code></pre></li>
-</ol>
+<section id="build-and-development" class="level2">
+<h2 class="anchored" data-anchor-id="build-and-development">Build and Development</h2>
+<section id="building-the-site" class="level3">
+<h3 class="anchored" data-anchor-id="building-the-site">Building the Site</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This generates static HTML output to the <code>docs/</code> directory, which is served by GitHub Pages.</p>
 </section>
-<section id="linear-workflow" class="level1">
-<h1>Linear Workflow</h1>
-<ol type="1">
-<li><p><code>cd</code> into the folder containing your project.</p>
-<pre><code>cd ~/path/to/project</code></pre></li>
-<li><p>Check the <strong>status</strong> of your <strong>local repository</strong> to make sure you didn’t forget to commit any work.</p>
-<pre><code>git status</code></pre></li>
-<li><p>Then <strong>pull</strong> the latest changes from the <strong>remote repository</strong> on GitHub.</p>
-<pre><code>git pull</code></pre></li>
-<li><p>Do a discrete chunk of work on your project (lets say you added a new analysis)</p></li>
-<li><p>Check the status again, then <strong>add</strong> the files you’d like to commit to the <strong>staging area</strong>.</p>
-<pre><code>git status
-git add analysis.R
-git status</code></pre></li>
-<li><p>Commit with a descriptive summary of exactly what you did</p>
-<pre><code>git commit -m "add new analysis"</code></pre></li>
-<li><p>Push that change back to GitHub</p>
-<pre><code>git push</code></pre></li>
-</ol>
+<section id="preview-during-development" class="level3">
+<h3 class="anchored" data-anchor-id="preview-during-development">Preview During Development</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Opens a local development server with live reload.</p>
 </section>
-<section id="non-linear-branching-workflow" class="level1">
-<h1>Non-linear branching workflow</h1>
-<ol type="1">
-<li><p><code>cd</code> into the folder containing your project.</p>
-<pre><code>cd ~/path/to/project</code></pre></li>
-<li><p>Check the <strong>status</strong> of your <strong>local repository</strong> to make sure you didn’t forget to commit any work. Run <code>git branch</code> to see which <strong>branch</strong> you’re on. You should ideally be on the <code>master</code> branch.</p>
-<pre><code>git status
-git branch</code></pre></li>
-<li><p>Then <strong>pull</strong> the latest changes from the <strong>master</strong> branch of the <strong>remote repository</strong> on GitHub.</p>
-<pre><code>git pull</code></pre></li>
-<li><p>Create a new branch with a descriptive name (remember the <code>-b</code> option will create a new branch, you can check out an existing branch by not using that option)</p>
-<pre><code>git checkout -b analysis-new</code></pre></li>
-<li><p>Do your work in discrete chunks. at the end of each chunk, add the file to the staging area, then commit it. Its usually a good idea to also push the latest to GitHub, although some people prefer to do that at the end.</p>
-<p>Do some work</p>
-<pre><code>git status
-git add analysis.R
-git commit -m "add blank script"
-git push
-git status</code></pre>
-<p>Do more work</p>
-<pre><code>git status
-git add analysis.R
-git commit -m "add code to analysis script"
-git push
-git status</code></pre>
-<p>Do more work</p>
-<pre><code>git status
-git add analysis.R
-git commit -m "fixed bug"
-git push
-git status</code></pre>
-<p>Do more work - lets imagine this work took place across two files, an html file and a stylesheet file.</p>
-<pre><code>git status
-git add analysis.R
-git add graph.png
-git commit -m "Added the plot from the analysis"
-git push
-git status</code></pre></li>
-<li><p>Once everything has been pushed to GitHub, issue a <strong>pull request</strong> from your branch back to the master branch.</p>
-<p><img src="../assets/pull_req.png" class="img-fluid"></p></li>
-<li><p>You can have a discussion on this <strong>pull request</strong> using GitHub’s social features, and then <strong>merge</strong> it into the master branch when everyone agrees its a good idea to do so.</p></li>
-<li><p>Finally, once the pull request has been merged into the master branch in the <strong>remote repository</strong> on GitHub, you’ll want to get the latest version of the master branch on your local machine. Checkout the master branch locally and then pull.</p>
-<pre><code>git checkout master
-git pull</code></pre></li>
-</ol>
+<section id="render-specific-files" class="level3">
+<h3 class="anchored" data-anchor-id="render-specific-files">Render Specific Files</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render index.qmd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render research.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="site-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="site-architecture">Site Architecture</h2>
+<section id="configuration" class="level3">
+<h3 class="anchored" data-anchor-id="configuration">Configuration</h3>
+<ul>
+<li><strong><code>_quarto.yml</code></strong>: Main site configuration
+<ul>
+<li>Defines website structure, navigation, and metadata</li>
+<li>Sets output directory to <code>docs/</code> for GitHub Pages</li>
+<li>Configures theme (<code>flatly</code> with custom <code>theme-light.scss</code>)</li>
+<li>Includes Google Analytics tracking</li>
+<li>Defines navbar with social links and dropdown menus</li>
+</ul></li>
+</ul>
+</section>
+<section id="content-structure" class="level3">
+<h3 class="anchored" data-anchor-id="content-structure">Content Structure</h3>
+<ul>
+<li><strong><code>index.qmd</code></strong>: Homepage with animated typing effect, about section, and news feed</li>
+<li><strong><code>research.qmd</code></strong>: Research page with custom CSS for styling papers and projects</li>
+<li><strong><code>teaching.qmd</code></strong>: Teaching experience and awards with custom card layouts</li>
+<li><strong><code>posts/</code></strong>: Blog posts organized by date (format: <code>YYYY-MM-DD-TOPIC/</code>)</li>
+<li><strong><code>R files/</code></strong>: Introduction to R course materials organized in numbered modules (0-9)</li>
+<li><strong><code>git files/</code></strong>: Introduction to Git/GitHub tutorial sections</li>
+<li><strong><code>api 222 files/</code></strong>: API 222 course section materials (sections 1-10)</li>
+<li><strong><code>Math Camp/</code></strong>: Math camp teaching materials</li>
+<li><strong><code>Data/</code></strong>: Contains CV, data visualizations, and Tidy Tuesday projects</li>
+</ul>
+</section>
+<section id="styling" class="level3">
+<h3 class="anchored" data-anchor-id="styling">Styling</h3>
+<ul>
+<li><strong><code>theme-light.scss</code></strong>: Custom SCSS theme extending Flatly
+<ul>
+<li>Uses Google Fonts: Handjet (retro style) and Montserrat (base)</li>
+<li>Custom styling for research and teaching pages</li>
+<li>Inline CSS in individual <code>.qmd</code> files for page-specific styles</li>
+</ul></li>
+</ul>
+</section>
+<section id="output" class="level3">
+<h3 class="anchored" data-anchor-id="output">Output</h3>
+<ul>
+<li><strong><code>docs/</code></strong>: Rendered HTML output served by GitHub Pages
+<ul>
+<li>Contains all compiled HTML, assets, and site libraries</li>
+<li>Includes <code>CNAME</code> file for custom domain</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="file-naming-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="file-naming-conventions">File Naming Conventions</h2>
+<ul>
+<li>Course materials use spaces in directory names (e.g., <code>R files</code>, <code>api 222 files</code>)</li>
+<li>Quote paths with spaces when using bash commands</li>
+<li>Blog posts follow date-based naming: <code>YYYY-MM-DD-TOPIC/</code></li>
+</ul>
+</section>
+<section id="key-features" class="level2">
+<h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
+<ul>
+<li><strong>Dynamic Typing Effect</strong>: JavaScript animation on homepage cycling through roles</li>
+<li><strong>Quarto Markdown</strong>: All content written in <code>.qmd</code> (Quarto Markdown) format</li>
+<li><strong>Custom CSS Sections</strong>: Research and teaching pages have extensive inline CSS for card layouts and hero sections</li>
+<li><strong>Social Integration</strong>: Open Graph and Twitter Card metadata configured for social sharing</li>
+<li><strong>Responsive Navigation</strong>: Collapsible navbar with dropdown menus for teaching materials</li>
+</ul>
+</section>
+<section id="github-pages-deployment" class="level2">
+<h2 class="anchored" data-anchor-id="github-pages-deployment">GitHub Pages Deployment</h2>
+<p>The site is automatically deployed from the <code>docs/</code> directory on the <code>main</code> branch. After rendering, commit and push changes to trigger deployment.</p>
+</section>
+<section id="content-organization-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="content-organization-pattern">Content Organization Pattern</h2>
+<p>Teaching materials are organized hierarchically: - Top-level navigation items link to index pages (e.g., <code>API222.qmd</code>, <code>Intro R.qmd</code>) - Individual lessons/sections are in numbered subdirectories - Each section contains a <code>.qmd</code> file and associated data/materials</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -694,8 +716,6 @@ git pull</code></pre></li>
     }
   });
   </script>
-<script src="https://utteranc.es/client.js" repo="jacobjameson/jacobjameson.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

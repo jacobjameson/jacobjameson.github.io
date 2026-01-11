@@ -1,19 +1,361 @@
 ---
 title: "API 222 Section Materials"
 from: markdown+emoji
-listing:
-  sort:
-    - "title asc"
-  type: table
-  categories: false
+format:
+  html:
+    toc: false
 page-layout: full
 ---
 
+<style>
+/* ============================================
+API 222 SECTION MATERIALS STYLES
+============================================ */
 
-## Section Materials Introduction
+/* Header Section */
+.api-header {
+text-align: center;
+margin: 2rem 0 3rem;
+}
 
+.api-header h1 {
+font-size: 2.2rem;
+color: #1e293b;
+margin-bottom: 1rem;
+}
 
-Welcome to the Section Materials for API-222! This page contains all of the code and notes for the course. You can use the links below to navigate to the different sections of the course. If you have any questions or need help with anything, please don't hesitate to reach out to me.
+.api-header p {
+color: #64748b;
+font-size: 1.05rem;
+line-height: 1.6;
+max-width: 700px;
+margin: 0 auto 2rem;
+}
 
+/* Module Grid */
+.modules-section {
+margin: 3rem 0;
+}
 
+.modules-section h2 {
+font-size: 1.65rem;
+color: #1e293b;
+margin-bottom: 1.5rem;
+}
 
+.modules-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 1.5rem;
+margin-top: 2rem;
+}
+
+.module-card {
+background: white;
+border: 1px solid #e2e8f0;
+border-radius: 16px;
+padding: 1.75rem;
+transition: all 0.3s ease;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+position: relative;
+overflow: hidden;
+}
+
+.module-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 4px;
+background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
+
+.module-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+border-color: #8b5cf6;
+}
+
+.module-card:hover::before {
+transform: scaleX(1);
+}
+
+.module-header {
+display: flex;
+align-items: center;
+gap: 1rem;
+margin-bottom: 1rem;
+}
+
+.module-number-badge {
+width: 48px;
+height: 48px;
+background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-weight: 700;
+font-size: 1.25rem;
+flex-shrink: 0;
+}
+
+.module-title {
+font-size: 1.2rem;
+font-weight: 600;
+color: #1e293b;
+margin: 0;
+line-height: 1.3;
+}
+
+.module-number {
+font-size: 0.7rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: #8b5cf6;
+margin-bottom: 0.25rem;
+}
+
+.module-description {
+color: #64748b;
+font-size: 0.95rem;
+line-height: 1.6;
+margin-bottom: 1.25rem;
+}
+
+.module-link {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+color: #8b5cf6;
+font-weight: 600;
+font-size: 0.9rem;
+text-decoration: none;
+transition: gap 0.2s ease;
+}
+
+.module-link:hover {
+gap: 0.75rem;
+color: #6366f1;
+}
+
+/* Course Info */
+.course-info {
+margin: 3rem 0;
+padding: 2rem;
+background: white;
+border-left: 4px solid #8b5cf6;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.course-info h2 {
+color: #1e293b;
+font-size: 1.4rem;
+margin-bottom: 1rem;
+}
+
+.course-info p {
+color: #64748b;
+font-size: 0.95rem;
+line-height: 1.6;
+margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.api-header h1 {
+font-size: 1.8rem;
+}
+
+.modules-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+
+<div class="api-header">
+<h1>API 222 Section Materials</h1>
+<p>
+Comprehensive section materials for API-222 covering statistical learning, machine learning methods, and their applications in policy analysis.
+</p>
+</div>
+
+<div class="modules-section">
+<h2>Section Materials</h2>
+
+<div class="modules-grid">
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">1</div>
+<div>
+<div class="module-number">Section 1</div>
+<h3 class="module-title">Intro to API 222 and R</h3>
+</div>
+</div>
+<p class="module-description">
+Introduction to the course and R programming fundamentals including vectors, matrices, data frames, and basic operations.
+</p>
+<a href="section 1/section1.html" class="module-link">
+View Section 1 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">2</div>
+<div>
+<div class="module-number">Section 2</div>
+<h3 class="module-title">KNN and Linear Regression</h3>
+</div>
+</div>
+<p class="module-description">
+K-Nearest Neighbors algorithm and linear regression fundamentals for predictive modeling.
+</p>
+<a href="section 2/section2.html" class="module-link">
+View Section 2 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">3</div>
+<div>
+<div class="module-number">Section 3</div>
+<h3 class="module-title">Linear Regression Exercises</h3>
+</div>
+</div>
+<p class="module-description">
+Hands-on exercises for practicing inference, model fitting, and interpretation in linear regression.
+</p>
+<a href="section 3/section3.html" class="module-link">
+View Section 3 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">4</div>
+<div>
+<div class="module-number">Section 4</div>
+<h3 class="module-title">Classification</h3>
+</div>
+</div>
+<p class="module-description">
+Classification methods including logistic regression, linear discriminant analysis, and performance metrics.
+</p>
+<a href="section 4/section 4.html" class="module-link">
+View Section 4 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">5</div>
+<div>
+<div class="module-number">Section 5</div>
+<h3 class="module-title">Cross-Validation, Ridge, Lasso, and Bootstrapping</h3>
+</div>
+</div>
+<p class="module-description">
+Resampling methods for model evaluation and regularization techniques for improved prediction accuracy.
+</p>
+<a href="section 5/section 5.html" class="module-link">
+View Section 5 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">6</div>
+<div>
+<div class="module-number">Section 6</div>
+<h3 class="module-title">Regularization and Dimension Reduction</h3>
+</div>
+</div>
+<p class="module-description">
+Advanced regularization methods and dimension reduction techniques including PCA and PCR.
+</p>
+<a href="section 6/section 6.html" class="module-link">
+View Section 6 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">7</div>
+<div>
+<div class="module-number">Section 7</div>
+<h3 class="module-title">Non-linear Models</h3>
+</div>
+</div>
+<p class="module-description">
+Moving beyond linearity with polynomial regression, splines, and local regression methods.
+</p>
+<a href="section 7/section 7.html" class="module-link">
+View Section 7 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">8</div>
+<div>
+<div class="module-number">Section 8</div>
+<h3 class="module-title">Tree-Based Methods</h3>
+</div>
+</div>
+<p class="module-description">
+Decision trees, bagging, random forests, and boosting for classification and regression problems.
+</p>
+<a href="section 8/section 8.html" class="module-link">
+View Section 8 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">9</div>
+<div>
+<div class="module-number">Section 9</div>
+<h3 class="module-title">Support Vector Machines</h3>
+</div>
+</div>
+<p class="module-description">
+Support vector classifiers and support vector machines for classification with various kernel approaches.
+</p>
+<a href="section 9/section 9.html" class="module-link">
+View Section 9 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">10</div>
+<div>
+<div class="module-number">Section 10</div>
+<h3 class="module-title">Neural Networks and Deep Learning</h3>
+</div>
+</div>
+<p class="module-description">
+Introduction to neural networks, deep learning architectures, and reinforcement learning concepts.
+</p>
+<a href="section 10/section 10.html" class="module-link">
+View Section 10 →
+</a>
+</div>
+</div>
+</div>
+
+<div class="course-info">
+<h2>About These Materials</h2>
+<p>
+This page contains all of the code and notes for API-222 section. The materials build on contributions from previous teaching fellows including Ibou Dieye, Laura Morris, Emily Mower, and Amy Wickett. If you have any questions or need help with anything, please don't hesitate to reach out.
+</p>
+</div>

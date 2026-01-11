@@ -398,7 +398,7 @@ gap: 0.1rem;
 }
 </style>
 
-Teaching is central to my work. I'm committed to making quantitative methods accessible and empowering students to use data for better decisions in policy and healthcare.
+I began teaching in a Philadelphia summer credit-recovery program after undergrad and later spent two years as a middle school math teacher in New Haven through Teach For America. I served as 8th Grade Chair, consulted on math curriculum development for Achievement First, and completed Code.org’s professional learning program for CS educators. I love teaching and enjoy making quantitative and computational ideas accessible to a wide range of students.
 
 <!-- Awards Section -->
 <div class="awards-section">
@@ -621,8 +621,3 @@ Teaching is central to my work. I'm committed to making quantitative methods acc
 
 ---
 
-<div class="background-note">
-<p>
-My path to teaching started the summer after undergrad in a Philadelphia credit recovery program, then two years as a middle school math teacher in New Haven through Teach For America. During that time, I served as 8th Grade Chair and consulted for <a href="https://www.achievementfirst.org/opensource/">Achievement First's math curriculum</a>. I'm also passionate about CS education—I've run Girls Who Code clubs and completed Code.org's professional learning program for CS educators.
-</p>
-</div>

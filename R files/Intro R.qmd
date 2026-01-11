@@ -1,37 +1,393 @@
 ---
 title: "Introduction to Programming in R"
 from: markdown+emoji
-listing:
-  sort:
-    - "title asc"
-  type: table
-  categories: false
+format:
+  html:
+    toc: false
 page-layout: full
 ---
 
-## About this course
+<style>
+/* ============================================
+R PROGRAMMING COURSE STYLES
+============================================ */
 
-This page contains the content for the "Introduction to Data Analysis in R" mini-course. The goal is to introduce R programming concepts with a focus on preparing and analyzing data, and conducting statistical simulations. We will cover how to read data into R, manipulate data with a suite of tools from the tidyverse package dplyr. We will also discuss some basic programming concepts including data types and operators.
+/* Header Section */
+.r-header {
+text-align: center;
+margin: 2rem 0 3rem;
+}
 
+.r-header h1 {
+font-size: 2.2rem;
+color: #1e293b;
+margin-bottom: 1rem;
+}
 
-This mini-course is aimed at people with no programming background that are looking for a gentle and practical introduction to data analysis in R.
+.r-header p {
+color: #64748b;
+font-size: 1.05rem;
+line-height: 1.6;
+max-width: 700px;
+margin: 0 auto 2rem;
+}
 
+/* Module Grid */
+.modules-section {
+margin: 3rem 0;
+}
 
-Each Module involves:
+.modules-section h2 {
+font-size: 1.65rem;
+color: #1e293b;
+margin-bottom: 1.5rem;
+}
 
-- a pre-recorded lecture with guided practice exercises
-- a corresponding lab to practice the skills taught in the video and stretch your thinking
+.modules-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 1.5rem;
+margin-top: 2rem;
+}
 
+.module-card {
+background: white;
+border: 1px solid #e2e8f0;
+border-radius: 16px;
+padding: 1.75rem;
+transition: all 0.3s ease;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+position: relative;
+overflow: hidden;
+}
 
-The labs are an essential part of the learning process as they walkthrough the use of many key functions and topics that are not explicitly covered in the videos.
+.module-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 4px;
+background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
 
+.module-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+border-color: #8b5cf6;
+}
 
-<p style="font-weight: bold; color:#8B0000;">Additional Resources</p>
+.module-card:hover::before {
+transform: scaleX(1);
+}
 
+.module-header {
+display: flex;
+align-items: center;
+gap: 1rem;
+margin-bottom: 1rem;
+}
+
+.module-number-badge {
+width: 48px;
+height: 48px;
+background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-weight: 700;
+font-size: 1.25rem;
+flex-shrink: 0;
+}
+
+.module-title {
+font-size: 1.2rem;
+font-weight: 600;
+color: #1e293b;
+margin: 0;
+line-height: 1.3;
+}
+
+.module-number {
+font-size: 0.7rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: #8b5cf6;
+margin-bottom: 0.25rem;
+}
+
+.module-description {
+color: #64748b;
+font-size: 0.95rem;
+line-height: 1.6;
+margin-bottom: 1.25rem;
+}
+
+.module-link {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+color: #8b5cf6;
+font-weight: 600;
+font-size: 0.9rem;
+text-decoration: none;
+transition: gap 0.2s ease;
+}
+
+.module-link:hover {
+gap: 0.75rem;
+color: #6366f1;
+}
+
+/* Course Info */
+.course-info {
+margin: 3rem 0;
+padding: 2rem;
+background: white;
+border-left: 4px solid #8b5cf6;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.course-info h2 {
+color: #1e293b;
+font-size: 1.4rem;
+margin-bottom: 1rem;
+}
+
+.course-info p {
+color: #64748b;
+font-size: 0.95rem;
+line-height: 1.6;
+margin-bottom: 0.75rem;
+}
+
+.course-info ul {
+color: #64748b;
+font-size: 0.95rem;
+line-height: 1.6;
+margin-top: 1rem;
+}
+
+.course-info ul li {
+margin-bottom: 0.5rem;
+}
+
+.course-info ul li a {
+color: #8b5cf6;
+text-decoration: none;
+font-weight: 500;
+}
+
+.course-info ul li a:hover {
+color: #6366f1;
+text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.r-header h1 {
+font-size: 1.8rem;
+}
+
+.modules-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+
+<div class="r-header">
+<h1>Introduction to Programming in R</h1>
+<p>
+A gentle and practical introduction to data analysis in R for people with no programming background. Learn R programming concepts with a focus on preparing and analyzing data.
+</p>
+</div>
+
+<div class="course-info">
+<h2>About This Course</h2>
+<p>
+This mini-course is aimed at people with no programming background that are looking for a gentle and practical introduction to data analysis in R. We cover how to read data into R, manipulate data with tools from the tidyverse package dplyr, and conduct statistical simulations.
+</p>
+<p>
+Each module involves pre-recorded lectures with guided practice exercises and corresponding labs to practice the skills taught. The labs are an essential part of the learning process as they walkthrough the use of many key functions and topics not explicitly covered in the videos.
+</p>
+<p style="font-weight: bold; color:#8B0000; margin-top: 1.5rem;">Additional Resources</p>
 <ul>
-  <li><a href="https://rstudio.com/resources/cheatsheets/">tidyverse cheetsheets</a> start with dplyr and ggplot</li>
-  <li><a href="https://r4ds.had.co.nz">R for Data Science</a>: free online book with clear explanations of many tidyverse functions, the book to read on data analysis with R</li>
+<li><a href="https://rstudio.com/resources/cheatsheets/">tidyverse cheatsheets</a> - start with dplyr and ggplot</li>
+<li><a href="https://r4ds.had.co.nz">R for Data Science</a> - free online book with clear explanations of many tidyverse functions</li>
 </ul>
+</div>
 
-## Table of Contents
+<div class="modules-section">
+<h2>Course Modules</h2>
+
+<div class="modules-grid">
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">0</div>
+<div>
+<div class="module-number">Module 0</div>
+<h3 class="module-title">Getting Started</h3>
+</div>
+</div>
+<p class="module-description">
+Introduction to the course structure and setting up your R environment.
+</p>
+<a href="0 Module/mod0.html" class="module-link">
+View Module 0 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">1</div>
+<div>
+<div class="module-number">Module 1</div>
+<h3 class="module-title">Introduction and Motivation for R Programming</h3>
+</div>
+</div>
+<p class="module-description">
+Why R? Understanding the value of R for data analysis and statistical computing.
+</p>
+<a href="1 Module/mod1.html" class="module-link">
+View Module 1 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">2</div>
+<div>
+<div class="module-number">Module 2</div>
+<h3 class="module-title">Installing Packages and Reading Data</h3>
+</div>
+</div>
+<p class="module-description">
+Learn to extend R's capabilities with packages and import data from various sources.
+</p>
+<a href="2 Module/mod2.html" class="module-link">
+View Module 2 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">3</div>
+<div>
+<div class="module-number">Module 3</div>
+<h3 class="module-title">Vectors and Lists</h3>
+</div>
+</div>
+<p class="module-description">
+Master fundamental data structures: vectors and lists for organizing data in R.
+</p>
+<a href="3 Module/mod3.html" class="module-link">
+View Module 3 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">4</div>
+<div>
+<div class="module-number">Module 4</div>
+<h3 class="module-title">Data Manipulation</h3>
+</div>
+</div>
+<p class="module-description">
+Essential techniques for cleaning, transforming, and reshaping your data using dplyr.
+</p>
+<a href="4 Module/mod4.html" class="module-link">
+View Module 4 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">5</div>
+<div>
+<div class="module-number">Module 5</div>
+<h3 class="module-title">Data Manipulation and Analysis II</h3>
+</div>
+</div>
+<p class="module-description">
+Advanced data manipulation techniques for complex analysis tasks.
+</p>
+<a href="5 Module/mod5.html" class="module-link">
+View Module 5 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">6</div>
+<div>
+<div class="module-number">Module 6</div>
+<h3 class="module-title">Data Visualization as a Tool for Analysis</h3>
+</div>
+</div>
+<p class="module-description">
+Create compelling visualizations with ggplot2 to explore and communicate your findings.
+</p>
+<a href="6 Module/mod6.html" class="module-link">
+View Module 6 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">7</div>
+<div>
+<div class="module-number">Module 7</div>
+<h3 class="module-title">Grouped Analysis</h3>
+</div>
+</div>
+<p class="module-description">
+Perform sophisticated group-wise operations and aggregations on your data.
+</p>
+<a href="7 Module/mod7.html" class="module-link">
+View Module 7 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">8</div>
+<div>
+<div class="module-number">Module 8</div>
+<h3 class="module-title">Iteration</h3>
+</div>
+</div>
+<p class="module-description">
+Automate repetitive tasks with loops and functional programming techniques.
+</p>
+<a href="8 Module/mod8.html" class="module-link">
+View Module 8 →
+</a>
+</div>
+
+<div class="module-card">
+<div class="module-header">
+<div class="module-number-badge">9</div>
+<div>
+<div class="module-number">Module 9</div>
+<h3 class="module-title">Writing Functions</h3>
+</div>
+</div>
+<p class="module-description">
+Create your own functions to make your code more reusable and maintainable.
+</p>
+<a href="9 Module/mod9.html" class="module-link">
+View Module 9 →
+</a>
+</div>
+</div>
+</div>
+
 
