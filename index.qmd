@@ -48,22 +48,28 @@ Aside from research, I am passionate about teaching. I have [extensive experienc
 ## News
 
 <div class="news-block">
+**December 17, 2026**  
+Selected to compete in Harvard University's [Three Minute Thesis (3MT®) Competition](https://gsas.harvard.edu/academics/writing/three-minute-thesis).
+</div>
+
+<div class="news-block">
 **September 15, 2025**  
 Named as one of four finalists for the [2025 INFORMS Health Applications Society Best Student Paper Competition](https://connect.informs.org/discussion/finalists-of-the-2025-informs-has-best-student-paper-competition).  
 
 [*The Impact of Batching Advanced Imaging Tests in Emergency Departments*](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193207) (with Soroush Saghafian, Robert Huckman, Nicole Hodgson, and Joshua Baugh).
 </div>
 
+---
+
+<details>
+<summary><strong>Show earlier news</strong></summary>
+
+
 <div class="news-block">
 **June 10, 2025**  
 Awarded the [Distinction in Student Teaching](/Data/Distinction Award 2025.pdf) at the Harvard Kennedy School.
 </div>
 
-
----
-
-<details>
-<summary><strong>Show earlier news (before 2025)</strong></summary>
 
 <div class="news-block">
 **May 23, 2024**  
