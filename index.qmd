@@ -3,7 +3,7 @@ title: "Jacob Jameson"
 image: ../images/profile.png
 about:
   template: trestles
-  image-width: 15em
+  image-width: 18em
   image-shape: round
   links:
     - icon: rss
