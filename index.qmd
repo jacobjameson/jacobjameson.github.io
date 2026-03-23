@@ -48,8 +48,23 @@ Aside from research, I am passionate about teaching. I have [extensive experienc
 ## News
 
 <div class="news-block">
-**December 17, 2025**  
-Selected as one of ten finalists to compete in Harvard University's [Three Minute Thesis (3MT®) Competition](https://gsas.harvard.edu/academics/writing/three-minute-thesis).
+**March 5, 2026**  
+Selected as one of 29 (out of 132 applications) for the [2026 IOE-ISyE-MS\&E Rising Stars Workshop](https://sites.google.com/umich.edu/isye-mse-ioe-joint-rising-star/home).
+</div>
+
+<div class="news-block">
+**March 5, 2026**  
+Competed as one of ten finalists in Harvard University's [Three Minute Thesis (3MT®) Competition](https://gsas.harvard.edu/academics/writing/three-minute-thesis).
+</div>
+
+---
+
+<details>
+<summary><strong>Show earlier news</strong></summary>
+
+<div class="news-block">
+**March 5, 2026**  
+Competed as one of ten finalistsin Harvard University's [Three Minute Thesis (3MT®) Competition](https://gsas.harvard.edu/academics/writing/three-minute-thesis).
 </div>
 
 <div class="news-block">
@@ -60,11 +75,6 @@ Named as one of four finalists for the [2025 INFORMS Health Applications Society
 
 [Honorable Mention](/Data/INFORMS Award 2025.pdf)
 </div>
-
----
-
-<details>
-<summary><strong>Show earlier news</strong></summary>
 
 
 <div class="news-block">
