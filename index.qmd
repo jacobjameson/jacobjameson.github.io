@@ -80,7 +80,7 @@ text-underline-offset: 2px;
 
 [My research](research.qmd) develops and applies methods in causal inference, Bayesian statistics, decision modeling, and reinforcement learning to support better decision-making in health and public policy. I work at the intersection of statistics, computer science, and health policy, with applications to [emergency department operations](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193207), [suicide prevention](https://causalab.sph.harvard.edu/suicideprevention/), and precision medicine. I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Research for Suicide Prevention at [Brigham and Women's Hospital](https://www.brighamandwomens.org).
  
-I also care deeply about [teaching](teaching.qmd)---I have worked with students at Harvard, UChicago Medicine, and as a Teach For America corps member in New Haven Public Schools.
+I also care deeply about [teaching](teaching.qmd)---I have been very fortunate to work with many students at Harvard, The University of Chicago, and New Haven Public Schools during my time as a Teach For America corps member.
  
 <div class="jm-bar">
 <span class="jm-dot"></span>
