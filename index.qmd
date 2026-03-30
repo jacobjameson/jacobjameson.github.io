@@ -31,25 +31,63 @@ from: markdown+emoji
 comments: false
 page-layout: full
 ---
+<style>
+/* Job market bar — injected above the trestles content, full width */
+.jm-bar {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.72rem;
+letter-spacing: 0.07em;
+background: #f0fdf4;
+border: 1px solid #bbf7d0;
+border-left: 3px solid #16a34a;
+border-radius: 2px;
+padding: 10px 16px;
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 1.75rem;
+color: #166534;
+}
+.jm-dot {
+width: 7px;
+height: 7px;
+border-radius: 50%;
+background: #16a34a;
+animation: jm-pulse 2s ease-in-out infinite;
+flex-shrink: 0;
+}
+@keyframes jm-pulse {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.3; }
+}
+.jm-bar a {
+color: #15803d;
+font-weight: 500;
+text-decoration: underline;
+text-decoration-color: #86efac;
+text-underline-offset: 2px;
+}
+.jm-bar a:hover { color: #166534; text-decoration-color: #16a34a; }
+</style>
+
 
 <div class="prompt-line"><span class="ps1">jacobjameson</span>@<span class="host">harvard</span>:~$<span class="cursor"></span></div>
-
+ 
 ## whoami
+
 
 <div class="hero-subtitle">phd candidate &nbsp;·&nbsp; health policy &amp; decision sciences &nbsp;·&nbsp; harvard university</div>
 
-I develop methods in [causal inference](research.qmd), Bayesian statistics, and reinforcement learning to improve decision-making in health and public policy. I am a National Institute of Mental Health (NIMH) funded Predoctoral Research Fellow in [Comparative Effectiveness Research for Suicide Prevention](https://causalab.sph.harvard.edu/suicideprevention/) at [Brigham and Women's Hospital](https://www.brighamandwomens.org), with applications to suicide prevention, emergency department operations, and precision medicine.
-
-I also care deeply about [teaching](teaching.qmd) — I have worked with students at Harvard, UChicago Medicine, and as a Teach For America corps member in New Haven Public Schools.
-
-<div class="tag-row">
-<span class="tag">--causal-inference</span>
-<span class="tag">--reinforcement-learning</span>
-<span class="tag">--bayesian-stats</span>
+[My research](research.qmd) develops and applies methods in causal inference, Bayesian statistics, decision modeling, and reinforcement learning to support better decision-making in health and public policy. I work at the intersection of statistics, computer science, and health policy, with applications to [emergency department operations](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193207), [suicide prevention](https://causalab.sph.harvard.edu/suicideprevention/), and precision medicine. I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Research for Suicide Prevention at [Brigham and Women's Hospital](https://www.brighamandwomens.org).
+ 
+I also care deeply about [teaching](teaching.qmd)---I have worked with students at Harvard, UChicago Medicine, and as a Teach For America corps member in New Haven Public Schools.
+ 
+<div class="jm-bar">
+<span class="jm-dot"></span>
+I am on the academic job market for 2026--2027. Please feel free to <a href="mailto:jacobjameson@g.harvard.edu">get in touch</a> or view my <a href="/Data/Jameson_vitae.pdf">CV</a>.
 </div>
 
 ## cat news.log
-
 <div class="news-item">
 <div class="news-date">2026-03</div>
 <div class="news-text"><span class="news-flag">new</span>Selected (29/132) for the <a href="https://sites.google.com/umich.edu/isye-mse-ioe-joint-rising-star/home">2026 IOE-ISyE-MS&E Rising Stars Workshop</a>.</div>
