@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ecdef6fb79a2f3ae1eaf2491d0de3409.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8df782aa26525d13d9b00b3cbae7c76f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,6 +84,7 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
 <meta property="og:site_name" content="Jacob Jameson">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:title" content="API 222 Section Materials – Jacob Jameson">
+<meta name="twitter:description" content="Jacob Jameson’s personal website">
 <meta name="twitter:image" content="https://www.jacobjameson.com/api 222 files/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
@@ -187,389 +188,185 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
 
 
 <style>
-/* ============================================
-API 222 SECTION MATERIALS STYLES
-============================================ */
 
-/* Header Section */
-.api-header {
-text-align: center;
-margin: 2rem 0 3rem;
-}
-
-.api-header h1 {
-font-size: 2.2rem;
-color: #1e293b;
-margin-bottom: 1rem;
-}
-
-.api-header p {
-color: #64748b;
-font-size: 1.05rem;
-line-height: 1.6;
-max-width: 700px;
-margin: 0 auto 2rem;
-}
-
-/* Module Grid */
-.modules-section {
-margin: 3rem 0;
-}
-
-.modules-section h2 {
-font-size: 1.65rem;
-color: #1e293b;
-margin-bottom: 1.5rem;
-}
-
-.modules-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-gap: 1.5rem;
-margin-top: 2rem;
-}
-
-.module-card {
-background: white;
-border: 1px solid #e2e8f0;
-border-radius: 16px;
-padding: 1.75rem;
-transition: all 0.3s ease;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-position: relative;
-overflow: hidden;
-}
-
-.module-card::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-height: 4px;
-background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
-transform: scaleX(0);
-transform-origin: left;
-transition: transform 0.3s ease;
-}
-
-.module-card:hover {
-transform: translateY(-4px);
-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-border-color: #8b5cf6;
-}
-
-.module-card:hover::before {
-transform: scaleX(1);
-}
-
-.module-header {
-display: flex;
-align-items: center;
-gap: 1rem;
-margin-bottom: 1rem;
-}
-
-.module-number-badge {
-width: 48px;
-height: 48px;
-background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-border-radius: 12px;
-display: flex;
-align-items: center;
-justify-content: center;
-color: white;
-font-weight: 700;
-font-size: 1.25rem;
-flex-shrink: 0;
-}
-
-.module-title {
-font-size: 1.2rem;
-font-weight: 600;
-color: #1e293b;
-margin: 0;
-line-height: 1.3;
-}
-
-.module-number {
-font-size: 0.7rem;
-font-weight: 700;
+.section-cmd {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.72rem;
+color: #aaa;
 letter-spacing: 0.08em;
-text-transform: uppercase;
-color: #8b5cf6;
-margin-bottom: 0.25rem;
-}
-
-.module-description {
-color: #64748b;
-font-size: 0.95rem;
-line-height: 1.6;
-margin-bottom: 1.25rem;
-}
-
-.module-link {
-display: inline-flex;
+margin: 2.5rem 0 0;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid #e4e4e4;
+display: flex;
 align-items: center;
-gap: 0.5rem;
-color: #8b5cf6;
-font-weight: 600;
-font-size: 0.9rem;
-text-decoration: none;
-transition: gap 0.2s ease;
+gap: 6px;
+}
+.section-cmd .ps { color: #16a34a; }
+
+.m-list { display: flex; flex-direction: column; }
+
+.m-item {
+display: grid;
+grid-template-columns: 72px 1fr;
+gap: 0 1.25rem;
+padding: 6px 0;
+border-bottom: 1px solid #f0f0f0;
+align-items: baseline;
+}
+.m-item:first-child { border-top: 1px solid #f0f0f0; }
+
+.m-num {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.68rem;
+color: #888;
+letter-spacing: 0.03em;
+white-space: nowrap;
+padding-top: 1px;
+line-height: 1.5;
 }
 
-.module-link:hover {
-gap: 0.75rem;
-color: #6366f1;
+.m-body {
+font-size: 0.84rem;
+font-weight: 300;
+color: #333;
+line-height: 1.5;
+display: flex;
+align-items: baseline;
+flex-wrap: wrap;
+gap: 0 0.4rem;
 }
 
-/* Course Info */
-.course-info {
-margin: 3rem 0;
-padding: 2rem;
-background: white;
-border-left: 4px solid #8b5cf6;
-border-radius: 8px;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+.m-body a {
+color: #111;
+text-decoration: underline;
+text-decoration-color: #e0e0e0;
+text-underline-offset: 2px;
+}
+.m-body a:hover { color: #16a34a; text-decoration-color: #16a34a; }
+
+.m-sep {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.67rem;
+color: #ccc;
 }
 
-.course-info h2 {
-color: #1e293b;
-font-size: 1.4rem;
-margin-bottom: 1rem;
+.m-sub {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.67rem;
+color: #888;
 }
 
-.course-info p {
-color: #64748b;
-font-size: 0.95rem;
-line-height: 1.6;
-margin: 0;
+.m-link {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.65rem;
+letter-spacing: 0.04em;
+padding: 1px 8px;
+border-radius: 2px;
+text-decoration: none !important;
+transition: all 0.12s;
+background: #111;
+color: #fff !important;
+white-space: nowrap;
+}
+.m-link:hover { background: #16a34a !important; color: #fff !important; text-decoration: none !important; }
+
+.about-note {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.72rem;
+color: #888;
+line-height: 1.75;
+margin-top: 2rem;
+padding-top: 1rem;
+border-top: 1px solid #e4e4e4;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-.api-header h1 {
-font-size: 1.8rem;
-}
-
-.modules-grid {
-grid-template-columns: 1fr;
-}
-}
 </style>
-<div class="api-header">
-<h1>
-API 222 Section Materials
-</h1>
-<p>
-Comprehensive section materials for API-222 covering statistical learning, machine learning methods, and their applications in policy analysis.
-</p>
+<p>Section materials for API-222 covering statistical learning, machine learning methods, and their applications in policy analysis. Materials build on contributions from previous TFs including Ibou Dieye, Laura Morris, Emily Mower, and Amy Wickett.</p>
+<hr>
+<div class="section-cmd">
+<span class="ps">$</span> ls sections/
 </div>
-<div class="modules-section">
-<h2 class="anchored">
-Section Materials
-</h2>
-<div class="modules-grid">
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-1
+<div class="m-list">
+<div class="m-item">
+<div class="m-num">
+section-01
 </div>
-<div>
-<div class="module-number">
-Section 1
-</div>
-<h3 class="module-title anchored">
-Intro to API 222 and R
-</h3>
+<div class="m-body">
+<p>Intro to API 222 and R <span class="m-sep">·</span><span class="m-sub">vectors, matrices, data frames, basic operations</span> &nbsp;<a href="section 1/section1.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-Introduction to the course and R programming fundamentals including vectors, matrices, data frames, and basic operations.
-</p>
-<p><a href="section 1/section1.html" class="module-link"> View Section 1 → </a></p>
+<div class="m-item">
+<div class="m-num">
+section-02
 </div>
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-2
-</div>
-<div>
-<div class="module-number">
-Section 2
-</div>
-<h3 class="module-title anchored">
-KNN and Linear Regression
-</h3>
+<div class="m-body">
+<p>KNN and Linear Regression <span class="m-sep">·</span><span class="m-sub">k-nearest neighbors, predictive modeling fundamentals</span> &nbsp;<a href="section 2/section2.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-K-Nearest Neighbors algorithm and linear regression fundamentals for predictive modeling.
-</p>
-<p><a href="section 2/section2.html" class="module-link"> View Section 2 → </a></p>
+<div class="m-item">
+<div class="m-num">
+section-03
 </div>
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-3
-</div>
-<div>
-<div class="module-number">
-Section 3
-</div>
-<h3 class="module-title anchored">
-Linear Regression Exercises
-</h3>
+<div class="m-body">
+<p>Linear Regression Exercises <span class="m-sep">·</span><span class="m-sub">inference, model fitting, interpretation</span> &nbsp;<a href="section 3/section3.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-Hands-on exercises for practicing inference, model fitting, and interpretation in linear regression.
-</p>
-<p><a href="section 3/section3.html" class="module-link"> View Section 3 → </a></p>
+<div class="m-item">
+<div class="m-num">
+section-04
 </div>
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-4
-</div>
-<div>
-<div class="module-number">
-Section 4
-</div>
-<h3 class="module-title anchored">
-Classification
-</h3>
+<div class="m-body">
+<p>Classification <span class="m-sep">·</span><span class="m-sub">logistic regression, LDA, performance metrics</span> &nbsp;<a href="section 4/section 4.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-Classification methods including logistic regression, linear discriminant analysis, and performance metrics.
-</p>
-<p><a href="section 4/section 4.html" class="module-link"> View Section 4 → </a></p>
+<div class="m-item">
+<div class="m-num">
+section-05
 </div>
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-5
-</div>
-<div>
-<div class="module-number">
-Section 5
-</div>
-<h3 class="module-title anchored">
-Cross-Validation, Ridge, Lasso, and Bootstrapping
-</h3>
+<div class="m-body">
+<p>Cross-Validation, Ridge, Lasso, and Bootstrapping <span class="m-sep">·</span><span class="m-sub">resampling, regularization</span> &nbsp;<a href="section 5/section 5.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-Resampling methods for model evaluation and regularization techniques for improved prediction accuracy.
-</p>
-<p><a href="section 5/section 5.html" class="module-link"> View Section 5 → </a></p>
+<div class="m-item">
+<div class="m-num">
+section-06
 </div>
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-6
-</div>
-<div>
-<div class="module-number">
-Section 6
-</div>
-<h3 class="module-title anchored">
-Regularization and Dimension Reduction
-</h3>
+<div class="m-body">
+<p>Regularization and Dimension Reduction <span class="m-sep">·</span><span class="m-sub">PCA, PCR, advanced regularization</span> &nbsp;<a href="section 6/section 6.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-Advanced regularization methods and dimension reduction techniques including PCA and PCR.
-</p>
-<p><a href="section 6/section 6.html" class="module-link"> View Section 6 → </a></p>
+<div class="m-item">
+<div class="m-num">
+section-07
 </div>
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-7
-</div>
-<div>
-<div class="module-number">
-Section 7
-</div>
-<h3 class="module-title anchored">
-Non-linear Models
-</h3>
+<div class="m-body">
+<p>Non-linear Models <span class="m-sep">·</span><span class="m-sub">polynomial regression, splines, local regression</span> &nbsp;<a href="section 7/section 7.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-Moving beyond linearity with polynomial regression, splines, and local regression methods.
-</p>
-<p><a href="section 7/section 7.html" class="module-link"> View Section 7 → </a></p>
+<div class="m-item">
+<div class="m-num">
+section-08
 </div>
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-8
-</div>
-<div>
-<div class="module-number">
-Section 8
-</div>
-<h3 class="module-title anchored">
-Tree-Based Methods
-</h3>
+<div class="m-body">
+<p>Tree-Based Methods <span class="m-sep">·</span><span class="m-sub">decision trees, bagging, random forests, boosting</span> &nbsp;<a href="section 8/section 8.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-Decision trees, bagging, random forests, and boosting for classification and regression problems.
-</p>
-<p><a href="section 8/section 8.html" class="module-link"> View Section 8 → </a></p>
+<div class="m-item">
+<div class="m-num">
+section-09
 </div>
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-9
-</div>
-<div>
-<div class="module-number">
-Section 9
-</div>
-<h3 class="module-title anchored">
-Support Vector Machines
-</h3>
+<div class="m-body">
+<p>Support Vector Machines <span class="m-sep">·</span><span class="m-sub">SVMs, classifiers, kernel approaches</span> &nbsp;<a href="section 9/section 9.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-Support vector classifiers and support vector machines for classification with various kernel approaches.
-</p>
-<p><a href="section 9/section 9.html" class="module-link"> View Section 9 → </a></p>
+<div class="m-item">
+<div class="m-num">
+section-10
 </div>
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">
-10
-</div>
-<div>
-<div class="module-number">
-Section 10
-</div>
-<h3 class="module-title anchored">
-Neural Networks and Deep Learning
-</h3>
+<div class="m-body">
+<p>Neural Networks and Deep Learning <span class="m-sep">·</span><span class="m-sub">deep learning architectures, reinforcement learning</span> &nbsp;<a href="section 10/section 10.html" class="m-link">view</a></p>
 </div>
 </div>
-<p class="module-description">
-Introduction to neural networks, deep learning architectures, and reinforcement learning concepts.
-</p>
-<p><a href="section 10/section 10.html" class="module-link"> View Section 10 → </a></p>
-</div>
-</div>
-</div>
-<div class="course-info">
-<h2 class="anchored">
-About These Materials
-</h2>
-<p>
-This page contains all of the code and notes for API-222 section. The materials build on contributions from previous teaching fellows including Ibou Dieye, Laura Morris, Emily Mower, and Amy Wickett. If you have any questions or need help with anything, please don’t hesitate to reach out.
-</p>
 </div>
 
 
@@ -978,7 +775,7 @@ This page contains all of the code and notes for API-222 section. The materials 
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Jacob Jameson</p>
+<p>© 2026 Jacob Jameson</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

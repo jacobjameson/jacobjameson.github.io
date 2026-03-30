@@ -8,335 +8,216 @@ page-layout: full
 ---
 
 <style>
-/* ============================================
-GIT/GITHUB GUIDE STYLES
-============================================ */
 
-/* Header Section */
-.git-header {
-text-align: center;
-margin: 2rem 0 3rem;
-}
-
-.git-header h1 {
-font-size: 2.2rem;
-color: #1e293b;
-margin-bottom: 1rem;
-}
-
-.git-header p {
-color: #64748b;
-font-size: 1.05rem;
-line-height: 1.6;
-max-width: 650px;
-margin: 0 auto 2rem;
-}
-
-.git-header-image {
-margin: 2rem auto;
-max-width: 300px;
-}
-
-.git-header-image img {
-width: 100%;
-height: auto;
-}
-
-/* Module Grid */
-.modules-section {
-margin: 3rem 0;
-}
-
-.modules-section h2 {
-font-size: 1.65rem;
-color: #1e293b;
-margin-bottom: 1.5rem;
-}
-
-.modules-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-gap: 1.5rem;
-margin-top: 2rem;
-}
-
-.module-card {
-background: white;
-border: 1px solid #e2e8f0;
-border-radius: 16px;
-padding: 1.75rem;
-transition: all 0.3s ease;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-position: relative;
-overflow: hidden;
-}
-
-.module-card::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-height: 4px;
-background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
-transform: scaleX(0);
-transform-origin: left;
-transition: transform 0.3s ease;
-}
-
-.module-card:hover {
-transform: translateY(-4px);
-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-border-color: #8b5cf6;
-}
-
-.module-card:hover::before {
-transform: scaleX(1);
-}
-
-.module-header {
-display: flex;
-align-items: center;
-gap: 1rem;
-margin-bottom: 1rem;
-}
-
-.module-number-badge {
-width: 48px;
-height: 48px;
-background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-border-radius: 12px;
-display: flex;
-align-items: center;
-justify-content: center;
-color: white;
-font-weight: 700;
-font-size: 1.25rem;
-flex-shrink: 0;
-}
-
-.module-title {
-font-size: 1.2rem;
-font-weight: 600;
-color: #1e293b;
-margin: 0;
-line-height: 1.3;
-}
-
-.module-number {
-font-size: 0.7rem;
-font-weight: 700;
+.section-cmd {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.72rem;
+color: #aaa;
 letter-spacing: 0.08em;
-text-transform: uppercase;
-color: #8b5cf6;
-margin-bottom: 0.25rem;
-}
-
-.module-description {
-color: #64748b;
-font-size: 0.95rem;
-line-height: 1.6;
-margin-bottom: 1.25rem;
-}
-
-.module-link {
-display: inline-flex;
+margin: 2.5rem 0 0;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid #e4e4e4;
+display: flex;
 align-items: center;
-gap: 0.5rem;
-color: #8b5cf6;
-font-weight: 600;
-font-size: 0.9rem;
-text-decoration: none;
-transition: gap 0.2s ease;
+gap: 6px;
 }
+.section-cmd .ps { color: #16a34a; }
 
-.module-link:hover {
-gap: 0.75rem;
-color: #6366f1;
-}
+.m-list { display: flex; flex-direction: column; }
 
-/* Key Concepts */
-.key-concepts {
-margin: 3rem 0;
-padding: 2rem;
-background: white;
-border-left: 4px solid #8b5cf6;
-border-radius: 8px;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.key-concepts h2 {
-color: #1e293b;
-font-size: 1.4rem;
-margin-bottom: 1rem;
-}
-
-.concepts-list {
+.m-item {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 1rem;
-margin-top: 1rem;
+grid-template-columns: 72px 1fr;
+gap: 0 1.25rem;
+padding: 6px 0;
+border-bottom: 1px solid #f0f0f0;
+align-items: baseline;
 }
+.m-item:first-child { border-top: 1px solid #f0f0f0; }
 
-.concept-item {
-padding: 0.75rem;
-}
-
-.concept-item strong {
-color: #8b5cf6;
-font-weight: 600;
-}
-
-.concept-item p {
-margin: 0.25rem 0 0;
-color: #64748b;
-font-size: 0.9rem;
+.m-num {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.68rem;
+color: #888;
+letter-spacing: 0.03em;
+white-space: nowrap;
+padding-top: 1px;
 line-height: 1.5;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-.git-header h1 {
-font-size: 1.8rem;
+.m-body {
+font-size: 0.84rem;
+font-weight: 300;
+color: #333;
+line-height: 1.5;
+display: flex;
+align-items: baseline;
+flex-wrap: wrap;
+gap: 0 0.4rem;
 }
 
-.modules-grid {
-grid-template-columns: 1fr;
+.m-sep {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.67rem;
+color: #ccc;
 }
+
+.m-sub {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.67rem;
+color: #888;
 }
+
+.m-link {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.65rem;
+letter-spacing: 0.04em;
+padding: 1px 8px;
+border-radius: 2px;
+text-decoration: none !important;
+transition: all 0.12s;
+background: #111;
+color: #fff !important;
+white-space: nowrap;
+}
+.m-link:hover {
+background: #16a34a !important;
+color: #fff !important;
+text-decoration: none !important;
+}
+
+.concepts {
+margin-top: 2rem;
+padding-top: 1rem;
+border-top: 1px solid #e4e4e4;
+}
+
+.concepts-list {
+display: flex;
+flex-direction: column;
+}
+
+.concept-item {
+display: grid;
+grid-template-columns: 120px 1fr;
+gap: 0 1.25rem;
+padding: 6px 0;
+border-bottom: 1px solid #f0f0f0;
+align-items: baseline;
+}
+.concept-item:first-child { border-top: 1px solid #f0f0f0; }
+
+.concept-key {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.68rem;
+color: #16a34a;
+letter-spacing: 0.03em;
+white-space: nowrap;
+}
+
+.concept-val {
+font-size: 0.84rem;
+font-weight: 300;
+color: #333;
+line-height: 1.5;
+}
+
+.concept-val span {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.67rem;
+color: #888;
+}
+
 </style>
 
-<div class="git-header">
-<h1>Introduction to Git and GitHub</h1>
-<p>
-Master version control and collaborative coding with this comprehensive guide.
-Learn essential Git commands, GitHub workflows, and best practices for modern software development.
-</p>
-<div class="git-header-image">
-<img src="assets/github_gif.gif" alt="GitHub Animation">
+Version control and collaborative coding with Git and GitHub. Learn essential commands, branching workflows, and best practices for reproducible research and software development.
+
+---
+
+<div class="section-cmd"><span class="ps">$</span> ls parts/</div>
+
+<div class="m-list">
+
+<div class="m-item">
+<div class="m-num">part-01</div>
+<div class="m-body">
+Installation &amp; Setup
+<span class="m-sep">·</span><span class="m-sub">installing Git, GitHub account, SSH keys</span>
+&nbsp;<a href="section 1/section1.html" class="m-link">view</a>
 </div>
 </div>
 
-<div class="modules-section">
-<h2>Learning Modules</h2>
-
-<div class="modules-grid">
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">1</div>
-<div>
-<div class="module-number">Part 1</div>
-<h3 class="module-title">Installation & Setup</h3>
-</div>
-</div>
-<p class="module-description">
-Get started by installing Git, creating your GitHub account, and setting up SSH keys for secure authentication.
-</p>
-<a href="section 1/section1.html" class="module-link">
-Start Setup Guide →
-</a>
-</div>
-
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">2</div>
-<div>
-<div class="module-number">Part 2</div>
-<h3 class="module-title">Git & GitHub Basics</h3>
-</div>
-</div>
-<p class="module-description">
-Understand core concepts: repositories, commits, version control, and the difference between Git and GitHub.
-</p>
-<a href="section 2/section 2.html" class="module-link">
-Learn the Basics →
-</a>
-</div>
-
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">3</div>
-<div>
-<div class="module-number">Part 3</div>
-<h3 class="module-title">Branching & Merging</h3>
-</div>
-</div>
-<p class="module-description">
-Master non-linear workflows with branches, pull requests, and collaborative development strategies.
-</p>
-<a href="section 3/section 3.html" class="module-link">
-Explore Branches →
-</a>
-</div>
-
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">4</div>
-<div>
-<div class="module-number">Part 4</div>
-<h3 class="module-title">Command Reference</h3>
-</div>
-</div>
-<p class="module-description">
-Quick reference guide for essential Git commands including clone, add, commit, push, pull, and more.
-</p>
-<a href="section 4/section 4.html" class="module-link">
-View Commands →
-</a>
-</div>
-
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">5</div>
-<div>
-<div class="module-number">Part 5</div>
-<h3 class="module-title">Workflows</h3>
-</div>
-</div>
-<p class="module-description">
-Learn professional workflows including feature branches, team collaboration patterns, and best practices.
-</p>
-<a href="section 5/section 5.html" class="module-link">
-Master Workflows →
-</a>
-</div>
-
-<div class="module-card">
-<div class="module-header">
-<div class="module-number-badge">6</div>
-<div>
-<div class="module-number">Part 6</div>
-<h3 class="module-title">Additional Resources</h3>
-</div>
-</div>
-<p class="module-description">
-Curated collection of tutorials, cheat sheets, interactive exercises, and further reading materials.
-</p>
-<a href="section 6/section 6.html" class="module-link">
-Explore Resources →
-</a>
-</div>
+<div class="m-item">
+<div class="m-num">part-02</div>
+<div class="m-body">
+Git &amp; GitHub Basics
+<span class="m-sep">·</span><span class="m-sub">repositories, commits, version control fundamentals</span>
+&nbsp;<a href="section 2/section 2.html" class="m-link">view</a>
 </div>
 </div>
 
-<div class="key-concepts">
-<h2>Key Concepts You'll Learn</h2>
+<div class="m-item">
+<div class="m-num">part-03</div>
+<div class="m-body">
+Branching &amp; Merging
+<span class="m-sep">·</span><span class="m-sub">branches, pull requests, collaborative workflows</span>
+&nbsp;<a href="section 3/section 3.html" class="m-link">view</a>
+</div>
+</div>
+
+<div class="m-item">
+<div class="m-num">part-04</div>
+<div class="m-body">
+Command Reference
+<span class="m-sep">·</span><span class="m-sub">clone, add, commit, push, pull, and more</span>
+&nbsp;<a href="section 4/section 4.html" class="m-link">view</a>
+</div>
+</div>
+
+<div class="m-item">
+<div class="m-num">part-05</div>
+<div class="m-body">
+Workflows
+<span class="m-sep">·</span><span class="m-sub">feature branches, team collaboration, best practices</span>
+&nbsp;<a href="section 5/section 5.html" class="m-link">view</a>
+</div>
+</div>
+
+<div class="m-item">
+<div class="m-num">part-06</div>
+<div class="m-body">
+Additional Resources
+<span class="m-sep">·</span><span class="m-sub">tutorials, cheat sheets, further reading</span>
+&nbsp;<a href="section 6/section 6.html" class="m-link">view</a>
+</div>
+</div>
+
+</div>
+
+
+<div class="concepts">
+<div class="section-cmd" style="margin-top:0"><span class="ps">$</span> cat key-concepts.md</div>
 <div class="concepts-list">
+
 <div class="concept-item">
-<strong>Version Control</strong>
-<p>Track changes, revert to previous states, and maintain a complete history of your project</p>
+<div class="concept-key">version-control</div>
+<div class="concept-val">Track changes, revert to previous states, and maintain a complete project history <span>· git log, git diff, git checkout</span></div>
 </div>
+
 <div class="concept-item">
-<strong>Collaboration</strong>
-<p>Work seamlessly with teams through branches, pull requests, and code reviews</p>
+<div class="concept-key">collaboration</div>
+<div class="concept-val">Work with teams through branches, pull requests, and code reviews <span>· git branch, git merge, git PR</span></div>
 </div>
+
 <div class="concept-item">
-<strong>Distributed Development</strong>
-<p>Clone repositories, work locally, and synchronize with remote repositories</p>
+<div class="concept-key">distributed</div>
+<div class="concept-val">Clone repositories, work locally, and synchronize with remotes <span>· git clone, git fetch, git push</span></div>
 </div>
+
 <div class="concept-item">
-<strong>Open Source</strong>
-<p>Contribute to projects, fork repositories, and participate in the global dev community</p>
+<div class="concept-key">open-source</div>
+<div class="concept-val">Fork repositories, contribute to projects, and participate in the global dev community <span>· git fork, git PR</span></div>
 </div>
+
 </div>
 </div>

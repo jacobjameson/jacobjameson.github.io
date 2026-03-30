@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ecdef6fb79a2f3ae1eaf2491d0de3409.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8df782aa26525d13d9b00b3cbae7c76f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -83,15 +83,15 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
 <meta property="og:image" content="https://www.jacobjameson.com/images/profile.png">
 <meta property="og:site_name" content="Jacob Jameson">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="1104">
-<meta property="og:image:width" content="1004">
+<meta property="og:image:height" content="1040">
+<meta property="og:image:width" content="1040">
 <meta name="twitter:title" content="Teaching – Jacob Jameson">
 <meta name="twitter:description" content="Jacob Jameson’s personal website">
 <meta name="twitter:image" content="https://www.jacobjameson.com/images/profile.png">
 <meta name="twitter:creator" content="@JacobCJameson">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1104">
-<meta name="twitter:image-width" content="1004">
+<meta name="twitter:image-height" content="1040">
+<meta name="twitter:image-width" content="1040">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -195,675 +195,381 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
 
 
 <style>
-/* ============================================
-TEACHING PAGE STYLES
-============================================ */
 
-.awards-section {
-background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-border: 1px solid #e2e8f0;
-border-radius: 16px;
-padding: 2rem;
-margin: 1.5rem 0 2.5rem;
-}
-
-.awards-section h3 {
-color: #1e293b;
-font-size: 1.1rem;
-font-weight: 600;
-margin: 0 0 1.5rem;
-padding-bottom: 0.75rem;
-border-bottom: 2px solid #e2e8f0;
-}
-
-.awards-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-gap: 1rem;
-}
-
-.award-card {
-background: white;
-border: 1px solid #e2e8f0;
-border-radius: 10px;
-padding: 1.25rem;
-transition: all 0.2s ease;
-box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-}
-
-.award-card:hover {
-transform: translateY(-2px);
-box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-border-color: #fbbf24;
-}
-
-.award-card .year {
-font-size: 0.7rem;
-font-weight: 700;
+.section-cmd {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.72rem;
+color: #aaa;
 letter-spacing: 0.08em;
-text-transform: uppercase;
-color: #b45309;
-margin-bottom: 0.4rem;
-}
-
-.award-card h4 {
-font-size: 0.95rem;
-color: #1e293b;
-margin: 0 0 0.35rem;
-line-height: 1.35;
-font-weight: 600;
-}
-
-.award-card h4 a {
-color: #1e293b;
-text-decoration: none;
-}
-
-.award-card h4 a:hover {
-color: #3b82f6;
-}
-
-.award-card .source {
-font-size: 0.8rem;
-color: #64748b;
-}
-*/
-
-/* Section Headers */
-.section-header {
-display: flex;
-align-items: center;
-gap: 1rem;
-margin: 2.5rem 0 1.25rem;
-}
-
-.section-header h2 {
-margin: 0;
-border: none;
-padding: 0;
-white-space: nowrap;
-font-size: 1.4rem;
-}
-
-.section-header::after {
-content: '';
-flex: 1;
-height: 2px;
-background: linear-gradient(90deg, #cbd5e1 0%, transparent 100%);
-}
-
-/* Teaching Grid */
-.teaching-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-gap: 1.25rem;
-margin: 1.25rem 0;
-}
-
-/* Course Cards */
-.course-card {
-background: white;
-border: 1px solid #e2e8f0;
-border-radius: 12px;
-padding: 1.25rem;
-transition: all 0.2s ease;
-box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-}
-
-.course-card:hover {
-transform: translateY(-3px);
-box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-border-color: #cbd5e1;
-}
-
-.course-card .institution {
-font-size: 0.7rem;
-font-weight: 700;
-letter-spacing: 0.05em;
-text-transform: uppercase;
-color: #3b82f6;
-margin-bottom: 0.5rem;
-}
-
-.course-card h4 {
-font-size: 1rem;
-color: #1e293b;
-margin: 0 0 0.35rem;
-line-height: 1.35;
-font-weight: 600;
-}
-
-.course-card .role {
-font-size: 0.85rem;
-color: #64748b;
-margin-bottom: 0.25rem;
-}
-
-.course-card .years {
-font-size: 0.8rem;
-color: #94a3b8;
-}
-
-/* Role Badge */
-.role-badge {
-display: inline-block;
-font-size: 0.65rem;
-font-weight: 700;
-letter-spacing: 0.03em;
-padding: 0.2rem 0.5rem;
-border-radius: 4px;
-text-transform: uppercase;
-margin-bottom: 0.5rem;
-}
-
-.role-badge.instructor {
-background: #d1fae5;
-color: #047857;
-}
-
-.role-badge.tf {
-background: #dbeafe;
-color: #1d4ed8;
-}
-
-.role-badge.ta {
-background: #f1f5f9;
-color: #475569;
-}
-
-/* TF/TA Grid */
-.tf-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-gap: 1.25rem;
-margin: 1.25rem 0;
-}
-
-.tf-card {
-background: white;
-border: 1px solid #e2e8f0;
-border-radius: 12px;
-padding: 1.25rem;
-transition: all 0.2s ease;
-box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-}
-
-.tf-card:hover {
-transform: translateY(-2px);
-box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-}
-
-.tf-card .institution {
-font-size: 0.7rem;
-font-weight: 700;
-letter-spacing: 0.05em;
-text-transform: uppercase;
-color: #3b82f6;
-margin-bottom: 0.75rem;
+margin: 2.5rem 0 0;
 padding-bottom: 0.5rem;
-border-bottom: 1px solid #f1f5f9;
-}
-
-.tf-card ul {
-margin: 0;
-padding: 0;
-list-style: none;
-}
-
-.tf-card li {
-padding: 0.4rem 0;
-font-size: 0.9rem;
-color: #334155;
-display: flex;
-justify-content: space-between;
-align-items: baseline;
-gap: 0.5rem;
-}
-
-.tf-card li .course-name {
-font-weight: 500;
-}
-
-.tf-card li .years {
-font-size: 0.75rem;
-color: #94a3b8;
-white-space: nowrap;
-}
-
-/* Workshops */
-.workshop-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-gap: 1rem;
-margin: 1.25rem 0;
-}
-
-.workshop-card {
-background: white;
-border: 1px solid #e2e8f0;
-border-left: 4px solid #8b5cf6;
-border-radius: 0 10px 10px 0;
-padding: 1.25rem;
-transition: all 0.2s ease;
-}
-
-.workshop-card:hover {
-transform: translateX(4px);
-box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
-
-.workshop-card h4 {
-font-size: 0.95rem;
-color: #1e293b;
-margin: 0 0 0.35rem;
-font-weight: 600;
-}
-
-.workshop-card p {
-font-size: 0.85rem;
-color: #64748b;
-margin: 0;
-}
-
-/* Materials Section */
-.materials-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-gap: 1.25rem;
-margin: 1.25rem 0;
-}
-
-.material-card {
-background: white;
-border: 1px solid #e2e8f0;
-border-radius: 12px;
-padding: 1.5rem;
-text-align: center;
-transition: all 0.2s ease;
-}
-
-.material-card:hover {
-transform: translateY(-3px);
-box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-border-color: #3b82f6;
-}
-
-.material-card .icon {
-width: 48px;
-height: 48px;
-background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
-border-radius: 12px;
+border-bottom: 1px solid #e4e4e4;
 display: flex;
 align-items: center;
-justify-content: center;
-margin: 0 auto 1rem;
-font-size: 1.25rem;
-color: #3b82f6;
+gap: 6px;
 }
+.section-cmd .ps { color: #16a34a; }
 
-.material-card h4 {
-font-size: 1rem;
-color: #1e293b;
-margin: 0 0 0.5rem;
+/* single-column list for awards/workshops */
+.t-list { display: flex; flex-direction: column; }
+
+.t-item {
+display: grid;
+grid-template-columns: 72px 1fr;
+gap: 0 1.25rem;
+padding: 6px 0;
+border-bottom: 1px solid #f0f0f0;
+align-items: baseline;
 }
+.t-item:first-child { border-top: 1px solid #f0f0f0; }
 
-.material-card p {
-font-size: 0.85rem;
-color: #64748b;
-margin: 0 0 1rem;
+.t-year {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.68rem;
+color: #888;
+letter-spacing: 0.03em;
+white-space: nowrap;
+padding-top: 1px;
 line-height: 1.5;
 }
 
-.material-card a.btn {
-display: inline-block;
-background: #3b82f6;
-color: white;
-padding: 0.5rem 1.25rem;
-border-radius: 8px;
-font-size: 0.85rem;
-font-weight: 600;
-text-decoration: none;
-transition: all 0.2s ease;
+.t-body {
+font-size: 0.84rem;
+font-weight: 300;
+color: #333;
+line-height: 1.5;
+display: flex;
+align-items: baseline;
+flex-wrap: wrap;
+gap: 0 0.4rem;
 }
 
-.material-card a.btn:hover {
-background: #2563eb;
-transform: translateY(-1px);
+.t-body a {
+color: #111;
+text-decoration: underline;
+text-decoration-color: #e0e0e0;
+text-underline-offset: 2px;
+}
+.t-body a:hover { color: #16a34a; text-decoration-color: #16a34a; }
+
+.t-sep {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.67rem;
+color: #ccc;
 }
 
-/* Background Section */
-.background-note {
-background: #f8fafc;
-border: 1px solid #e2e8f0;
-border-radius: 12px;
-padding: 1.5rem;
-margin: 2rem 0;
+.t-sub {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.67rem;
+color: #888;
 }
 
-.background-note p {
-margin: 0;
-font-size: 0.95rem;
-color: #475569;
-line-height: 1.7;
+.t-yrs {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.67rem;
+color: #aaa;
 }
 
-.background-note a {
-color: #3b82f6;
+.t-role {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.62rem;
+color: #aaa;
+border: 1px solid #e8e8e8;
+padding: 1px 5px;
+border-radius: 2px;
+letter-spacing: 0.03em;
+white-space: nowrap;
 }
 
-/* ============================================
-MOBILE RESPONSIVE
-============================================ */
-
-@media (max-width: 768px) {
-.teaching-grid, .materials-grid, .tf-grid {
-grid-template-columns: 1fr;
+.t-link {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.65rem;
+letter-spacing: 0.04em;
+padding: 1px 8px;
+border-radius: 2px;
+text-decoration: none !important;
+transition: all 0.12s;
+background: #111;
+color: #fff !important;
+white-space: nowrap;
+}
+.t-link:hover {
+background: #16a34a !important;
+color: #fff !important;
+text-decoration: none !important;
 }
 
-.workshop-grid {
-grid-template-columns: 1fr;
+/* two-column grid for courses */
+.t-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+border-top: 1px solid #f0f0f0;
 }
 
-.awards-section {
-padding: 1.5rem;
+.t-cell {
+padding: 6px 0;
+border-bottom: 1px solid #f0f0f0;
+padding-right: 1.5rem;
 }
 
-.awards-grid {
-grid-template-columns: 1fr;
+.t-cell:nth-child(even) {
+padding-right: 0;
+padding-left: 1.5rem;
+border-left: 1px solid #f0f0f0;
 }
 
-.section-header h2 {
-font-size: 1.2rem;
+.t-cell-title {
+font-size: 0.84rem;
+font-weight: 300;
+color: #333;
+line-height: 1.4;
 }
 
-.tf-card li {
-flex-direction: column;
-align-items: flex-start;
-gap: 0.1rem;
+.t-cell-sub {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.65rem;
+color: #888;
+margin-top: 1px;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+gap: 0 0.35rem;
+}
+
+.t-cell-yrs {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.65rem;
+color: #aaa;
+}
+
+@media (max-width: 680px) {
+.t-grid { grid-template-columns: 1fr; }
+.t-cell:nth-child(even) {
+padding-left: 0;
+border-left: none;
 }
 }
+
 </style>
-<p>I began teaching in a Philadelphia summer credit-recovery program after undergrad and later spent two years as a middle school math teacher in New Haven through Teach For America. I served as 8th Grade Chair, consulted on math curriculum development for Achievement First, and completed Code.org’s professional learning program for CS educators. I love teaching and enjoy making quantitative and computational ideas accessible to a wide range of students.</p>
-<!-- Awards Section -->
-<div class="awards-section">
-<h3 class="anchored">
-Teaching Awards &amp; Recognition
-</h3>
-<div class="awards-grid">
-<div class="award-card">
-<p class="year">
+<p>I began teaching in a Philadelphia summer credit-recovery program after undergrad and later spent two years as a middle school math teacher in New Haven through Teach For America. I served as 8th Grade Chair, consulted on math curriculum for Achievement First, and completed Code.org’s professional learning program for CS educators. I love teaching and enjoy making quantitative and computational ideas accessible to a wide range of students.</p>
+<hr>
+<div class="section-cmd">
+<span class="ps">$</span> cat awards.log
+</div>
+<div class="t-list">
+<div class="t-item">
+<div class="t-year">
 2025
-</p>
-<h4 class="anchored">
-<a href="./Data/Distinction Award 2025.pdf" target="_blank">Distinction in Student Teaching</a>
-</h4>
-<p class="source">
-Harvard Kennedy School
-</p>
 </div>
-<div class="award-card">
-<p class="year">
+<div class="t-body">
+<a href="./Data/Distinction Award 2025.pdf" target="_blank">Distinction in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span>
+</div>
+</div>
+<div class="t-item">
+<div class="t-year">
 2024
-</p>
-<h4 class="anchored">
-<a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients" target="_blank">Dean’s Award for Excellence in Student Teaching</a>
-</h4>
-<p class="source">
-Harvard Kennedy School
-</p>
 </div>
-<div class="award-card">
-<p class="year">
+<div class="t-body">
+<a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients" target="_blank">Dean’s Award for Excellence in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span>
+</div>
+</div>
+<div class="t-item">
+<div class="t-year">
 2024
-</p>
-<h4 class="anchored">
-<a href="./Data/Distinction Award 2024.pdf" target="_blank">Distinction in Student Teaching</a>
-</h4>
-<p class="source">
-Harvard Kennedy School
-</p>
 </div>
-<div class="award-card">
-<p class="year">
+<div class="t-body">
+<a href="./Data/Distinction Award 2024.pdf" target="_blank">Distinction in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span>
+</div>
+</div>
+<div class="t-item">
+<div class="t-year">
 2024
-</p>
-<h4 class="anchored">
-<a href="https://chds.hsph.harvard.edu/chds-welcomes-new-educational-innovation-scholar/" target="_blank">Educational Innovation Scholar</a>
-</h4>
-<p class="source">
-Center for Health Decision Science
-</p>
+</div>
+<div class="t-body">
+<a href="https://chds.hsph.harvard.edu/chds-welcomes-new-educational-innovation-scholar/" target="_blank">Educational Innovation Scholar</a><span class="t-sep">·</span><span class="t-sub">Center for Health Decision Science, Harvard</span>
 </div>
 </div>
 </div>
-<hr>
-<div class="section-header">
-<h2 class="anchored">
-Instructor of Record
-</h2>
+<div class="section-cmd">
+<span class="ps">$</span> ls instructor-of-record/
 </div>
-<div class="teaching-grid">
-<div class="course-card">
-<span class="role-badge instructor">Instructor</span>
-<p class="institution">
-Harvard Kennedy School
-</p>
-<h4 class="anchored">
+<div class="t-grid">
+<div class="t-cell">
+<div class="t-cell-title">
 Economics for Public Policy
-</h4>
-<p class="role">
-PPIA Junior Summer Institute
-</p>
-<p class="years">
-2024, 2025
-</p>
 </div>
-<div class="course-card">
-<span class="role-badge instructor">Instructor</span>
-<p class="institution">
-Harvard Kennedy School
-</p>
-<h4 class="anchored">
+<div class="t-cell-sub">
+<span class="t-sub">Harvard Kennedy School, PPIA Junior Summer Institute</span><span class="t-sep">·</span><span class="t-cell-yrs">2024 · 2025</span><span class="t-role">instructor</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
 Math Camp for Incoming PhD Students
-</h4>
-<p class="role">
-Public Policy, Health Policy, Business Economics
-</p>
-<p class="years">
-2023, 2024, 2025
-</p>
 </div>
-<div class="course-card">
-<span class="role-badge instructor">Co-Instructor</span>
-<p class="institution">
-UChicago · Center for Translational Science
-</p>
-<h4 class="anchored">
+<div class="t-cell-sub">
+<span class="t-sub">Harvard Kennedy School</span><span class="t-sep">·</span><span class="t-cell-yrs">2023 · 2024 · 2025</span><span class="t-role">instructor</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
 Data, Quantitative Methods, and Applications in Health Services Research
-</h4>
-<p class="years">
-2021, 2022, 2023
-</p>
 </div>
-<div class="course-card">
-<span class="role-badge instructor">Instructor</span>
-<p class="institution">
-UChicago · Harris School of Public Policy
-</p>
-<h4 class="anchored">
+<div class="t-cell-sub">
+<span class="t-sub">UChicago · Center for Translational Science</span><span class="t-sep">·</span><span class="t-cell-yrs">2021 · 2022 · 2023</span><span class="t-role">co-instructor</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
 Coding Lab for Public Policy
-</h4>
-<p class="role">
-Curriculum Developer
-</p>
-<p class="years">
-2021
-</p>
 </div>
-<div class="course-card">
-<span class="role-badge instructor">Teacher</span>
-<p class="institution">
-Teach For America · Achievement First
-</p>
-<h4 class="anchored">
+<div class="t-cell-sub">
+<span class="t-sub">UChicago · Harris School of Public Policy</span><span class="t-sep">·</span><span class="t-cell-yrs">2021</span><span class="t-role">instructor</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
 7th/8th Grade Mathematics
-</h4>
-<p class="role">
-Amistad Academy Middle School, New Haven CT
-</p>
-<p class="years">
-2018–2020
-</p>
+</div>
+<div class="t-cell-sub">
+<span class="t-sub">Teach For America · Amistad Academy, New Haven CT</span><span class="t-sep">·</span><span class="t-cell-yrs">2018 · 2019 · 2020</span><span class="t-role">teacher</span>
 </div>
 </div>
-<hr>
-<div class="section-header">
-<h2 class="anchored">
-Teaching Fellow
-</h2>
 </div>
-<div class="tf-grid">
-<div class="tf-card">
-<p class="institution">
-Harvard T.H. Chan School of Public Health
-</p>
-<ul>
-<li>
-<span class="course-name">Decision Science for Public Health</span> <span class="years">2023, 2024, 2025</span>
-</li>
-</ul>
+<div class="section-cmd">
+<span class="ps">$</span> ls teaching-fellow/
 </div>
-<div class="tf-card">
-<p class="institution">
-Harvard Kennedy School
-</p>
-<ul>
-<li>
-<span class="course-name">Big Data and Machine Learning</span> <span class="years">2023, 2024, 2025</span>
-</li>
-<li>
-<span class="course-name">Resources, Incentives, and Choices I</span> <span class="years">2022–2025</span>
-</li>
-<li>
-<span class="course-name">Game Theory</span> <span class="years">2023, 2024</span>
-</li>
-<li>
-<span class="course-name">Data and Programming for Policymakers</span> <span class="years">2023</span>
-</li>
-</ul>
+<div class="t-grid">
+<div class="t-cell">
+<div class="t-cell-title">
+Decision Science for Public Health
 </div>
-<div class="tf-card">
-<p class="institution">
-UChicago · Computer Science
-</p>
-<ul>
-<li>
-<span class="course-name">Machine Learning for Public Policy</span> <span class="years">2022</span>
-</li>
-<li>
-<span class="course-name">Mathematics for Data Analysis and CS</span> <span class="years">2022</span>
-</li>
-</ul>
-</div>
-<div class="tf-card">
-<p class="institution">
-UChicago · Booth School of Business
-</p>
-<ul>
-<li>
-<span class="course-name">Introductory Finance</span> <span class="years">2020, 2021, 2022</span>
-</li>
-<li>
-<span class="course-name">Data Analysis in R and Python</span> <span class="years">2021</span>
-</li>
-</ul>
-</div>
-<div class="tf-card">
-<p class="institution">
-UChicago · Center for Translational Science
-</p>
-<ul>
-<li>
-<span class="course-name">Introduction to Health Services Research</span> <span class="years">2021</span>
-</li>
-</ul>
+<div class="t-cell-sub">
+<span class="t-sub">Harvard T.H. Chan School of Public Health</span><span class="t-sep">·</span><span class="t-cell-yrs">2023 · 2024 · 2025 · 2026</span>
 </div>
 </div>
-<hr>
-<div class="section-header">
-<h2 class="anchored">
-Professional Workshops
-</h2>
+<div class="t-cell">
+<div class="t-cell-title">
+Big Data and Machine Learning
 </div>
-<div class="workshop-grid">
-<div class="workshop-card">
-<h4 class="anchored">
-An Introduction to Reproducible Programming and Project Management
-</h4>
-<p>
-Society for Medical Decision Making · Annual Meeting 2024
-</p>
-</div>
-<div class="workshop-card">
-<h4 class="anchored">
-Transparent Programming: Important Habits for Reproducibility and Research Integrity
-</h4>
-<p>
-Society for Medical Decision Making · Annual Meeting 2023
-</p>
+<div class="t-cell-sub">
+<span class="t-sub">Harvard Kennedy School</span><span class="t-sep">·</span><span class="t-cell-yrs">2023 · 2024 · 2025 · 2026</span>
 </div>
 </div>
-<hr>
-<div class="section-header">
-<h2 class="anchored">
-Open Course Materials
-</h2>
+<div class="t-cell">
+<div class="t-cell-title">
+Resources, Incentives, and Choices I
 </div>
-<div class="materials-grid">
-<div class="material-card">
-<div class="icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line>
-</svg>
-</div>
-<h4 class="anchored">
-Introduction to R
-</h4>
-<p>
-9-module course for policy students new to programming.
-</p>
-<p><a href="./R files/Intro R.html" class="btn">View Materials</a></p>
-</div>
-<div class="material-card">
-<div class="icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line>
-</svg>
-</div>
-<h4 class="anchored">
-Intro to Git &amp; GitHub
-</h4>
-<p>
-Version control for researchers and students.
-</p>
-<p><a href="./git files/Intro Git.html" class="btn">View Materials</a></p>
-</div>
-<div class="material-card">
-<div class="icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>
-</svg>
-</div>
-<h4 class="anchored">
-API 222 Sections
-</h4>
-<p>
-Machine learning section materials.
-</p>
-<p><a href="./api 222 files/API222.html" class="btn">View Materials</a></p>
+<div class="t-cell-sub">
+<span class="t-sub">Harvard Kennedy School</span><span class="t-sep">·</span><span class="t-cell-yrs">2022 · 2023 · 2024 · 2025</span>
 </div>
 </div>
-<hr>
+<div class="t-cell">
+<div class="t-cell-title">
+Game Theory
+</div>
+<div class="t-cell-sub">
+<span class="t-sub">Harvard Kennedy School</span><span class="t-sep">·</span><span class="t-cell-yrs">2023 · 2024 · 2026</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
+Data and Programming for Policymakers
+</div>
+<div class="t-cell-sub">
+<span class="t-sub">Harvard Kennedy School</span><span class="t-sep">·</span><span class="t-cell-yrs">2023</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
+Machine Learning for Public Policy
+</div>
+<div class="t-cell-sub">
+<span class="t-sub">UChicago · Computer Science</span><span class="t-sep">·</span><span class="t-cell-yrs">2022</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
+Mathematics for Data Analysis and CS
+</div>
+<div class="t-cell-sub">
+<span class="t-sub">UChicago · Computer Science</span><span class="t-sep">·</span><span class="t-cell-yrs">2022</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
+Introductory Finance
+</div>
+<div class="t-cell-sub">
+<span class="t-sub">UChicago · Booth School of Business</span><span class="t-sep">·</span><span class="t-cell-yrs">2020 · 2021 · 2022</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
+Data Analysis in R and Python
+</div>
+<div class="t-cell-sub">
+<span class="t-sub">UChicago · Booth School of Business</span><span class="t-sep">·</span><span class="t-cell-yrs">2021</span>
+</div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">
+Introduction to Health Services Research
+</div>
+<div class="t-cell-sub">
+<span class="t-sub">UChicago · Center for Translational Science</span><span class="t-sep">·</span><span class="t-cell-yrs">2021</span>
+</div>
+</div>
+</div>
+<div class="section-cmd">
+<span class="ps">$</span> ls workshops/
+</div>
+<div class="t-list">
+<div class="t-item">
+<div class="t-year">
+2024
+</div>
+<div class="t-body">
+An Introduction to Reproducible Programming and Project Management<span class="t-sep">·</span><span class="t-sub">Society for Medical Decision Making · Annual Meeting</span>
+</div>
+</div>
+<div class="t-item">
+<div class="t-year">
+2023
+</div>
+<div class="t-body">
+Transparent Programming: Important Habits for Reproducibility and Research Integrity<span class="t-sep">·</span><span class="t-sub">Society for Medical Decision Making · Annual Meeting</span>
+</div>
+</div>
+</div>
+<div class="section-cmd">
+<span class="ps">$</span> ls open-materials/
+</div>
+<div class="t-list">
+<div class="t-item">
+<div class="t-year">
+R
+</div>
+<div class="t-body">
+Introduction to R<span class="t-sep">·</span><span class="t-sub">9-module course for policy students new to programming</span>&nbsp;<a href="./R files/Intro R.html" class="t-link">view</a>
+</div>
+</div>
+<div class="t-item">
+<div class="t-year">
+git
+</div>
+<div class="t-body">
+Introduction to Git &amp; GitHub<span class="t-sep">·</span><span class="t-sub">Version control for researchers and students</span>&nbsp;<a href="./git files/Intro Git.html" class="t-link">view</a>
+</div>
+</div>
+<div class="t-item">
+<div class="t-year">
+ML
+</div>
+<div class="t-body">
+API 222 Section Materials<span class="t-sep">·</span><span class="t-sub">Machine learning section materials</span>&nbsp;<a href="./api 222 files/API222.html" class="t-link">view</a>
+</div>
+</div>
+</div>
 
 
 
@@ -1271,7 +977,7 @@ Machine learning section materials.
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Jacob Jameson</p>
+<p>© 2026 Jacob Jameson</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

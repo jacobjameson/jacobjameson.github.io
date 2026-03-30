@@ -1,424 +1,442 @@
-// Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat');
-
 /*-- scss:defaults --*/
-$font-family-base: 'Montserrat', sans-serif;
 
-// Custom Variables
-$retro: 'Handjet', cursive;
+// Typography
+$font-family-base: 'Inter', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.75;
+$mono: 'JetBrains Mono', 'Courier New', monospace;
+
+// Colors
+$body-bg:           #ffffff;
+$body-color:        #111111;
+$link-color:        #111111;
+$link-hover-color:  #16a34a;
+$primary:           #16a34a;
+$secondary:         #888888;
+$light:             #f5f5f5;
+$dark:              #111111;
+
+// Navbar
+$navbar-bg:         #ffffff;
+$navbar-fg:         #111111;
+$navbar-hl:         #16a34a;
+
+// Headings
+$headings-font-family:  'Inter', sans-serif;
+$headings-font-weight:  500;
+$headings-line-height:  1.15;
+$headings-color:        #111111;
 
 /*-- scss:rules --*/
-#title-block-header.quarto-title-block.default .quarto-title .title {
-  font-family: $retro;
-  font-size: $font-size-base * 5;
-  line-height: 0.8;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+
+// ============================================================
+// Base
+// ============================================================
+body {
+  background: $body-bg;
+  color: $body-color;
+  font-weight: 300;
 }
 
-p.subtitle.lead {
-  font-family: $retro;
-  font-size: $font-size-base * 4.5;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-top: 0px !important;
+a {
+  color: $link-color;
+  text-decoration: underline;
+  text-decoration-color: #aaa;
+  text-underline-offset: 3px;
+  transition: color 0.12s, text-decoration-color 0.12s;
+}
+a:hover {
+  color: $primary;
+  text-decoration-color: $primary;
+}
+
+::selection {
+  background: #bbf7d0;
+  color: #111;
+}
+
+// ============================================================
+// Navbar
+// ============================================================
+.navbar {
+  background-color: $body-bg !important;
+  border-bottom: 1px solid #aaa;
+  font-family: $mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+
+  .navbar-brand img { display: none; }
+
+  .navbar-brand::after {
+    content: 'Home';
+    font-family: $mono;
+    font-size: 0.78rem;
+    color: #888;
+    letter-spacing: 0.04em;
+    transition: color 0.12s;
+  }
+  .navbar-brand:hover::after { color: $primary; }
+
+  .nav-link {
+    color: #888 !important;
+    padding: 0.3rem 0.65rem;
+    transition: color 0.12s;
+    &:hover  { color: #111 !important; }
+    &.active { color: $primary !important; }
+  }
+
+  .dropdown-menu {
+    font-family: $mono;
+    font-size: 0.78rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    .dropdown-item {
+      color: #888;
+      padding: 0.4rem 1rem;
+      &:hover { background: #f5f5f5; color: #111; }
+    }
+  }
+}
+
+// ============================================================
+// Footer
+// ============================================================
+.nav-footer {
+  background: $body-bg;
+  border-top: 1px solid #aaa;
+  font-family: $mono;
+  font-size: 0.72rem;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  padding: 1.1rem 0;
+  a { color: #bbb; text-decoration: none; &:hover { color: $primary; } }
+}
+
+// ============================================================
+// Trestles about layout
+// ============================================================
+#title-block-header.quarto-title-block.default .quarto-title .title {
+  font-family: $mono;
+  font-size: $font-size-base * 2.2;
+  font-weight: 400;
+  letter-spacing: -0.5px;
 }
 
 .about-image {
-  margin-top: 1.5em;
+  margin-top: 0.75rem;
+  border-radius: 50% !important;
+  filter: grayscale(10%);
+  box-shadow: 0 0 0 3px #aaa;
+  transition: filter 0.2s;
+  &:hover { filter: grayscale(0%); }
 }
 
+.about-links .about-link {
+  font-family: $mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: #aaa;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  padding: 0.25rem 0.6rem;
+  text-decoration: none !important;
+  transition: color 0.12s, border-color 0.12s;
+  &:hover { color: $primary; border-color: #bbf7d0; }
+}
+
+// ============================================================
+// Section headings — command-style
+// ============================================================
+h2 {
+  font-family: $mono;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #aaa;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #aaa;
+  &::before { content: '$ '; color: $primary; }
+}
+
+h3 {
+  font-family: $mono;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #888;
+  margin-top: 1.5rem;
+  &::before { content: '# '; color: #ddd; }
+}
+
+// ============================================================
+// Prompt line (index.qmd hero)
+// ============================================================
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.prompt-line {
+  font-family: $mono;
+  font-size: 0.78rem;
+  color: #bbb;
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  .ps1  { color: $primary; }
+  .host { color: #2563eb; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: #111;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: cursor-blink 1.1s step-end infinite;
+}
+
+.hero-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  color: #111;
+  strong { font-weight: 500; }
+}
+
+.hero-subtitle {
+  font-family: $mono;
+  font-size: 0.72rem;
+  color: #bbb;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.1rem;
+}
+
+// ============================================================
+// Research tags
+// ============================================================
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 1.1rem 0 0;
+}
+
+.tag {
+  font-family: $mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: #aaa;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  padding: 2px 7px;
+  cursor: default;
+  transition: color 0.12s, border-color 0.12s;
+  &:hover { color: $primary; border-color: #bbf7d0; }
+}
+
+// ============================================================
+// News
+// ============================================================
+.news-item {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 0 1.25rem;
+  padding: 9px 0;
+  border-bottom: 1px solid #aaa;
+  align-items: baseline;
+  &:first-of-type { border-top: 1px solid #aaa; }
+}
+
+.news-date {
+  font-family: $mono;
+  font-size: 0.68rem;
+  color: #ccc;
+  letter-spacing: 0.04em;
+  padding-top: 1px;
+  white-space: nowrap;
+}
+
+.news-text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: #444;
+  line-height: 1.65;
+  a {
+    color: #111;
+    text-decoration: underline;
+    text-decoration-color: #aaa;
+    text-underline-offset: 2px;
+    &:hover { color: $primary; text-decoration-color: $primary; }
+  }
+}
+
+.news-flag {
+  display: inline-block;
+  font-family: $mono;
+  font-size: 0.62rem;
+  color: $primary;
+  border: 1px solid #bbf7d0;
+  padding: 1px 5px;
+  border-radius: 2px;
+  margin-right: 6px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  letter-spacing: 0.05em;
+}
+
+details > summary {
+  font-family: $mono;
+  font-size: 0.68rem;
+  color: #bbb;
+  cursor: pointer;
+  padding: 10px 0 2px;
+  list-style: none;
+  outline: none;
+  letter-spacing: 0.06em;
+  transition: color 0.12s;
+  &:hover { color: $primary; }
+  &::before { content: '▸  '; }
+}
+details[open] > summary::before { content: '▾  '; }
+
+// ============================================================
+// Blog listing (posts/blog.qmd)
+// ============================================================
+.quarto-post {
+  border-bottom: 1px solid #aaa !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  padding: 14px 0 !important;
+  box-shadow: none !important;
+  transition: opacity 0.12s;
+  &:hover { opacity: 0.6; }
+
+  .listing-title {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: #111;
+  }
+  .listing-date, .listing-reading-time, .listing-author {
+    font-family: $mono;
+    font-size: 0.68rem;
+    color: #bbb;
+    letter-spacing: 0.04em;
+  }
+  .listing-categories .listing-category {
+    font-family: $mono;
+    font-size: 0.65rem;
+    color: #aaa;
+    border: 1px solid #e4e4e4;
+    border-radius: 2px;
+    background: transparent;
+    padding: 1px 6px;
+    &:hover { color: $primary; border-color: #bbf7d0; }
+  }
+}
+
+// ============================================================
+// Publication cards
+// ============================================================
+.publication-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  box-shadow: none;
+  transition: border-color 0.12s;
+  &:hover { border-color: $primary; }
+
+  h3 { font-size: 0.9rem; font-weight: 400; color: #111; margin: 0 0 0.35rem; }
+  p  { font-family: $mono; font-size: 0.72rem; color: #aaa; margin: 0.15rem 0; }
+}
+
+.card-buttons a, .card-buttons button {
+  font-family: $mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  border-radius: 3px;
+  padding: 0.25rem 0.6rem;
+  font-weight: 400;
+}
+.card-buttons a.view-article {
+  background: #111; color: #fff; text-decoration: none;
+  &:hover { background: $primary; }
+}
+.card-buttons a.view-data {
+  background: #fff; color: #888; border: 1px solid #e4e4e4; text-decoration: none;
+  &:hover { border-color: $primary; color: $primary; }
+}
+.card-buttons button.more-info {
+  background: #fff; color: #888; border: 1px solid #e4e4e4;
+  &:hover { border-color: $primary; color: $primary; }
+}
+
+// ============================================================
+// Teaching cards
+// ============================================================
+.teaching-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  box-shadow: none;
+  transition: border-color 0.12s;
+  &:hover { border-color: $primary; }
+
+  h3  { font-size: 0.9rem; font-weight: 400; color: #111; margin-top: 0; }
+  p, ul { font-family: $mono; font-size: 0.75rem; color: #aaa; }
+}
+
+// ============================================================
+// Code
+// ============================================================
+pre, code { font-family: $mono !important; font-size: 0.83rem; }
+pre {
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  background: #fafafa !important;
+}
+
+// ============================================================
+// webR
+// ============================================================
 #webr-run-button-1.btn.btn-default.btn-webr,
 #webr-run-button-2.btn.btn-default.btn-webr,
 #webr-run-button-3.btn.btn-default.btn-webr,
-#webr-run-button-4.btn.btn-default.btn-webr{
-  background-color: #18bc9c;
-}
-
-
-
-.button {
-  display: inline-block;
-  padding: 10px 15px;
-  font-size: 14px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #18bc9c;
+#webr-run-button-4.btn.btn-default.btn-webr {
+  font-family: $mono;
+  font-size: 0.75rem;
+  background-color: $primary;
   border: none;
-  border-radius: 5px;
-  box-shadow: 0 6px #999;
+  border-radius: 3px;
 }
 
-.button:hover {background-color: #18bc9c}
-
-.button:active {
-  background-color: #18bc9c;
-  box-shadow: 0 3px #666;
-  transform: translateY(4px);
-}
-
-
-@import 'https://fonts.googleapis.com/css?family=Roboto';
-
-h2, a, p {
-	font-family: Roboto;
-	text-decoration: none;
-}
-p>a {
-	color: #fd084a;
-}
-.blink {
-  animation: blink 0.5s infinite;
-}
-@keyframes blink{
-  to { opacity: .0; }
-}
-.flex {
-	display: flex;
-}
-.header-sub-title {
-  color: darkblue;
-  font-family: "Courier";
-  font-size: 20px;
-  padding: 0.1em;
-}
-
-
-.navbar {
-  background-color:  #343a40;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-}
-
-    #markovChain {
-        width: 800px;
-        height: 600px;
-        border: 1px solid black;
-        position: relative;
-    }
-    .node {
-        fill: #69b3a2;
-        stroke: #000;
-        stroke-width: 1.5px;
-    }
-    .link {
-        stroke: #999;
-        stroke-opacity: 0.6;
-    }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-/* Publication Cards */
-.publication-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  max-width: 600px;
-  flex: 1 1 calc(50% - 20px); /* Adjusts to fit two cards per row */
-  transition: transform 0.2s ease-in-out;
-}
-
-.publication-card:hover {
-  transform: scale(1.02);
-}
-
-.publication-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
-}
-
-.publication-card-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
-}
-
-.publication-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.25em;
-  color: #0056b3;
-}
-
-.publication-card p {
-  margin: 5px 0;
-  font-size: 0.9em;
-  color: #555;
-}
-
-/* Buttons */
-.card-buttons {
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.card-buttons a,
-.card-buttons button {
-  text-decoration: none;
-  padding: 8px 12px;
-  font-size: 0.85em;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.card-buttons a.view-article {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.card-buttons a.view-article:hover {
-  background-color: #0056b3;
-}
-
-.card-buttons a.view-data {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.card-buttons a.view-data:hover {
-  background-color: #218838;
-}
-
-.card-buttons button.more-info {
-  background-color: #ffc107;
-  color: #212529;
-}
-
-.card-buttons button.more-info:hover {
-  background-color: #e0a800;
-}
-
-/* Modal Styling */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}
+// ============================================================
+// Cleanup
+// ============================================================
+.bubbles-container, .bubble { display: none; }
+.blink { display: none; }
+.header-sub-title { display: none; }
 
 .modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-  text-align: left;
-}
-
-.modal-content p {
-  margin: 10px 0;
-  font-size: 0.9em;
-  line-height: 1.5;
-}
-
-.modal-content .close {
-  color: #aaa;
-  float: right;
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
-.modal-content .close:hover {
-  color: #000;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .publication-card {
-    flex: 1 1 calc(100% - 20px); /* Stacks cards vertically */
-  }
-
-  .publication-card img {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-@media (max-width: 480px) {
-  .publication-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .publication-card img {
-    margin-bottom: 10px;
-  }
-
-  .card-buttons {
-    justify-content: center;
-  }
-
-  .card-buttons a,
-  .card-buttons button {
-    width: 100%; /* Buttons span full width on mobile */
-    text-align: center;
-  }
-}
-
-
-/* General Container for Teaching Cards */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin: 20px auto;
-  max-width: 1200px;
-}
-
-/* Teaching Cards */
-.teaching-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 16px;
-  max-width: 400px;
-  flex: 1 1 calc(33.333% - 20px); /* Three cards per row */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-.teaching-card:hover {
-  transform: scale(1.02);
-}
-
-.teaching-card h3 {
-  margin-top: 0;
-  font-size: 1.25em;
-  color: #0056b3;
-}
-
-.teaching-card p,
-.teaching-card ul {
-  margin: 5px 0;
-  font-size: 0.9em;
-  color: #555;
-}
-
-.teaching-card ul {
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .teaching-card {
-    flex: 1 1 calc(50% - 20px); /* Two cards per row */
-  }
-}
-
-@media (max-width: 480px) {
-  .teaching-card {
-    flex: 1 1 100%; /* One card per row */
-  }
-
-}
-
-/* Container for Bubbles */
-.bubbles-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin: 50px auto;
-}
-
-/* Individual Bubble */
-.bubble {
-  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Default vibrant gradient */
-  color: white;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2em;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.bubble a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.bubble:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Specific Bubble Colors */
-.research-bubble {
-  background: linear-gradient(135deg, #ff512f, #dd2476); /* Vibrant red-pink */
-}
-
-.teaching-bubble {
-  background: linear-gradient(135deg, #24c6dc, #514a9d); /* Vibrant blue-purple */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .bubble {
-    width: 120px;
-    height: 120px;
-    font-size: 1em;
-  }
-}
-
-@media (max-width: 480px) {
-  .bubble {
-    width: 100px;
-    height: 100px;
-    font-size: 0.9em;
-  }
-}
-
-.news-block {
-  background-color: #f9f9f9;
-  border-left: 4px solid #333;
-  padding: 0.8em 1em;
-  margin-bottom: 1em;
   border-radius: 4px;
-}
-.news-block a {
-  color: #0056b3;
-  text-decoration: none;
-}
-.news-block a:hover {
-  text-decoration: underline;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  font-family: $mono;
+  font-size: 0.8rem;
 }

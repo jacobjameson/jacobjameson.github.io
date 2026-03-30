@@ -1,576 +1,277 @@
 ---
 title: "Research"
-output:
-  tufte::tufte_html: default
-  tufte::tufte_handout:
-    citation_package: natbib
-    latex_engine: xelatex
-  tufte::tufte_book:
-    citation_package: natbib
-    latex_engine: xelatex
-link-citations: true
-reference-location: margin
+page-layout: full
 format:
   html:
     toc: true
     toc-location: left
-page-layout: full
 ---
-
 
 <style>
-/* ============================================
-RESEARCH PAGE STYLES
-============================================ */
 
-/* JMP Hero Section */
-.jmp-hero {
-background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-border-radius: 20px;
-padding: 2.5rem;
-margin: 1.5rem 0 2.5rem;
-position: relative;
-overflow: hidden;
-border: 1px solid #334155;
-}
-
-.jmp-hero::before {
-content: '';
-position: absolute;
-top: -100px;
-right: -100px;
-width: 400px;
-height: 400px;
-background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
-pointer-events: none;
-}
-
-.jmp-hero::after {
-content: '';
-position: absolute;
-bottom: -150px;
-left: -100px;
-width: 350px;
-height: 350px;
-background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
-pointer-events: none;
-}
-
-.jmp-top {
+.section-cmd {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.72rem;
+color: #aaa;
+letter-spacing: 0.08em;
+margin: 3rem 0 0;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid #e4e4e4;
 display: flex;
 align-items: center;
-gap: 1rem;
-margin-bottom: 1.25rem;
-flex-wrap: wrap;
+gap: 6px;
 }
+.section-cmd .ps { color: #16a34a; }
 
-.jmp-badge {
-display: inline-block;
-background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-color: white;
-font-size: 0.7rem;
-font-weight: 700;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-padding: 0.5rem 1.1rem;
-border-radius: 100px;
-box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
+.pub-list { display: flex; flex-direction: column; }
 
-.jmp-award {
-display: inline-flex;
-align-items: center;
-gap: 0.4rem;
-background: rgba(251, 191, 36, 0.15);
-border: 1px solid rgba(251, 191, 36, 0.3);
-color: #fbbf24;
-font-size: 0.75rem;
-font-weight: 600;
-padding: 0.4rem 0.9rem;
-border-radius: 100px;
-}
-
-.jmp-hero h3 {
-font-size: 1.65rem;
-color: white;
-margin: 0 0 1rem;
-line-height: 1.35;
-position: relative;
-}
-
-.jmp-hero h3 a {
-color: white;
-text-decoration: none;
-transition: color 0.2s ease;
-}
-
-.jmp-hero h3 a:hover {
-color: #93c5fd;
-}
-
-.jmp-authors {
-color: #94a3b8;
-font-size: 0.95rem;
-margin-bottom: 1.25rem;
-line-height: 1.5;
-}
-
-.jmp-authors mark {
-background: rgba(59, 130, 246, 0.25);
-color: #e2e8f0;
-padding: 0.15em 0.4em;
-border-radius: 4px;
-font-weight: 500;
-}
-
-.jmp-summary {
-color: #cbd5e1;
-font-size: 1rem;
-line-height: 1.75;
-margin-bottom: 1.75rem;
-max-width: 800px;
-}
-
-.jmp-summary strong {
-color: #f1f5f9;
-}
-
-.jmp-links {
-display: flex;
-flex-wrap: wrap;
-gap: 0.75rem;
-}
-
-.jmp-links a {
-display: inline-flex;
-align-items: center;
-gap: 0.5rem;
-padding: 0.7rem 1.4rem;
-border-radius: 10px;
-font-weight: 600;
-font-size: 0.9rem;
-text-decoration: none;
-transition: all 0.2s ease;
-}
-
-.jmp-links a.primary {
-background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-color: white;
-box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
-}
-
-.jmp-links a.primary:hover {
-transform: translateY(-2px);
-box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
-}
-
-.jmp-links a.secondary {
-background: rgba(255,255,255,0.08);
-color: #e2e8f0;
-border: 1px solid rgba(255,255,255,0.15);
-}
-
-.jmp-links a.secondary:hover {
-background: rgba(255,255,255,0.15);
-transform: translateY(-2px);
-}
-
-/* Section Headers */
-.section-header {
-display: flex;
-align-items: center;
-gap: 1rem;
-margin: 3rem 0 1.5rem;
-}
-
-.section-header h2 {
-margin: 0;
-border: none;
-padding: 0;
-white-space: nowrap;
-font-size: 1.5rem;
-}
-
-.section-header::after {
-content: '';
-flex: 1;
-height: 2px;
-background: linear-gradient(90deg, #cbd5e1 0%, transparent 100%);
-}
-
-/* Publication Cards */
-.pub-grid {
+.pub-item {
 display: grid;
-grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-gap: 1.5rem;
-margin: 1.5rem 0;
+grid-template-columns: 72px 1fr;
+gap: 0 1.25rem;
+padding: 10px 0;
+border-bottom: 1px solid #f0f0f0;
+align-items: baseline;
+}
+.pub-item:first-child { border-top: 1px solid #f0f0f0; }
+
+.pub-status {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.68rem;
+color: #888;
+letter-spacing: 0.03em;
+padding-top: 1px;
+white-space: nowrap;
+line-height: 1.65;
 }
 
-.pub-card {
-background: white;
-border: 1px solid #e2e8f0;
-border-radius: 12px;
-padding: 1.25rem;
-display: flex;
-gap: 1rem;
-transition: all 0.2s ease;
-box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+.pub-body {
+font-size: 0.85rem;
+font-weight: 300;
+color: #333;
+line-height: 1.65;
 }
 
-.pub-card:hover {
-transform: translateY(-4px);
-box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-border-color: #cbd5e1;
+.pub-body a {
+color: #111;
+text-decoration: underline;
+text-decoration-color: #e0e0e0;
+text-underline-offset: 2px;
+}
+.pub-body a:hover { color: #16a34a; text-decoration-color: #16a34a; }
+
+.pub-venue {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.67rem;
+color: #777;
+display: block;
+margin-top: 2px;
 }
 
-.pub-card img {
-width: 80px;
-height: 80px;
-object-fit: cover;
-border-radius: 8px;
-flex-shrink: 0;
-}
-
-.pub-card-content {
-flex: 1;
-min-width: 0;
-display: flex;
-flex-direction: column;
-}
-
-.pub-card h4 {
-font-size: 0.95rem;
-color: #1e293b;
-margin: 0 0 0.4rem;
-line-height: 1.4;
-font-weight: 600;
-}
-
-.pub-card h4 a {
-color: #1e293b;
-text-decoration: none;
-}
-
-.pub-card h4 a:hover {
-color: #3b82f6;
-}
-
-.pub-card .authors {
-font-size: 0.8rem;
-color: #64748b;
-margin-bottom: 0.25rem;
-line-height: 1.4;
-}
-
-.pub-card .authors mark {
-background: linear-gradient(120deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
-color: #1e293b;
-padding: 0.1em 0.25em;
-border-radius: 3px;
-font-weight: 500;
-}
-
-.pub-card .venue {
-font-size: 0.8rem;
-color: #3b82f6;
-font-weight: 500;
-margin-bottom: 0.6rem;
-}
-
-/* Tags - NO WRAP */
-.tags {
-display: flex;
-flex-wrap: wrap;
-gap: 0.35rem;
-margin-bottom: 0.6rem;
-}
-
-.tag {
+.pub-award {
+font-family: 'JetBrains Mono', monospace;
 font-size: 0.65rem;
-font-weight: 600;
+color: #16a34a;
+display: block;
+margin-top: 3px;
 letter-spacing: 0.02em;
-padding: 0.2rem 0.5rem;
-border-radius: 4px;
-text-transform: uppercase;
-white-space: nowrap;
 }
 
-.tag.causal { background: #dbeafe; color: #1d4ed8; }
-.tag.ml { background: #fce7f3; color: #be185d; }
-.tag.ops { background: #d1fae5; color: #047857; }
-.tag.policy { background: #ede9fe; color: #6d28d9; }
-.tag.equity { background: #fef3c7; color: #b45309; }
-.tag.tic { background: #e0e7ff; color: #4338ca; }
-.tag.genomics { background: #ccfbf1; color: #0f766e; }
-.tag.social { background: #fee2e2; color: #b91c1c; }
-.tag.bayes { background: #fae8ff; color: #a21caf; }
-
-/* Card Buttons */
-.pub-links {
+.pub-row {
 display: flex;
+align-items: center;
 flex-wrap: wrap;
-gap: 0.4rem;
-margin-top: auto;
+gap: 5px;
+margin-top: 6px;
 }
 
-.pub-links a {
-font-size: 0.75rem;
-padding: 0.35rem 0.7rem;
-border-radius: 6px;
-font-weight: 600;
+.pub-tag {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.6rem;
+color: #888;
+border: 1px solid #ddd;
+padding: 1px 6px;
+border-radius: 2px;
+letter-spacing: 0.03em;
+}
+
+.pub-link {
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.65rem;
+letter-spacing: 0.04em;
+padding: 2px 10px;
+border-radius: 2px;
 text-decoration: none;
-transition: all 0.2s ease;
-white-space: nowrap;
+transition: all 0.12s;
+}
+.pub-link.paper { background: #111; color: #fff; }
+.pub-link.paper:hover { background: #16a34a; }
+.pub-link.code { border: 1px solid #16a34a; color: #16a34a; }
+.pub-link.code:hover { background: #16a34a; color: #fff; }
+
+.pub-flag {
+display: inline-block;
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.62rem;
+color: #16a34a;
+border: 1px solid #bbf7d0;
+padding: 1px 5px;
+border-radius: 2px;
+margin-right: 4px;
+letter-spacing: 0.05em;
+vertical-align: middle;
+position: relative;
+top: -1px;
 }
 
-.pub-links a.paper {
-background: #3b82f6;
-color: white;
-}
+.me { font-weight: 500; color: #111; }
 
-.pub-links a.paper:hover {
-background: #2563eb;
-}
-
-.pub-links a.code {
-background: #1e293b;
-color: white;
-}
-
-.pub-links a.code:hover {
-background: #0f172a;
-}
-
-/* ============================================
-MOBILE RESPONSIVE
-============================================ */
-
-@media (max-width: 768px) {
-.jmp-hero {
-padding: 1.75rem;
-}
-
-.jmp-hero h3 {
-font-size: 1.35rem;
-}
-
-.jmp-top {
-flex-direction: column;
-align-items: flex-start;
-gap: 0.6rem;
-}
-
-.jmp-links {
-flex-direction: column;
-}
-
-.jmp-links a {
-width: 100%;
-justify-content: center;
-}
-
-.pub-grid {
-grid-template-columns: 1fr;
-}
-
-.pub-card {
-flex-direction: column;
-text-align: center;
-}
-
-.pub-card img {
-width: 100%;
-max-width: 100px;
-height: auto;
-margin: 0 auto;
-}
-
-.tags, .pub-links {
-justify-content: center;
-}
-
-.section-header h2 {
-font-size: 1.25rem;
-}
-}
 </style>
 
-My research develops and applies methods in causal inference, Bayesian statistics, and reinforcement learning to improve decision-making in health and public policy. I work at the intersection of statistics, computer science, and health policy, with applications to problems in suicide prevention, emergency department operations, and precision medicine.
+My research develops and applies methods in causal inference, Bayesian statistics, and reinforcement learning to improve decision-making in health and public policy — with applications to suicide prevention, emergency department operations, and precision medicine.
 
 ---
 
+<div class="section-cmd"><span class="ps">$</span> ls working-papers/</div>
 
-<div class="section-header">
-<h2>Working Papers</h2>
-</div>
+<div class="pub-list">
 
-<div class="pub-grid">
-
-<div class="pub-card">
-<img src="images/Hospital.gif" alt="ED Operations">
-<div class="pub-card-content">
-<h4><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193207" target="_blank">The Impact of Batching Advanced Imaging Tests in Emergency Departments</a></h4>
-<p class="authors"><mark>Jameson JC</mark>, Saghafian S, Huckman RS, Hodgson N, Baugh J</p>
-<p class="venue">Under Revision</p>
-<div class="tags">
-<span class="tag ops">Operations</span>
-<span class="tag causal">Causal</span>
-</div>
-<div class="pub-links">
+<div class="pub-item">
+<div class="pub-status">revision</div>
+<div class="pub-body">
+<span class="pub-flag">featured</span><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193207" target="_blank">The Impact of Batching Advanced Imaging Tests in Emergency Departments</a>
+<span class="pub-venue"><span class="me">Jameson JC</span>, Saghafian S, Huckman RS, Hodgson N, Baugh J</span>
+<span class="pub-award">IOE-ISyE-MS&amp;E Rising Stars Workshop — People's Choice Award for Poster Presentation, 2026</span>
+<span class="pub-award">INFORMS Health Applications Society Best Student Paper — Honorable Mention, 2025</span>
+<div class="pub-row">
+<span class="pub-tag">--operations</span>
+<span class="pub-tag">--causal</span>
+<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193207" class="pub-link paper" target="_blank">paper</a>
 </div>
 </div>
 </div>
 
-<div class="pub-card">
-<img src="images/ML-therapy.png" alt="ML Therapy">
-<div class="pub-card-content">
-<h4>Machine Learning to Personalize Psychotherapy Selection for Patients at Elevated Suicide Risk in a Large National Cohort</h4>
-<p class="authors"><mark>Jameson JC</mark>, Gibbons JB, Wood R, Ruble M, Peloquin J, Sung M, Hathaway DB, Straub L, Aldis R, Lyndon S, Wang PS</p>
-<p class="venue">Under Review</p>
-<div class="tags">
-<span class="tag ops">Machine Learning</span>
-<span class="tag causal">Causal</span>
-<span class="tag ml">Optimization</span>
-</div>
-<div class="pub-links">
+<div class="pub-item">
+<div class="pub-status">review</div>
+<div class="pub-body">
+Machine Learning to Personalize Psychotherapy Selection for Patients at Elevated Suicide Risk in a Large National Cohort
+<span class="pub-venue"><span class="me">Jameson JC</span>, Gibbons JB, Wood R, Ruble M, Peloquin J, Sung M, Hathaway DB, Straub L, Aldis R, Lyndon S, Wang PS</span>
+<div class="pub-row">
+<span class="pub-tag">--machine-learning</span>
+<span class="pub-tag">--causal</span>
+<span class="pub-tag">--suicide-prevention</span>
 </div>
 </div>
 </div>
 
-<div class="pub-card">
-<img src="images/redflag.png" alt="ERPO">
-<div class="pub-card-content">
-<h4>Effectiveness of Extreme Risk Protection Orders in Reducing Firearm Deaths: A Bayesian Analysis of State-Level Implementation, 1999–2023</h4>
-<p class="authors"><mark>Jameson JC</mark>, Glasser NJ, Pollack HA</p>
-<p class="venue">Under Revision</p>
-<div class="tags">
-<span class="tag policy">Policy</span>
-<span class="tag tic">Bayesian</span>
-<span class="tag causal">Causal</span>
-</div>
-<div class="pub-links">
-</div>
+<div class="pub-item">
+<div class="pub-status">revision</div>
+<div class="pub-body">
+Effectiveness of Extreme Risk Protection Orders in Reducing Firearm Deaths: A Bayesian Analysis of State-Level Implementation, 1999–2023
+<span class="pub-venue"><span class="me">Jameson JC</span>, Glasser NJ, Pollack HA</span>
+<div class="pub-row">
+<span class="pub-tag">--bayesian</span>
+<span class="pub-tag">--policy</span>
+<span class="pub-tag">--causal</span>
 </div>
 </div>
 </div>
 
----
-
-<div class="section-header">
-<h2>Publications</h2>
 </div>
 
-<div class="pub-grid">
 
-<div class="pub-card">
-<img src="images/Glasser 2025.jpeg" alt="Suicide Policy">
-<div class="pub-card-content">
-<h4><a href="https://doi.org/10.1016/j.amepre.2025.107961" target="_blank">Sex Differences in Life-Course Suicide Rates by State Firearm Policy Environment</a></h4>
-<p class="authors">Glasser NJ, <mark>Jameson JC</mark>, Abou Baker N, Pollack HA, Tung EL</p>
-<p class="venue">American Journal of Preventive Medicine, 2025</p>
-<div class="tags">
-<span class="tag policy">Policy</span>
-<span class="tag tic">Men's Health</span>
-</div>
-<div class="pub-links">
-<a href="https://doi.org/10.1016/j.amepre.2025.107961" class="paper" target="_blank">Paper</a>
+<div class="section-cmd"><span class="ps">$</span> ls publications/ | sort -r</div>
+
+<div class="pub-list">
+
+<div class="pub-item">
+<div class="pub-status">2025</div>
+<div class="pub-body">
+<a href="https://doi.org/10.1016/j.amepre.2025.107961" target="_blank">Sex Differences in Life-Course Suicide Rates by State Firearm Policy Environment</a>
+<span class="pub-venue">Glasser NJ, <span class="me">Jameson JC</span>, Abou Baker N, Pollack HA, Tung EL &nbsp;·&nbsp; American Journal of Preventive Medicine</span>
+<div class="pub-row">
+<span class="pub-tag">--policy</span>
+<span class="pub-tag">--mens-health</span>
+<a href="https://doi.org/10.1016/j.amepre.2025.107961" class="pub-link paper" target="_blank">paper</a>
 </div>
 </div>
 </div>
 
-<div class="pub-card">
-<img src="images/saulsberry 2025.png" alt="Pharmacogenomics">
-<div class="pub-card-content">
-<h4><a href="https://doi.org/10.1002/cpt.3617" target="_blank">A National Study of Exposure to Prescription Medications with Evidence-Based Pharmacogenomic Information</a></h4>
-<p class="authors">Saulsberry L, <mark>Jameson JC</mark>, Gibbons RD, Dolan ME, Olopade OI, O'Donnell PH</p>
-<p class="venue">Clinical Pharmacology & Therapeutics, 2025</p>
-<div class="tags">
-<span class="tag genomics">Genomics</span>
-<span class="tag equity">Health Equity</span>
-</div>
-<div class="pub-links">
-<a href="https://doi.org/10.1002/cpt.3617" class="paper" target="_blank">Paper</a>
+<div class="pub-item">
+<div class="pub-status">2025</div>
+<div class="pub-body">
+<a href="https://doi.org/10.1002/cpt.3617" target="_blank">A National Study of Exposure to Prescription Medications with Evidence-Based Pharmacogenomic Information</a>
+<span class="pub-venue">Saulsberry L, <span class="me">Jameson JC</span>, Gibbons RD, Dolan ME, Olopade OI, O'Donnell PH &nbsp;·&nbsp; Clinical Pharmacology &amp; Therapeutics</span>
+<div class="pub-row">
+<span class="pub-tag">--genomics</span>
+<span class="pub-tag">--health-equity</span>
+<a href="https://doi.org/10.1002/cpt.3617" class="pub-link paper" target="_blank">paper</a>
 </div>
 </div>
 </div>
 
-<div class="pub-card">
-<img src="images/jameson 2024.png" alt="Batch Ordering">
-<div class="pub-card-content">
-<h4><a href="https://doi.org/10.1111/1475-6773.14406" target="_blank">Variation in Batch Ordering of Imaging Tests in the Emergency Department and the Impact on Care Delivery</a></h4>
-<p class="authors"><mark>Jameson JC</mark>, Saghafian S, Huckman RS, Hodgson N</p>
-<p class="venue">Health Services Research, 2025</p>
-<div class="tags">
-<span class="tag ops">Operations</span>
-<span class="tag causal">Causal</span>
-</div>
-<div class="pub-links">
-<a href="https://doi.org/10.1111/1475-6773.14406" class="paper" target="_blank">Paper</a>
-<a href="https://github.com/jacobjameson/batch-vs-sequence/" class="code" target="_blank">Code</a>
+<div class="pub-item">
+<div class="pub-status">2025</div>
+<div class="pub-body">
+<a href="https://doi.org/10.1111/1475-6773.14406" target="_blank">Variation in Batch Ordering of Imaging Tests in the Emergency Department and the Impact on Care Delivery</a>
+<span class="pub-venue"><span class="me">Jameson JC</span>, Saghafian S, Huckman RS, Hodgson N &nbsp;·&nbsp; Health Services Research</span>
+<div class="pub-row">
+<span class="pub-tag">--operations</span>
+<span class="pub-tag">--causal</span>
+<a href="https://doi.org/10.1111/1475-6773.14406" class="pub-link paper" target="_blank">paper</a>
+<a href="https://github.com/jacobjameson/batch-vs-sequence/" class="pub-link code" target="_blank">code</a>
 </div>
 </div>
 </div>
 
-<div class="pub-card">
-<img src="images/tarantino 2024.png" alt="Melanoma">
-<div class="pub-card-content">
-<h4><a href="https://doi.org/10.1126/sciadv.adp4670" target="_blank">Genomic Heterogeneity and Ploidy Identify Patients with Intrinsic Resistance to PD-1 Blockade in Metastatic Melanoma</a></h4>
-<p class="authors">Tarantino G, Ricker CA, ... <mark>Jacob Jameson</mark>, et al.</p>
-<p class="venue">Science Advances, 2024</p>
-<div class="tags">
-<span class="tag genomics">Genomics</span>
-<span class="tag ml">Machine Learning</span>
-</div>
-<div class="pub-links">
-<a href="https://doi.org/10.1126/sciadv.adp4670" class="paper" target="_blank">Paper</a>
+<div class="pub-item">
+<div class="pub-status">2024</div>
+<div class="pub-body">
+<a href="https://doi.org/10.1126/sciadv.adp4670" target="_blank">Genomic Heterogeneity and Ploidy Identify Patients with Intrinsic Resistance to PD-1 Blockade in Metastatic Melanoma</a>
+<span class="pub-venue">Tarantino G, Ricker CA, ... <span class="me">Jameson JC</span>, et al. &nbsp;·&nbsp; Science Advances</span>
+<div class="pub-row">
+<span class="pub-tag">--genomics</span>
+<span class="pub-tag">--machine-learning</span>
+<a href="https://doi.org/10.1126/sciadv.adp4670" class="pub-link paper" target="_blank">paper</a>
 </div>
 </div>
 </div>
 
-<div class="pub-card">
-<img src="images/glasser 2024.png" alt="MGE CVD">
-<div class="pub-card-content">
-<h4><a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" target="_blank">Male Gender Expressivity and Diagnosis and Treatment of Cardiovascular Disease Risks in Men</a></h4>
-<p class="authors">Glasser NJ, <mark>Jameson JC</mark>, Huang ES, et al.</p>
-<p class="venue">JAMA Network Open, 2024</p>
-<div class="tags">
-<span class="tag tic">Men's Health</span>
-</div>
-<div class="pub-links">
-<a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" class="paper" target="_blank">Paper</a>
-<a href="https://github.com/jacobjameson/MGE-CVD" class="code" target="_blank">Code</a>
+<div class="pub-item">
+<div class="pub-status">2024</div>
+<div class="pub-body">
+<a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" target="_blank">Male Gender Expressivity and Diagnosis and Treatment of Cardiovascular Disease Risks in Men</a>
+<span class="pub-venue">Glasser NJ, <span class="me">Jameson JC</span>, Huang ES, et al. &nbsp;·&nbsp; JAMA Network Open</span>
+<div class="pub-row">
+<span class="pub-tag">--mens-health</span>
+<a href="https://doi.org/10.1001/jamanetworkopen.2024.41281" class="pub-link paper" target="_blank">paper</a>
+<a href="https://github.com/jacobjameson/MGE-CVD" class="pub-link code" target="_blank">code</a>
 </div>
 </div>
 </div>
 
-<div class="pub-card">
-<img src="images/network.png" alt="Social Networks">
-<div class="pub-card-content">
-<h4><a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" target="_blank">Adolescent School Social Networks, Gender Norms, and Changes in Male Gender Expression With Young Adult Substance Use</a></h4>
-<p class="authors">Glasser NJ, <mark>Jameson JC</mark>, Tung EL, Lindau ST, Pollack HA</p>
-<p class="venue">Journal of Adolescent Health, 2024</p>
-<div class="tags">
-<span class="tag social">Networks</span>
-<span class="tag tic">Men's Health</span>
-</div>
-<div class="pub-links">
-<a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" class="paper" target="_blank">Paper</a>
-<a href="https://github.com/jacobjameson/MGE-and-Substance-Use" class="code" target="_blank">Code</a>
+<div class="pub-item">
+<div class="pub-status">2024</div>
+<div class="pub-body">
+<a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" target="_blank">Adolescent School Social Networks, Gender Norms, and Changes in Male Gender Expression With Young Adult Substance Use</a>
+<span class="pub-venue">Glasser NJ, <span class="me">Jameson JC</span>, Tung EL, Lindau ST, Pollack HA &nbsp;·&nbsp; Journal of Adolescent Health</span>
+<div class="pub-row">
+<span class="pub-tag">--networks</span>
+<span class="pub-tag">--mens-health</span>
+<a href="https://doi.org/10.1016/j.jadohealth.2023.11.018" class="pub-link paper" target="_blank">paper</a>
+<a href="https://github.com/jacobjameson/MGE-and-Substance-Use" class="pub-link code" target="_blank">code</a>
 </div>
 </div>
 </div>
 
-<div class="pub-card">
-<img src="images/meltzer 2023.png" alt="Doctor-Patient">
-<div class="pub-card-content">
-<h4><a href="https://doi.org/10.1097/ACM.0000000000005195" target="_blank">Does the Doctor-Patient Relationship Affect Enrollment in Clinical Research?</a></h4>
-<p class="authors">Soo J, <mark>Jameson J</mark>, Flores A, et al., Meltzer D</p>
-<p class="venue">Academic Medicine, 2023</p>
-<div class="tags">
-<span class="tag equity">Health Equity</span>
-</div>
-<div class="pub-links">
-<a href="https://doi.org/10.1097/ACM.0000000000005195" class="paper" target="_blank">Paper</a>
+<div class="pub-item">
+<div class="pub-status">2023</div>
+<div class="pub-body">
+<a href="https://doi.org/10.1097/ACM.0000000000005195" target="_blank">Does the Doctor-Patient Relationship Affect Enrollment in Clinical Research?</a>
+<span class="pub-venue">Soo J, <span class="me">Jameson J</span>, Flores A, et al., Meltzer D &nbsp;·&nbsp; Academic Medicine</span>
+<div class="pub-row">
+<span class="pub-tag">--health-equity</span>
+<a href="https://doi.org/10.1097/ACM.0000000000005195" class="pub-link paper" target="_blank">paper</a>
 </div>
 </div>
 </div>
