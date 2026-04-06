@@ -141,8 +141,9 @@ My research develops and applies methods in causal inference, Bayesian statistic
 <div class="pub-body">
 <span class="pub-flag">featured</span><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5193207" target="_blank">The Impact of Batching Advanced Imaging Tests in Emergency Departments</a>
 <span class="pub-venue"><span class="me">Jameson JC</span>, Saghafian S, Huckman RS, Hodgson N, Baugh J</span>
-<span class="pub-award">IOE-ISyE-MS&amp;E Rising Stars Workshop — People's Choice Award for Poster Presentation, 2026</span>
-<span class="pub-award">INFORMS Health Applications Society Best Student Paper — Honorable Mention, 2025</span>
+<span class="pub-award">IOE-ISyE-MS&amp;E Rising Stars Workshop — People's Choice Award for Poster Presentation, 2026 🏅</span>
+<span class="pub-award">INFORMS Health Applications Society Best Student Paper — Honorable Mention, 2025 🏅</span>
+<span class="pub-venue">Revise and Resubmit at Management Science</span>
 <div class="pub-row">
 <span class="pub-tag">--operations</span>
 <span class="pub-tag">--causal</span>
@@ -152,11 +153,12 @@ My research develops and applies methods in causal inference, Bayesian statistic
 </div>
 
 <div class="pub-item">
-<div class="pub-status">review</div>
+<div class="pub-status">revision</div>
 <div class="pub-body">
 Machine Learning to Personalize Psychotherapy Selection for Patients at Elevated Suicide Risk in a Large National Cohort
 <span class="pub-venue"><span class="me">Jameson JC</span>, Gibbons JB, Wood R, Ruble M, Peloquin J, Sung M, Hathaway DB, Straub L, Aldis R, Lyndon S, Wang PS</span>
 <div class="pub-row">
+<span class="pub-venue">Revise and Resubmit at Biological Psychiatry</span>
 <span class="pub-tag">--machine-learning</span>
 <span class="pub-tag">--causal</span>
 <span class="pub-tag">--suicide-prevention</span>
@@ -170,6 +172,7 @@ Machine Learning to Personalize Psychotherapy Selection for Patients at Elevated
 Effectiveness of Extreme Risk Protection Orders in Reducing Firearm Deaths: A Bayesian Analysis of State-Level Implementation, 1999–2023
 <span class="pub-venue"><span class="me">Jameson JC</span>, Glasser NJ, Pollack HA</span>
 <div class="pub-row">
+<span class="pub-venue">Reject and Resubmit at NEJM Evidence</span>
 <span class="pub-tag">--bayesian</span>
 <span class="pub-tag">--policy</span>
 <span class="pub-tag">--causal</span>

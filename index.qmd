@@ -90,7 +90,8 @@ I am on the academic job market for 2026--2027. Please feel free to <a href="mai
 ## cat news.log
 <div class="news-item">
 <div class="news-date">2026-03</div>
-<div class="news-text"><span class="news-flag">new</span>Selected (29/132) for the <a href="https://sites.google.com/umich.edu/isye-mse-ioe-joint-rising-star/home">2026 IOE-ISyE-MS&E Rising Stars Workshop</a>.</div>
+<div class="news-text"><span class="news-flag">new</span>Selected (29/132) for the <a href="https://sites.google.com/umich.edu/isye-mse-ioe-joint-rising-star/home">2026 IOE-ISyE-MS&E Rising Stars Workshop</a>. People's Choice Award for poster presentation🏅</div>
+
 </div>
 
 <div class="news-item">
