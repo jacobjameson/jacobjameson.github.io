@@ -143,7 +143,7 @@ My research develops and applies methods in causal inference, Bayesian statistic
 <span class="pub-venue"><span class="me">Jameson JC</span>, Saghafian S, Huckman RS, Hodgson N, Baugh J</span>
 <span class="pub-award">IOE-ISyE-MS&amp;E Rising Stars Workshop — People's Choice Award for Poster Presentation, 2026 🏅</span>
 <span class="pub-award">INFORMS Health Applications Society Best Student Paper — Honorable Mention, 2025 🏅</span>
-<span class="pub-venue">Revise and Resubmit at Management Science</span>
+<span class="pub-venue">2nd Round Revise and Resubmit at Management Science</span>
 <div class="pub-row">
 <span class="pub-tag">--operations</span>
 <span class="pub-tag">--causal</span>
