@@ -95,7 +95,7 @@ I am on the academic job market for 2026--2027. Please feel free to <a href="mai
 
 <div class="news-item">
 <div class="news-date">2026-05</div>
-<div class="news-text"><span class="news-flag">new</span>Posted a preprint of new paper: <a href="https://pomsmeetings.org/conf-2026/">The Effect of Legalizing Online Sports Gambling on Population Mental Health</a>.</div>
+<div class="news-text"><span class="news-flag">new</span>Posted a preprint of new paper: <a href="https://www.medrxiv.org/content/10.64898/2026.05.06.26352568v1">The Effect of Legalizing Online Sports Gambling on Population Mental Health</a>.</div>
 </div>
 
 <div class="news-item">
