@@ -90,6 +90,12 @@ I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Resear
 ## cat news.log
 <div class="news-item">
 <div class="news-date">2026-05</div>
+<div class="news-text"><span class="news-flag">new</span>Awarded the <a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients">Dean's Award for Excellence in Student Teaching</a> by the Harvard Kennedy School.</div>
+</div>
+
+
+<div class="news-item">
+<div class="news-date">2026-05</div>
 <div class="news-text"><span class="news-flag">new</span>Presented at the <a href="https://pomsmeetings.org/conf-2026/">36th Annual POMS Conference</a>.</div>
 </div>
 
@@ -120,27 +126,27 @@ I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Resear
 
 <div class="news-item">
 <div class="news-date">2025-06</div>
-<div class="news-text"><a href="/Data/Distinction Award 2025.pdf">Distinction in Student Teaching</a>, Harvard Kennedy School.</div>
+<div class="news-text"><a href="/Data/Distinction Award 2025.pdf">Awarded the Distinction in Student Teaching</a>, Harvard Kennedy School.</div>
 </div>
 
 <div class="news-item">
 <div class="news-date">2024-05</div>
-<div class="news-text"><a href="/Data/Distinction Award 2024.pdf">Distinction in Student Teaching</a> and the <a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients">Dean's Award for Excellence in Student Teaching</a>, Harvard Kennedy School. <a href="https://chds.hsph.harvard.edu/jameson-wins-student-teaching-award/">↗</a></div>
+<div class="news-text"><a href="/Data/Distinction Award 2024.pdf">Awarded the Distinction in Student Teaching</a> and the <a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients">Dean's Award for Excellence in Student Teaching</a>, Harvard Kennedy School. <a href="https://chds.hsph.harvard.edu/jameson-wins-student-teaching-award/">↗</a></div>
 </div>
 
 <div class="news-item">
 <div class="news-date">2024-05</div>
-<div class="news-text">NIMH T32 Predoctoral Fellowship — <a href="https://causalab.sph.harvard.edu/suicideprevention/">Comparative Effectiveness Research for Suicide Risk Prevention</a>.</div>
+<div class="news-text">Awarded NIMH T32 Predoctoral Fellowship in <a href="https://causalab.sph.harvard.edu/suicideprevention/">Comparative Effectiveness Research for Suicide Risk Prevention</a>.</div>
 </div>
 
 <div class="news-item">
 <div class="news-date">2024-02</div>
-<div class="news-text"><a href="https://chds.hsph.harvard.edu/chds-welcomes-new-educational-innovation-scholar/">Center for Health Decision Science Educational Innovation Scholar</a>.</div>
+<div class="news-text"><a href="https://chds.hsph.harvard.edu/chds-welcomes-new-educational-innovation-scholar/">Selected to be the Center for Health Decision Science Educational Innovation Scholar</a>.</div>
 </div>
 
 <div class="news-item">
 <div class="news-date">2024-02</div>
-<div class="news-text"><a href="https://chds.hsph.harvard.edu/2024-raiffa-fund-awards/">2024 Howard Raiffa Award</a>, Harvard Center for Risk Analysis.</div>
+<div class="news-text"><a href="https://chds.hsph.harvard.edu/2024-raiffa-fund-awards/">Received the 2024 Howard Raiffa Award</a>, Harvard Center for Risk Analysis.</div>
 </div>
 
 <div class="news-item">
@@ -150,7 +156,7 @@ I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Resear
 
 <div class="news-item">
 <div class="news-date">2023-01</div>
-<div class="news-text"><a href="https://chds.hsph.harvard.edu/jameson-receives-raiffa-award/">2023 Howard Raiffa Award</a>, Harvard Center for Risk Analysis.</div>
+<div class="news-text"><a href="https://chds.hsph.harvard.edu/jameson-receives-raiffa-award/">Received the 2023 Howard Raiffa Award</a>, Harvard Center for Risk Analysis.</div>
 </div>
 
 </details>
