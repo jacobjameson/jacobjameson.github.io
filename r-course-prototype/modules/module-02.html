@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module 2 | Learning R</title>
+  <meta name="description" content="Module 2 lesson for packages, files, CSV import, data frames, and indexing.">
+  <link rel="stylesheet" href="../assets/course.css">
+  <script type="module" src="../assets/course-shell.js"></script>
+  <script type="module" src="../assets/r-cells.js"></script>
+</head>
+<body data-r-files="../data/College.csv">
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Learning R home">
+      <span class="brand-mark">R</span>
+      <span class="brand-text">Learning R</span>
+    </a>
+    <nav class="top-nav" aria-label="Course navigation">
+      <a href="../index.html#modules">Modules</a>
+      <a href="#browser">Try in Browser</a>
+      <a href="#project">Mini-Project</a>
+    </nav>
+  </header>
+
+  <main class="lesson-layout">
+    <aside class="lesson-sidebar" aria-label="Module navigation">
+      <p class="eyebrow">Module 02</p>
+      <h1>Packages, files, and reading data</h1>
+      <div class="progress-box">
+        <span data-progress-label>0/0 checks complete</span>
+        <div><i data-progress-meter></i></div>
+      </div>
+      <ol class="lesson-nav">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#watch">Watch</a></li>
+        <li><a href="#concepts">Concepts</a></li>
+        <li><a href="#browser">Try in Browser</a></li>
+        <li><a href="#rstudio">Do in RStudio</a></li>
+        <li><a href="#project">Mini-Project</a></li>
+        <li><a href="#checkpoint">Checkpoint</a></li>
+      </ol>
+      <a class="button sidebar-button quiet-button" href="module-01.html">Previous module</a>
+      <div class="resource-note">Uses College.csv from Module 2 data</div>
+    </aside>
+
+    <article class="lesson-content">
+      <section id="overview" class="lesson-hero">
+        <p class="eyebrow">From commands to data</p>
+        <h2>Real analysis begins when learners can load a file and inspect what came in.</h2>
+        <p>
+          This module introduces packages, working directories, CSV import, data frames,
+          column names, dimensions, indexing, and filtering. The browser page preloads the
+          `College.csv` file so learners can focus on code before repeating the workflow locally.
+        </p>
+        <ul class="goal-list">
+          <li>Explain the difference between installing and loading a package.</li>
+          <li>Read a CSV into R and inspect rows, columns, names, and summaries.</li>
+          <li>Use row/column indexing and logical filters to answer a simple data question.</li>
+        </ul>
+      </section>
+
+      <section id="watch" class="lesson-section">
+        <div class="section-kicker">Watch</div>
+        <h2>Structured video placeholders</h2>
+        <div class="video-stack">
+          <article class="video-card">
+            <span>Segment 2.1 · 6 min</span>
+            <h3>Packages and sessions</h3>
+            <p>Recording objective: distinguish `install.packages()` from `library()` and explain why scripts should load packages explicitly.</p>
+            <small>Follow-up exercise: identify why a function is unavailable until its package is loaded.</small>
+          </article>
+          <article class="video-card">
+            <span>Segment 2.2 · 9 min</span>
+            <h3>Working directories and CSV files</h3>
+            <p>Recording objective: show how files live in folders, how R finds them, and how `read.csv()` creates a data frame.</p>
+            <small>Follow-up exercise: read `College.csv`, inspect dimensions, and summarize a variable.</small>
+          </article>
+          <article class="video-card">
+            <span>Segment 2.3 · 7 min</span>
+            <h3>Indexing and filters</h3>
+            <p>Recording objective: teach `data[row, column]`, `$`, and logical conditions as the foundation for data analysis.</p>
+            <small>Follow-up exercise: find colleges above a top-10-percent threshold.</small>
+          </article>
+        </div>
+      </section>
+
+      <section id="concepts" class="lesson-section">
+        <div class="section-kicker">Concepts</div>
+        <h2>The file-to-question workflow has four moves.</h2>
+        <div class="concept-grid">
+          <article>
+            <h3>Load tools</h3>
+            <p>`library(pkg)` attaches package functions for the current session.</p>
+          </article>
+          <article>
+            <h3>Read data</h3>
+            <p>`read.csv()` turns a CSV file into a data frame object.</p>
+          </article>
+          <article>
+            <h3>Inspect shape</h3>
+            <p>`dim()`, `names()`, `head()`, and `summary()` reveal what you have.</p>
+          </article>
+          <article>
+            <h3>Ask a question</h3>
+            <p>Indexing and filters pull out the rows and columns that matter.</p>
+          </article>
+        </div>
+        <div class="file-card">
+          <span class="file-name">College.csv</span>
+          <span>777 colleges and universities</span>
+          <span>Admissions, tuition, faculty, and graduation-rate variables</span>
+        </div>
+      </section>
+
+      <section id="browser" class="lesson-section">
+        <div class="section-kicker">Try in Browser</div>
+        <h2>Load and inspect the course data.</h2>
+        <p>
+          This page preloads `College.csv` into the WebR sandbox. In local RStudio, you will
+          need the file in your project folder or an explicit path to it.
+        </p>
+
+        <div class="r-cell guided-cell" data-r-cell data-exercise-id="m02-read-csv" data-check-expr="exists('college') && nrow(college) == 777 && ncol(college) == 19">
+          <div class="cell-head">
+            <h3>Read the CSV</h3>
+            <div class="cell-actions">
+              <button type="button" data-run>Run</button>
+              <button type="button" data-check>Check</button>
+              <button type="button" data-hint-toggle>Hint</button>
+              <button type="button" data-reset>Reset</button>
+            </div>
+          </div>
+          <p class="cell-prompt">Read `College.csv` into an object named `college`, then inspect its dimensions.</p>
+          <textarea spellcheck="false" aria-label="R code editor">college &lt;- read.csv("College.csv", stringsAsFactors = TRUE)
+dim(college)</textarea>
+          <p class="cell-hint" hidden>The object must be named `college`. The raw file has 777 rows and 19 columns before cleanup.</p>
+          <pre class="cell-output" aria-live="polite">Run or check your code.</pre>
+        </div>
+
+        <div class="r-cell guided-cell" data-r-cell data-exercise-id="m02-clean-college" data-check-expr="exists('college') && nrow(college) == 777 && ncol(college) == 18 && names(college)[1] == 'Private'">
+          <div class="cell-head">
+            <h3>Clean the first column</h3>
+            <div class="cell-actions">
+              <button type="button" data-run>Run</button>
+              <button type="button" data-check>Check</button>
+              <button type="button" data-hint-toggle>Hint</button>
+              <button type="button" data-reset>Reset</button>
+            </div>
+          </div>
+          <p class="cell-prompt">Use college names as row names, remove the first column, and confirm `Private` is now the first variable.</p>
+          <textarea spellcheck="false" aria-label="R code editor">college &lt;- read.csv("College.csv", stringsAsFactors = TRUE)
+rownames(college) &lt;- college[, 1]
+college &lt;- college[, -1]
+names(college)[1:6]</textarea>
+          <p class="cell-hint" hidden>After `college <- college[, -1]`, the data should have 18 columns and `Private` should be first.</p>
+          <pre class="cell-output" aria-live="polite">Run or check your code.</pre>
+        </div>
+
+        <div class="r-cell guided-cell" data-r-cell data-exercise-id="m02-filter-elite" data-check-expr="exists('elite_colleges') && nrow(elite_colleges) > 0 && all(elite_colleges$Top10perc > 50)">
+          <div class="cell-head">
+            <h3>Filter with a rule</h3>
+            <div class="cell-actions">
+              <button type="button" data-run>Run</button>
+              <button type="button" data-check>Check</button>
+              <button type="button" data-hint-toggle>Hint</button>
+              <button type="button" data-reset>Reset</button>
+            </div>
+          </div>
+          <p class="cell-prompt">Create `elite_colleges` containing schools where `Top10perc` is greater than 50.</p>
+          <textarea spellcheck="false" aria-label="R code editor">college &lt;- read.csv("College.csv", stringsAsFactors = TRUE)
+rownames(college) &lt;- college[, 1]
+college &lt;- college[, -1]
+
+elite_colleges &lt;- college[college$Top10perc &gt; 50, ]
+nrow(elite_colleges)
+head(rownames(elite_colleges))</textarea>
+          <p class="cell-hint" hidden>Use a logical condition inside the row position: `college[college$Top10perc > 50, ]`.</p>
+          <pre class="cell-output" aria-live="polite">Run or check your code.</pre>
+        </div>
+      </section>
+
+      <section id="rstudio" class="lesson-section">
+        <div class="section-kicker">Do in RStudio</div>
+        <h2>Repeat the import workflow locally.</h2>
+        <div class="task-panel">
+          <ol>
+            <li>Create a folder named `module-02-data-import` inside your course folder.</li>
+            <li>Place `College.csv` in that folder.</li>
+            <li>Create `module-02-college-analysis.R` and write the import, cleanup, and filter code.</li>
+            <li>Run the script from top to bottom after restarting R to confirm it is reproducible.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="project" class="lesson-section">
+        <div class="section-kicker">Mini-Project</div>
+        <h2>College access scan</h2>
+        <div class="project-brief">
+          <p><strong>Scenario:</strong> A policy analyst wants a quick scan of college characteristics before deciding what questions to ask next.</p>
+          <p><strong>Dataset:</strong> `College.csv` from the Module 2 materials.</p>
+          <p><strong>Task:</strong> Read the data, clean the college-name column, summarize `Outstate`, and count how many schools have `Top10perc > 50`.</p>
+          <p><strong>Interpretation:</strong> Write two sentences: one describing the tuition distribution and one describing the threshold count.</p>
+          <p><strong>Future Rmd submission:</strong> An Rmd with setup code, import code, summary output, and the two-sentence interpretation.</p>
+        </div>
+      </section>
+
+      <section id="checkpoint" class="lesson-section">
+        <div class="section-kicker">Checkpoint</div>
+        <h2>Rubric for future grading</h2>
+        <div class="rubric-grid">
+          <article><span>Import</span><p>Reads `College.csv` into an object with the expected dimensions.</p></article>
+          <article><span>Cleanup</span><p>Uses row names and removes the redundant first column correctly.</p></article>
+          <article><span>Analysis</span><p>Uses summaries and logical filters to answer a data question.</p></article>
+        </div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning R | Course Prototype</title>
+  <meta name="description" content="A standalone prototype for an asynchronous course on learning R.">
+  <link rel="stylesheet" href="assets/course.css">
+  <script type="module" src="assets/course-shell.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Learning R home">
+      <span class="brand-mark">R</span>
+      <span class="brand-text">Learning R</span>
+    </a>
+    <nav class="top-nav" aria-label="Course navigation">
+      <a href="#modules">Modules</a>
+      <a href="#model">Learning model</a>
+      <a href="modules/module-00.html">Start</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Standalone course prototype</p>
+        <h1>Learn R by moving between the browser, RStudio, and real data.</h1>
+        <p class="lede">
+          A self-paced course for true beginners. Each module combines short video prompts,
+          guided browser practice, local RStudio transfer tasks, and a mini-project lab.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="modules/module-00.html">Start Module 0</a>
+          <a class="button secondary" href="#modules">View v1 modules</a>
+        </div>
+      </div>
+
+      <div class="code-stage" aria-label="Example guided R cell preview">
+        <div class="stage-bar">
+          <span></span><span></span><span></span>
+          <strong>guided R practice</strong>
+        </div>
+        <pre><code>college &lt;- read.csv("College.csv")
+mean(college$Grad.Rate)
+
+# Then repeat the same workflow in RStudio.</code></pre>
+        <div class="stage-result">
+          <span class="prompt">check</span>
+          <span>browser warmup -> local project -> mini-lab</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="course-strip" aria-label="Course features">
+      <div>
+        <span class="stat">0-2</span>
+        <span>polished v1 modules before scaling the full course</span>
+      </div>
+      <div>
+        <span class="stat">WebR</span>
+        <span>runnable browser cells for low-friction first practice</span>
+      </div>
+      <div>
+        <span class="stat">Rmd</span>
+        <span>mini-project artifacts designed for future submission grading</span>
+      </div>
+    </section>
+
+    <section id="model" class="split-section">
+      <div>
+        <p class="eyebrow">Learning model</p>
+        <h2>The course is a loop, not a lecture archive.</h2>
+      </div>
+      <div class="principles">
+        <article>
+          <h3>Watch</h3>
+          <p>Short segment placeholders define exactly what each future video should teach.</p>
+        </article>
+        <article>
+          <h3>Try</h3>
+          <p>Guided browser cells let learners run code, get hints, reset, and check work.</p>
+        </article>
+        <article>
+          <h3>Transfer</h3>
+          <p>Every module asks learners to repeat the skill in local RStudio with files and scripts.</p>
+        </article>
+        <article>
+          <h3>Build</h3>
+          <p>Mini-project labs use public policy and education data to create interpretable outputs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="modules" class="modules-section">
+      <div class="section-heading">
+        <p class="eyebrow">V1 course map</p>
+        <h2>Modules 0-2 are the production template.</h2>
+      </div>
+
+      <div class="module-list">
+        <a class="module-row active" href="modules/module-00.html">
+          <span class="module-index">00</span>
+          <span class="module-main">
+            <strong>Install RStudio and run your first script</strong>
+            <small>Setup, local files, project habits, and first successful console output.</small>
+          </span>
+          <span class="module-status">polish</span>
+        </a>
+        <a class="module-row active" href="modules/module-01.html">
+          <span class="module-index">01</span>
+          <span class="module-main">
+            <strong>Motivation, objects, and first commands</strong>
+            <small>Why R, assignment, arithmetic, vectors, Booleans, and data types.</small>
+          </span>
+          <span class="module-status">polish</span>
+        </a>
+        <a class="module-row active" href="modules/module-02.html">
+          <span class="module-index">02</span>
+          <span class="module-main">
+            <strong>Packages, files, and reading data</strong>
+            <small>Libraries, working directories, CSV import, data frames, indexing, and filters.</small>
+          </span>
+          <span class="module-status">polish</span>
+        </a>
+        <div class="module-row">
+          <span class="module-index">03</span>
+          <span class="module-main">
+            <strong>Vectors and lists</strong>
+            <small>Core data structures, indexing, and object inspection.</small>
+          </span>
+          <span class="module-status muted">later</span>
+        </div>
+        <div class="module-row">
+          <span class="module-index">04</span>
+          <span class="module-main">
+            <strong>Data manipulation</strong>
+            <small>Filtering, selecting, mutating, grouping, and reshaping data.</small>
+          </span>
+          <span class="module-status muted">later</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

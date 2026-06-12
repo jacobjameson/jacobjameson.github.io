@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module 1 | Learning R</title>
+  <meta name="description" content="Module 1 lesson for first R commands, objects, vectors, and logic.">
+  <link rel="stylesheet" href="../assets/course.css">
+  <script type="module" src="../assets/course-shell.js"></script>
+  <script type="module" src="../assets/r-cells.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Learning R home">
+      <span class="brand-mark">R</span>
+      <span class="brand-text">Learning R</span>
+    </a>
+    <nav class="top-nav" aria-label="Course navigation">
+      <a href="../index.html#modules">Modules</a>
+      <a href="#browser">Try in Browser</a>
+      <a href="#project">Mini-Project</a>
+    </nav>
+  </header>
+
+  <main class="lesson-layout">
+    <aside class="lesson-sidebar" aria-label="Module navigation">
+      <p class="eyebrow">Module 01</p>
+      <h1>Motivation, objects, and first commands</h1>
+      <div class="progress-box">
+        <span data-progress-label>0/0 checks complete</span>
+        <div><i data-progress-meter></i></div>
+      </div>
+      <ol class="lesson-nav">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#watch">Watch</a></li>
+        <li><a href="#concepts">Concepts</a></li>
+        <li><a href="#browser">Try in Browser</a></li>
+        <li><a href="#rstudio">Do in RStudio</a></li>
+        <li><a href="#project">Mini-Project</a></li>
+        <li><a href="#checkpoint">Checkpoint</a></li>
+      </ol>
+      <a class="button sidebar-button" href="module-02.html">Next module</a>
+      <a class="button sidebar-button quiet-button" href="module-00.html">Previous module</a>
+      <div class="resource-note">Based on Module 1 slides and lab</div>
+    </aside>
+
+    <article class="lesson-content">
+      <section id="overview" class="lesson-hero">
+        <p class="eyebrow">First commands</p>
+        <h2>R becomes less intimidating once learners see code as small, inspectable steps.</h2>
+        <p>
+          This module keeps the original motivation for learning R, then moves quickly into
+          assignment, arithmetic, vectors, Boolean logic, and object types.
+        </p>
+        <ul class="goal-list">
+          <li>Explain why R is useful for data analysis and public policy work.</li>
+          <li>Create named objects with `<-` and inspect their values.</li>
+          <li>Use vectors, comparisons, and `mode()` to reason about basic data types.</li>
+        </ul>
+      </section>
+
+      <section id="watch" class="lesson-section">
+        <div class="section-kicker">Watch</div>
+        <h2>Structured video placeholders</h2>
+        <div class="video-stack">
+          <article class="video-card">
+            <span>Segment 1.1 · 6 min</span>
+            <h3>Why learn R?</h3>
+            <p>Recording objective: motivate R for policy data, reproducible analysis, visualization, and statistical workflows.</p>
+            <small>Follow-up exercise: run a calculation and explain what R printed.</small>
+          </article>
+          <article class="video-card">
+            <span>Segment 1.2 · 8 min</span>
+            <h3>Objects, vectors, and logic</h3>
+            <p>Recording objective: show assignment with `<-`, vectorized arithmetic, comparisons, and simple data types.</p>
+            <small>Follow-up exercise: create objects and check a condition.</small>
+          </article>
+        </div>
+      </section>
+
+      <section id="concepts" class="lesson-section">
+        <div class="section-kicker">Concepts</div>
+        <h2>The first mental model: create, inspect, compare.</h2>
+        <div class="concept-grid">
+          <article>
+            <h3>Create</h3>
+            <p>Assignment stores a value under a name: `income <- 52000`.</p>
+          </article>
+          <article>
+            <h3>Inspect</h3>
+            <p>Typing an object name asks R to print its current value.</p>
+          </article>
+          <article>
+            <h3>Compare</h3>
+            <p>Comparisons return `TRUE` or `FALSE`, which become the foundation for filtering data.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="browser" class="lesson-section">
+        <div class="section-kicker">Try in Browser</div>
+        <h2>Practice the first coding moves.</h2>
+        <p>
+          Use `Run` to experiment. Use `Check` when you think your code satisfies the prompt.
+          Completed checks are saved in this browser.
+        </p>
+
+        <div class="r-cell guided-cell" data-r-cell data-exercise-id="m01-assignment" data-check-expr="exists('b') && identical(as.numeric(b), 10)">
+          <div class="cell-head">
+            <h3>Assignment and arithmetic</h3>
+            <div class="cell-actions">
+              <button type="button" data-run>Run</button>
+              <button type="button" data-check>Check</button>
+              <button type="button" data-hint-toggle>Hint</button>
+              <button type="button" data-reset>Reset</button>
+            </div>
+          </div>
+          <p class="cell-prompt">Create `a`, calculate `b`, and make sure `b` is exactly 10.</p>
+          <textarea spellcheck="false" aria-label="R code editor">a &lt;- 3
+b &lt;- a^2 + 1
+b</textarea>
+          <p class="cell-hint" hidden>`3^2` is 9, and adding 1 gives 10. The object must be named `b`.</p>
+          <pre class="cell-output" aria-live="polite">Run or check your code.</pre>
+        </div>
+
+        <div class="r-cell guided-cell" data-r-cell data-exercise-id="m01-vector-mean" data-check-expr="exists('scores') && length(scores) == 4 && isTRUE(mean(scores) > 85)">
+          <div class="cell-head">
+            <h3>Vectors</h3>
+            <div class="cell-actions">
+              <button type="button" data-run>Run</button>
+              <button type="button" data-check>Check</button>
+              <button type="button" data-hint-toggle>Hint</button>
+              <button type="button" data-reset>Reset</button>
+            </div>
+          </div>
+          <p class="cell-prompt">Create a four-number vector named `scores` whose average is greater than 85.</p>
+          <textarea spellcheck="false" aria-label="R code editor">scores &lt;- c(84, 91, 78, 95)
+mean(scores)</textarea>
+          <p class="cell-hint" hidden>Change at least one number so the average is above 85, then print `mean(scores)`.</p>
+          <pre class="cell-output" aria-live="polite">Run or check your code.</pre>
+        </div>
+
+        <div class="r-cell guided-cell" data-r-cell data-exercise-id="m01-hello-world" data-check-output="Hello, world!">
+          <div class="cell-head">
+            <h3>Characters and paste0</h3>
+            <div class="cell-actions">
+              <button type="button" data-run>Run</button>
+              <button type="button" data-check>Check</button>
+              <button type="button" data-hint-toggle>Hint</button>
+              <button type="button" data-reset>Reset</button>
+            </div>
+          </div>
+          <p class="cell-prompt">Use two character objects and `paste0()` to print `Hello, world!`.</p>
+          <textarea spellcheck="false" aria-label="R code editor">v1 &lt;- "Hello"
+v2 &lt;- ""
+paste0(v1, v2)</textarea>
+          <p class="cell-hint" hidden>`paste0()` does not add spaces. Include the comma, space, and exclamation point in one of the strings.</p>
+          <pre class="cell-output" aria-live="polite">Run or check your code.</pre>
+        </div>
+      </section>
+
+      <section id="rstudio" class="lesson-section">
+        <div class="section-kicker">Do in RStudio</div>
+        <h2>Move the same moves into a script.</h2>
+        <div class="task-panel">
+          <ol>
+            <li>Create a script named `module-01-first-commands.R` in your course folder.</li>
+            <li>Add one comment at the top explaining what the script practices.</li>
+            <li>Create at least three objects: one number, one character string, and one logical value.</li>
+            <li>Use `mode()` on each object and run the script from top to bottom.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="project" class="lesson-section">
+        <div class="section-kicker">Mini-Project</div>
+        <h2>Policy analyst warmup</h2>
+        <div class="project-brief">
+          <p><strong>Scenario:</strong> A policy team is tracking a small set of program enrollment counts before working with a full dataset.</p>
+          <p><strong>Task:</strong> Create a vector of four enrollment counts, calculate the average, and write one comparison that checks whether the average is above a target.</p>
+          <p><strong>Interpretation:</strong> In one sentence, explain what your `TRUE` or `FALSE` result means.</p>
+          <p><strong>Future Rmd submission:</strong> A short Rmd with code, printed output, and a one-sentence interpretation.</p>
+        </div>
+      </section>
+
+      <section id="checkpoint" class="lesson-section">
+        <div class="section-kicker">Checkpoint</div>
+        <h2>Rubric for future grading</h2>
+        <div class="rubric-grid">
+          <article><span>Objects</span><p>Creates named objects and uses them in later lines.</p></article>
+          <article><span>Types</span><p>Correctly distinguishes numeric, character, and logical values.</p></article>
+          <article><span>Interpretation</span><p>Connects a Boolean result to the policy scenario in plain language.</p></article>
+        </div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

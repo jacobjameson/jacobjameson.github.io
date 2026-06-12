@@ -173,6 +173,17 @@ I am fortunate to have been recognized with several teaching awards by the Harva
 
 <div class="section-cmd"><span class="ps">$</span> cat awards.log</div>
 
+<div class="t-item">
+<div class="t-year">2026</div>
+<div class="t-body"><a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients" target="_blank">Dean's Award for Excellence in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
+</div>
+
+<div class="t-list">
+<div class="t-item">
+<div class="t-year">2026</div>
+<div class="t-body">Distinction in Student Teaching<span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
+</div>
+
 <div class="t-list">
 <div class="t-item">
 <div class="t-year">2025</div>
@@ -200,12 +211,12 @@ I am fortunate to have been recognized with several teaching awards by the Harva
 
 <div class="t-cell">
 <div class="t-cell-title">Economics for Public Policy</div>
-<div class="t-cell-sub"><span class="t-sub">Harvard Kennedy School, PPIA Junior Summer Institute</span><span class="t-sep">·</span><span class="t-cell-yrs">2024 · 2025</span><span class="t-role">instructor</span></div>
+<div class="t-cell-sub"><span class="t-sub">Harvard Kennedy School, PPIA Junior Summer Institute</span><span class="t-sep">·</span><span class="t-cell-yrs">2024 · 2025 · 2026</span><span class="t-role">instructor</span></div>
 </div>
 
 <div class="t-cell">
 <div class="t-cell-title">Math Camp for Incoming PhD Students</div>
-<div class="t-cell-sub"><span class="t-sub">Harvard Kennedy School</span><span class="t-sep">·</span><span class="t-cell-yrs">2023 · 2024 · 2025</span><span class="t-role">instructor</span></div>
+<div class="t-cell-sub"><span class="t-sub">Harvard Kennedy School</span><span class="t-sep">·</span><span class="t-cell-yrs">2023 · 2024 · 2025 · 2026</span><span class="t-role">instructor</span></div>
 </div>
 
 <div class="t-cell">

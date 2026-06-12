@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module 0 | Learning R</title>
+  <meta name="description" content="Module 0 setup lesson for installing RStudio and running first R code.">
+  <link rel="stylesheet" href="../assets/course.css">
+  <script type="module" src="../assets/course-shell.js"></script>
+  <script type="module" src="../assets/r-cells.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Learning R home">
+      <span class="brand-mark">R</span>
+      <span class="brand-text">Learning R</span>
+    </a>
+    <nav class="top-nav" aria-label="Course navigation">
+      <a href="../index.html#modules">Modules</a>
+      <a href="#browser">Try in Browser</a>
+      <a href="#rstudio">RStudio</a>
+    </nav>
+  </header>
+
+  <main class="lesson-layout">
+    <aside class="lesson-sidebar" aria-label="Module navigation">
+      <p class="eyebrow">Module 00</p>
+      <h1>Install RStudio and run your first script</h1>
+      <div class="progress-box">
+        <span data-progress-label>0/0 checks complete</span>
+        <div><i data-progress-meter></i></div>
+      </div>
+      <ol class="lesson-nav">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#watch">Watch</a></li>
+        <li><a href="#browser">Try in Browser</a></li>
+        <li><a href="#rstudio">Do in RStudio</a></li>
+        <li><a href="#project">Mini-Project</a></li>
+        <li><a href="#checkpoint">Checkpoint</a></li>
+      </ol>
+      <a class="button sidebar-button" href="module-01.html">Next module</a>
+      <div class="resource-note">Local-first setup path</div>
+    </aside>
+
+    <article class="lesson-content">
+      <section id="overview" class="lesson-hero">
+        <p class="eyebrow">Setup without mystery</p>
+        <h2>Before learning R, learners need one clean local workflow.</h2>
+        <p>
+          This module helps beginners install R and RStudio, understand what a project folder is,
+          and run one script locally. The browser cell gives an immediate win while local setup
+          is still in progress.
+        </p>
+        <ul class="goal-list">
+          <li>Install R from the R Project and RStudio Desktop from Posit.</li>
+          <li>Identify the Console, Source, Environment, Files, Plots, and Help panes.</li>
+          <li>Create a folder for course work and save a first `.R` script.</li>
+        </ul>
+      </section>
+
+      <section id="watch" class="lesson-section">
+        <div class="section-kicker">Watch</div>
+        <h2>Structured video placeholders</h2>
+        <div class="video-stack">
+          <article class="video-card">
+            <span>Segment 0.1 · 5 min</span>
+            <h3>What are R and RStudio?</h3>
+            <p>Recording objective: explain that R is the language and RStudio is the workbench for writing, running, and saving analysis code.</p>
+            <small>Follow-up exercise: run the same one-line calculation in the browser and then in the RStudio Console.</small>
+          </article>
+          <article class="video-card">
+            <span>Segment 0.2 · 7 min</span>
+            <h3>Install and verify</h3>
+            <p>Recording objective: walk through downloading R from the R Project and RStudio Desktop from Posit, then opening RStudio successfully.</p>
+            <small>Follow-up exercise: create a first script and save it in a course folder.</small>
+          </article>
+        </div>
+      </section>
+
+      <section id="browser" class="lesson-section">
+        <div class="section-kicker">Try in Browser</div>
+        <h2>Run one line before installing anything.</h2>
+        <p>
+          The browser sandbox is here to lower the first barrier. It is not a replacement for
+          RStudio; it is a safe place to see what code and output feel like.
+        </p>
+
+        <div class="r-cell guided-cell" data-r-cell data-exercise-id="m00-first-output" data-check-output="Hello from R">
+          <div class="cell-head">
+            <h3>First output</h3>
+            <div class="cell-actions">
+              <button type="button" data-run>Run</button>
+              <button type="button" data-check>Check</button>
+              <button type="button" data-hint-toggle>Hint</button>
+              <button type="button" data-reset>Reset</button>
+            </div>
+          </div>
+          <p class="cell-prompt">Print the exact phrase `Hello from R`.</p>
+          <textarea spellcheck="false" aria-label="R code editor">print("Hello from R")</textarea>
+          <p class="cell-hint" hidden>Use quotation marks inside `print()`: `print("Hello from R")`.</p>
+          <pre class="cell-output" aria-live="polite">Run or check your code.</pre>
+        </div>
+      </section>
+
+      <section id="rstudio" class="lesson-section">
+        <div class="section-kicker">Do in RStudio</div>
+        <h2>Repeat the win locally.</h2>
+        <div class="task-panel">
+          <ol>
+            <li>Download R from <a href="https://www.r-project.org/" target="_blank" rel="noreferrer">r-project.org</a>.</li>
+            <li>Download RStudio Desktop from <a href="https://posit.co/downloads/" target="_blank" rel="noreferrer">posit.co/downloads</a>.</li>
+            <li>Create a folder named `learning-r` somewhere you can find again.</li>
+            <li>Open RStudio, create a new script, type `print("Hello from RStudio")`, and run it.</li>
+            <li>Save the script as `module-00-first-script.R` inside your course folder.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="project" class="lesson-section">
+        <div class="section-kicker">Mini-Project</div>
+        <h2>Setup receipt</h2>
+        <div class="project-brief">
+          <p><strong>Scenario:</strong> You are preparing a clean workspace before starting a public policy data analysis course.</p>
+          <p><strong>Artifact:</strong> A saved script named `module-00-first-script.R` containing one printed message and one comment describing where your course folder lives.</p>
+          <p><strong>Future Rmd submission:</strong> In a later version, this module would ask learners to submit a setup confirmation Rmd or screenshot-free script log.</p>
+        </div>
+      </section>
+
+      <section id="checkpoint" class="lesson-section">
+        <div class="section-kicker">Checkpoint</div>
+        <h2>Rubric for future grading</h2>
+        <div class="rubric-grid">
+          <article><span>Complete</span><p>R and RStudio are installed and RStudio opens.</p></article>
+          <article><span>Reproducible</span><p>The learner created a course folder and saved a script there.</p></article>
+          <article><span>Transfer</span><p>The learner ran similar code in the browser and in local RStudio.</p></article>
+        </div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
