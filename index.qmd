@@ -83,7 +83,7 @@ I am on the academic job market for 2026--2027. Please feel free to <a href="mai
 </div>
 
 
-[My research](research.qmd) develops and applies methods in causal inference, decision modeling, and reinforcement learning to support better decision-making in health and public policy. I study the impacts of physician behavior, health policies, and personalized medicine. Thematically, I am interested in the areas of mental health and emergency medicine.
+[My research](research.qmd) develops and applies methods in causal inference, decision modeling, and reinforcement learning to generate and synthesize evidence to support better decision-making in health and public policy. I study the impacts of physician behavior, health policies, and personalized medicine.
 
 I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Research for Suicide Prevention at [Brigham and Women's Hospital](https://www.brighamandwomens.org) and Research Statistician with The U.S. Department of Veteran Affairs. I also care deeply about [teaching](teaching.qmd)---I have been very fortunate to work with many students at Harvard, The University of Chicago, and New Haven Public Schools during my time as a Teach For America corps member.
  

@@ -128,7 +128,7 @@ top: -1px;
 
 </style>
 
-My research develops and applies methods in causal inference, Bayesian statistics, and reinforcement learning to improve decision-making in health and public policy — with applications to suicide prevention, emergency department operations, and precision medicine.
+My research develops and applies methods in causal inference, decision modeling, and reinforcement learning to generate and synthesize evidence to support better decision-making in health and public policy. I study the impacts of physician behavior, health policies, and personalized medicine.
 
 ---
 
