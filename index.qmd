@@ -90,7 +90,7 @@ I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Resear
 ## cat news.log
 <div class="news-item">
 <div class="news-date">2026-05</div>
-<div class="news-text"><span class="news-flag">new</span>Awarded the <a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients">Dean's Award for Excellence in Student Teaching</a> by the Harvard Kennedy School.</div>
+<div class="news-text"><span class="news-flag">new</span>Awarded the <a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients">Dean's Award for Excellence in Student Teaching</a> by the Harvard Kennedy School. <a href="https://chds.hsph.harvard.edu/jameson-wins-teaching-award-again/">Read the Center for Health Decision Science story ↗</a></div>
 </div>
 
 
