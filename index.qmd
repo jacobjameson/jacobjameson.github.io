@@ -89,6 +89,11 @@ I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Resear
  
 ## cat news.log
 <div class="news-item">
+<div class="news-date">2026-07</div>
+<div class="news-text"><span class="news-flag">new</span>Gave a talk at the <a href="https://meetings.informs.org/wordpress/healthcare2026/">INFORMS Healthcare Conference</a>.</div>
+</div>
+
+<div class="news-item">
 <div class="news-date">2026-05</div>
 <div class="news-text"><span class="news-flag">new</span>Awarded the <a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients">Dean's Award for Excellence in Student Teaching</a> by the Harvard Kennedy School. <a href="https://chds.hsph.harvard.edu/jameson-wins-teaching-award-again/">Read the Center for Health Decision Science story ↗</a></div>
 </div>
@@ -96,12 +101,17 @@ I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Resear
 
 <div class="news-item">
 <div class="news-date">2026-05</div>
-<div class="news-text"><span class="news-flag">new</span>Presented at the <a href="https://pomsmeetings.org/conf-2026/">36th Annual POMS Conference</a>.</div>
+<div class="news-text">Presented at the <a href="https://pomsmeetings.org/conf-2026/">36th Annual POMS Conference</a>.</div>
 </div>
+
+---
+
+<details>
+<summary>show earlier entries</summary>
 
 <div class="news-item">
 <div class="news-date">2026-05</div>
-<div class="news-text"><span class="news-flag">new</span>Posted a preprint of new paper: <a href="https://www.medrxiv.org/content/10.64898/2026.05.06.26352568v1">The Effect of Legalizing Online Sports Gambling on Population Mental Health</a>.</div>
+<div class="news-text">Posted a preprint of new paper: <a href="https://www.medrxiv.org/content/10.64898/2026.05.06.26352568v1">The Effect of Legalizing Online Sports Gambling on Population Mental Health</a>.</div>
 </div>
 
 <div class="news-item">
@@ -113,11 +123,6 @@ I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Resear
 <div class="news-date">2026-03</div>
 <div class="news-text">Finalist in Harvard's <a href="https://gsas.harvard.edu/academics/writing/three-minute-thesis">Three Minute Thesis (3MT®) Competition</a>.</div>
 </div>
-
----
-
-<details>
-<summary>show earlier entries</summary>
 
 <div class="news-item">
 <div class="news-date">2025-09</div>

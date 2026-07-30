@@ -173,7 +173,7 @@ The Effect of Legalizing Online Sports Gambling on Population Mental Health
 Machine Learning to Personalize Psychotherapy Selection for Patients at Elevated Suicide Risk in a Large National Cohort
 <span class="pub-venue"><span class="me">Jameson JC</span>, Gibbons JB, Wood R, Ruble M, Peloquin J, Sung M, Hathaway DB, Straub L, Aldis R, Lyndon S, Wang PS</span>
 <div class="pub-row">
-<span class="pub-venue">Revise and Resubmit at Biological Psychiatry</span>
+<span class="pub-venue">Revised and Resubmitted at Biological Psychiatry</span>
 <span class="pub-tag">--machine-learning</span>
 <span class="pub-tag">--causal</span>
 <span class="pub-tag">--suicide-prevention</span>
@@ -187,10 +187,38 @@ Machine Learning to Personalize Psychotherapy Selection for Patients at Elevated
 Effectiveness of Extreme Risk Protection Orders in Reducing Firearm Deaths: A Bayesian Analysis of State-Level Implementation, 1999–2023
 <span class="pub-venue"><span class="me">Jameson JC</span>, Glasser NJ, Pollack HA</span>
 <div class="pub-row">
-<span class="pub-venue">Reject and Resubmit at NEJM Evidence</span>
+<span class="pub-venue">Invited Revision at NEJM Evidence</span>
 <span class="pub-tag">--bayesian</span>
 <span class="pub-tag">--policy</span>
 <span class="pub-tag">--causal</span>
+</div>
+</div>
+</div>
+
+<div class="pub-item">
+<div class="pub-status">in prep</div>
+<div class="pub-body">
+What Constitutes a Good Biomarker in Cancer Treatment: A Counterfactual Decision-Making Framework
+<span class="pub-venue"><span class="me">Jameson JC</span>, Saghafian S, Liu D, Tarantino G, Gusev S</span>
+<div class="pub-row">
+<span class="pub-venue">In Preparation</span>
+<span class="pub-tag">--decision-modeling</span>
+<span class="pub-tag">--causal</span>
+<span class="pub-tag">--precision-medicine</span>
+</div>
+</div>
+</div>
+
+<div class="pub-item">
+<div class="pub-status">in prep</div>
+<div class="pub-body">
+Allocating Scarce Clinician Outreach in Partner Notification
+<span class="pub-venue"><span class="me">Jameson JC</span>, Saghafian S, Jónasson JO</span>
+<div class="pub-row">
+<span class="pub-venue">In Preparation</span>
+<span class="pub-tag">--operations</span>
+<span class="pub-tag">--resource-allocation</span>
+<span class="pub-tag">--public-health</span>
 </div>
 </div>
 </div>
@@ -201,6 +229,18 @@ Effectiveness of Extreme Risk Protection Orders in Reducing Firearm Deaths: A Ba
 <div class="section-cmd"><span class="ps">$</span> ls publications/ | sort -r</div>
 
 <div class="pub-list">
+
+<div class="pub-item">
+<div class="pub-status">forthcoming</div>
+<div class="pub-body">
+Repeat Transcranial Magnetic Stimulation for Depression: A Large Real-World Multisite Cohort Study
+<span class="pub-venue">Lyndon S, Gibbons JB, Straub L, Sung M, <span class="me">Jameson JC</span>, et al. &nbsp;·&nbsp; Acta Psychiatrica Scandinavica</span>
+<div class="pub-row">
+<span class="pub-tag">--psychiatry</span>
+<span class="pub-tag">--real-world-evidence</span>
+</div>
+</div>
+</div>
 
 <div class="pub-item">
 <div class="pub-status">2025</div>
