@@ -90,7 +90,7 @@ I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Resear
 ## cat news.log
 <div class="news-item">
 <div class="news-date">2026-07</div>
-<div class="news-text"><span class="news-flag">new</span>Gave a talk at the <a href="https://meetings.informs.org/wordpress/healthcare2026/">INFORMS Healthcare Conference</a>.</div>
+<div class="news-text"><span class="news-flag">new</span>Presented at the <a href="https://meetings.informs.org/wordpress/healthcare2026/">INFORMS Healthcare Conference</a> — <a href="/Data/INFORMS Healthcare Certificate 2026.pdf">Certificate</a>.</div>
 </div>
 
 <div class="news-item">
