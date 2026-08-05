@@ -173,18 +173,15 @@ I am fortunate to have been recognized with several teaching awards by the Harva
 
 <div class="section-cmd"><span class="ps">$</span> cat awards.log</div>
 
+<div class="t-list">
 <div class="t-item">
 <div class="t-year">2026</div>
 <div class="t-body"><a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients" target="_blank">Dean's Award for Excellence in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
 </div>
-
-<div class="t-list">
 <div class="t-item">
 <div class="t-year">2026</div>
 <div class="t-body"><a href="./Data/Distinction Award 2026.pdf" target="_blank">Distinction in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
 </div>
-
-<div class="t-list">
 <div class="t-item">
 <div class="t-year">2025</div>
 <div class="t-body"><a href="./Data/Distinction Award 2025.pdf" target="_blank">Distinction in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
