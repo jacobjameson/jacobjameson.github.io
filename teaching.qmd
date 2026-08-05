@@ -181,7 +181,7 @@ I am fortunate to have been recognized with several teaching awards by the Harva
 <div class="t-list">
 <div class="t-item">
 <div class="t-year">2026</div>
-<div class="t-body">Distinction in Student Teaching<span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
+<div class="t-body"><a href="./Data/Distinction Award 2026.pdf" target="_blank">Distinction in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
 </div>
 
 <div class="t-list">
