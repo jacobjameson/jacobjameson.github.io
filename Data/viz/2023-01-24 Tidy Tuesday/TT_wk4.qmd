@@ -8,7 +8,6 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: spacelab  
 page-layout: full
 comments:
   utterances:
@@ -54,7 +53,6 @@ Acknowledging the Alone dataset
 ![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-24/w4.png)
 
 [Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-24/) 
-
 
 
 

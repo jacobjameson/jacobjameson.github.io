@@ -8,7 +8,6 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: spacelab  
 page-layout: full
 comments:
   utterances:
@@ -48,7 +47,6 @@ Note: The age gaps dataset includes "gender" columns, which always contain the v
 ![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-02-14/w7.png)
 
 [Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-02-14/) 
-
 
 
 

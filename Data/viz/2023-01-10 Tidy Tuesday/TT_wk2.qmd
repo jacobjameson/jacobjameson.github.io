@@ -8,7 +8,6 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: spacelab  
 page-layout: full
 comments:
   utterances:
@@ -57,7 +56,6 @@ More details on analyzing this dataset:
 ![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-10/w2.png)
 
 [Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-10/) 
-
 
 
 
