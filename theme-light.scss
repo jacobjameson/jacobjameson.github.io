@@ -330,9 +330,9 @@ h3 {
   display: block;
   width: 220px;
   max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: center;
+  height: 220px;
+  object-fit: cover;
+  object-position: center 28%;
 }
 
 .home-photo p {
@@ -348,13 +348,26 @@ h3 {
 }
 
 .home-prompt {
-  margin: 0 0 2vh;
+  margin: 0 0 0.65vh;
   color: #777;
 }
 
 .home-prompt .cursor {
   height: 0.95em;
-  background: $primary;
+  background: #111;
+}
+
+.home-command {
+  margin: 0 0 2vh;
+  font-family: $mono;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #111;
+}
+
+.home-command span {
+  color: $primary;
 }
 
 .jm-bar {
@@ -492,29 +505,14 @@ h3 {
 
 .home-news-command {
   font-family: $mono;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   letter-spacing: 0.5px;
-  color: #777;
+  color: #111;
 }
 
 .home-news-command span {
   color: $primary;
-}
-
-.home-news-command i {
-  color: #2563eb;
-  font-style: normal;
-}
-
-.home-news-title {
-  margin-top: 0.7vh;
-  font-family: $mono;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #000;
 }
 
 .home-news-entry {
@@ -596,6 +594,7 @@ h3 {
 
   .home-photo img {
     width: 160px;
+    height: 160px;
   }
 
   .home-bio {

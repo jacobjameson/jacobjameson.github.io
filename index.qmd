@@ -13,11 +13,12 @@ page-layout: full
 <section class="home-left" aria-label="About Jacob Jameson">
 
 <div class="home-photo">
-<img src="images/profile.png" alt="Portrait of Jacob Jameson">
+<img src="images/jj-headshot.png" alt="Portrait of Jacob Jameson">
 </div>
 
 <div class="home-bio">
-<div class="prompt-line home-prompt"><span class="ps1">jacobjameson</span>@<span class="host">harvard</span>:~$ whoami<span class="cursor"></span></div>
+<div class="prompt-line home-prompt"><span class="ps1">jacobjameson</span>@<span class="host">harvard</span>:~$<span class="cursor"></span></div>
+<div class="home-command"><span>$</span> whoami</div>
 
 <div class="jm-bar">
 <span class="jm-dot"></span>
@@ -25,7 +26,7 @@ page-layout: full
 </div>
 
 <div class="home-bio-copy">
-<p>Thanks for stopping by! I am a PhD candidate in Health Policy and Decision Sciences at Harvard University. <a href="research.qmd">My research</a> develops and applies methods in causal inference, decision modeling, and reinforcement learning to generate and synthesize evidence for better decision-making in health and public policy.</p>
+<p>I am a PhD candidate in Health Policy and Decision Sciences at Harvard University. <a href="research.qmd">My research</a> develops and applies methods in causal inference, decision modeling, and reinforcement learning to generate and synthesize evidence for better decision-making in health and public policy.</p>
 
 <p>I study the impacts of physician behavior, health policies, and personalized medicine. I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Research for Suicide Prevention at <a href="https://www.brighamandwomens.org">Brigham and Women’s Hospital</a> and a Research Statistician with the U.S. Department of Veterans Affairs.</p>
 
@@ -51,8 +52,7 @@ page-layout: full
 
 <aside class="home-news-column" aria-labelledby="news-heading">
 <div class="home-news-heading" id="news-heading">
-<div class="home-news-command"><span>jacobjameson</span>@<i>harvard</i>:~$ cat news.log</div>
-<div class="home-news-title">News &amp; Updates</div>
+<div class="home-news-command"><span>$</span> cat news.log</div>
 </div>
 
 <article class="home-news-entry">
