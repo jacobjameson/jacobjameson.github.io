@@ -28,7 +28,7 @@ page-layout: full
 <div class="home-bio-copy">
 <p>I am a PhD candidate in Health Policy and Decision Sciences at Harvard University. <a href="research.qmd">My research</a> develops and applies methods in causal inference, decision modeling, and reinforcement learning to generate and synthesize evidence for better decision-making in health and public policy.</p>
 
-<p>I study the impacts of physician behavior, health policies, and personalized medicine. I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Research for Suicide Prevention at <a href="https://www.brighamandwomens.org">Brigham and Women’s Hospital</a> and a Research Statistician with the U.S. Department of Veterans Affairs.</p>
+<p>I study the impacts of physician behavior, health policies, and personalized medicine. I am an <a href="https://hsph.harvard.edu/research/causalab/suicideprevention/">NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Research for Suicide Prevention</a> at <a href="https://www.brighamandwomens.org">Brigham and Women’s Hospital</a> and a Research Statistician with the U.S. Department of Veterans Affairs.</p>
 
 <p>I also care deeply about <a href="teaching.qmd">teaching</a>. I have been fortunate to work with students at Harvard, the University of Chicago, and New Haven Public Schools during my time as a Teach For America corps member.</p>
 
@@ -105,7 +105,7 @@ page-layout: full
 
 <article class="home-news-entry">
 <div class="home-news-date">May 2024</div>
-<p>Awarded an NIMH T32 Predoctoral Fellowship in <a href="https://causalab.sph.harvard.edu/suicideprevention/">Comparative Effectiveness Research for Suicide Risk Prevention</a>.</p>
+<p>Awarded an NIMH T32 Predoctoral Fellowship in <a href="https://hsph.harvard.edu/research/causalab/suicideprevention/">Comparative Effectiveness Research for Suicide Risk Prevention</a>.</p>
 </article>
 
 <article class="home-news-entry">
