@@ -91,6 +91,8 @@ body.nav-fixed {
   .navbar-brand:hover .navbar-title { color: $primary; }
 
   .nav-link {
+    box-sizing: border-box;
+    border-bottom: 1px solid transparent;
     color: #000 !important;
     padding: 5px 18px !important;
     font-size: 14px;
@@ -100,7 +102,7 @@ body.nav-fixed {
     &:hover  { color: $primary !important; }
     &.active {
       color: $primary !important;
-      border-bottom: 1px solid $primary;
+      border-bottom-color: $primary;
     }
   }
 
