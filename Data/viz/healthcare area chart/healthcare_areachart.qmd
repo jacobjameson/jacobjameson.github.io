@@ -9,7 +9,6 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: spacelab  
 page-layout: full
 comments:
   utterances:
@@ -167,5 +166,4 @@ disposable income
 
 
 [Code here](https://github.com/jacobjameson/jacobjameson.github.io/blob/main/Data/viz/healthcare%20area%20chart/dancing-bar-chart.js) 
-
 
