@@ -8,148 +8,110 @@ comments: false
 page-layout: full
 ---
 
-<div class="home-shell">
+<div class="home-layout">
 
-<div class="home-main" aria-label="About Jacob Jameson">
+<section class="home-left" aria-label="About Jacob Jameson">
 
-<div class="terminal-line" aria-hidden="true">
-<span class="terminal-dot terminal-dot-red"></span>
-<span class="terminal-dot terminal-dot-yellow"></span>
-<span class="terminal-dot terminal-dot-green"></span>
-<span class="terminal-path">jacob@harvard:~</span><span class="terminal-command">$ whoami</span>
+<div class="home-photo">
+<img src="images/profile.png" alt="Portrait of Jacob Jameson">
 </div>
 
-<section class="home-identity">
+<div class="home-bio">
+<p class="terminal-kicker">jacob@harvard:~$ whoami</p>
+<h1>Hi there,</h1>
 
-<div class="home-portrait-wrap">
-<img class="home-portrait" src="images/profile.png" alt="Portrait of Jacob Jameson">
-<div class="home-availability"><span></span> on the 2026–2027 academic job market</div>
+<div class="home-bio-copy">
+<p>Thanks for stopping by! I am a PhD candidate in Health Policy and Decision Sciences at Harvard University. <a href="research.qmd">My research</a> develops and applies methods in causal inference, decision modeling, and reinforcement learning to generate and synthesize evidence for better decision-making in health and public policy.</p>
+
+<p>I study the impacts of physician behavior, health policies, and personalized medicine. I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Research for Suicide Prevention at <a href="https://www.brighamandwomens.org">Brigham and Women’s Hospital</a> and a Research Statistician with the U.S. Department of Veterans Affairs.</p>
+
+<p>I also care deeply about <a href="teaching.qmd">teaching</a>. I have been fortunate to work with students at Harvard, the University of Chicago, and New Haven Public Schools during my time as a Teach For America corps member.</p>
+
+<p>I am on the academic job market for 2026–2027.</p>
 </div>
 
-<div class="home-intro">
-<p class="home-kicker">Hi there, I’m</p>
-<h1>Jacob Jameson</h1>
-<p class="home-role">PhD candidate in health policy &amp; decision sciences at Harvard University.</p>
-
-<nav class="home-actions" aria-label="Profile links">
-<a class="home-action home-action-primary" href="Data/Jameson_vitae.pdf">Academic CV <span aria-hidden="true">↗</span></a>
-<a class="home-action" href="research.qmd">Research</a>
-<a class="home-action" href="https://scholar.google.com/citations?user=jIrUgQsAAAAJ&amp;hl=en">Scholar <span aria-hidden="true">↗</span></a>
-<a class="home-action" href="mailto:jacobjameson@g.harvard.edu">Email</a>
+<nav class="home-links" aria-label="Profile links">
+<a href="Data/Jameson_vitae.pdf">Academic CV</a>
+<a href="https://scholar.google.com/citations?user=jIrUgQsAAAAJ&amp;hl=en">Google Scholar</a>
+<a href="mailto:jacobjameson@g.harvard.edu">Email</a>
 </nav>
 </div>
 
 </section>
 
-<section class="home-about" aria-labelledby="about-heading">
-<div class="section-command" id="about-heading"><span>$</span> about</div>
+<aside class="home-news-column" aria-labelledby="news-heading">
+<div class="home-news-heading" id="news-heading">News &amp; Updates</div>
 
-<p><a href="research.qmd">My research</a> develops and applies methods in causal inference, decision modeling, and reinforcement learning to generate and synthesize evidence for better decision-making in health and public policy. I study the impacts of physician behavior, health policies, and personalized medicine.</p>
-
-<p>I am an NIMH T32 Predoctoral Research Fellow in Comparative Effectiveness Research for Suicide Prevention at <a href="https://www.brighamandwomens.org">Brigham and Women’s Hospital</a> and a Research Statistician with the U.S. Department of Veterans Affairs.</p>
-
-<p>I also care deeply about <a href="teaching.qmd">teaching</a>. I have been fortunate to work with students at Harvard, the University of Chicago, and New Haven Public Schools during my time as a Teach For America corps member.</p>
-
-<div class="research-topics" aria-label="Research areas">
-<span>causal inference</span>
-<span>decision modeling</span>
-<span>reinforcement learning</span>
-<span>health policy</span>
-</div>
-</section>
-
-<section class="home-explore" aria-labelledby="explore-heading">
-<div class="section-command" id="explore-heading"><span>$</span> ls ./explore</div>
-<div class="explore-grid">
-<a href="research.qmd"><span class="explore-index">01</span><strong>Research</strong><small>Papers, methods, and current projects</small><span class="explore-arrow">→</span></a>
-<a href="teaching.qmd"><span class="explore-index">02</span><strong>Teaching</strong><small>Courses, materials, and teaching experience</small><span class="explore-arrow">→</span></a>
-<a href="posts/blog.qmd"><span class="explore-index">03</span><strong>Blog</strong><small>Notes on methods, code, and ideas</small><span class="explore-arrow">→</span></a>
-</div>
-</section>
-
-</div>
-
-<aside class="home-news" aria-labelledby="news-heading">
-<div class="news-heading-row">
-<div>
-<div class="section-command" id="news-heading"><span>$</span> tail -f news.log</div>
-<p>News &amp; updates</p>
-</div>
-<span class="news-live"><i></i> live</span>
-</div>
-
-<div class="home-news-list">
-<article class="home-news-item">
-<time datetime="2026-07">Jul 2026</time>
-<p>Presented at the <a href="https://meetings.informs.org/wordpress/healthcare2026/">INFORMS Healthcare Conference</a> — <a href="Data/INFORMS Healthcare Certificate 2026.pdf">certificate ↗</a></p>
+<article class="home-news-entry">
+<div class="home-news-date">July 2026</div>
+<p>Presented at the <a href="https://meetings.informs.org/wordpress/healthcare2026/">INFORMS Healthcare Conference</a> — <a href="Data/INFORMS Healthcare Certificate 2026.pdf">certificate</a>.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2026-05">May 2026</time>
-<p>Awarded the <a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients">Dean’s Award for Excellence in Student Teaching</a> by Harvard Kennedy School. <a href="https://chds.hsph.harvard.edu/jameson-wins-teaching-award-again/">Read the story ↗</a></p>
+<article class="home-news-entry">
+<div class="home-news-date">May 2026</div>
+<p>Awarded the <a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients">Dean’s Award for Excellence in Student Teaching</a> by Harvard Kennedy School. <a href="https://chds.hsph.harvard.edu/jameson-wins-teaching-award-again/">Read the story</a>.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2026-05">May 2026</time>
+<article class="home-news-entry">
+<div class="home-news-date">May 2026</div>
 <p>Presented at the <a href="https://pomsmeetings.org/conf-2026/">36th Annual POMS Conference</a>.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2026-05">May 2026</time>
+<article class="home-news-entry">
+<div class="home-news-date">May 2026</div>
 <p>Posted a preprint: <a href="https://www.medrxiv.org/content/10.64898/2026.05.06.26352568v1">The Effect of Legalizing Online Sports Gambling on Population Mental Health</a>.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2026-03">Mar 2026</time>
+<article class="home-news-entry">
+<div class="home-news-date">March 2026</div>
 <p>Selected for the <a href="https://sites.google.com/umich.edu/isye-mse-ioe-joint-rising-star/home">IOE–ISyE–MS&amp;E Rising Stars Workshop</a> and received the People’s Choice Award for my poster.</p>
 </article>
-</div>
 
-<details class="news-archive">
+<details class="home-news-archive">
 <summary>Earlier updates</summary>
 
-<article class="home-news-item">
-<time datetime="2026-03">Mar 2026</time>
+<article class="home-news-entry">
+<div class="home-news-date">March 2026</div>
 <p>Finalist in Harvard’s <a href="https://gsas.harvard.edu/academics/writing/three-minute-thesis">Three Minute Thesis Competition</a>.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2025-09">Sep 2025</time>
-<p>Finalist in the <a href="https://connect.informs.org/discussion/finalists-of-the-2025-informs-has-best-student-paper-competition">INFORMS HAS Best Student Paper Competition</a> — <a href="Data/INFORMS Award 2025.pdf">honorable mention ↗</a></p>
+<article class="home-news-entry">
+<div class="home-news-date">September 2025</div>
+<p>Finalist in the <a href="https://connect.informs.org/discussion/finalists-of-the-2025-informs-has-best-student-paper-competition">INFORMS HAS Best Student Paper Competition</a> — <a href="Data/INFORMS Award 2025.pdf">honorable mention</a>.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2025-06">Jun 2025</time>
+<article class="home-news-entry">
+<div class="home-news-date">June 2025</div>
 <p><a href="Data/Distinction Award 2025.pdf">Awarded the Distinction in Student Teaching</a>, Harvard Kennedy School.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2024-05">May 2024</time>
+<article class="home-news-entry">
+<div class="home-news-date">May 2024</div>
 <p>Awarded the Distinction in Student Teaching and the Dean’s Award for Excellence in Student Teaching, Harvard Kennedy School.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2024-05">May 2024</time>
+<article class="home-news-entry">
+<div class="home-news-date">May 2024</div>
 <p>Awarded an NIMH T32 Predoctoral Fellowship in <a href="https://causalab.sph.harvard.edu/suicideprevention/">Comparative Effectiveness Research for Suicide Risk Prevention</a>.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2024-02">Feb 2024</time>
+<article class="home-news-entry">
+<div class="home-news-date">February 2024</div>
 <p><a href="https://chds.hsph.harvard.edu/chds-welcomes-new-educational-innovation-scholar/">Selected as the Center for Health Decision Science Educational Innovation Scholar</a>.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2024-02">Feb 2024</time>
+<article class="home-news-entry">
+<div class="home-news-date">February 2024</div>
 <p>Received the 2024 Howard Raiffa Award, Harvard Center for Risk Analysis.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2023-09">Sep 2023</time>
-<p>Finalist, INFORMS Public Sector OR Best Video Award — <a href="https://www.youtube.com/watch?v=do6j8G9qUoM">Improving Emergency Department Flow ↗</a></p>
+<article class="home-news-entry">
+<div class="home-news-date">September 2023</div>
+<p>Finalist, INFORMS Public Sector OR Best Video Award — <a href="https://www.youtube.com/watch?v=do6j8G9qUoM">Improving Emergency Department Flow</a>.</p>
 </article>
 
-<article class="home-news-item">
-<time datetime="2023-01">Jan 2023</time>
+<article class="home-news-entry">
+<div class="home-news-date">January 2023</div>
 <p><a href="https://chds.hsph.harvard.edu/jameson-receives-raiffa-award/">Received the 2023 Howard Raiffa Award</a>, Harvard Center for Risk Analysis.</p>
 </article>
 </details>

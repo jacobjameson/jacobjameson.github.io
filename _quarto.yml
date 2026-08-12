@@ -47,11 +47,13 @@ website:
 
     anonymize-ip: true
   navbar:
-    logo: "images/sig.png"
     align: center
-    title: false
+    title: "JACOB JAMESON"
+    pinned: false
     collapse-below: lg
     right:
+      - text: About
+        href: index.qmd
       - text: Research
         href: research.qmd
       - text: Teaching
@@ -69,10 +71,10 @@ website:
       - text: CV
         href: Data/Jameson_vitae.pdf
         target: _blank
-      - icon: github
-        href: https://github.com/jacobjameson
+      - text: Scholar
+        href: https://scholar.google.com/citations?user=jIrUgQsAAAAJ&hl=en
         target: _blank
-      - icon: linkedin
+      - text: LinkedIn
         href: https://www.linkedin.com/in/jacob-jameson
         target: _blank
 
