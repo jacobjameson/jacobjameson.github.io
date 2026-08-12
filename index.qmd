@@ -17,8 +17,12 @@ page-layout: full
 </div>
 
 <div class="home-bio">
-<p class="terminal-kicker">jacob@harvard:~$ whoami</p>
-<h1>Hi there,</h1>
+<div class="prompt-line home-prompt"><span class="ps1">jacobjameson</span>@<span class="host">harvard</span>:~$ whoami<span class="cursor"></span></div>
+
+<div class="jm-bar">
+<span class="jm-dot"></span>
+<span>I am on the academic job market for 2026–2027. Please feel free to <a href="mailto:jacobjameson@g.harvard.edu">get in touch</a> or view my <a href="Data/Jameson_vitae.pdf">CV</a>.</span>
+</div>
 
 <div class="home-bio-copy">
 <p>Thanks for stopping by! I am a PhD candidate in Health Policy and Decision Sciences at Harvard University. <a href="research.qmd">My research</a> develops and applies methods in causal inference, decision modeling, and reinforcement learning to generate and synthesize evidence for better decision-making in health and public policy.</p>
@@ -27,7 +31,6 @@ page-layout: full
 
 <p>I also care deeply about <a href="teaching.qmd">teaching</a>. I have been fortunate to work with students at Harvard, the University of Chicago, and New Haven Public Schools during my time as a Teach For America corps member.</p>
 
-<p>I am on the academic job market for 2026–2027.</p>
 </div>
 
 <nav class="home-links" aria-label="Profile links">
@@ -35,12 +38,22 @@ page-layout: full
 <a href="https://scholar.google.com/citations?user=jIrUgQsAAAAJ&amp;hl=en">Google Scholar</a>
 <a href="mailto:jacobjameson@g.harvard.edu">Email</a>
 </nav>
+
+<nav class="profile-bubbles" aria-label="More links">
+<a href="posts/blog.qmd">Blog</a>
+<a href="https://github.com/jacobjameson">GitHub</a>
+<a href="https://twitter.com/JacobCJameson">Twitter</a>
+<a href="https://letterboxd.com/jacobjameson/">Letterboxd</a>
+</nav>
 </div>
 
 </section>
 
 <aside class="home-news-column" aria-labelledby="news-heading">
-<div class="home-news-heading" id="news-heading">News &amp; Updates</div>
+<div class="home-news-heading" id="news-heading">
+<div class="home-news-command"><span>jacobjameson</span>@<i>harvard</i>:~$ cat news.log</div>
+<div class="home-news-title">News &amp; Updates</div>
+</div>
 
 <article class="home-news-entry">
 <div class="home-news-date">July 2026</div>
