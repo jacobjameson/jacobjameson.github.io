@@ -10,7 +10,7 @@ page-layout: full
 <style>
 
 .section-cmd {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.72rem;
 color: #aaa;
 letter-spacing: 0.08em;
@@ -36,7 +36,7 @@ align-items: baseline;
 .m-item:first-child { border-top: 1px solid #f0f0f0; }
 
 .m-num {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.68rem;
 color: #888;
 letter-spacing: 0.03em;
@@ -57,19 +57,19 @@ gap: 0 0.4rem;
 }
 
 .m-sep {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.67rem;
 color: #ccc;
 }
 
 .m-sub {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.67rem;
 color: #888;
 }
 
 .m-link {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.65rem;
 letter-spacing: 0.04em;
 padding: 1px 8px;
@@ -87,7 +87,7 @@ text-decoration: none !important;
 }
 
 .resources {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.72rem;
 color: #888;
 margin-top: 2rem;

@@ -47,22 +47,15 @@ website:
 
     anonymize-ip: true
   navbar:
-    logo: "images/sig.png"
     align: center
-    title: false
+    title: "JACOB JAMESON"
+    pinned: false
     collapse-below: lg
     right:
-      - icon: linkedin
-        href: https://www.linkedin.com/in/jacob-jameson
-        target: _blank
-      - icon: twitter
-        href: https://twitter.com/JacobCJameson
-        target: _blank
-      - icon: github
-        href: https://github.com/jacobjameson
-        target: _blank
-      - text: Blog
-        href: posts/blog.qmd
+      - text: About
+        href: index.qmd
+      - text: Research
+        href: research.qmd
       - text: Teaching
         menu:
           - text: "Jacob's Teaching Experience"
@@ -73,8 +66,17 @@ website:
             href: git files/Intro Git.qmd
           - text: "API 222 Section Material"
             href: api 222 files/API222.qmd
-      - text: Research
-        href: research.qmd
+      - text: Blog
+        href: posts/blog.qmd
+      - text: CV
+        href: Data/Jameson_vitae.pdf
+        target: _blank
+      - text: Scholar
+        href: https://scholar.google.com/citations?user=jIrUgQsAAAAJ&hl=en
+        target: _blank
+      - text: LinkedIn
+        href: https://www.linkedin.com/in/jacob-jameson
+        target: _blank
 
 format:
   html:
@@ -83,4 +85,3 @@ format:
     fontsize: 1.0em
     code-copy: true
     code-overflow: wrap
-

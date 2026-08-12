@@ -10,13 +10,14 @@ format:
 <style>
 
 .section-cmd {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.72rem;
-color: #aaa;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.8rem;
+font-weight: 500;
+color: #333;
 letter-spacing: 0.08em;
 margin: 2.5rem 0 0;
 padding-bottom: 0.5rem;
-border-bottom: 1px solid #e4e4e4;
+border-bottom: 1px solid #d6d6d6;
 display: flex;
 align-items: center;
 gap: 6px;
@@ -37,9 +38,10 @@ align-items: baseline;
 .t-item:first-child { border-top: 1px solid #f0f0f0; }
 
 .t-year {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.68rem;
-color: #888;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.74rem;
+font-weight: 500;
+color: #555;
 letter-spacing: 0.03em;
 white-space: nowrap;
 padding-top: 1px;
@@ -47,9 +49,9 @@ line-height: 1.5;
 }
 
 .t-body {
-font-size: 0.84rem;
-font-weight: 300;
-color: #333;
+font-size: 0.96rem;
+font-weight: 400;
+color: #222;
 line-height: 1.5;
 display: flex;
 align-items: baseline;
@@ -66,28 +68,29 @@ text-underline-offset: 2px;
 .t-body a:hover { color: #16a34a; text-decoration-color: #16a34a; }
 
 .t-sep {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.67rem;
-color: #ccc;
-}
-
-.t-sub {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.67rem;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
 color: #888;
 }
 
+.t-sub {
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
+color: #555;
+}
+
 .t-yrs {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.67rem;
-color: #aaa;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
+color: #666;
 }
 
 .t-role {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.62rem;
-color: #aaa;
-border: 1px solid #e8e8e8;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.66rem;
+font-weight: 500;
+color: #555;
+border: 1px solid #c8c8c8;
 padding: 1px 5px;
 border-radius: 2px;
 letter-spacing: 0.03em;
@@ -95,8 +98,9 @@ white-space: nowrap;
 }
 
 .t-link {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.65rem;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.68rem;
+font-weight: 500;
 letter-spacing: 0.04em;
 padding: 1px 8px;
 border-radius: 2px;
@@ -120,7 +124,7 @@ border-top: 1px solid #f0f0f0;
 }
 
 .t-cell {
-padding: 6px 0;
+padding: 9px 0;
 border-bottom: 1px solid #f0f0f0;
 padding-right: 1.5rem;
 }
@@ -132,16 +136,16 @@ border-left: 1px solid #f0f0f0;
 }
 
 .t-cell-title {
-font-size: 0.84rem;
-font-weight: 300;
-color: #333;
+font-size: 0.96rem;
+font-weight: 400;
+color: #222;
 line-height: 1.4;
 }
 
 .t-cell-sub {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.65rem;
-color: #888;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
+color: #555;
 margin-top: 1px;
 display: flex;
 align-items: center;
@@ -150,9 +154,9 @@ gap: 0 0.35rem;
 }
 
 .t-cell-yrs {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.65rem;
-color: #aaa;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
+color: #666;
 }
 
 @media (max-width: 680px) {

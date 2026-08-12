@@ -10,7 +10,7 @@ page-layout: full
 <style>
 
 .section-cmd {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.72rem;
 color: #aaa;
 letter-spacing: 0.08em;
@@ -36,7 +36,7 @@ align-items: baseline;
 .m-item:first-child { border-top: 1px solid #f0f0f0; }
 
 .m-num {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.68rem;
 color: #888;
 letter-spacing: 0.03em;
@@ -65,19 +65,19 @@ text-underline-offset: 2px;
 .m-body a:hover { color: #16a34a; text-decoration-color: #16a34a; }
 
 .m-sep {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.67rem;
 color: #ccc;
 }
 
 .m-sub {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.67rem;
 color: #888;
 }
 
 .m-link {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.65rem;
 letter-spacing: 0.04em;
 padding: 1px 8px;
@@ -91,7 +91,7 @@ white-space: nowrap;
 .m-link:hover { background: #16a34a !important; color: #fff !important; text-decoration: none !important; }
 
 .about-note {
-font-family: 'JetBrains Mono', monospace;
+font-family: 'Source Code Pro', monospace;
 font-size: 0.72rem;
 color: #888;
 line-height: 1.75;
