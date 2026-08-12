@@ -384,13 +384,13 @@ K(a,b) = x_{1,a}x_{1,b}+x_{2,a}x_{2,b} +
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">if_else</span>(small_data[, <span class="dv">3</span>] <span class="sc">==</span> <span class="st">"Yes"</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(transformed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   accept_rate.V1        Outstate.V1      Private  
- Min.   :-4.027367   Min.   :-2.0135809   No :212  
- 1st Qu.:-0.484557   1st Qu.:-0.7757038   Yes:565  
- Median : 0.216325   Median :-0.1120227            
- Mean   : 0.000000   Mean   : 0.0000000            
- 3rd Qu.: 0.690631   3rd Qu.: 0.6175294            
- Max.   : 1.720364   Max.   : 2.7987285            </code></pre>
+<pre><code>        accept_rate.V1                Outstate.V1          Private  
+ Min.   :-4.027366512670000   Min.   :-2.01358092184e+00   No :212  
+ 1st Qu.:-0.484557144244000   1st Qu.:-7.75703816525e-01   Yes:565  
+ Median : 0.216325253282000   Median :-1.12022717891e-01            
+ Mean   : 0.000000000000006   Mean   : 1.00000000000e-16            
+ 3rd Qu.: 0.690630544088000   3rd Qu.: 6.17529351208e-01            
+ Max.   : 1.720364032200000   Max.   : 2.79872846751e+00            </code></pre>
 </div>
 </div>
 <p>We will start by looking at our data, where the color represents whether the college is private or public</p>
