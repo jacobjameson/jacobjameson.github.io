@@ -8,7 +8,6 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: spacelab  
 page-layout: full
 comments:
   utterances:
@@ -56,7 +55,6 @@ Examples of analyses are included in [Holland Stam's thesis](https://github.com/
 ![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-17/w3.png)
 
 [Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-17/) 
-
 
 
 

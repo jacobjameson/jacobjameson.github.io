@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-8df782aa26525d13d9b00b3cbae7c76f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-df70780e7153a51141c72a2ac9e4ec41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -162,8 +162,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/sig.png" alt="" class="navbar-logo">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">JACOB JAMESON</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -172,24 +172,13 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> <i class="bi bi-linkedin" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/JacobCJameson" target="_blank"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jacobjameson" target="_blank"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/blog.html"> 
-<span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -215,8 +204,20 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html"> 
-<span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../../posts/blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Data/Jameson_vitae.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=jIrUgQsAAAAJ&amp;hl=en" target="_blank"> 
+<span class="menu-text">Scholar</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> 
+<span class="menu-text">LinkedIn</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -395,7 +396,7 @@ window.Quarto = {
 <pre><code>Loading required package: Matrix</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loaded glmnet 4.1-8</code></pre>
+<pre><code>Loaded glmnet 4.1-10</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>?cv.glmnet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -474,93 +475,93 @@ window.Quarto = {
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">s =</span> <span class="fu">c</span>(lasso_ins<span class="sc">$</span>lambda.min, lasso_ins<span class="sc">$</span>lambda<span class="fl">.1</span>se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>86 x 2 sparse Matrix of class "dgCMatrix"
-                       s1          s2
-(Intercept)  0.9896239538 1.053595130
-MOSTYPE      .            .          
-MAANTHUI     .            .          
-MGEMOMV      .            .          
-MGEMLEEF     .            .          
-MOSHOOFD     .            .          
-MGODRK       .            .          
-MGODPR       .            .          
-MGODOV       .            .          
-MGODGE       .            .          
-MRELGE       0.0018180263 .          
-MRELSA       .            .          
-MRELOV       .            .          
-MFALLEEN     .            .          
-MFGEKIND     .            .          
-MFWEKIND     .            .          
-MOPLHOOG     0.0022611683 .          
-MOPLMIDD     .            .          
-MOPLLAAG    -0.0024753875 .          
-MBERHOOG     .            .          
-MBERZELF     .            .          
-MBERBOER    -0.0030373898 .          
-MBERMIDD     .            .          
-MBERARBG     .            .          
-MBERARBO     .            .          
-MSKA         .            .          
-MSKB1        .            .          
-MSKB2        .            .          
-MSKC         .            .          
-MSKD         .            .          
-MHHUUR      -0.0007565131 .          
-MHKOOP       .            .          
-MAUT1        0.0013643467 .          
-MAUT2        .            .          
-MAUT0        .            .          
-MZFONDS      .            .          
-MZPART       .            .          
-MINKM30      .            .          
-MINK3045     .            .          
-MINK4575     .            .          
-MINK7512     .            .          
-MINK123M     .            .          
-MINKGEM      0.0028225067 .          
-MKOOPKLA     0.0025557889 .          
-PWAPART      0.0076586029 .          
-PWABEDR      .            .          
-PWALAND     -0.0008184860 .          
-PPERSAUT     0.0087316235 0.002079863
-PBESAUT      .            .          
-PMOTSCO      .            .          
-PVRAAUT      .            .          
-PAANHANG     .            .          
-PTRACTOR     .            .          
-PWERKT       .            .          
-PBROM        .            .          
-PLEVEN       .            .          
-PPERSONG     .            .          
-PGEZONG      .            .          
-PWAOREG      0.0010472132 .          
-PBRAND       0.0042630439 .          
-PZEILPL      .            .          
-PPLEZIER     .            .          
-PFIETS       .            .          
-PINBOED      .            .          
-PBYSTAND     .            .          
-AWAPART      .            .          
-AWABEDR      .            .          
-AWALAND      .            .          
-APERSAUT     0.0006293082 .          
-ABESAUT      .            .          
-AMOTSCO      .            .          
-AVRAAUT      .            .          
-AAANHANG     .            .          
-ATRACTOR     .            .          
-AWERKT       .            .          
-ABROM        .            .          
-ALEVEN       .            .          
-APERSONG     .            .          
-AGEZONG      .            .          
-AWAOREG      .            .          
-ABRAND       .            .          
-AZEILPL      .            .          
-APLEZIER     0.2083116609 .          
-AFIETS       0.0076146528 .          
-AINBOED      .            .          
-ABYSTAND     0.0361586998 .          </code></pre>
+            s=0.006703696 s=0.029701538
+(Intercept)  0.9896239538   1.053595130
+MOSTYPE      .              .          
+MAANTHUI     .              .          
+MGEMOMV      .              .          
+MGEMLEEF     .              .          
+MOSHOOFD     .              .          
+MGODRK       .              .          
+MGODPR       .              .          
+MGODOV       .              .          
+MGODGE       .              .          
+MRELGE       0.0018180263   .          
+MRELSA       .              .          
+MRELOV       .              .          
+MFALLEEN     .              .          
+MFGEKIND     .              .          
+MFWEKIND     .              .          
+MOPLHOOG     0.0022611683   .          
+MOPLMIDD     .              .          
+MOPLLAAG    -0.0024753875   .          
+MBERHOOG     .              .          
+MBERZELF     .              .          
+MBERBOER    -0.0030373898   .          
+MBERMIDD     .              .          
+MBERARBG     .              .          
+MBERARBO     .              .          
+MSKA         .              .          
+MSKB1        .              .          
+MSKB2        .              .          
+MSKC         .              .          
+MSKD         .              .          
+MHHUUR      -0.0007565131   .          
+MHKOOP       .              .          
+MAUT1        0.0013643467   .          
+MAUT2        .              .          
+MAUT0        .              .          
+MZFONDS      .              .          
+MZPART       .              .          
+MINKM30      .              .          
+MINK3045     .              .          
+MINK4575     .              .          
+MINK7512     .              .          
+MINK123M     .              .          
+MINKGEM      0.0028225067   .          
+MKOOPKLA     0.0025557889   .          
+PWAPART      0.0076586029   .          
+PWABEDR      .              .          
+PWALAND     -0.0008184860   .          
+PPERSAUT     0.0087316235   0.002079863
+PBESAUT      .              .          
+PMOTSCO      .              .          
+PVRAAUT      .              .          
+PAANHANG     .              .          
+PTRACTOR     .              .          
+PWERKT       .              .          
+PBROM        .              .          
+PLEVEN       .              .          
+PPERSONG     .              .          
+PGEZONG      .              .          
+PWAOREG      0.0010472132   .          
+PBRAND       0.0042630439   .          
+PZEILPL      .              .          
+PPLEZIER     .              .          
+PFIETS       .              .          
+PINBOED      .              .          
+PBYSTAND     .              .          
+AWAPART      .              .          
+AWABEDR      .              .          
+AWALAND      .              .          
+APERSAUT     0.0006293082   .          
+ABESAUT      .              .          
+AMOTSCO      .              .          
+AVRAAUT      .              .          
+AAANHANG     .              .          
+ATRACTOR     .              .          
+AWERKT       .              .          
+ABROM        .              .          
+ALEVEN       .              .          
+APERSONG     .              .          
+AGEZONG      .              .          
+AWAOREG      .              .          
+ABRAND       .              .          
+AZEILPL      .              .          
+APLEZIER     0.2083116609   .          
+AFIETS       0.0076146528   .          
+AINBOED      .              .          
+ABYSTAND     0.0361586998   .          </code></pre>
 </div>
 </div>
 <p>Questions you should be able to answer :</p>
@@ -814,8 +815,8 @@ adjCV       0.3484   0.2978   0.2936   0.2925   0.2925   0.2920   0.2909
 CV      0.2913   0.2904   0.2898    0.2874    0.2863    0.2794    0.2794
 adjCV   0.2912   0.2901   0.2898    0.2873    0.2862    0.2793    0.2793
        14 comps  15 comps  16 comps  17 comps  18 comps  19 comps
-CV       0.2794    0.2795    0.2795    0.2796    0.2796    0.2797
-adjCV    0.2793    0.2794    0.2794    0.2794    0.2795    0.2795
+CV       0.2794    0.2795    0.2795    0.2796    0.2796    0.2801
+adjCV    0.2793    0.2794    0.2794    0.2795    0.2794    0.2794
 
 TRAINING: % variance explained
          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps
@@ -826,7 +827,7 @@ X          81.28     86.91     92.14     96.43     99.52     99.79    100.00
 logwage    31.35     32.46     33.11     36.40     36.45     36.45     36.47
          16 comps  17 comps  18 comps  19 comps
 X          100.00    100.00    100.00    100.00
-logwage     36.47     36.47     36.47     36.48</code></pre>
+logwage     36.47     36.47     36.48     36.48</code></pre>
 </div>
 </div>
 <p>We are interested in finding which number of principle components should be included in the regression to lead to the lowest cross-validation error.</p>

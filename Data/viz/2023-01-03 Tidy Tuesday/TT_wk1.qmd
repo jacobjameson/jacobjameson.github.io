@@ -8,7 +8,6 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: spacelab  
 page-layout: full
 comments:
   utterances:
@@ -49,7 +48,6 @@ All building permits can be found at the [Socrata API endpoint](https://dev.socr
 ![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-03/w1.png)
 
 [Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-03/) 
-
 
 
 

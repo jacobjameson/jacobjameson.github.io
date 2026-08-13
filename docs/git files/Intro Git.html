@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8df782aa26525d13d9b00b3cbae7c76f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-df70780e7153a51141c72a2ac9e4ec41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -97,8 +97,8 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/sig.png" alt="" class="navbar-logo">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">JACOB JAMESON</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -107,24 +107,13 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> <i class="bi bi-linkedin" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/JacobCJameson" target="_blank"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jacobjameson" target="_blank"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts/blog.html"> 
-<span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -150,8 +139,20 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../research.html"> 
-<span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../posts/blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Data/Jameson_vitae.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=jIrUgQsAAAAJ&amp;hl=en" target="_blank"> 
+<span class="menu-text">Scholar</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> 
+<span class="menu-text">LinkedIn</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -190,13 +191,14 @@ gtag('config', 'G-C0KP7Y1ZRW', { 'anonymize_ip': true});
 <style>
 
 .section-cmd {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.72rem;
-color: #aaa;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.8rem;
+font-weight: 500;
+color: #333;
 letter-spacing: 0.08em;
 margin: 2.5rem 0 0;
 padding-bottom: 0.5rem;
-border-bottom: 1px solid #e4e4e4;
+border-bottom: 1px solid #d6d6d6;
 display: flex;
 align-items: center;
 gap: 6px;
@@ -216,9 +218,10 @@ align-items: baseline;
 .m-item:first-child { border-top: 1px solid #f0f0f0; }
 
 .m-num {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.68rem;
-color: #888;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.74rem;
+font-weight: 500;
+color: #555;
 letter-spacing: 0.03em;
 white-space: nowrap;
 padding-top: 1px;
@@ -226,9 +229,9 @@ line-height: 1.5;
 }
 
 .m-body {
-font-size: 0.84rem;
-font-weight: 300;
-color: #333;
+font-size: 0.96rem;
+font-weight: 400;
+color: #222;
 line-height: 1.5;
 display: flex;
 align-items: baseline;
@@ -237,20 +240,21 @@ gap: 0 0.4rem;
 }
 
 .m-sep {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.67rem;
-color: #ccc;
-}
-
-.m-sub {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.67rem;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
 color: #888;
 }
 
+.m-sub {
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
+color: #555;
+}
+
 .m-link {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.65rem;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.68rem;
+font-weight: 500;
 letter-spacing: 0.04em;
 padding: 1px 8px;
 border-radius: 2px;
@@ -288,24 +292,25 @@ align-items: baseline;
 .concept-item:first-child { border-top: 1px solid #f0f0f0; }
 
 .concept-key {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.68rem;
-color: #16a34a;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.74rem;
+font-weight: 500;
+color: #15803d;
 letter-spacing: 0.03em;
 white-space: nowrap;
 }
 
 .concept-val {
-font-size: 0.84rem;
-font-weight: 300;
-color: #333;
+font-size: 0.96rem;
+font-weight: 400;
+color: #222;
 line-height: 1.5;
 }
 
 .concept-val span {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.67rem;
-color: #888;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
+color: #555;
 }
 
 </style>

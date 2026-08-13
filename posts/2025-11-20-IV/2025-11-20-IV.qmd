@@ -75,7 +75,7 @@ input[type="range"] {
 .value-display {
     display: inline-block;
     min-width: 60px;
-    font-family: 'Courier New', monospace;
+    font-family: 'Source Code Pro', monospace;
     color: #333;
     font-weight: bold;
 }

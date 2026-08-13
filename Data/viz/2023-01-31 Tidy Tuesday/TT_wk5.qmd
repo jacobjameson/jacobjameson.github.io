@@ -8,7 +8,6 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: spacelab  
 page-layout: full
 comments:
   utterances:
@@ -47,7 +46,6 @@ Additional datasets for the [US](https://www.datarepository.movebank.org/handle/
 ![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-01-31/week5_edit.png)
 
 [Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-01-31/) 
-
 
 
 

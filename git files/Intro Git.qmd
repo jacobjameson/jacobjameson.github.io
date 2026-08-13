@@ -10,13 +10,14 @@ page-layout: full
 <style>
 
 .section-cmd {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.72rem;
-color: #aaa;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.8rem;
+font-weight: 500;
+color: #333;
 letter-spacing: 0.08em;
 margin: 2.5rem 0 0;
 padding-bottom: 0.5rem;
-border-bottom: 1px solid #e4e4e4;
+border-bottom: 1px solid #d6d6d6;
 display: flex;
 align-items: center;
 gap: 6px;
@@ -36,9 +37,10 @@ align-items: baseline;
 .m-item:first-child { border-top: 1px solid #f0f0f0; }
 
 .m-num {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.68rem;
-color: #888;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.74rem;
+font-weight: 500;
+color: #555;
 letter-spacing: 0.03em;
 white-space: nowrap;
 padding-top: 1px;
@@ -46,9 +48,9 @@ line-height: 1.5;
 }
 
 .m-body {
-font-size: 0.84rem;
-font-weight: 300;
-color: #333;
+font-size: 0.96rem;
+font-weight: 400;
+color: #222;
 line-height: 1.5;
 display: flex;
 align-items: baseline;
@@ -57,20 +59,21 @@ gap: 0 0.4rem;
 }
 
 .m-sep {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.67rem;
-color: #ccc;
-}
-
-.m-sub {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.67rem;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
 color: #888;
 }
 
+.m-sub {
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
+color: #555;
+}
+
 .m-link {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.65rem;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.68rem;
+font-weight: 500;
 letter-spacing: 0.04em;
 padding: 1px 8px;
 border-radius: 2px;
@@ -108,24 +111,25 @@ align-items: baseline;
 .concept-item:first-child { border-top: 1px solid #f0f0f0; }
 
 .concept-key {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.68rem;
-color: #16a34a;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.74rem;
+font-weight: 500;
+color: #15803d;
 letter-spacing: 0.03em;
 white-space: nowrap;
 }
 
 .concept-val {
-font-size: 0.84rem;
-font-weight: 300;
-color: #333;
+font-size: 0.96rem;
+font-weight: 400;
+color: #222;
 line-height: 1.5;
 }
 
 .concept-val span {
-font-family: 'JetBrains Mono', monospace;
-font-size: 0.67rem;
-color: #888;
+font-family: 'Source Code Pro', monospace;
+font-size: 0.72rem;
+color: #555;
 }
 
 </style>

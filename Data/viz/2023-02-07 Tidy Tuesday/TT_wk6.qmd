@@ -8,7 +8,6 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: spacelab  
 page-layout: full
 comments:
   utterances:
@@ -39,7 +38,6 @@ Note: All `stock_symbol`s have 3271 prices, except META (2688) and TSLA (3148) b
 ![](https://raw.githubusercontent.com/jacobjameson/TidyTuesday/main/2023/2023-02-07/w6.png)
 
 [Code here](https://github.com/jacobjameson/TidyTuesday/blob/main/2023/2023-02-07/) 
-
 
 
 

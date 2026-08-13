@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-8df782aa26525d13d9b00b3cbae7c76f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-df70780e7153a51141c72a2ac9e4ec41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -162,8 +162,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/sig.png" alt="" class="navbar-logo">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">JACOB JAMESON</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -172,24 +172,13 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> <i class="bi bi-linkedin" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/JacobCJameson" target="_blank"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jacobjameson" target="_blank"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/blog.html"> 
-<span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -215,8 +204,20 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html"> 
-<span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../../posts/blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Data/Jameson_vitae.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=jIrUgQsAAAAJ&amp;hl=en" target="_blank"> 
+<span class="menu-text">Scholar</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> 
+<span class="menu-text">LinkedIn</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -383,13 +384,13 @@ K(a,b) = x_{1,a}x_{1,b}+x_{2,a}x_{2,b} +
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">if_else</span>(small_data[, <span class="dv">3</span>] <span class="sc">==</span> <span class="st">"Yes"</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(transformed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   accept_rate.V1        Outstate.V1      Private  
- Min.   :-4.027367   Min.   :-2.0135809   No :212  
- 1st Qu.:-0.484557   1st Qu.:-0.7757038   Yes:565  
- Median : 0.216325   Median :-0.1120227            
- Mean   : 0.000000   Mean   : 0.0000000            
- 3rd Qu.: 0.690631   3rd Qu.: 0.6175294            
- Max.   : 1.720364   Max.   : 2.7987285            </code></pre>
+<pre><code>        accept_rate.V1                Outstate.V1          Private  
+ Min.   :-4.027366512670000   Min.   :-2.01358092184e+00   No :212  
+ 1st Qu.:-0.484557144244000   1st Qu.:-7.75703816525e-01   Yes:565  
+ Median : 0.216325253282000   Median :-1.12022717891e-01            
+ Mean   : 0.000000000000006   Mean   : 1.00000000000e-16            
+ 3rd Qu.: 0.690630544088000   3rd Qu.: 6.17529351208e-01            
+ Max.   : 1.720364032200000   Max.   : 2.79872846751e+00            </code></pre>
 </div>
 </div>
 <p>We will start by looking at our data, where the color represents whether the college is private or public</p>
