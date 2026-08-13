@@ -1,45 +1,6 @@
 {
   "listingMap": {
-    "index.qmd": [
-      "posts"
-    ],
-    "blog.qmd": [
-      "posts"
-    ],
-    "horror.qmd": [
-      "Data/horrorplots"
-    ],
-    "dataviz.qmd": [
-      "Data/viz"
-    ],
-    "Intro R.qmd": [
-      "posts",
-      "R files"
-    ],
-    "API222.qmd": [
-      "api 222 files",
-      "API 222 Files"
-    ],
-    "Intro Git.qmd": [
-      "git files"
-    ],
-    "git files/Intro Git.qmd": [
-      "git files",
-      "B3049D40"
-    ],
     "posts/blog.qmd": [
-      "posts",
-      "B3049D40"
-    ],
-    "api 222 files/API222.qmd": [
-      "api 222 files",
-      "B3049D40"
-    ],
-    "R files/Intro R.qmd": [
-      "R files",
-      "B3049D40"
-    ],
-    "Math Camp/mathcamp.qmd": [
       "B3049D40"
     ]
   }
