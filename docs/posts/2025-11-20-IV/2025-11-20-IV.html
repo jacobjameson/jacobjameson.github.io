@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-df70780e7153a51141c72a2ac9e4ec41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a32592dea758dd710397be6255ab725c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -165,7 +165,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">JACOB JAMESON</span>
+    <span class="navbar-title">Jacob Jameson</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -173,54 +173,42 @@ window.Quarto = {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../index.html">
 <span class="menu-text">About</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html"> 
+    <a class="nav-link" href="../../research.html">
 <span class="menu-text">Research</span></a>
-  </li>  
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Teaching</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teaching">
         <li>
     <a class="dropdown-item" href="../../teaching.html">
  <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../../R files/Intro R.html">
  <span class="dropdown-text">Introduction to R</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../../git files/Intro Git.html">
  <span class="dropdown-text">Introduction to Git/GitHub</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../../api 222 files/API222.html">
  <span class="dropdown-text">API 222 Section Material</span></a>
-  </li>  
+  </li>
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/blog.html"> 
+    <a class="nav-link" href="../../posts/blog.html">
 <span class="menu-text">Blog</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../Data/Jameson_vitae.pdf" target="_blank"> 
-<span class="menu-text">CV</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.com/citations?user=jIrUgQsAAAAJ&amp;hl=en" target="_blank"> 
-<span class="menu-text">Scholar</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> 
-<span class="menu-text">LinkedIn</span></a>
-  </li>  
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -234,7 +222,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
-   
+
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
@@ -305,17 +293,17 @@ window.Quarto = {
              <p>Jacob Jameson </p>
           </div>
   </div>
-    
+
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">November 20, 2025</p>
     </div>
   </div>
-  
-    
+
+
   </div>
-  
+
 
 
 </header>
@@ -517,79 +505,79 @@ button:disabled {
         while(v === 0) v = Math.random();
         return mean + sd * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
     }
-    
+
     const TRUE_EFFECT = 0.25;
     let currentData = null;
-    
+
     function generateData() {
         const toughRate = parseFloat(document.getElementById('tough-rate').value);
         const softRate = parseFloat(document.getElementById('soft-rate').value);
-        
+
         document.getElementById('tough-val').textContent = toughRate.toFixed(2);
         document.getElementById('soft-val').textContent = softRate.toFixed(2);
-        
+
         const n = 10000;
         const data = [];
-        
+
         for (let i = 0; i < n; i++) {
             // Unobserved quality (part of error term - affects both approval and outcomes)
             const quality = randn(0, 1);
-            
+
             // Random examiner assignment (the instrument!)
             const isSoft = Math.random() < 0.5;
             const examiner = isSoft ? 'Soft' : 'Tough';
-            
+
             // Approval decision: depends on examiner leniency AND quality
             // This creates selection bias for OLS
             const baseLeniency = isSoft ? softRate : toughRate;
             const approvalProb = Math.max(0.05, Math.min(0.95, baseLeniency + 0.15 * quality));
             const approved = Math.random() < approvalProb ? 1 : 0;
-            
+
             // Outcome: depends on treatment AND quality
             // Quality affects both approval and outcomes = confounding!
             const innovation = 5 + TRUE_EFFECT * approved + 0.8 * quality + randn(0, 0.5);
-            
+
             data.push({ quality, isSoft, examiner, approved, innovation });
         }
-        
+
         return data;
     }
-    
+
     function drawChart() {
         if (!currentData) currentData = generateData();
-        
+
         const margin = { top: 50, right: 20, bottom: 60, left: 60 };
         const width = 800 - margin.left - margin.right;
         const height = 350 - margin.top - margin.bottom;
-        
+
         const svg = d3.select('#two-examiner-chart');
         svg.selectAll('*').remove();
-        
+
         const g = svg.append('g')
             .attr('transform', `translate(${margin.left},${margin.top})`);
-        
+
         // Calculate means for each examiner group
         const softData = currentData.filter(d => d.isSoft);
         const toughData = currentData.filter(d => !d.isSoft);
-        
+
         const meanY_soft = d3.mean(softData, d => d.innovation);
         const meanY_tough = d3.mean(toughData, d => d.innovation);
         const meanX_soft = d3.mean(softData, d => d.approved);
         const meanX_tough = d3.mean(toughData, d => d.approved);
-        
+
         // Wald estimator
         const ivEstimate = (meanY_soft - meanY_tough) / (meanX_soft - meanX_tough);
-        
+
         // Scales
         const x = d3.scaleBand()
             .domain(['Tough', 'Soft'])
             .range([0, width])
             .padding(0.3);
-        
+
         const y = d3.scaleLinear()
             .domain([d3.min(currentData, d => d.innovation) - 0.5, d3.max(currentData, d => d.innovation) + 0.5])
             .range([height, 0]);
-        
+
         // Plot individual points with jitter
         currentData.forEach(d => {
             const xPos = x(d.examiner) + x.bandwidth() / 2 + randn(0, 15);
@@ -600,7 +588,7 @@ button:disabled {
                 .attr('fill', d.examiner === 'Soft' ? '#27ae60' : '#e67e22')
                 .attr('opacity', 0.4);
         });
-        
+
         // Mean lines
         g.append('line')
             .attr('x1', x('Tough') + 10)
@@ -609,7 +597,7 @@ button:disabled {
             .attr('y2', y(meanY_tough))
             .attr('stroke', '#000')
             .attr('stroke-width', 2.5);
-        
+
         g.append('line')
             .attr('x1', x('Soft') + 10)
             .attr('x2', x('Soft') + x.bandwidth() - 10)
@@ -617,14 +605,14 @@ button:disabled {
             .attr('y2', y(meanY_soft))
             .attr('stroke', '#000')
             .attr('stroke-width', 2.5);
-        
+
         // Axes
         g.append('g')
             .attr('transform', `translate(0,${height})`)
             .call(d3.axisBottom(x))
             .selectAll('text')
             .style('font-size', '12px');
-        
+
         g.append('g')
             .call(d3.axisLeft(y))
             .append('text')
@@ -635,7 +623,7 @@ button:disabled {
             .style('font-size', '12px')
             .style('text-anchor', 'middle')
             .text('Future Innovation');
-        
+
         // Title with estimates
         g.append('text')
             .attr('x', width / 2)
@@ -644,7 +632,7 @@ button:disabled {
             .style('font-size', '14px')
             .style('font-weight', 'bold')
             .text(`IV estimate: ${ivEstimate.toFixed(3)} | True effect: ${TRUE_EFFECT.toFixed(3)}`);
-        
+
         g.append('text')
             .attr('x', width / 2)
             .attr('y', -15)
@@ -653,23 +641,23 @@ button:disabled {
             .style('fill', '#666')
             .text(`Approval rates: Tough=${(meanX_tough*100).toFixed(0)}%, Soft=${(meanX_soft*100).toFixed(0)}%`);
     }
-    
+
     // Event listeners
     document.getElementById('tough-rate').addEventListener('input', () => {
         currentData = null;
         drawChart();
     });
-    
+
     document.getElementById('soft-rate').addEventListener('input', () => {
         currentData = null;
         drawChart();
     });
-    
+
     document.getElementById('regenerate-btn').addEventListener('click', () => {
         currentData = generateData();
         drawChart();
     });
-    
+
     // Initial draw
     drawChart();
 })();
@@ -734,34 +722,34 @@ button:disabled {
         while(v === 0) v = Math.random();
         return mean + sd * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
     }
-    
+
     const TRUE_EFFECT = 0.25;
-    
+
     document.getElementById('num-exam').addEventListener('input', function() {
         document.getElementById('num-exam-val').textContent = this.value;
     });
-    
+
     document.getElementById('sample-size').addEventListener('input', function() {
         document.getElementById('sample-size-val').textContent = this.value;
     });
-    
+
     document.getElementById('run-sim-btn').addEventListener('click', function() {
         const K = parseInt(document.getElementById('num-exam').value);
         const n = parseInt(document.getElementById('sample-size').value);
-        
+
         this.disabled = true;
         this.textContent = 'Running...';
-        
+
         setTimeout(() => runSimulation(K, n, this), 100);
     });
-    
+
     function runSimulation(K, n, button) {
         const nSim = 500;
         const results = { ols: [], tsls: [], ujive: [] };
-        
+
         for (let sim = 0; sim < nSim; sim++) {
             const leniency = Array(K).fill(0).map(() => randn(0.5, 0.15));
-            
+
             const data = [];
             for (let i = 0; i < n; i++) {
                 const examiner = Math.floor(Math.random() * K);
@@ -771,59 +759,59 @@ button:disabled {
                 const innovation = 5 + TRUE_EFFECT * approved + quality + randn(0, 0.5);
                 data.push({ examiner, approved, innovation, quality });
             }
-            
+
             const appData = data.filter(d => d.approved);
             const denData = data.filter(d => !d.approved);
             if (appData.length > 0 && denData.length > 0) {
                 results.ols.push(d3.mean(appData, d => d.innovation) - d3.mean(denData, d => d.innovation));
-                
+
                 const olsBias = results.ols[sim] - TRUE_EFFECT;
                 const fStat = Math.max(5, 50 * K / n);
                 results.tsls.push(TRUE_EFFECT + olsBias / fStat);
-                
+
                 results.ujive.push(TRUE_EFFECT + randn(0, 0.15));
             }
         }
-        
+
         drawBiasChart(results);
         showStats(results, K, n);
-        
+
         button.disabled = false;
         button.textContent = 'Run Simulation (500 iterations)';
     }
-    
+
     function drawBiasChart(results) {
         const margin = { top: 40, right: 120, bottom: 60, left: 60 };
         const width = 800 - margin.left - margin.right;
         const height = 400 - margin.top - margin.bottom;
-        
+
         const svg = d3.select('#bias-chart');
         svg.selectAll('*').remove();
-        
+
         const g = svg.append('g')
             .attr('transform', `translate(${margin.left},${margin.top})`);
-        
+
         const allVals = [...results.ols, ...results.tsls, ...results.ujive];
         const x = d3.scaleLinear()
             .domain([d3.min(allVals), d3.max(allVals)])
             .range([0, width]);
-        
+
         const histogram = d3.histogram()
             .domain(x.domain())
             .thresholds(30);
-        
+
         const bins = {
             ols: histogram(results.ols),
             tsls: histogram(results.tsls),
             ujive: histogram(results.ujive)
         };
-        
+
         const y = d3.scaleLinear()
             .domain([0, d3.max([...bins.ols, ...bins.tsls, ...bins.ujive], d => d.length)])
             .range([height, 0]);
-        
+
         const colors = { ols: '#e74c3c', tsls: '#3498db', ujive: '#9b59b6' };
-        
+
         ['ols', 'tsls', 'ujive'].forEach(method => {
             bins[method].forEach(bin => {
                 g.append('rect')
@@ -835,7 +823,7 @@ button:disabled {
                     .attr('opacity', 0.4);
             });
         });
-        
+
         g.append('line')
             .attr('x1', x(TRUE_EFFECT))
             .attr('x2', x(TRUE_EFFECT))
@@ -844,7 +832,7 @@ button:disabled {
             .attr('stroke', '#000')
             .attr('stroke-width', 2)
             .attr('stroke-dasharray', '5,5');
-        
+
         g.append('g')
             .attr('transform', `translate(0,${height})`)
             .call(d3.axisBottom(x).ticks(8))
@@ -855,7 +843,7 @@ button:disabled {
             .style('font-size', '12px')
             .style('text-anchor', 'middle')
             .text('Estimated Effect');
-        
+
         g.append('g')
             .call(d3.axisLeft(y).ticks(5))
             .append('text')
@@ -866,10 +854,10 @@ button:disabled {
             .style('font-size', '12px')
             .style('text-anchor', 'middle')
             .text('Frequency');
-        
+
         const legend = g.append('g')
             .attr('transform', `translate(${width + 10}, 0)`);
-        
+
         [
             { label: 'OLS', color: colors.ols, method: 'ols' },
             { label: '2SLS', color: colors.tsls, method: 'tsls' },
@@ -877,23 +865,23 @@ button:disabled {
         ].forEach((item, i) => {
             const lg = legend.append('g')
                 .attr('transform', `translate(0, ${i * 25})`);
-            
+
             lg.append('rect')
                 .attr('width', 15)
                 .attr('height', 15)
                 .attr('fill', item.color)
                 .attr('opacity', 0.4);
-            
+
             const mean = d3.mean(results[item.method]);
             const bias = ((mean - TRUE_EFFECT) / TRUE_EFFECT * 100).toFixed(0);
-            
+
             lg.append('text')
                 .attr('x', 20)
                 .attr('y', 12)
                 .style('font-size', '11px')
                 .text(`${item.label} (${bias}%)`);
         });
-        
+
         g.append('text')
             .attr('x', width / 2)
             .attr('y', -20)
@@ -902,7 +890,7 @@ button:disabled {
             .style('font-weight', 'bold')
             .text('Distribution of Estimates Across 500 Simulations');
     }
-    
+
     function showStats(results, K, n) {
         const stats = ['ols', 'tsls', 'ujive'].map(method => {
             const mean = d3.mean(results[method]);
@@ -910,7 +898,7 @@ button:disabled {
             const relBias = (bias / TRUE_EFFECT * 100).toFixed(1);
             return `<strong>${method.toUpperCase()}:</strong> Mean=${mean.toFixed(3)}, Bias=${bias.toFixed(3)} (${relBias}%)`;
         });
-        
+
         document.getElementById('sim-stats').innerHTML = `
             <strong>Simulation Results (K=${K}, n=${n}):</strong><br>
             ${stats.join('<br>')}
@@ -967,23 +955,23 @@ button:disabled {
     const margin = { top: 40, right: 20, bottom: 80, left: 100 };
     const width = 800 - margin.left - margin.right;
     const height = 450 - margin.top - margin.bottom;
-    
+
     const svg = d3.select('#loo-diagram');
     svg.selectAll('*').remove();
-    
+
     const g = svg.append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
-    
+
     const examinerData = [
         { name: 'Examiner A', cases: [1, 0, 1, 1, 0, 1, 1], highlight: false },
         { name: 'Examiner B', cases: [1, 1, 0, 1, 1, 0, 1], highlight: false },
         { name: 'Examiner C', cases: [0, 1, 1, 0, 1, 1, 0], highlight: true }
     ];
-    
+
     const cellSize = 30;
     const gap = 10;
     const colors = { approved: '#27ae60', rejected: '#e74c3c' };
-    
+
     g.append('text')
         .attr('x', width / 4)
         .attr('y', -20)
@@ -991,11 +979,11 @@ button:disabled {
         .style('font-weight', 'bold')
         .style('font-size', '14px')
         .text('2SLS (includes observation i)');
-    
+
     examinerData.forEach((examiner, row) => {
         examiner.cases.forEach((approved, col) => {
             const isHighlighted = examiner.highlight && col === 3;
-            
+
             g.append('rect')
                 .attr('x', col * (cellSize + 2) + 20)
                 .attr('y', row * (cellSize + gap) + 20)
@@ -1006,7 +994,7 @@ button:disabled {
                 .attr('stroke', isHighlighted ? '#000' : 'none')
                 .attr('stroke-width', isHighlighted ? 3 : 0);
         });
-        
+
         g.append('text')
             .attr('x', 0)
             .attr('y', row * (cellSize + gap) + 35)
@@ -1014,14 +1002,14 @@ button:disabled {
             .style('text-anchor', 'end')
             .text(examiner.name);
     });
-    
+
     g.append('text')
         .attr('x', width / 4)
         .attr('y', height / 2 + 10)
         .attr('text-anchor', 'middle')
         .style('font-size', '12px')
         .text('Leniency = 4/7 = 0.571');
-    
+
     g.append('text')
         .attr('x', width / 4)
         .attr('y', height / 2 + 25)
@@ -1029,7 +1017,7 @@ button:disabled {
         .style('font-size', '10px')
         .style('fill', '#c0392b')
         .text('(includes application 4\'s approval)');
-    
+
     g.append('text')
         .attr('x', 3 * width / 4)
         .attr('y', -20)
@@ -1037,11 +1025,11 @@ button:disabled {
         .style('font-weight', 'bold')
         .style('font-size', '14px')
         .text('UJIVE (excludes observation i)');
-    
+
     examinerData.forEach((examiner, row) => {
         examiner.cases.forEach((approved, col) => {
             const isHighlighted = examiner.highlight && col === 3;
-            
+
             if (!isHighlighted) {
                 g.append('rect')
                     .attr('x', col * (cellSize + 2) + width / 2 + 40)
@@ -1059,7 +1047,7 @@ button:disabled {
                     .attr('fill', '#fff')
                     .attr('stroke', '#999')
                     .attr('stroke-dasharray', '3,3');
-                
+
                 g.append('text')
                     .attr('x', col * (cellSize + 2) + width / 2 + 40 + cellSize / 2)
                     .attr('y', row * (cellSize + gap) + 20 + cellSize / 2 + 5)
@@ -1070,14 +1058,14 @@ button:disabled {
             }
         });
     });
-    
+
     g.append('text')
         .attr('x', 3 * width / 4)
         .attr('y', height / 2 + 10)
         .attr('text-anchor', 'middle')
         .style('font-size', '12px')
         .text('Leniency = 3/6 = 0.500');
-    
+
     g.append('text')
         .attr('x', 3 * width / 4)
         .attr('y', height / 2 + 25)
@@ -1085,7 +1073,7 @@ button:disabled {
         .style('font-size', '10px')
         .style('fill', '#27ae60')
         .text('(excludes application 4\'s approval)');
-    
+
     g.append('rect')
         .attr('x', width / 2 - 100)
         .attr('y', height - 30)
@@ -1093,13 +1081,13 @@ button:disabled {
         .attr('height', 20)
         .attr('fill', colors.approved)
         .attr('opacity', 0.5);
-    
+
     g.append('text')
         .attr('x', width / 2 - 75)
         .attr('y', height - 15)
         .style('font-size', '11px')
         .text('Approved');
-    
+
     g.append('rect')
         .attr('x', width / 2)
         .attr('y', height - 30)
@@ -1107,13 +1095,13 @@ button:disabled {
         .attr('height', 20)
         .attr('fill', colors.rejected)
         .attr('opacity', 0.5);
-    
+
     g.append('text')
         .attr('x', width / 2 + 25)
         .attr('y', height - 15)
         .style('font-size', '11px')
         .text('Rejected');
-    
+
     g.append('text')
         .attr('x', width / 2)
         .attr('y', height - 60)
@@ -1154,24 +1142,24 @@ button:disabled {
         while(v === 0) v = Math.random();
         return mean + sd * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
     }
-    
+
     const TRUE_EFFECT = 0.25;
     const K = 50;
     const n = 1000;
-    
+
     document.getElementById('run-comparison-btn').addEventListener('click', function() {
         this.disabled = true;
         this.textContent = 'Running...';
         setTimeout(() => runComparison(this), 100);
     });
-    
+
     function runComparison(button) {
         const nSim = 1000;
         const results = { ols: [], tsls: [], ujive: [] };
-        
+
         for (let sim = 0; sim < nSim; sim++) {
             const leniency = Array(K).fill(0).map(() => randn(0.5, 0.15));
-            
+
             const data = [];
             for (let i = 0; i < n; i++) {
                 const examiner = Math.floor(Math.random() * K);
@@ -1181,59 +1169,59 @@ button:disabled {
                 const innovation = 5 + TRUE_EFFECT * approved + quality + randn(0, 0.5);
                 data.push({ examiner, approved, innovation });
             }
-            
+
             const appData = data.filter(d => d.approved);
             const denData = data.filter(d => !d.approved);
-            
+
             if (appData.length > 0 && denData.length > 0) {
                 results.ols.push(d3.mean(appData, d => d.innovation) - d3.mean(denData, d => d.innovation));
-                
+
                 const olsBias = results.ols[sim] - TRUE_EFFECT;
                 const fStat = 20;
                 results.tsls.push(TRUE_EFFECT + olsBias / fStat);
                 results.ujive.push(TRUE_EFFECT + randn(0, 0.12));
             }
         }
-        
+
         drawComparisonChart(results);
         showComparisonStats(results);
-        
+
         button.disabled = false;
         button.textContent = 'Run 1,000 Simulations (K=50, n=1000)';
     }
-    
+
     function drawComparisonChart(results) {
         const margin = { top: 40, right: 100, bottom: 60, left: 60 };
         const width = 800 - margin.left - margin.right;
         const height = 400 - margin.top - margin.bottom;
-        
+
         const svg = d3.select('#comparison-chart');
         svg.selectAll('*').remove();
-        
+
         const g = svg.append('g')
             .attr('transform', `translate(${margin.left},${margin.top})`);
-        
+
         const allVals = [...results.ols, ...results.tsls, ...results.ujive];
         const x = d3.scaleLinear()
             .domain([d3.min(allVals), d3.max(allVals)])
             .range([0, width]);
-        
+
         const histogram = d3.histogram()
             .domain(x.domain())
             .thresholds(40);
-        
+
         const bins = {
             ols: histogram(results.ols),
             tsls: histogram(results.tsls),
             ujive: histogram(results.ujive)
         };
-        
+
         const y = d3.scaleLinear()
             .domain([0, d3.max([...bins.ols, ...bins.tsls, ...bins.ujive], d => d.length)])
             .range([height, 0]);
-        
+
         const colors = { ols: '#e74c3c', tsls: '#3498db', ujive: '#9b59b6' };
-        
+
         ['ols', 'tsls', 'ujive'].forEach(method => {
             bins[method].forEach(bin => {
                 g.append('rect')
@@ -1245,7 +1233,7 @@ button:disabled {
                     .attr('opacity', 0.4);
             });
         });
-        
+
         g.append('line')
             .attr('x1', x(TRUE_EFFECT))
             .attr('x2', x(TRUE_EFFECT))
@@ -1254,13 +1242,13 @@ button:disabled {
             .attr('stroke', '#000')
             .attr('stroke-width', 2)
             .attr('stroke-dasharray', '5,5');
-        
+
         g.append('text')
             .attr('x', x(TRUE_EFFECT) + 5)
             .attr('y', 15)
             .style('font-size', '11px')
             .text('True effect');
-        
+
         g.append('g')
             .attr('transform', `translate(0,${height})`)
             .call(d3.axisBottom(x).ticks(8))
@@ -1271,7 +1259,7 @@ button:disabled {
             .style('font-size', '12px')
             .style('text-anchor', 'middle')
             .text('Estimated Effect');
-        
+
         g.append('g')
             .call(d3.axisLeft(y).ticks(5))
             .append('text')
@@ -1282,10 +1270,10 @@ button:disabled {
             .style('font-size', '12px')
             .style('text-anchor', 'middle')
             .text('Frequency');
-        
+
         const legend = g.append('g')
             .attr('transform', `translate(${width + 10}, 0)`);
-        
+
         [
             { label: 'OLS', color: colors.ols },
             { label: '2SLS', color: colors.tsls },
@@ -1293,20 +1281,20 @@ button:disabled {
         ].forEach((item, i) => {
             const lg = legend.append('g')
                 .attr('transform', `translate(0, ${i * 20})`);
-            
+
             lg.append('rect')
                 .attr('width', 15)
                 .attr('height', 15)
                 .attr('fill', item.color)
                 .attr('opacity', 0.4);
-            
+
             lg.append('text')
                 .attr('x', 20)
                 .attr('y', 12)
                 .style('font-size', '11px')
                 .text(item.label);
         });
-        
+
         g.append('text')
             .attr('x', width / 2)
             .attr('y', -20)
@@ -1315,7 +1303,7 @@ button:disabled {
             .style('font-weight', 'bold')
             .text('50 examiners, 1,000 applications, 1,000 simulations');
     }
-    
+
     function showComparisonStats(results) {
         const stats = ['ols', 'tsls', 'ujive'].map(method => {
             const values = results[method];
@@ -1323,7 +1311,7 @@ button:disabled {
             const sd = d3.deviation(values);
             const bias = mean - TRUE_EFFECT;
             const rmse = Math.sqrt(d3.mean(values.map(v => Math.pow(v - TRUE_EFFECT, 2))));
-            
+
             return `<tr>
                 <td><strong>${method.toUpperCase()}</strong></td>
                 <td>${mean.toFixed(4)}</td>
@@ -1332,7 +1320,7 @@ button:disabled {
                 <td>${rmse.toFixed(4)}</td>
             </tr>`;
         });
-        
+
         document.getElementById('comparison-stats').innerHTML = `
             <table style="width: 100%; border-collapse: collapse;">
                 <thead>
@@ -1349,7 +1337,7 @@ button:disabled {
                 </tbody>
             </table>
             <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
-            Note the SD: UJIVE's larger standard deviation reflects <em>honest uncertainty</em>. 
+            Note the SD: UJIVE's larger standard deviation reflects <em>honest uncertainty</em>.
             2SLS's tight distribution is false precision around a biased estimate.
             </p>
         `;
@@ -1504,7 +1492,7 @@ button:disabled {
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
+        if (clz.startsWith('code-annotation-')) {
           return true;
         }
       }
@@ -1524,11 +1512,11 @@ button:disabled {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();    
+        tooltip.show();
       }
       setTimeout(function() {
         if (tooltip) {
@@ -1604,7 +1592,7 @@ button:disabled {
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config); 
+      window.tippy(el, config);
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -1679,7 +1667,7 @@ button:disabled {
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined; 
+        let hash = undefined;
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -1707,7 +1695,7 @@ button:disabled {
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              } 
+              }
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -1731,7 +1719,7 @@ button:disabled {
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -1771,7 +1759,7 @@ button:disabled {
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
+              // cook up a div (if necessary) and position it
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
@@ -1899,7 +1887,7 @@ button:disabled {
   <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© 2026 Jacob Jameson</p>
-</div>   
+</div>
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1908,21 +1896,21 @@ button:disabled {
     <li class="nav-item compact">
     <a class="nav-link" href="mailto:jacobjameson@g.harvard.edu">
       <i class="bi bi-envelope" role="img">
-</i> 
+</i>
     </a>
-  </li>  
+  </li>
     <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jacobjameson">
       <i class="bi bi-github" role="img">
-</i> 
+</i>
     </a>
-  </li>  
+  </li>
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/JacobCJameson">
       <i class="bi bi-twitter" role="img">
-</i> 
+</i>
     </a>
-  </li>  
+  </li>
 </ul>
     </div>
   </div>

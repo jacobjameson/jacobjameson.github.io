@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-df70780e7153a51141c72a2ac9e4ec41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a32592dea758dd710397be6255ab725c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -165,7 +165,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">JACOB JAMESON</span>
+    <span class="navbar-title">Jacob Jameson</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -173,54 +173,42 @@ window.Quarto = {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../index.html">
 <span class="menu-text">About</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html"> 
+    <a class="nav-link" href="../../research.html">
 <span class="menu-text">Research</span></a>
-  </li>  
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Teaching</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teaching">
         <li>
     <a class="dropdown-item" href="../../teaching.html">
  <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../../R files/Intro R.html">
  <span class="dropdown-text">Introduction to R</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../../git files/Intro Git.html">
  <span class="dropdown-text">Introduction to Git/GitHub</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../../api 222 files/API222.html">
  <span class="dropdown-text">API 222 Section Material</span></a>
-  </li>  
+  </li>
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/blog.html"> 
+    <a class="nav-link" href="../../posts/blog.html">
 <span class="menu-text">Blog</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../Data/Jameson_vitae.pdf" target="_blank"> 
-<span class="menu-text">CV</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.com/citations?user=jIrUgQsAAAAJ&amp;hl=en" target="_blank"> 
-<span class="menu-text">Scholar</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> 
-<span class="menu-text">LinkedIn</span></a>
-  </li>  
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -234,7 +222,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
-   
+
   <ul>
   <li><a href="#decision-trees" id="toc-decision-trees" class="nav-link active" data-scroll-target="#decision-trees">Decision Trees</a>
   <ul class="collapse">
@@ -293,17 +281,17 @@ window.Quarto = {
              <p>Jacob Jameson </p>
           </div>
   </div>
-    
+
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">March 26, 2024</p>
     </div>
   </div>
-  
-    
+
+
   </div>
-  
+
 
 
 </header>
@@ -484,8 +472,8 @@ $is_numeric
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="cf">function</span>(x) <span class="fu">max_information_gain_split</span>(iris<span class="sc">$</span>Species, x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Sepal.Length Sepal.Width Petal.Length Petal.Width
-best_change 0.2277603    0.1269234   0.3333333    0.3333333  
-split_value 5.5          3.4         3            1          
+best_change 0.2277603    0.1269234   0.3333333    0.3333333
+split_value 5.5          3.4         3            1
 is_numeric  TRUE         TRUE        TRUE         TRUE       </code></pre>
 </div>
 </div>
@@ -618,16 +606,16 @@ is_numeric  TRUE         TRUE        TRUE         TRUE       </code></pre>
 <span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a><span class="fu">print_decision_tree</span>(iris_tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> If Petal.Length &lt; 3 :
-   Predict: setosa 
+   Predict: setosa
  Else ( Petal.Length &gt;= 3 ):
    If Petal.Width &lt; 1.8 :
      If Petal.Length &lt; 5 :
-       Predict: versicolor 
+       Predict: versicolor
      Else ( Petal.Length &gt;= 5 ):
-       Predict: virginica 
+       Predict: virginica
    Else ( Petal.Width &gt;= 1.8 ):
      If Petal.Length &lt; 4.9 :
-       Predict: virginica 
+       Predict: virginica
      Else ( Petal.Length &gt;= 4.9 ):
        Predict: virginica </code></pre>
 </div>
@@ -650,7 +638,7 @@ is_numeric  TRUE         TRUE        TRUE         TRUE       </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 rpart(formula = Species ~ ., data = iris, method = "class")
-  n= 150 
+  n= 150
 
     CP nsplit rel error xerror       xstd
 1 0.50      0      1.00   1.24 0.04636090
@@ -658,13 +646,13 @@ rpart(formula = Species ~ ., data = iris, method = "class")
 3 0.01      2      0.06   0.09 0.02908608
 
 Variable importance
- Petal.Width Petal.Length Sepal.Length  Sepal.Width 
-          34           31           21           14 
+ Petal.Width Petal.Length Sepal.Length  Sepal.Width
+          34           31           21           14
 
 Node number 1: 150 observations,    complexity param=0.5
   predicted class=setosa      expected loss=0.6666667  P(node) =1
     class counts:    50    50    50
-   probabilities: 0.333 0.333 0.333 
+   probabilities: 0.333 0.333 0.333
   left son=2 (50 obs) right son=3 (100 obs)
   Primary splits:
       Petal.Length &lt; 2.45 to the left,  improve=50.00000, (0 missing)
@@ -679,12 +667,12 @@ Node number 1: 150 observations,    complexity param=0.5
 Node number 2: 50 observations
   predicted class=setosa      expected loss=0  P(node) =0.3333333
     class counts:    50     0     0
-   probabilities: 1.000 0.000 0.000 
+   probabilities: 1.000 0.000 0.000
 
 Node number 3: 100 observations,    complexity param=0.44
   predicted class=versicolor  expected loss=0.5  P(node) =0.6666667
     class counts:     0    50    50
-   probabilities: 0.000 0.500 0.500 
+   probabilities: 0.000 0.500 0.500
   left son=6 (54 obs) right son=7 (46 obs)
   Primary splits:
       Petal.Width  &lt; 1.75 to the left,  improve=38.969400, (0 missing)
@@ -699,7 +687,7 @@ Node number 3: 100 observations,    complexity param=0.44
 Node number 6: 54 observations
   predicted class=versicolor  expected loss=0.09259259  P(node) =0.36
     class counts:     0    49     5
-   probabilities: 0.000 0.907 0.093 
+   probabilities: 0.000 0.907 0.093
 
 Node number 7: 46 observations
   predicted class=virginica   expected loss=0.02173913  P(node) =0.3066667
@@ -782,7 +770,7 @@ Node number 7: 46 observations
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
+        if (clz.startsWith('code-annotation-')) {
           return true;
         }
       }
@@ -802,11 +790,11 @@ Node number 7: 46 observations
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();    
+        tooltip.show();
       }
       setTimeout(function() {
         if (tooltip) {
@@ -882,7 +870,7 @@ Node number 7: 46 observations
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config); 
+      window.tippy(el, config);
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -957,7 +945,7 @@ Node number 7: 46 observations
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined; 
+        let hash = undefined;
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -985,7 +973,7 @@ Node number 7: 46 observations
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              } 
+              }
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -1009,7 +997,7 @@ Node number 7: 46 observations
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -1049,7 +1037,7 @@ Node number 7: 46 observations
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
+              // cook up a div (if necessary) and position it
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
@@ -1177,7 +1165,7 @@ Node number 7: 46 observations
   <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© 2026 Jacob Jameson</p>
-</div>   
+</div>
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1186,21 +1174,21 @@ Node number 7: 46 observations
     <li class="nav-item compact">
     <a class="nav-link" href="mailto:jacobjameson@g.harvard.edu">
       <i class="bi bi-envelope" role="img">
-</i> 
+</i>
     </a>
-  </li>  
+  </li>
     <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jacobjameson">
       <i class="bi bi-github" role="img">
-</i> 
+</i>
     </a>
-  </li>  
+  </li>
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/JacobCJameson">
       <i class="bi bi-twitter" role="img">
-</i> 
+</i>
     </a>
-  </li>  
+  </li>
 </ul>
     </div>
   </div>

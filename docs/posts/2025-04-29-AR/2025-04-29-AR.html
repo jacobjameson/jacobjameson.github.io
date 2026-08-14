@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-df70780e7153a51141c72a2ac9e4ec41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a32592dea758dd710397be6255ab725c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -167,7 +167,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">JACOB JAMESON</span>
+    <span class="navbar-title">Jacob Jameson</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -175,54 +175,42 @@ window.Quarto = {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../index.html">
 <span class="menu-text">About</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html"> 
+    <a class="nav-link" href="../../research.html">
 <span class="menu-text">Research</span></a>
-  </li>  
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Teaching</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teaching">
         <li>
     <a class="dropdown-item" href="../../teaching.html">
  <span class="dropdown-text">Jacob’s Teaching Experience</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../../R files/Intro R.html">
  <span class="dropdown-text">Introduction to R</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../../git files/Intro Git.html">
  <span class="dropdown-text">Introduction to Git/GitHub</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../../api 222 files/API222.html">
  <span class="dropdown-text">API 222 Section Material</span></a>
-  </li>  
+  </li>
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/blog.html"> 
+    <a class="nav-link" href="../../posts/blog.html">
 <span class="menu-text">Blog</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../Data/Jameson_vitae.pdf" target="_blank"> 
-<span class="menu-text">CV</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.com/citations?user=jIrUgQsAAAAJ&amp;hl=en" target="_blank"> 
-<span class="menu-text">Scholar</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jacob-jameson" target="_blank"> 
-<span class="menu-text">LinkedIn</span></a>
-  </li>  
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -236,7 +224,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
-   
+
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#the-problem-with-parallel-trends" id="toc-the-problem-with-parallel-trends" class="nav-link" data-scroll-target="#the-problem-with-parallel-trends">The Problem with Parallel Trends</a></li>
@@ -283,17 +271,17 @@ window.Quarto = {
              <p>Jacob Jameson </p>
           </div>
   </div>
-    
+
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">April 29, 2025</p>
     </div>
   </div>
-  
-    
+
+
   </div>
-  
+
 
 
 </header>
@@ -630,30 +618,30 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-   felm(formula = outcome ~ lag_outcome + lag1_treatment + lag2_treatment +      lag3_treatment + treatment + lead1_treatment + lead2_treatment +      lead3_treatment | state + time | 0 | state, data = policy_data_dynamic) 
+   felm(formula = outcome ~ lag_outcome + lag1_treatment + lag2_treatment +      lag3_treatment + treatment + lead1_treatment + lead2_treatment +      lead3_treatment | state + time | 0 | state, data = policy_data_dynamic)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.93016 -0.65451  0.01728  0.62855  3.12924 
+     Min       1Q   Median       3Q      Max
+-2.93016 -0.65451  0.01728  0.62855  3.12924
 
 Coefficients:
-                Estimate Cluster s.e. t value Pr(&gt;|t|)    
+                Estimate Cluster s.e. t value Pr(&gt;|t|)
 lag_outcome      0.58767      0.03071  19.136  &lt; 2e-16 ***
-lag1_treatment   0.62796      0.34698   1.810 0.076466 .  
-lag2_treatment   0.34763      0.44517   0.781 0.438612    
+lag1_treatment   0.62796      0.34698   1.810 0.076466 .
+lag2_treatment   0.34763      0.44517   0.781 0.438612
 lag3_treatment   1.37402      0.32756   4.195 0.000114 ***
 treatment        1.94893      0.37674   5.173 4.26e-06 ***
-lead1_treatment  1.18728      0.41469   2.863 0.006158 ** 
-lead2_treatment  0.39214      0.35710   1.098 0.277510    
-lead3_treatment  0.56319      0.37265   1.511 0.137134    
+lead1_treatment  1.18728      0.41469   2.863 0.006158 **
+lead2_treatment  0.39214      0.35710   1.098 0.277510
+lead3_treatment  0.56319      0.37265   1.511 0.137134
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 1.015 on 580 degrees of freedom
   (250 observations deleted due to missingness)
-Multiple R-squared(full model): 0.9867   Adjusted R-squared: 0.9851 
-Multiple R-squared(proj model): 0.9152   Adjusted R-squared: 0.9051 
-F-statistic(full model, *iid*):624.1 on 69 and 580 DF, p-value: &lt; 2.2e-16 
+Multiple R-squared(full model): 0.9867   Adjusted R-squared: 0.9851
+Multiple R-squared(proj model): 0.9152   Adjusted R-squared: 0.9051
+F-statistic(full model, *iid*):624.1 on 69 and 580 DF, p-value: &lt; 2.2e-16
 F-statistic(proj model): 625.9 on 8 and 49 DF, p-value: &lt; 2.2e-16 </code></pre>
 </div>
 </div>
@@ -688,24 +676,24 @@ F-statistic(proj model): 625.9 on 8 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-   felm(formula = outcome ~ treated * time | state | 0 | state,      data = pre_data) 
+   felm(formula = outcome ~ treated * time | state | 0 | state,      data = pre_data)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--3.7575 -1.3608 -0.2419  1.1661  6.3767 
+    Min      1Q  Median      3Q     Max
+-3.7575 -1.3608 -0.2419  1.1661  6.3767
 
 Coefficients:
-             Estimate Cluster s.e. t value Pr(&gt;|t|)    
-treated           NaN      0.00000     NaN      NaN    
+             Estimate Cluster s.e. t value Pr(&gt;|t|)
+treated           NaN      0.00000     NaN      NaN
 time         -0.43327      0.05084  -8.523 3.06e-11 ***
 treated:time  0.95150      0.06717  14.167  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 1.91 on 448 degrees of freedom
-Multiple R-squared(full model): 0.6632   Adjusted R-squared: 0.6249 
-Multiple R-squared(proj model): 0.3654   Adjusted R-squared: 0.2932 
-F-statistic(full model, *iid*): 17.3 on 51 and 448 DF, p-value: &lt; 2.2e-16 
+Multiple R-squared(full model): 0.6632   Adjusted R-squared: 0.6249
+Multiple R-squared(proj model): 0.3654   Adjusted R-squared: 0.2932
+F-statistic(full model, *iid*): 17.3 on 51 and 448 DF, p-value: &lt; 2.2e-16
 F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If interaction is significant, parallel trends is likely violated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -732,7 +720,7 @@ F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
+        if (clz.startsWith('code-annotation-')) {
           return true;
         }
       }
@@ -752,11 +740,11 @@ F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();    
+        tooltip.show();
       }
       setTimeout(function() {
         if (tooltip) {
@@ -832,7 +820,7 @@ F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config); 
+      window.tippy(el, config);
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -907,7 +895,7 @@ F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined; 
+        let hash = undefined;
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -935,7 +923,7 @@ F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              } 
+              }
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -959,7 +947,7 @@ F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -999,7 +987,7 @@ F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
+              // cook up a div (if necessary) and position it
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
@@ -1127,7 +1115,7 @@ F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
   <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© 2026 Jacob Jameson</p>
-</div>   
+</div>
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1136,21 +1124,21 @@ F-statistic(proj model): 70.67 on 3 and 49 DF, p-value: &lt; 2.2e-16 </code></pr
     <li class="nav-item compact">
     <a class="nav-link" href="mailto:jacobjameson@g.harvard.edu">
       <i class="bi bi-envelope" role="img">
-</i> 
+</i>
     </a>
-  </li>  
+  </li>
     <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jacobjameson">
       <i class="bi bi-github" role="img">
-</i> 
+</i>
     </a>
-  </li>  
+  </li>
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/JacobCJameson">
       <i class="bi bi-twitter" role="img">
-</i> 
+</i>
     </a>
-  </li>  
+  </li>
 </ul>
     </div>
   </div>

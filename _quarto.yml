@@ -48,10 +48,9 @@ website:
     anonymize-ip: true
   navbar:
     align: center
-    title: "JACOB JAMESON"
     pinned: false
     collapse-below: lg
-    right:
+    left:
       - text: About
         href: index.qmd
       - text: Research
@@ -68,15 +67,6 @@ website:
             href: api 222 files/API222.qmd
       - text: Blog
         href: posts/blog.qmd
-      - text: CV
-        href: Data/Jameson_vitae.pdf
-        target: _blank
-      - text: Scholar
-        href: https://scholar.google.com/citations?user=jIrUgQsAAAAJ&hl=en
-        target: _blank
-      - text: LinkedIn
-        href: https://www.linkedin.com/in/jacob-jameson
-        target: _blank
 
 format:
   html:

@@ -1,5 +1,6 @@
 ---
 title: "Introduction to Git and GitHub"
+body-classes: course-page
 from: markdown+emoji
 format:
   html:
@@ -7,138 +8,17 @@ format:
 page-layout: full
 ---
 
-<style>
-
-.section-cmd {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.8rem;
-font-weight: 500;
-color: #333;
-letter-spacing: 0.08em;
-margin: 2.5rem 0 0;
-padding-bottom: 0.5rem;
-border-bottom: 1px solid #d6d6d6;
-display: flex;
-align-items: center;
-gap: 6px;
-}
-.section-cmd .ps { color: #16a34a; }
-
-.m-list { display: flex; flex-direction: column; }
-
-.m-item {
-display: grid;
-grid-template-columns: 72px 1fr;
-gap: 0 1.25rem;
-padding: 6px 0;
-border-bottom: 1px solid #f0f0f0;
-align-items: baseline;
-}
-.m-item:first-child { border-top: 1px solid #f0f0f0; }
-
-.m-num {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.74rem;
-font-weight: 500;
-color: #555;
-letter-spacing: 0.03em;
-white-space: nowrap;
-padding-top: 1px;
-line-height: 1.5;
-}
-
-.m-body {
-font-size: 0.96rem;
-font-weight: 400;
-color: #222;
-line-height: 1.5;
-display: flex;
-align-items: baseline;
-flex-wrap: wrap;
-gap: 0 0.4rem;
-}
-
-.m-sep {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.72rem;
-color: #888;
-}
-
-.m-sub {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.72rem;
-color: #555;
-}
-
-.m-link {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.68rem;
-font-weight: 500;
-letter-spacing: 0.04em;
-padding: 1px 8px;
-border-radius: 2px;
-text-decoration: none !important;
-transition: all 0.12s;
-background: #111;
-color: #fff !important;
-white-space: nowrap;
-}
-.m-link:hover {
-background: #16a34a !important;
-color: #fff !important;
-text-decoration: none !important;
-}
-
-.concepts {
-margin-top: 2rem;
-padding-top: 1rem;
-border-top: 1px solid #e4e4e4;
-}
-
-.concepts-list {
-display: flex;
-flex-direction: column;
-}
-
-.concept-item {
-display: grid;
-grid-template-columns: 120px 1fr;
-gap: 0 1.25rem;
-padding: 6px 0;
-border-bottom: 1px solid #f0f0f0;
-align-items: baseline;
-}
-.concept-item:first-child { border-top: 1px solid #f0f0f0; }
-
-.concept-key {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.74rem;
-font-weight: 500;
-color: #15803d;
-letter-spacing: 0.03em;
-white-space: nowrap;
-}
-
-.concept-val {
-font-size: 0.96rem;
-font-weight: 400;
-color: #222;
-line-height: 1.5;
-}
-
-.concept-val span {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.72rem;
-color: #555;
-}
-
-</style>
-
+<div class="course-layout">
+<header class="course-header">
+<h1>Introduction to Git and GitHub</h1>
+<div class="course-intro">
 Version control and collaborative coding with Git and GitHub. Learn essential commands, branching workflows, and best practices for reproducible research and software development.
+</div>
+</header>
 
----
-
-<div class="section-cmd"><span class="ps">$</span> ls parts/</div>
+<section class="course-section" aria-labelledby="git-course-parts">
+<h2 id="git-course-parts">Course parts</h2>
+<div class="course-section-content">
 
 <div class="m-list">
 
@@ -197,10 +77,12 @@ Additional Resources
 </div>
 
 </div>
+</div>
+</section>
 
-
-<div class="concepts">
-<div class="section-cmd" style="margin-top:0"><span class="ps">$</span> cat key-concepts.md</div>
+<section class="course-section" aria-labelledby="git-key-concepts">
+<h2 id="git-key-concepts">Key concepts</h2>
+<div class="course-section-content concepts">
 <div class="concepts-list">
 
 <div class="concept-item">
@@ -224,4 +106,6 @@ Additional Resources
 </div>
 
 </div>
+</div>
+</section>
 </div>

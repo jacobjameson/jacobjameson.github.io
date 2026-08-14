@@ -1,213 +1,47 @@
 ---
 title: "Teaching"
+body-classes: teaching-page
 page-layout: full
 format:
   html:
-    toc: true
-    toc-location: left
+    toc: false
 ---
 
-<style>
-
-.section-cmd {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.8rem;
-font-weight: 500;
-color: #333;
-letter-spacing: 0.08em;
-margin: 2.5rem 0 0;
-padding-bottom: 0.5rem;
-border-bottom: 1px solid #d6d6d6;
-display: flex;
-align-items: center;
-gap: 6px;
-}
-.section-cmd .ps { color: #16a34a; }
-
-/* single-column list for awards/workshops */
-.t-list { display: flex; flex-direction: column; }
-
-.t-item {
-display: grid;
-grid-template-columns: 72px 1fr;
-gap: 0 1.25rem;
-padding: 6px 0;
-border-bottom: 1px solid #f0f0f0;
-align-items: baseline;
-}
-.t-item:first-child { border-top: 1px solid #f0f0f0; }
-
-.t-year {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.74rem;
-font-weight: 500;
-color: #555;
-letter-spacing: 0.03em;
-white-space: nowrap;
-padding-top: 1px;
-line-height: 1.5;
-}
-
-.t-body {
-font-size: 0.96rem;
-font-weight: 400;
-color: #222;
-line-height: 1.5;
-display: flex;
-align-items: baseline;
-flex-wrap: wrap;
-gap: 0 0.4rem;
-}
-
-.t-body a {
-color: #111;
-text-decoration: underline;
-text-decoration-color: #e0e0e0;
-text-underline-offset: 2px;
-}
-.t-body a:hover { color: #16a34a; text-decoration-color: #16a34a; }
-
-.t-sep {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.72rem;
-color: #888;
-}
-
-.t-sub {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.72rem;
-color: #555;
-}
-
-.t-yrs {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.72rem;
-color: #666;
-}
-
-.t-role {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.66rem;
-font-weight: 500;
-color: #555;
-border: 1px solid #c8c8c8;
-padding: 1px 5px;
-border-radius: 2px;
-letter-spacing: 0.03em;
-white-space: nowrap;
-}
-
-.t-link {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.68rem;
-font-weight: 500;
-letter-spacing: 0.04em;
-padding: 1px 8px;
-border-radius: 2px;
-text-decoration: none !important;
-transition: all 0.12s;
-background: #111;
-color: #fff !important;
-white-space: nowrap;
-}
-.t-link:hover {
-background: #16a34a !important;
-color: #fff !important;
-text-decoration: none !important;
-}
-
-/* two-column grid for courses */
-.t-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-border-top: 1px solid #f0f0f0;
-}
-
-.t-cell {
-padding: 9px 0;
-border-bottom: 1px solid #f0f0f0;
-padding-right: 1.5rem;
-}
-
-.t-cell:nth-child(even) {
-padding-right: 0;
-padding-left: 1.5rem;
-border-left: 1px solid #f0f0f0;
-}
-
-.t-cell-title {
-font-size: 0.96rem;
-font-weight: 400;
-color: #222;
-line-height: 1.4;
-}
-
-.t-cell-sub {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.72rem;
-color: #555;
-margin-top: 1px;
-display: flex;
-align-items: center;
-flex-wrap: wrap;
-gap: 0 0.35rem;
-}
-
-.t-cell-yrs {
-font-family: 'Source Code Pro', monospace;
-font-size: 0.72rem;
-color: #666;
-}
-
-@media (max-width: 680px) {
-.t-grid { grid-template-columns: 1fr; }
-.t-cell:nth-child(even) {
-padding-left: 0;
-border-left: none;
-}
-}
-
-</style>
-
+<div class="teaching-layout">
+<header class="teaching-header">
+<h1 id="teaching-title">Teaching</h1>
+<div class="teaching-intro">
 I began teaching in a Philadelphia summer credit-recovery program after undergrad and later spent two years as a middle school math teacher in New Haven, CT through Teach For America. During that time, I served as 8th Grade Chair and consulted on math curriculum for Achievement First. I love teaching and enjoy making quantitative and computational ideas accessible to a wide range of students.
 
 I am fortunate to have been recognized with several teaching awards by the Harvard Kennedy School. While not confirmed, I believe I also hold the record for most courses taught as a teaching fellow at Harvard Kennedy School. 
+</div>
+</header>
 
----
+<section class="teaching-section" aria-labelledby="teaching-awards">
+<h2 id="teaching-awards">Teaching awards</h2>
 
-<div class="section-cmd"><span class="ps">$</span> cat awards.log</div>
-
-<div class="t-list">
-<div class="t-item">
-<div class="t-year">2026</div>
-<div class="t-body"><a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients" target="_blank">Dean's Award for Excellence in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
+<div class="teaching-section-content">
+<div class="t-grid">
+<div class="t-cell">
+<div class="t-cell-title"><a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients" target="_blank">Dean's Award for Excellence in Student Teaching</a></div>
+<div class="t-cell-sub"><span class="t-sub">Harvard Kennedy School</span><span class="t-sep">·</span><span class="t-cell-yrs">2024 · 2026</span></div>
 </div>
-<div class="t-item">
-<div class="t-year">2026</div>
-<div class="t-body"><a href="./Data/Distinction Award 2026.pdf" target="_blank">Distinction in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
+<div class="t-cell">
+<div class="t-cell-title">Distinction in Student Teaching</div>
+<div class="t-cell-sub"><span class="t-sub">Harvard Kennedy School</span><span class="t-sep">·</span><span class="t-cell-yrs"><a href="./Data/Distinction Award 2024.pdf" target="_blank">2024</a> · <a href="./Data/Distinction Award 2025.pdf" target="_blank">2025</a> · <a href="./Data/Distinction Award 2026.pdf" target="_blank">2026</a></span></div>
 </div>
-<div class="t-item">
-<div class="t-year">2025</div>
-<div class="t-body"><a href="./Data/Distinction Award 2025.pdf" target="_blank">Distinction in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
-</div>
-<div class="t-item">
-<div class="t-year">2024</div>
-<div class="t-body"><a href="https://www.hks.harvard.edu/more/about/leadership-administration/academic-deans-office/slate/research-and-innovation/making/teaching#recipients" target="_blank">Dean's Award for Excellence in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
-</div>
-<div class="t-item">
-<div class="t-year">2024</div>
-<div class="t-body"><a href="./Data/Distinction Award 2024.pdf" target="_blank">Distinction in Student Teaching</a><span class="t-sep">·</span><span class="t-sub">Harvard Kennedy School</span></div>
-</div>
-<div class="t-item">
-<div class="t-year">2024</div>
-<div class="t-body"><a href="https://chds.hsph.harvard.edu/chds-welcomes-new-educational-innovation-scholar/" target="_blank">Educational Innovation Scholar</a><span class="t-sep">·</span><span class="t-sub">Center for Health Decision Science, Harvard</span></div>
+<div class="t-cell">
+<div class="t-cell-title"><a href="https://chds.hsph.harvard.edu/chds-welcomes-new-educational-innovation-scholar/" target="_blank">Educational Innovation Scholar</a></div>
+<div class="t-cell-sub"><span class="t-sub">Center for Health Decision Science, Harvard</span><span class="t-sep">·</span><span class="t-cell-yrs">2024</span></div>
 </div>
 </div>
+</div>
+</section>
 
 
-
-<div class="section-cmd"><span class="ps">$</span> ls instructor-of-record/</div>
-
+<section class="teaching-section" aria-labelledby="instructor-of-record">
+<h2 id="instructor-of-record">Instructor of record</h2>
+<div class="teaching-section-content">
 <div class="t-grid">
 
 <div class="t-cell">
@@ -236,11 +70,12 @@ I am fortunate to have been recognized with several teaching awards by the Harva
 </div>
 
 </div>
+</div>
+</section>
 
-
-
-<div class="section-cmd"><span class="ps">$</span> ls teaching-fellow/</div>
-
+<section class="teaching-section" aria-labelledby="teaching-fellow">
+<h2 id="teaching-fellow">Teaching fellow</h2>
+<div class="teaching-section-content">
 <div class="t-grid">
 
 <div class="t-cell">
@@ -294,24 +129,32 @@ I am fortunate to have been recognized with several teaching awards by the Harva
 </div>
 
 </div>
-
-
-<div class="section-cmd"><span class="ps">$</span> ls workshops/</div>
-
-<div class="t-list">
-<div class="t-item">
-<div class="t-year">2024</div>
-<div class="t-body">An Introduction to Reproducible Programming and Project Management<span class="t-sep">·</span><span class="t-sub">Society for Medical Decision Making · Annual Meeting</span></div>
 </div>
-<div class="t-item">
-<div class="t-year">2023</div>
-<div class="t-body">Transparent Programming: Important Habits for Reproducibility and Research Integrity<span class="t-sep">·</span><span class="t-sub">Society for Medical Decision Making · Annual Meeting</span></div>
+</section>
+
+<section class="teaching-section" aria-labelledby="workshops">
+<h2 id="workshops">Workshops</h2>
+<div class="teaching-section-content">
+<div class="t-grid">
+<div class="t-cell">
+<div class="t-cell-title">Build Your Own RA (Research Agent): Introduction to Agentic Coding and Custom Research Workflows</div>
+<div class="t-cell-sub"><span class="t-sub">Society for Medical Decision Making</span><span class="t-sep">·</span><span class="t-cell-yrs">2026</span><span class="t-role">instructor</span></div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">An Introduction to Reproducible Programming and Project Management</div>
+<div class="t-cell-sub"><span class="t-sub">Society for Medical Decision Making · Annual Meeting</span><span class="t-sep">·</span><span class="t-cell-yrs">2020 · 2024</span><span class="t-role">instructor</span></div>
+</div>
+<div class="t-cell">
+<div class="t-cell-title">Transparent Programming: Important Habits for Reproducibility and Research Integrity</div>
+<div class="t-cell-sub"><span class="t-sub">Society for Medical Decision Making · Annual Meeting</span><span class="t-sep">·</span><span class="t-cell-yrs">2023</span><span class="t-role">instructor</span></div>
 </div>
 </div>
+</div>
+</section>
 
-
-<div class="section-cmd"><span class="ps">$</span> ls open-materials/</div>
-
+<section class="teaching-section" aria-labelledby="open-materials">
+<h2 id="open-materials">Open teaching materials</h2>
+<div class="teaching-section-content">
 <div class="t-list">
 <div class="t-item">
 <div class="t-year">R</div>
@@ -325,4 +168,8 @@ I am fortunate to have been recognized with several teaching awards by the Harva
 <div class="t-year">ML</div>
 <div class="t-body">API 222 Section Materials<span class="t-sep">·</span><span class="t-sub">Machine learning section materials</span>&nbsp;<a href="./api 222 files/API222.html" class="t-link">view</a></div>
 </div>
+</div>
+</div>
+</section>
+
 </div>
