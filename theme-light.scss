@@ -1076,62 +1076,56 @@ h3 {
     grid-column: screen-start / screen-end;
     width: min(1320px, calc(100% - 3rem));
     margin: 0 auto;
-    padding: clamp(1.25rem, 2vw, 2rem) 0 clamp(3.5rem, 6vw, 6rem);
-  }
-
-  .research-header,
-  .research-section {
-    display: grid;
-    grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
-    column-gap: clamp(2rem, 3vw, 3rem);
-    align-items: start;
+    padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(4rem, 7vw, 6.5rem);
   }
 
   .research-header {
-    padding-bottom: clamp(2.75rem, 5vw, 4.5rem);
+    max-width: 1100px;
+    padding-bottom: clamp(2.25rem, 4vw, 3.5rem);
   }
 
   .research-header h1 {
-    margin: 0;
+    margin: 0 0 1rem;
     font-family: 'Raleway', sans-serif;
-    font-size: clamp(2.25rem, 4vw, 3.2rem);
+    font-size: clamp(2.1rem, 3vw, 2.6rem);
     font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.025em;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
     color: #111;
   }
 
   .research-intro {
-    max-width: 840px;
+    max-width: 1050px;
+    margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 400;
-    line-height: 1.75;
-    color: #292929;
+    line-height: 1.65;
+    color: #222;
   }
 
-  .research-intro p { margin: 0; }
+  .research-accent {
+    color: $primary;
+    font-weight: 600;
+  }
 
   .research-section {
-    padding: 2rem 0 2.4rem;
-    border-top: 1px solid #d8d8d8;
+    padding: 0 0 clamp(2.5rem, 5vw, 4rem);
   }
 
   .research-section h2 {
     margin: 0;
-    padding: 0;
+    padding: 0 0 0.75rem;
     border: 0;
     font-family: 'Raleway', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 400;
     line-height: 1.3;
-    letter-spacing: 0;
+    letter-spacing: 0.01em;
     color: #111;
   }
 
   .research-section h2::before { content: none; }
-
-  .research-section-content { min-width: 0; }
 
   .pub-list {
     display: flex;
@@ -1140,88 +1134,84 @@ h3 {
 
   .pub-item {
     display: grid;
-    grid-template-columns: 108px minmax(0, 1fr);
-    gap: 0 1.25rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid #ededed;
+    grid-template-columns: minmax(0, 1fr) minmax(175px, 260px);
+    gap: 1.25rem clamp(2.5rem, 5vw, 5rem);
+    padding: clamp(1.25rem, 2.2vw, 1.8rem) 0;
+    border-bottom: 1px solid #eeeeee;
     align-items: start;
   }
 
-  .pub-item:first-child { padding-top: 0; }
-
-  .pub-item:last-child {
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-
-  .pub-status {
-    padding-top: 0.2rem;
-    font-family: $mono;
-    font-size: 0.66rem;
-    font-weight: 500;
-    line-height: 1.45;
-    letter-spacing: 0.055em;
-    color: #666;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
+  .pub-item:first-child { border-top: 1px solid #eeeeee; }
 
   .pub-body {
     min-width: 0;
+  }
+
+  .pub-title {
+    margin: 0 0 0.45rem;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 1rem;
+    font-size: 1.08rem;
+    font-weight: 400;
+    line-height: 1.45;
+    color: $primary;
+  }
+
+  .pub-title::before { content: none; }
+
+  .pub-title a {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  .pub-title a:hover {
+    color: #147a38;
+    text-decoration: underline;
+    text-decoration-color: #86c99d;
+    text-underline-offset: 3px;
+  }
+
+  .pub-authors,
+  .pub-award {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.93rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #222;
+    letter-spacing: 0.01em;
+    color: #333;
   }
 
-  .pub-body > a:not(.pub-link) {
-    color: $primary;
-    text-decoration-color: #86c99d;
-    text-underline-offset: 2px;
-  }
-
-  .pub-body > a:not(.pub-link):hover {
-    color: $primary;
-    text-decoration-color: $primary;
-  }
-
-  .pub-venue,
   .pub-award {
-    display: block;
-    margin-top: 0.32rem;
+    margin-top: 0.45rem;
     font-family: $mono;
     font-size: 0.7rem;
-    font-weight: 400;
     line-height: 1.55;
-    color: #666;
-  }
-
-  .pub-award {
     color: #147a38;
   }
 
-  .pub-row,
-  .pub-row p {
+  .pub-meta {
+    padding-top: 0.15rem;
+    font-family: $mono;
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0.025em;
+    color: $primary;
+    text-align: right;
+  }
+
+  .pub-meta em { font-weight: 500; }
+
+  .pub-links {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     gap: 0.4rem;
+    margin-top: 0.65rem;
   }
 
-  .pub-row { margin-top: 0.65rem; }
-
-  .pub-row p { margin: 0; }
-
-  .pub-row .pub-venue {
-    flex-basis: 100%;
-    margin: 0 0 0.1rem;
-  }
-
-  .pub-link,
-  .pub-flag {
+  .pub-link {
     display: inline-block;
-    padding: 0.16rem 0.5rem;
+    padding: 0.15rem 0.5rem;
     border: 1px solid #d5d5d5;
     border-radius: 999px;
     font-family: $mono;
@@ -1245,37 +1235,20 @@ h3 {
     border-color: $primary;
   }
 
-  .pub-link.code {
-    color: #147a38;
-    border-color: #a8d8b7;
-  }
-
-  .pub-flag {
-    display: block;
-    width: fit-content;
-    margin: 0 0 0.55rem;
-    color: #147a38;
-    border-color: #8fc9a2;
-    background: #f7fcf8;
-    font-weight: 500;
-  }
-
   .job-market-paper {
-    margin: 0 0 0.25rem -1rem;
-    padding: 1rem 0 1rem calc(1rem - 2px);
+    margin-left: -1rem;
+    padding-left: calc(1rem - 2px);
     border-left: 2px solid $primary;
     border-bottom-color: #dce9df;
     background: #fbfefc;
   }
-
-  .job-market-paper .pub-status { color: #147a38; }
 
   .me {
     font-weight: 600;
     color: #222;
   }
 
-  .pub-body a:focus-visible,
+  .pub-title a:focus-visible,
   .pub-link:focus-visible {
     outline: 2px solid $primary;
     outline-offset: 3px;
@@ -1285,28 +1258,19 @@ h3 {
 @media (max-width: 1050px) {
   .research-page {
     .research-layout {
-      width: min(900px, calc(100% - 2.5rem));
-      padding-top: 2.5rem;
-    }
-
-    .research-header,
-    .research-section {
-      grid-template-columns: minmax(150px, 180px) minmax(0, 1fr);
-      column-gap: 2rem;
+      width: min(920px, calc(100% - 2.5rem));
     }
   }
 }
 
 @media (max-width: 760px) {
   .research-page {
-    .research-header,
-    .research-section {
+    .pub-item {
       grid-template-columns: minmax(0, 1fr);
+      gap: 0.75rem;
     }
 
-    .research-header h1 { margin-bottom: 1.5rem; }
-
-    .research-section h2 { margin-bottom: 1.5rem; }
+    .pub-meta { text-align: left; }
   }
 }
 
@@ -1317,18 +1281,15 @@ h3 {
       padding: 2rem 0 4rem;
     }
 
-    .research-header { padding-bottom: 3rem; }
+    .research-header { padding-bottom: 2.5rem; }
 
-    .research-header h1 { font-size: 2.35rem; }
+    .research-header h1 { font-size: 2.15rem; }
 
-    .research-section { padding: 1.75rem 0 2rem; }
+    .research-section { padding-bottom: 2.75rem; }
 
-    .pub-item {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0.35rem;
-    }
+    .pub-item { padding: 1.25rem 0; }
 
-    .pub-status { padding-top: 0; }
+    .pub-title { font-size: 1.04rem; }
 
     .job-market-paper {
       margin-left: -0.65rem;
