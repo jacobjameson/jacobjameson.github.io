@@ -11,7 +11,7 @@ format:
 
 <header class="research-header">
 <h1>Research</h1>
-<p class="research-intro">My research develops and applies methods in <span class="research-accent">causal inference</span>, <span class="research-accent">decision modeling</span>, and <span class="research-accent">reinforcement learning</span> to generate and synthesize evidence for better decision-making in health and public policy. I study the impacts of <span class="research-accent">physician behavior</span>, <span class="research-accent">health policies</span>, and <span class="research-accent">personalized medicine</span>.</p>
+<p class="research-intro">My research develops and applies methods in <span class="research-accent">causal inference</span>, <span class="research-accent">decision science</span>, and <span class="research-accent">operations management</span> to generate and synthesize evidence for better decision-making in health and public policy. I study the impacts of <span class="research-accent">physician behavior</span>, <span class="research-accent">health policies</span>, and <span class="research-accent">personalized medicine</span>.</p>
 </header>
 
 <section class="research-section" aria-labelledby="working-papers">
