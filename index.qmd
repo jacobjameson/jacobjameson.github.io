@@ -2,7 +2,7 @@
 title: "Jacob Jameson"
 pagetitle: "Jacob Jameson | Health Policy & Decision Sciences"
 description: "PhD candidate at Harvard studying health policy, causal inference, and decision sciences."
-image: images/profile.png
+image: images/profile.jpg
 body-classes: home-page
 comments: false
 page-layout: full
@@ -14,7 +14,7 @@ page-layout: full
 
 <div class="home-photo-column">
 <div class="home-photo">
-<img src="images/jj-headshot.png" alt="Portrait of Jacob Jameson">
+<img src="images/profile.jpg" alt="Portrait of Jacob Jameson">
 </div>
 
 <nav class="home-links" aria-label="Profile and social links">
