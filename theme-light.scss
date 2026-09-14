@@ -496,11 +496,11 @@ h3 {
       gap: 1.75rem;
     }
 
-    .home-photo { width: 150px; }
+    .home-photo { width: 150px; margin-left: auto; margin-right: auto; }
 
-    .home-photo-column { width: 100%; }
+    .home-photo-column { width: 100%; text-align: center; }
 
-    .home-links { max-width: 340px; }
+    .home-links { max-width: 340px; margin-left: auto; margin-right: auto; justify-content: center; }
 
     .home-name { font-size: 2.35rem; }
 
