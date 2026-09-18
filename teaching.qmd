@@ -137,6 +137,10 @@ I am fortunate to have been recognized with several teaching awards by the Harva
 <div class="teaching-section-content">
 <div class="t-grid">
 <div class="t-cell">
+<div class="t-cell-title">Short Courses Co-Chair</div>
+<div class="t-cell-sub"><span class="t-sub">Society for Medical Decision Making</span><span class="t-sep">·</span><span class="t-cell-yrs">2026–2027</span></div>
+</div>
+<div class="t-cell">
 <div class="t-cell-title">Build Your Own RA (Research Agent): Introduction to Agentic Coding and Custom Research Workflows</div>
 <div class="t-cell-sub"><span class="t-sub">Society for Medical Decision Making</span><span class="t-sep">·</span><span class="t-cell-yrs">2026</span><span class="t-role">instructor</span></div>
 </div>

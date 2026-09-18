@@ -256,7 +256,7 @@ h3 {
     grid-column: screen-start / screen-end;
     width: min(1320px, calc(100% - 3rem));
     margin: 0 auto;
-    padding: clamp(1.25rem, 2vw, 2rem) 0 clamp(3.5rem, 6vw, 6rem);
+    padding: clamp(1.25rem, 2vw, 2rem) 0 clamp(1.25rem, 2vw, 2rem);
     display: flex;
     gap: clamp(2.5rem, 3.5vw, 4rem);
     align-items: start;
