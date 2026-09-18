@@ -56,8 +56,13 @@ page-layout: full
 <h2 class="home-news-heading" id="news-heading">Recent updates</h2>
 
 <article class="home-news-entry">
+<time class="home-news-date" datetime="2026-09">September 2026</time>
+<p>Taught a workshop on agentic AI for the Harvard-wide Fellowship in Pediatric Health Services Research.</p>
+</article>
+
+<article class="home-news-entry">
 <time class="home-news-date" datetime="2026-08">August 2026</time>
-<p>Led a workshop on agentic AI for the Society for Medical Decision Making.</p>
+<p>Taught a workshop on agentic AI for the Society for Medical Decision Making.</p>
 </article>
 
 <article class="home-news-entry">
