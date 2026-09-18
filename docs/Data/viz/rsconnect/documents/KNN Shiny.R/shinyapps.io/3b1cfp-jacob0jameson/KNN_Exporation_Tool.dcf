@@ -1,0 +1,13 @@
+name: KNN_Exporation_Tool
+title: KNN_Exporation_Tool
+username: 3b1cfp-jacob0jameson
+account: 3b1cfp-jacob0jameson
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12753306
+bundleId: 9118032
+url: https://3b1cfp-jacob0jameson.shinyapps.io/KNN_Exporation_Tool/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: 2023-01-03 Tidy Tuesday/TT_wk1.qmd|2023-01-10 Tidy Tuesday/TT_wk2.qmd|2023-01-17 Tidy Tuesday/TT_wk3.qmd|2023-01-24 Tidy Tuesday/TT_wk4.qmd|2023-01-31 Tidy Tuesday/TT_wk5.qmd|2023-02-07 Tidy Tuesday/TT_wk6.qmd|2023-02-14 Tidy Tuesday/TT_wk7.qmd|healthcare area chart/dancing-bar-chart.js|healthcare area chart/healthcare_areachart.qmd|healthcare area chart/healthcare-disposable-inc.csv

@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - CNAME
+    - "Data/**"
+    - "images/**"
 
 website:
   # Open Graph / Social Sharing
