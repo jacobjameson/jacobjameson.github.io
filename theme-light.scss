@@ -378,7 +378,7 @@ h3 {
   }
 
   .home-news-rail {
-    flex: 0 0 300px;
+    flex: 0 0 345px;
     min-width: 0;
     border-left: 1px solid #e2e2e2;
     padding-left: clamp(1.75rem, 3vw, 2.75rem);
@@ -397,6 +397,10 @@ h3 {
   }
 
   .home-news-heading::before { content: none; }
+
+  .home-news-rail .home-news-heading:not(:first-child) {
+    margin-top: 2.5rem;
+  }
 
   .home-news-entry {
     padding: 1.05rem 0;
@@ -435,30 +439,22 @@ h3 {
     text-decoration-color: $primary;
   }
 
-  .home-news-archive > summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 0;
-    font-family: $mono;
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: #666;
-    cursor: pointer;
+  .home-news-scroll {
+    max-height: 20rem;
+    overflow-y: auto;
+    padding-right: 0.65rem;
+    scrollbar-width: thin;
+    scrollbar-color: #cfcfcf transparent;
   }
 
-  .home-news-archive > summary::before { content: none; }
-  .home-news-archive > summary::after { content: '+'; color: $primary; }
-  .home-news-archive[open] > summary::before { content: none; }
-  .home-news-archive[open] > summary::after { content: '−'; }
+  .home-news-scroll > .home-news-entry:last-child {
+    border-bottom: none;
+  }
 
   .home-links a:focus-visible,
   .jm-bar a:focus-visible,
   .home-bio-copy a:focus-visible,
-  .home-news-entry a:focus-visible,
-  .home-news-archive > summary:focus-visible {
+  .home-news-entry a:focus-visible {
     outline: 2px solid $primary;
     outline-offset: 3px;
   }
